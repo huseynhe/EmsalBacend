@@ -1,0 +1,693 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EmsalDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="EmsalDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="EmsalDBModel.C__MigrationHistory" />
+    <EntitySet Name="tblAddresses" EntityType="EmsalDBModel.tblAddress" />
+    <EntitySet Name="tblAnnouncements" EntityType="EmsalDBModel.tblAnnouncement" />
+    <EntitySet Name="tblAuthenticatedParts" EntityType="EmsalDBModel.tblAuthenticatedPart" />
+    <EntitySet Name="tblBranchResponsibilities" EntityType="EmsalDBModel.tblBranchResponsibility" />
+    <EntitySet Name="tblComMessages" EntityType="EmsalDBModel.tblComMessage" />
+    <EntitySet Name="tblCommunications" EntityType="EmsalDBModel.tblCommunication" />
+    <EntitySet Name="tblConfirmationMessages" EntityType="EmsalDBModel.tblConfirmationMessage" />
+    <EntitySet Name="tblDemand_Production" EntityType="EmsalDBModel.tblDemand_Production" />
+    <EntitySet Name="tblEmployees" EntityType="EmsalDBModel.tblEmployee" />
+    <EntitySet Name="tblEnumCategories" EntityType="EmsalDBModel.tblEnumCategory" />
+    <EntitySet Name="tblEnumValues" EntityType="EmsalDBModel.tblEnumValue" />
+    <EntitySet Name="tblExpertises" EntityType="EmsalDBModel.tblExpertise" />
+    <EntitySet Name="tblForeign_Organization" EntityType="EmsalDBModel.tblForeign_Organization" />
+    <EntitySet Name="tblOffer_Production" EntityType="EmsalDBModel.tblOffer_Production" />
+    <EntitySet Name="tblOrganizations" EntityType="EmsalDBModel.tblOrganization" />
+    <EntitySet Name="tblParties" EntityType="EmsalDBModel.tblParty" />
+    <EntitySet Name="tblPersons" EntityType="EmsalDBModel.tblPerson" />
+    <EntitySet Name="tblPotential_Production" EntityType="EmsalDBModel.tblPotential_Production" />
+    <EntitySet Name="tblPrivilegedRoles" EntityType="EmsalDBModel.tblPrivilegedRole" />
+    <EntitySet Name="tblPRM_AdminUnit" EntityType="EmsalDBModel.tblPRM_AdminUnit" />
+    <EntitySet Name="tblPRM_ASCBranch" EntityType="EmsalDBModel.tblPRM_ASCBranch" />
+    <EntitySet Name="tblPRM_KTNBranch" EntityType="EmsalDBModel.tblPRM_KTNBranch" />
+    <EntitySet Name="tblPRM_Thoroughfare" EntityType="EmsalDBModel.tblPRM_Thoroughfare" />
+    <EntitySet Name="tblProduct_Document" EntityType="EmsalDBModel.tblProduct_Document" />
+    <EntitySet Name="tblProductAddresses" EntityType="EmsalDBModel.tblProductAddress" />
+    <EntitySet Name="tblProductCatalogs" EntityType="EmsalDBModel.tblProductCatalog" />
+    <EntitySet Name="tblProductCatalogControls" EntityType="EmsalDBModel.tblProductCatalogControl" />
+    <EntitySet Name="tblProduction_Calendar" EntityType="EmsalDBModel.tblProduction_Calendar" />
+    <EntitySet Name="tblProduction_Document" EntityType="EmsalDBModel.tblProduction_Document" />
+    <EntitySet Name="tblProductionControls" EntityType="EmsalDBModel.tblProductionControl" />
+    <EntitySet Name="tblProductPrices" EntityType="EmsalDBModel.tblProductPrice" />
+    <EntitySet Name="tblProductProfileImages" EntityType="EmsalDBModel.tblProductProfileImage" />
+    <EntitySet Name="tblRoles" EntityType="EmsalDBModel.tblRole" />
+    <EntitySet Name="tblTitles" EntityType="EmsalDBModel.tblTitle" />
+    <EntitySet Name="tblUsers" EntityType="EmsalDBModel.tblUser" />
+    <EntitySet Name="tblUserRoles" EntityType="EmsalDBModel.tblUserRole" />
+  </EntityContainer>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblAddress">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Latitude" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Longitude" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="adminUnit_Id" Type="Int64" />
+    <Property Name="thoroughfare_Id" Type="Int64" />
+    <Property Name="fullAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="addressDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="user_Id" Type="Int64" />
+    <Property Name="user_type_eV_Id" Type="Int64" />
+    <Property Name="Status" Type="Int64" />
+    <Property Name="LastUpdatedStatus" Type="Int64" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tblAnnouncement">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="quantity" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="quantity_type_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="unit_price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="product_id" Type="Int64" />
+    <Property Name="product_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="startDate" Type="Int64" />
+    <Property Name="endDate" Type="Int64" />
+    <Property Name="Status" Type="Int64" />
+    <Property Name="LastUpdatedStatus" Type="Int64" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" />
+    <Property Name="address_Id" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tblAuthenticatedPart">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tblBranchResponsibility">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="branchId" Type="Int64" Nullable="false" />
+    <Property Name="adminUnitId" Type="Int64" Nullable="false" />
+    <Property Name="branchType_eVId" Type="Int64" Nullable="false" />
+    <Property Name="Status" Type="Int64" Nullable="false" />
+    <Property Name="LastUpdatedStatus" Type="Int64" Nullable="false" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" Nullable="false" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblComMessage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="Int64" />
+    <Property Name="Production_Id" Type="Int64" />
+    <Property Name="Production_type_eV_Id" Type="Int64" />
+    <Property Name="LastUpdatedStatus" Type="Int64" />
+    <Property Name="groupID" Type="Int64" />
+    <Property Name="message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fromUserID" Type="Int64" />
+    <Property Name="toUserID" Type="Int64" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" />
+    <Property Name="isRead" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tblCommunication">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="comType" Type="Int32" Nullable="false" />
+    <Property Name="priorty" Type="Int32" Nullable="false" />
+    <Property Name="communication" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int64" />
+    <Property Name="LastUpdatedStatus" Type="Int64" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" />
+    <Property Name="PersonId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tblConfirmationMessage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblDemand_Production">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="grup_Id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="unit_price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="total_price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="quantity" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="quantity_type_eV_Id" Type="Int64" />
+    <Property Name="startDate" Type="Int64" />
+    <Property Name="endDate" Type="Int64" />
+    <Property Name="isSelected" Type="Boolean" />
+    <Property Name="isAnnouncement" Type="Boolean" />
+    <Property Name="Status" Type="Int64" />
+    <Property Name="LastUpdatedStatus" Type="Int64" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" />
+    <Property Name="address_Id" Type="Int64" />
+    <Property Name="product_Id" Type="Int64" />
+    <Property Name="user_Id" Type="Int64" />
+    <Property Name="state_eV_Id" Type="Int64" />
+    <Property Name="fullProductId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="monitoring_eV_Id" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tblEmployee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="Int64" Nullable="false" />
+    <Property Name="LastUpdatedStatus" Type="Int64" Nullable="false" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" Nullable="false" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" Nullable="false" />
+    <Property Name="expertise_Id" Type="Int64" />
+    <Property Name="organization_Id" Type="Int64" />
+    <Property Name="party_Id" Type="Int64" />
+    <Property Name="personType_enumCategoryId" Type="Int32" />
+    <Property Name="title_Id" Type="Int64" />
+    <Property Name="user_Id" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tblEnumCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="isProductDescibe" Type="Int32" />
+    <Property Name="Status" Type="Int64" />
+    <Property Name="LastUpdatedStatus" Type="Int64" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tblEnumValue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="enumCategory_enumCategoryId" Type="Int64" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int64" />
+    <Property Name="LastUpdatedStatus" Type="Int64" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tblExpertise">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int64" Nullable="false" />
+    <Property Name="LastUpdatedStatus" Type="Int64" Nullable="false" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" Nullable="false" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" Nullable="false" />
+    <Property Name="expertiseType_enumCategoryId" Type="Int32" />
+    <Property Name="role_Id" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tblForeign_Organization">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int64" Nullable="false" />
+    <Property Name="LastUpdatedStatus" Type="Int64" Nullable="false" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" Nullable="false" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" Nullable="false" />
+    <Property Name="address_Id" Type="Int64" />
+    <Property Name="voen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="userId" Type="Int64" />
+    <Property Name="manager_Id" Type="Int64" />
+    <Property Name="organisationType_eV_Id" Type="Int64" />
+    <Property Name="parent_Id" Type="Int64" />
+    <Property Name="party_Id" Type="Int64" />
+    <Property Name="actualFunctionAddressId" Type="Int64" />
+    <Property Name="legalAddressId" Type="Int64" />
+    <Property Name="accountNumber" Type="Int64" />
+    <Property Name="bankName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="legality_eV_Id" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tblOffer_Production">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="grup_Id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="unit_price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="total_price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="quantity" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="quantity_type_eV_Id" Type="Int64" />
+    <Property Name="startDate" Type="Int64" />
+    <Property Name="endDate" Type="Int64" />
+    <Property Name="isSelected" Type="Boolean" />
+    <Property Name="Status" Type="Int64" />
+    <Property Name="LastUpdatedStatus" Type="Int64" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" />
+    <Property Name="potentialProduct_Id" Type="Int64" />
+    <Property Name="product_Id" Type="Int64" />
+    <Property Name="productAddress_Id" Type="Int64" />
+    <Property Name="user_Id" Type="Int64" />
+    <Property Name="state_eV_Id" Type="Int64" />
+    <Property Name="monitoring_eV_Id" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tblOrganization">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int64" Nullable="false" />
+    <Property Name="LastUpdatedStatus" Type="Int64" Nullable="false" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" Nullable="false" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" Nullable="false" />
+    <Property Name="voen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="userId" Type="Int64" Nullable="false" />
+    <Property Name="manager_Id" Type="Int64" />
+    <Property Name="organization_type_eV_Id" Type="Int32" />
+    <Property Name="parent_Id" Type="Int64" />
+    <Property Name="party_Id" Type="Int64" />
+    <Property Name="actualFunctionAddressId" Type="Int64" />
+    <Property Name="legalAddressId" Type="Int64" />
+    <Property Name="accountNumber" Type="Int64" />
+    <Property Name="bankName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="legality_eV_Id" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tblParty">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="Int64" Nullable="false" />
+    <Property Name="LastUpdatedStatus" Type="Int64" Nullable="false" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" Nullable="false" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblPerson">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FatherName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PinNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="Int64" />
+    <Property Name="gender" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="birtday" Type="Int64" />
+    <Property Name="educationLevel_eV_Id" Type="Int64" />
+    <Property Name="job_eV_Id" Type="Int64" />
+    <Property Name="address_Id" Type="Int64" />
+    <Property Name="Status" Type="Int64" />
+    <Property Name="LastUpdatedStatus" Type="Int64" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tblPotential_Production">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="grup_Id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="unit_price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="total_price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="quantity" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="quantity_type_eV_Id" Type="Int64" />
+    <Property Name="startDate" Type="Int64" />
+    <Property Name="endDate" Type="Int64" />
+    <Property Name="isSelected" Type="Boolean" />
+    <Property Name="Status" Type="Int64" />
+    <Property Name="LastUpdatedStatus" Type="Int64" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" />
+    <Property Name="product_Id" Type="Int64" />
+    <Property Name="productAddress_Id" Type="Int64" />
+    <Property Name="user_Id" Type="Int64" />
+    <Property Name="state_eV_Id" Type="Int64" />
+    <Property Name="fullProductId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="monitoring_eV_Id" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tblPrivilegedRole">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AuthenticatedPartID" Type="Int64" Nullable="false" />
+    <Property Name="RoleID" Type="Int64" Nullable="false" />
+    <Property Name="Status" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tblPRM_AdminUnit">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ParentID" Type="Int64" />
+    <Property Name="EnumValueID" Type="Int64" />
+    <Property Name="Status" Type="Int64" />
+    <Property Name="LastUpdatedStatus" Type="Int64" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tblPRM_ASCBranch">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int64" />
+    <Property Name="LastUpdateStatus" Type="Int64" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" />
+    <Property Name="address_Id" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tblPRM_KTNBranch">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int64" />
+    <Property Name="LastUpdatedStatus" Type="Int64" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" />
+    <Property Name="address_Id" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tblPRM_Thoroughfare">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AdminUnitID" Type="Int64" />
+    <Property Name="Status" Type="Int64" />
+    <Property Name="LastUpdatedStatus" Type="Int64" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tblProduct_Document">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="Int64" />
+    <Property Name="LastUpdatedStatus" Type="Int64" />
+    <Property Name="Product_catalog_Id" Type="Int64" />
+    <Property Name="documentUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="documentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="documentRealName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="documentTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="documentContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="documentSize" Type="Int64" />
+    <Property Name="document_type_ev_Id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tblProductAddress">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="adminUnit_Id" Type="Int64" />
+    <Property Name="thoroughfare_Id" Type="Int64" />
+    <Property Name="fullAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="addressDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="demand_production_id" Type="Int64" />
+    <Property Name="offer_production_id" Type="Int64" />
+    <Property Name="potensial_production_id" Type="Int64" />
+    <Property Name="production_type_ev_Id" Type="Int64" />
+    <Property Name="Latitude" Type="Decimal" Nullable="false" Precision="18" Scale="9" />
+    <Property Name="Longitude" Type="Decimal" Nullable="false" Precision="18" Scale="9" />
+    <Property Name="Status" Type="Int64" />
+    <Property Name="LastUpdatedStatus" Type="Int64" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" />
+    <Property Name="fullAddressId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblProductCatalog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductCatalogParentID" Type="Int64" />
+    <Property Name="ProductName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ProductDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="canBeOrder" Type="Int64" />
+    <Property Name="CatalogLevel" Type="Int64" />
+    <Property Name="measurementUnit_enumValueId" Type="Int64" />
+    <Property Name="Status" Type="Int64" />
+    <Property Name="LastUpdatedStatus" Type="Int64" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tblProductCatalogControl">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int64" Nullable="false" />
+    <Property Name="EnumCategoryId" Type="Int64" />
+    <Property Name="EnumValueId" Type="Int64" />
+    <Property Name="Status" Type="Int64" />
+    <Property Name="LastUpdatedStatus" Type="Int64" />
+    <Property Name="createUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createDate" Type="Int64" />
+    <Property Name="updateUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updateDate" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tblProduction_Calendar">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Production_Id" Type="Int64" />
+    <Property Name="Production_type_eV_Id" Type="Int64" />
+    <Property Name="Transportation_eV_Id" Type="Int64" />
+    <Property Name="Months" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Year" Type="Int64" />
+    <Property Name="Status" Type="Int64" />
+    <Property Name="LastUpdatedStatus" Type="Int64" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tblProduction_Document">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="grup_Id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int64" />
+    <Property Name="LastUpdatedStatus" Type="Int64" />
+    <Property Name="Demand_Production_Id" Type="Int64" />
+    <Property Name="Offer_Production_Id" Type="Int64" />
+    <Property Name="Potential_Production_Id" Type="Int64" />
+    <Property Name="Production_type_eV_Id" Type="Int64" />
+    <Property Name="documentUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="documentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="documentRealName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="documentTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="documentContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="documentSize" Type="Int64" />
+    <Property Name="document_type_ev_Id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tblProductionControl">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Demand_Production_Id" Type="Int64" />
+    <Property Name="Offer_Production_Id" Type="Int64" />
+    <Property Name="Potential_Production_Id" Type="Int64" />
+    <Property Name="Production_type_eV_Id" Type="Int64" />
+    <Property Name="EnumCategoryId" Type="Int64" />
+    <Property Name="EnumValueId" Type="Int64" />
+    <Property Name="Status" Type="Int64" />
+    <Property Name="LastUpdatedStatus" Type="Int64" />
+    <Property Name="createUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createDate" Type="Int64" />
+    <Property Name="updateUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updateDate" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tblProductPrice">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="productId" Type="Int64" />
+    <Property Name="unit_price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="year" Type="Int64" />
+    <Property Name="partOfYear" Type="Int64" />
+    <Property Name="Status" Type="Int64" />
+    <Property Name="LastUpdatedStatus" Type="Int64" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tblProductProfileImage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="productId" Type="Int64" />
+    <Property Name="imageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int64" />
+    <Property Name="LastUpdatedStatus" Type="Int64" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tblRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int64" Nullable="false" />
+    <Property Name="LastUpdatedStatus" Type="Int64" Nullable="false" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" Nullable="false" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" Nullable="false" />
+    <Property Name="party_Id" Type="Int64" />
+    <Property Name="roleType_enumCategoryId" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblTitle">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int64" Nullable="false" />
+    <Property Name="LastUpdatedStatus" Type="Int64" Nullable="false" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" Nullable="false" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" Nullable="false" />
+    <Property Name="role_Id" Type="Int64" />
+    <Property Name="titleType_enumCategoryId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LastLoginIP" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LastLoginDate" Type="Int64" />
+    <Property Name="ProfileImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int64" />
+    <Property Name="LastUpdatedStatus" Type="Int64" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" />
+    <Property Name="userType_eV_ID" Type="Int64" />
+    <Property Name="ASC_ID" Type="Int64" />
+    <Property Name="KTN_ID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tblUserRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int64" Nullable="false" />
+    <Property Name="RoleId" Type="Int64" Nullable="false" />
+    <Property Name="Status" Type="Int64" Nullable="false" />
+    <Property Name="LastUpdatedStatus" Type="Int64" Nullable="false" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" Nullable="false" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" Nullable="false" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,2108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EmsalDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblAddress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Latitude" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Longitude" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="adminUnit_Id" Type="bigint" />
+          <Property Name="thoroughfare_Id" Type="bigint" />
+          <Property Name="fullAddress" Type="nvarchar(max)" />
+          <Property Name="addressDesc" Type="nvarchar(max)" />
+          <Property Name="user_Id" Type="bigint" />
+          <Property Name="user_type_eV_Id" Type="bigint" />
+          <Property Name="Status" Type="bigint" />
+          <Property Name="LastUpdatedStatus" Type="bigint" />
+          <Property Name="createdUser" Type="nvarchar(max)" />
+          <Property Name="createdDate" Type="bigint" />
+          <Property Name="updatedUser" Type="nvarchar(max)" />
+          <Property Name="updatedDate" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblAnnouncement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar(max)" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="quantity" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="quantity_type_Name" Type="nvarchar(max)" />
+          <Property Name="unit_price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="product_id" Type="bigint" />
+          <Property Name="product_name" Type="nvarchar(max)" />
+          <Property Name="startDate" Type="bigint" />
+          <Property Name="endDate" Type="bigint" />
+          <Property Name="Status" Type="bigint" />
+          <Property Name="LastUpdatedStatus" Type="bigint" />
+          <Property Name="createdUser" Type="nvarchar(max)" />
+          <Property Name="createdDate" Type="bigint" />
+          <Property Name="updatedUser" Type="nvarchar(max)" />
+          <Property Name="updatedDate" Type="bigint" />
+          <Property Name="address_Id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblAuthenticatedPart">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Status" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblBranchResponsibility">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="branchId" Type="bigint" Nullable="false" />
+          <Property Name="adminUnitId" Type="bigint" Nullable="false" />
+          <Property Name="branchType_eVId" Type="bigint" Nullable="false" />
+          <Property Name="Status" Type="bigint" Nullable="false" />
+          <Property Name="LastUpdatedStatus" Type="bigint" Nullable="false" />
+          <Property Name="createdUser" Type="nvarchar(max)" />
+          <Property Name="createdDate" Type="bigint" Nullable="false" />
+          <Property Name="updatedUser" Type="nvarchar(max)" />
+          <Property Name="updatedDate" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblComMessage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="bigint" />
+          <Property Name="Production_Id" Type="bigint" />
+          <Property Name="Production_type_eV_Id" Type="bigint" />
+          <Property Name="LastUpdatedStatus" Type="bigint" />
+          <Property Name="groupID" Type="bigint" />
+          <Property Name="message" Type="nvarchar(max)" />
+          <Property Name="fromUserID" Type="bigint" />
+          <Property Name="toUserID" Type="bigint" />
+          <Property Name="createdUser" Type="nvarchar(max)" />
+          <Property Name="createdDate" Type="bigint" />
+          <Property Name="updatedUser" Type="nvarchar(max)" />
+          <Property Name="updatedDate" Type="bigint" />
+          <Property Name="isRead" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblCommunication">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="comType" Type="int" Nullable="false" />
+          <Property Name="priorty" Type="int" Nullable="false" />
+          <Property Name="communication" Type="nvarchar(max)" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="Status" Type="bigint" />
+          <Property Name="LastUpdatedStatus" Type="bigint" />
+          <Property Name="createdUser" Type="nvarchar(max)" />
+          <Property Name="createdDate" Type="bigint" />
+          <Property Name="updatedUser" Type="nvarchar(max)" />
+          <Property Name="updatedDate" Type="bigint" />
+          <Property Name="PersonId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblConfirmationMessage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Message" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblDemand_Production">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="grup_Id" Type="nvarchar(max)" />
+          <Property Name="title" Type="nvarchar(max)" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="unit_price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="total_price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="quantity" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="quantity_type_eV_Id" Type="bigint" />
+          <Property Name="startDate" Type="bigint" />
+          <Property Name="endDate" Type="bigint" />
+          <Property Name="isSelected" Type="bit" />
+          <Property Name="isAnnouncement" Type="bit" />
+          <Property Name="Status" Type="bigint" />
+          <Property Name="LastUpdatedStatus" Type="bigint" />
+          <Property Name="createdUser" Type="nvarchar(max)" />
+          <Property Name="createdDate" Type="bigint" />
+          <Property Name="updatedUser" Type="nvarchar(max)" />
+          <Property Name="updatedDate" Type="bigint" />
+          <Property Name="address_Id" Type="bigint" />
+          <Property Name="product_Id" Type="bigint" />
+          <Property Name="user_Id" Type="bigint" />
+          <Property Name="state_eV_Id" Type="bigint" />
+          <Property Name="fullProductId" Type="nvarchar(max)" />
+          <Property Name="monitoring_eV_Id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblEmployee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="bigint" Nullable="false" />
+          <Property Name="LastUpdatedStatus" Type="bigint" Nullable="false" />
+          <Property Name="createdUser" Type="nvarchar(max)" />
+          <Property Name="createdDate" Type="bigint" Nullable="false" />
+          <Property Name="updatedUser" Type="nvarchar(max)" />
+          <Property Name="updatedDate" Type="bigint" Nullable="false" />
+          <Property Name="expertise_Id" Type="bigint" />
+          <Property Name="organization_Id" Type="bigint" />
+          <Property Name="party_Id" Type="bigint" />
+          <Property Name="personType_enumCategoryId" Type="int" />
+          <Property Name="title_Id" Type="bigint" />
+          <Property Name="user_Id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblEnumCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="isProductDescibe" Type="int" />
+          <Property Name="Status" Type="bigint" />
+          <Property Name="LastUpdatedStatus" Type="bigint" />
+          <Property Name="createdUser" Type="nvarchar(max)" />
+          <Property Name="createdDate" Type="bigint" />
+          <Property Name="updatedUser" Type="nvarchar(max)" />
+          <Property Name="updatedDate" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblEnumValue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="enumCategory_enumCategoryId" Type="bigint" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="Status" Type="bigint" />
+          <Property Name="LastUpdatedStatus" Type="bigint" />
+          <Property Name="createdUser" Type="nvarchar(max)" />
+          <Property Name="createdDate" Type="bigint" />
+          <Property Name="updatedUser" Type="nvarchar(max)" />
+          <Property Name="updatedDate" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblExpertise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="Status" Type="bigint" Nullable="false" />
+          <Property Name="LastUpdatedStatus" Type="bigint" Nullable="false" />
+          <Property Name="createdUser" Type="nvarchar(max)" />
+          <Property Name="createdDate" Type="bigint" Nullable="false" />
+          <Property Name="updatedUser" Type="nvarchar(max)" />
+          <Property Name="updatedDate" Type="bigint" Nullable="false" />
+          <Property Name="expertiseType_enumCategoryId" Type="int" />
+          <Property Name="role_Id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblForeign_Organization">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="Status" Type="bigint" Nullable="false" />
+          <Property Name="LastUpdatedStatus" Type="bigint" Nullable="false" />
+          <Property Name="createdUser" Type="nvarchar(max)" />
+          <Property Name="createdDate" Type="bigint" Nullable="false" />
+          <Property Name="updatedUser" Type="nvarchar(max)" />
+          <Property Name="updatedDate" Type="bigint" Nullable="false" />
+          <Property Name="address_Id" Type="bigint" />
+          <Property Name="voen" Type="nvarchar(max)" />
+          <Property Name="userId" Type="bigint" />
+          <Property Name="manager_Id" Type="bigint" />
+          <Property Name="organisationType_eV_Id" Type="bigint" />
+          <Property Name="parent_Id" Type="bigint" />
+          <Property Name="party_Id" Type="bigint" />
+          <Property Name="actualFunctionAddressId" Type="bigint" />
+          <Property Name="legalAddressId" Type="bigint" />
+          <Property Name="accountNumber" Type="bigint" />
+          <Property Name="bankName" Type="nvarchar(max)" />
+          <Property Name="legality_eV_Id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblOffer_Production">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="grup_Id" Type="nvarchar(max)" />
+          <Property Name="title" Type="nvarchar(max)" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="unit_price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="total_price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="quantity" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="quantity_type_eV_Id" Type="bigint" />
+          <Property Name="startDate" Type="bigint" />
+          <Property Name="endDate" Type="bigint" />
+          <Property Name="isSelected" Type="bit" />
+          <Property Name="Status" Type="bigint" />
+          <Property Name="LastUpdatedStatus" Type="bigint" />
+          <Property Name="createdUser" Type="nvarchar(max)" />
+          <Property Name="createdDate" Type="bigint" />
+          <Property Name="updatedUser" Type="nvarchar(max)" />
+          <Property Name="updatedDate" Type="bigint" />
+          <Property Name="potentialProduct_Id" Type="bigint" />
+          <Property Name="product_Id" Type="bigint" />
+          <Property Name="productAddress_Id" Type="bigint" />
+          <Property Name="user_Id" Type="bigint" />
+          <Property Name="state_eV_Id" Type="bigint" />
+          <Property Name="monitoring_eV_Id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblOrganization">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="Status" Type="bigint" Nullable="false" />
+          <Property Name="LastUpdatedStatus" Type="bigint" Nullable="false" />
+          <Property Name="createdUser" Type="nvarchar(max)" />
+          <Property Name="createdDate" Type="bigint" Nullable="false" />
+          <Property Name="updatedUser" Type="nvarchar(max)" />
+          <Property Name="updatedDate" Type="bigint" Nullable="false" />
+          <Property Name="voen" Type="nvarchar(max)" />
+          <Property Name="userId" Type="bigint" Nullable="false" />
+          <Property Name="manager_Id" Type="bigint" />
+          <Property Name="organization_type_eV_Id" Type="int" />
+          <Property Name="parent_Id" Type="bigint" />
+          <Property Name="party_Id" Type="bigint" />
+          <Property Name="actualFunctionAddressId" Type="bigint" />
+          <Property Name="legalAddressId" Type="bigint" />
+          <Property Name="accountNumber" Type="bigint" />
+          <Property Name="bankName" Type="nvarchar(max)" />
+          <Property Name="legality_eV_Id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblParty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="bigint" Nullable="false" />
+          <Property Name="LastUpdatedStatus" Type="bigint" Nullable="false" />
+          <Property Name="createdUser" Type="nvarchar(max)" />
+          <Property Name="createdDate" Type="bigint" Nullable="false" />
+          <Property Name="updatedUser" Type="nvarchar(max)" />
+          <Property Name="updatedDate" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPerson">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Surname" Type="nvarchar(max)" />
+          <Property Name="FatherName" Type="nvarchar(max)" />
+          <Property Name="PinNumber" Type="nvarchar(max)" />
+          <Property Name="UserId" Type="bigint" />
+          <Property Name="gender" Type="nvarchar(max)" />
+          <Property Name="birtday" Type="bigint" />
+          <Property Name="educationLevel_eV_Id" Type="bigint" />
+          <Property Name="job_eV_Id" Type="bigint" />
+          <Property Name="address_Id" Type="bigint" />
+          <Property Name="Status" Type="bigint" />
+          <Property Name="LastUpdatedStatus" Type="bigint" />
+          <Property Name="createdUser" Type="nvarchar(max)" />
+          <Property Name="createdDate" Type="bigint" />
+          <Property Name="updatedUser" Type="nvarchar(max)" />
+          <Property Name="updatedDate" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblPotential_Production">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="grup_Id" Type="nvarchar(max)" />
+          <Property Name="title" Type="nvarchar(max)" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="unit_price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="total_price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="quantity" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="quantity_type_eV_Id" Type="bigint" />
+          <Property Name="startDate" Type="bigint" />
+          <Property Name="endDate" Type="bigint" />
+          <Property Name="isSelected" Type="bit" />
+          <Property Name="Status" Type="bigint" />
+          <Property Name="LastUpdatedStatus" Type="bigint" />
+          <Property Name="createdUser" Type="nvarchar(max)" />
+          <Property Name="createdDate" Type="bigint" />
+          <Property Name="updatedUser" Type="nvarchar(max)" />
+          <Property Name="updatedDate" Type="bigint" />
+          <Property Name="product_Id" Type="bigint" />
+          <Property Name="productAddress_Id" Type="bigint" />
+          <Property Name="user_Id" Type="bigint" />
+          <Property Name="state_eV_Id" Type="bigint" />
+          <Property Name="fullProductId" Type="nvarchar(max)" />
+          <Property Name="monitoring_eV_Id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblPrivilegedRole">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AuthenticatedPartID" Type="bigint" Nullable="false" />
+          <Property Name="RoleID" Type="bigint" Nullable="false" />
+          <Property Name="Status" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblPRM_AdminUnit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="ParentID" Type="bigint" />
+          <Property Name="EnumValueID" Type="bigint" />
+          <Property Name="Status" Type="bigint" />
+          <Property Name="LastUpdatedStatus" Type="bigint" />
+          <Property Name="createdUser" Type="nvarchar(max)" />
+          <Property Name="createdDate" Type="bigint" />
+          <Property Name="updatedUser" Type="nvarchar(max)" />
+          <Property Name="updatedDate" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblPRM_ASCBranch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Status" Type="bigint" />
+          <Property Name="LastUpdateStatus" Type="bigint" />
+          <Property Name="createdUser" Type="nvarchar(max)" />
+          <Property Name="createdDate" Type="bigint" />
+          <Property Name="updatedUser" Type="nvarchar(max)" />
+          <Property Name="updatedDate" Type="bigint" />
+          <Property Name="address_Id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblPRM_KTNBranch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Status" Type="bigint" />
+          <Property Name="LastUpdatedStatus" Type="bigint" />
+          <Property Name="createdUser" Type="nvarchar(max)" />
+          <Property Name="createdDate" Type="bigint" />
+          <Property Name="updatedUser" Type="nvarchar(max)" />
+          <Property Name="updatedDate" Type="bigint" />
+          <Property Name="address_Id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblPRM_Thoroughfare">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="AdminUnitID" Type="bigint" />
+          <Property Name="Status" Type="bigint" />
+          <Property Name="LastUpdatedStatus" Type="bigint" />
+          <Property Name="createdUser" Type="nvarchar(max)" />
+          <Property Name="createdDate" Type="bigint" />
+          <Property Name="updatedUser" Type="nvarchar(max)" />
+          <Property Name="updatedDate" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblProduct_Document">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="bigint" />
+          <Property Name="LastUpdatedStatus" Type="bigint" />
+          <Property Name="Product_catalog_Id" Type="bigint" />
+          <Property Name="documentUrl" Type="nvarchar(max)" />
+          <Property Name="documentName" Type="nvarchar(max)" />
+          <Property Name="documentRealName" Type="nvarchar(max)" />
+          <Property Name="documentTitle" Type="nvarchar(max)" />
+          <Property Name="documentContent" Type="nvarchar(max)" />
+          <Property Name="documentSize" Type="bigint" />
+          <Property Name="document_type_ev_Id" Type="nvarchar(max)" />
+          <Property Name="createdUser" Type="nvarchar(max)" />
+          <Property Name="createdDate" Type="bigint" />
+          <Property Name="updatedUser" Type="nvarchar(max)" />
+          <Property Name="updatedDate" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblProductAddress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adminUnit_Id" Type="bigint" />
+          <Property Name="thoroughfare_Id" Type="bigint" />
+          <Property Name="fullAddress" Type="nvarchar(max)" />
+          <Property Name="addressDesc" Type="nvarchar(max)" />
+          <Property Name="demand_production_id" Type="bigint" />
+          <Property Name="offer_production_id" Type="bigint" />
+          <Property Name="potensial_production_id" Type="bigint" />
+          <Property Name="production_type_ev_Id" Type="bigint" />
+          <Property Name="Latitude" Type="decimal" Precision="18" Scale="9" Nullable="false" />
+          <Property Name="Longitude" Type="decimal" Precision="18" Scale="9" Nullable="false" />
+          <Property Name="Status" Type="bigint" />
+          <Property Name="LastUpdatedStatus" Type="bigint" />
+          <Property Name="createdUser" Type="nvarchar(max)" />
+          <Property Name="createdDate" Type="bigint" />
+          <Property Name="updatedUser" Type="nvarchar(max)" />
+          <Property Name="updatedDate" Type="bigint" />
+          <Property Name="fullAddressId" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblProductCatalog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductCatalogParentID" Type="bigint" />
+          <Property Name="ProductName" Type="nvarchar(max)" />
+          <Property Name="ProductDescription" Type="nvarchar(max)" />
+          <Property Name="canBeOrder" Type="bigint" />
+          <Property Name="CatalogLevel" Type="bigint" />
+          <Property Name="measurementUnit_enumValueId" Type="bigint" />
+          <Property Name="Status" Type="bigint" />
+          <Property Name="LastUpdatedStatus" Type="bigint" />
+          <Property Name="createdUser" Type="nvarchar(max)" />
+          <Property Name="createdDate" Type="bigint" />
+          <Property Name="updatedUser" Type="nvarchar(max)" />
+          <Property Name="updatedDate" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblProductCatalogControl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="bigint" Nullable="false" />
+          <Property Name="EnumCategoryId" Type="bigint" />
+          <Property Name="EnumValueId" Type="bigint" />
+          <Property Name="Status" Type="bigint" />
+          <Property Name="LastUpdatedStatus" Type="bigint" />
+          <Property Name="createUser" Type="nvarchar(max)" />
+          <Property Name="createDate" Type="bigint" />
+          <Property Name="updateUser" Type="nvarchar(max)" />
+          <Property Name="updateDate" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblProduction_Calendar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Production_Id" Type="bigint" />
+          <Property Name="Production_type_eV_Id" Type="bigint" />
+          <Property Name="Transportation_eV_Id" Type="bigint" />
+          <Property Name="Months" Type="nvarchar(max)" />
+          <Property Name="Year" Type="bigint" />
+          <Property Name="Status" Type="bigint" />
+          <Property Name="LastUpdatedStatus" Type="bigint" />
+          <Property Name="createdUser" Type="nvarchar(max)" />
+          <Property Name="createdDate" Type="bigint" />
+          <Property Name="updatedUser" Type="nvarchar(max)" />
+          <Property Name="updatedDate" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblProduction_Document">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="grup_Id" Type="nvarchar(max)" />
+          <Property Name="Status" Type="bigint" />
+          <Property Name="LastUpdatedStatus" Type="bigint" />
+          <Property Name="Demand_Production_Id" Type="bigint" />
+          <Property Name="Offer_Production_Id" Type="bigint" />
+          <Property Name="Potential_Production_Id" Type="bigint" />
+          <Property Name="Production_type_eV_Id" Type="bigint" />
+          <Property Name="documentUrl" Type="nvarchar(max)" />
+          <Property Name="documentName" Type="nvarchar(max)" />
+          <Property Name="documentRealName" Type="nvarchar(max)" />
+          <Property Name="documentTitle" Type="nvarchar(max)" />
+          <Property Name="documentContent" Type="nvarchar(max)" />
+          <Property Name="documentSize" Type="bigint" />
+          <Property Name="document_type_ev_Id" Type="nvarchar(max)" />
+          <Property Name="createdUser" Type="nvarchar(max)" />
+          <Property Name="createdDate" Type="bigint" />
+          <Property Name="updatedUser" Type="nvarchar(max)" />
+          <Property Name="updatedDate" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblProductionControl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Demand_Production_Id" Type="bigint" />
+          <Property Name="Offer_Production_Id" Type="bigint" />
+          <Property Name="Potential_Production_Id" Type="bigint" />
+          <Property Name="Production_type_eV_Id" Type="bigint" />
+          <Property Name="EnumCategoryId" Type="bigint" />
+          <Property Name="EnumValueId" Type="bigint" />
+          <Property Name="Status" Type="bigint" />
+          <Property Name="LastUpdatedStatus" Type="bigint" />
+          <Property Name="createUser" Type="nvarchar(max)" />
+          <Property Name="createDate" Type="bigint" />
+          <Property Name="updateUser" Type="nvarchar(max)" />
+          <Property Name="updateDate" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblProductPrice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="productId" Type="bigint" />
+          <Property Name="unit_price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="year" Type="bigint" />
+          <Property Name="partOfYear" Type="bigint" />
+          <Property Name="Status" Type="bigint" />
+          <Property Name="LastUpdatedStatus" Type="bigint" />
+          <Property Name="createdUser" Type="nvarchar(max)" />
+          <Property Name="createdDate" Type="bigint" />
+          <Property Name="updatedUser" Type="nvarchar(max)" />
+          <Property Name="updatedDate" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblProductProfileImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="productId" Type="bigint" />
+          <Property Name="imageUrl" Type="nvarchar(max)" />
+          <Property Name="Status" Type="bigint" />
+          <Property Name="LastUpdatedStatus" Type="bigint" />
+          <Property Name="createdUser" Type="nvarchar(max)" />
+          <Property Name="createdDate" Type="bigint" />
+          <Property Name="updatedUser" Type="nvarchar(max)" />
+          <Property Name="updatedDate" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Status" Type="bigint" Nullable="false" />
+          <Property Name="LastUpdatedStatus" Type="bigint" Nullable="false" />
+          <Property Name="createdUser" Type="nvarchar(max)" />
+          <Property Name="createdDate" Type="bigint" Nullable="false" />
+          <Property Name="updatedUser" Type="nvarchar(max)" />
+          <Property Name="updatedDate" Type="bigint" Nullable="false" />
+          <Property Name="party_Id" Type="bigint" />
+          <Property Name="roleType_enumCategoryId" Type="int" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblTitle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="Status" Type="bigint" Nullable="false" />
+          <Property Name="LastUpdatedStatus" Type="bigint" Nullable="false" />
+          <Property Name="createdUser" Type="nvarchar(max)" />
+          <Property Name="createdDate" Type="bigint" Nullable="false" />
+          <Property Name="updatedUser" Type="nvarchar(max)" />
+          <Property Name="updatedDate" Type="bigint" Nullable="false" />
+          <Property Name="role_Id" Type="bigint" />
+          <Property Name="titleType_enumCategoryId" Type="int" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="Password" Type="nvarchar(max)" />
+          <Property Name="LastLoginIP" Type="nvarchar(max)" />
+          <Property Name="LastLoginDate" Type="bigint" />
+          <Property Name="ProfileImageUrl" Type="nvarchar(max)" />
+          <Property Name="Status" Type="bigint" />
+          <Property Name="LastUpdatedStatus" Type="bigint" />
+          <Property Name="createdUser" Type="nvarchar(max)" />
+          <Property Name="createdDate" Type="bigint" />
+          <Property Name="updatedUser" Type="nvarchar(max)" />
+          <Property Name="updatedDate" Type="bigint" />
+          <Property Name="userType_eV_ID" Type="bigint" />
+          <Property Name="ASC_ID" Type="bigint" />
+          <Property Name="KTN_ID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblUserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="RoleId" Type="bigint" Nullable="false" />
+          <Property Name="Status" Type="bigint" Nullable="false" />
+          <Property Name="LastUpdatedStatus" Type="bigint" Nullable="false" />
+          <Property Name="createdUser" Type="nvarchar(max)" />
+          <Property Name="createdDate" Type="bigint" Nullable="false" />
+          <Property Name="updatedUser" Type="nvarchar(max)" />
+          <Property Name="updatedDate" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="EmsalDBModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAddress" EntityType="Self.tblAddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAnnouncement" EntityType="Self.tblAnnouncement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAuthenticatedPart" EntityType="Self.tblAuthenticatedPart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBranchResponsibility" EntityType="Self.tblBranchResponsibility" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblComMessage" EntityType="Self.tblComMessage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCommunication" EntityType="Self.tblCommunication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblConfirmationMessage" EntityType="Self.tblConfirmationMessage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDemand_Production" EntityType="Self.tblDemand_Production" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEmployee" EntityType="Self.tblEmployee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEnumCategory" EntityType="Self.tblEnumCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEnumValue" EntityType="Self.tblEnumValue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblExpertise" EntityType="Self.tblExpertise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblForeign_Organization" EntityType="Self.tblForeign_Organization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOffer_Production" EntityType="Self.tblOffer_Production" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOrganization" EntityType="Self.tblOrganization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblParty" EntityType="Self.tblParty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPerson" EntityType="Self.tblPerson" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPotential_Production" EntityType="Self.tblPotential_Production" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPrivilegedRole" EntityType="Self.tblPrivilegedRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPRM_AdminUnit" EntityType="Self.tblPRM_AdminUnit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPRM_ASCBranch" EntityType="Self.tblPRM_ASCBranch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPRM_KTNBranch" EntityType="Self.tblPRM_KTNBranch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPRM_Thoroughfare" EntityType="Self.tblPRM_Thoroughfare" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProduct_Document" EntityType="Self.tblProduct_Document" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProductAddress" EntityType="Self.tblProductAddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProductCatalog" EntityType="Self.tblProductCatalog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProductCatalogControl" EntityType="Self.tblProductCatalogControl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProduction_Calendar" EntityType="Self.tblProduction_Calendar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProduction_Document" EntityType="Self.tblProduction_Document" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProductionControl" EntityType="Self.tblProductionControl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProductPrice" EntityType="Self.tblProductPrice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProductProfileImage" EntityType="Self.tblProductProfileImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRole" EntityType="Self.tblRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTitle" EntityType="Self.tblTitle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserRole" EntityType="Self.tblUserRole" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EmsalDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="EmsalDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="EmsalDBModel.C__MigrationHistory" />
+          <EntitySet Name="tblAddresses" EntityType="EmsalDBModel.tblAddress" />
+          <EntitySet Name="tblAnnouncements" EntityType="EmsalDBModel.tblAnnouncement" />
+          <EntitySet Name="tblAuthenticatedParts" EntityType="EmsalDBModel.tblAuthenticatedPart" />
+          <EntitySet Name="tblBranchResponsibilities" EntityType="EmsalDBModel.tblBranchResponsibility" />
+          <EntitySet Name="tblComMessages" EntityType="EmsalDBModel.tblComMessage" />
+          <EntitySet Name="tblCommunications" EntityType="EmsalDBModel.tblCommunication" />
+          <EntitySet Name="tblConfirmationMessages" EntityType="EmsalDBModel.tblConfirmationMessage" />
+          <EntitySet Name="tblDemand_Production" EntityType="EmsalDBModel.tblDemand_Production" />
+          <EntitySet Name="tblEmployees" EntityType="EmsalDBModel.tblEmployee" />
+          <EntitySet Name="tblEnumCategories" EntityType="EmsalDBModel.tblEnumCategory" />
+          <EntitySet Name="tblEnumValues" EntityType="EmsalDBModel.tblEnumValue" />
+          <EntitySet Name="tblExpertises" EntityType="EmsalDBModel.tblExpertise" />
+          <EntitySet Name="tblForeign_Organization" EntityType="EmsalDBModel.tblForeign_Organization" />
+          <EntitySet Name="tblOffer_Production" EntityType="EmsalDBModel.tblOffer_Production" />
+          <EntitySet Name="tblOrganizations" EntityType="EmsalDBModel.tblOrganization" />
+          <EntitySet Name="tblParties" EntityType="EmsalDBModel.tblParty" />
+          <EntitySet Name="tblPersons" EntityType="EmsalDBModel.tblPerson" />
+          <EntitySet Name="tblPotential_Production" EntityType="EmsalDBModel.tblPotential_Production" />
+          <EntitySet Name="tblPrivilegedRoles" EntityType="EmsalDBModel.tblPrivilegedRole" />
+          <EntitySet Name="tblPRM_AdminUnit" EntityType="EmsalDBModel.tblPRM_AdminUnit" />
+          <EntitySet Name="tblPRM_ASCBranch" EntityType="EmsalDBModel.tblPRM_ASCBranch" />
+          <EntitySet Name="tblPRM_KTNBranch" EntityType="EmsalDBModel.tblPRM_KTNBranch" />
+          <EntitySet Name="tblPRM_Thoroughfare" EntityType="EmsalDBModel.tblPRM_Thoroughfare" />
+          <EntitySet Name="tblProduct_Document" EntityType="EmsalDBModel.tblProduct_Document" />
+          <EntitySet Name="tblProductAddresses" EntityType="EmsalDBModel.tblProductAddress" />
+          <EntitySet Name="tblProductCatalogs" EntityType="EmsalDBModel.tblProductCatalog" />
+          <EntitySet Name="tblProductCatalogControls" EntityType="EmsalDBModel.tblProductCatalogControl" />
+          <EntitySet Name="tblProduction_Calendar" EntityType="EmsalDBModel.tblProduction_Calendar" />
+          <EntitySet Name="tblProduction_Document" EntityType="EmsalDBModel.tblProduction_Document" />
+          <EntitySet Name="tblProductionControls" EntityType="EmsalDBModel.tblProductionControl" />
+          <EntitySet Name="tblProductPrices" EntityType="EmsalDBModel.tblProductPrice" />
+          <EntitySet Name="tblProductProfileImages" EntityType="EmsalDBModel.tblProductProfileImage" />
+          <EntitySet Name="tblRoles" EntityType="EmsalDBModel.tblRole" />
+          <EntitySet Name="tblTitles" EntityType="EmsalDBModel.tblTitle" />
+          <EntitySet Name="tblUsers" EntityType="EmsalDBModel.tblUser" />
+          <EntitySet Name="tblUserRoles" EntityType="EmsalDBModel.tblUserRole" />
+        </EntityContainer>
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblAddress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Latitude" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Longitude" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="adminUnit_Id" Type="Int64" />
+          <Property Name="thoroughfare_Id" Type="Int64" />
+          <Property Name="fullAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="addressDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_Id" Type="Int64" />
+          <Property Name="user_type_eV_Id" Type="Int64" />
+          <Property Name="Status" Type="Int64" />
+          <Property Name="LastUpdatedStatus" Type="Int64" />
+          <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdDate" Type="Int64" />
+          <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updatedDate" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblAnnouncement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="quantity" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="quantity_type_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="unit_price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="product_id" Type="Int64" />
+          <Property Name="product_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="startDate" Type="Int64" />
+          <Property Name="endDate" Type="Int64" />
+          <Property Name="Status" Type="Int64" />
+          <Property Name="LastUpdatedStatus" Type="Int64" />
+          <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdDate" Type="Int64" />
+          <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updatedDate" Type="Int64" />
+          <Property Name="address_Id" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblAuthenticatedPart">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblBranchResponsibility">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="branchId" Type="Int64" Nullable="false" />
+          <Property Name="adminUnitId" Type="Int64" Nullable="false" />
+          <Property Name="branchType_eVId" Type="Int64" Nullable="false" />
+          <Property Name="Status" Type="Int64" Nullable="false" />
+          <Property Name="LastUpdatedStatus" Type="Int64" Nullable="false" />
+          <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdDate" Type="Int64" Nullable="false" />
+          <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updatedDate" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblComMessage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="Int64" />
+          <Property Name="Production_Id" Type="Int64" />
+          <Property Name="Production_type_eV_Id" Type="Int64" />
+          <Property Name="LastUpdatedStatus" Type="Int64" />
+          <Property Name="groupID" Type="Int64" />
+          <Property Name="message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fromUserID" Type="Int64" />
+          <Property Name="toUserID" Type="Int64" />
+          <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdDate" Type="Int64" />
+          <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updatedDate" Type="Int64" />
+          <Property Name="isRead" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblCommunication">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="comType" Type="Int32" Nullable="false" />
+          <Property Name="priorty" Type="Int32" Nullable="false" />
+          <Property Name="communication" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int64" />
+          <Property Name="LastUpdatedStatus" Type="Int64" />
+          <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdDate" Type="Int64" />
+          <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updatedDate" Type="Int64" />
+          <Property Name="PersonId" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblConfirmationMessage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblDemand_Production">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="grup_Id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="unit_price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="total_price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="quantity" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="quantity_type_eV_Id" Type="Int64" />
+          <Property Name="startDate" Type="Int64" />
+          <Property Name="endDate" Type="Int64" />
+          <Property Name="isSelected" Type="Boolean" />
+          <Property Name="isAnnouncement" Type="Boolean" />
+          <Property Name="Status" Type="Int64" />
+          <Property Name="LastUpdatedStatus" Type="Int64" />
+          <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdDate" Type="Int64" />
+          <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updatedDate" Type="Int64" />
+          <Property Name="address_Id" Type="Int64" />
+          <Property Name="product_Id" Type="Int64" />
+          <Property Name="user_Id" Type="Int64" />
+          <Property Name="state_eV_Id" Type="Int64" />
+          <Property Name="fullProductId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="monitoring_eV_Id" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblEmployee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="Int64" Nullable="false" />
+          <Property Name="LastUpdatedStatus" Type="Int64" Nullable="false" />
+          <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdDate" Type="Int64" Nullable="false" />
+          <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updatedDate" Type="Int64" Nullable="false" />
+          <Property Name="expertise_Id" Type="Int64" />
+          <Property Name="organization_Id" Type="Int64" />
+          <Property Name="party_Id" Type="Int64" />
+          <Property Name="personType_enumCategoryId" Type="Int32" />
+          <Property Name="title_Id" Type="Int64" />
+          <Property Name="user_Id" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblEnumCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isProductDescibe" Type="Int32" />
+          <Property Name="Status" Type="Int64" />
+          <Property Name="LastUpdatedStatus" Type="Int64" />
+          <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdDate" Type="Int64" />
+          <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updatedDate" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblEnumValue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="enumCategory_enumCategoryId" Type="Int64" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int64" />
+          <Property Name="LastUpdatedStatus" Type="Int64" />
+          <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdDate" Type="Int64" />
+          <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updatedDate" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblExpertise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int64" Nullable="false" />
+          <Property Name="LastUpdatedStatus" Type="Int64" Nullable="false" />
+          <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdDate" Type="Int64" Nullable="false" />
+          <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updatedDate" Type="Int64" Nullable="false" />
+          <Property Name="expertiseType_enumCategoryId" Type="Int32" />
+          <Property Name="role_Id" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblForeign_Organization">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int64" Nullable="false" />
+          <Property Name="LastUpdatedStatus" Type="Int64" Nullable="false" />
+          <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdDate" Type="Int64" Nullable="false" />
+          <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updatedDate" Type="Int64" Nullable="false" />
+          <Property Name="address_Id" Type="Int64" />
+          <Property Name="voen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="userId" Type="Int64" />
+          <Property Name="manager_Id" Type="Int64" />
+          <Property Name="organisationType_eV_Id" Type="Int64" />
+          <Property Name="parent_Id" Type="Int64" />
+          <Property Name="party_Id" Type="Int64" />
+          <Property Name="actualFunctionAddressId" Type="Int64" />
+          <Property Name="legalAddressId" Type="Int64" />
+          <Property Name="accountNumber" Type="Int64" />
+          <Property Name="bankName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="legality_eV_Id" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblOffer_Production">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="grup_Id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="unit_price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="total_price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="quantity" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="quantity_type_eV_Id" Type="Int64" />
+          <Property Name="startDate" Type="Int64" />
+          <Property Name="endDate" Type="Int64" />
+          <Property Name="isSelected" Type="Boolean" />
+          <Property Name="Status" Type="Int64" />
+          <Property Name="LastUpdatedStatus" Type="Int64" />
+          <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdDate" Type="Int64" />
+          <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updatedDate" Type="Int64" />
+          <Property Name="potentialProduct_Id" Type="Int64" />
+          <Property Name="product_Id" Type="Int64" />
+          <Property Name="productAddress_Id" Type="Int64" />
+          <Property Name="user_Id" Type="Int64" />
+          <Property Name="state_eV_Id" Type="Int64" />
+          <Property Name="monitoring_eV_Id" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblOrganization">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int64" Nullable="false" />
+          <Property Name="LastUpdatedStatus" Type="Int64" Nullable="false" />
+          <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdDate" Type="Int64" Nullable="false" />
+          <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updatedDate" Type="Int64" Nullable="false" />
+          <Property Name="voen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="userId" Type="Int64" Nullable="false" />
+          <Property Name="manager_Id" Type="Int64" />
+          <Property Name="organization_type_eV_Id" Type="Int32" />
+          <Property Name="parent_Id" Type="Int64" />
+          <Property Name="party_Id" Type="Int64" />
+          <Property Name="actualFunctionAddressId" Type="Int64" />
+          <Property Name="legalAddressId" Type="Int64" />
+          <Property Name="accountNumber" Type="Int64" />
+          <Property Name="bankName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="legality_eV_Id" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblParty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="Int64" Nullable="false" />
+          <Property Name="LastUpdatedStatus" Type="Int64" Nullable="false" />
+          <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdDate" Type="Int64" Nullable="false" />
+          <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updatedDate" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPerson">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FatherName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PinNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="gender" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="birtday" Type="Int64" />
+          <Property Name="educationLevel_eV_Id" Type="Int64" />
+          <Property Name="job_eV_Id" Type="Int64" />
+          <Property Name="address_Id" Type="Int64" />
+          <Property Name="Status" Type="Int64" />
+          <Property Name="LastUpdatedStatus" Type="Int64" />
+          <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdDate" Type="Int64" />
+          <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updatedDate" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblPotential_Production">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="grup_Id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="unit_price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="total_price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="quantity" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="quantity_type_eV_Id" Type="Int64" />
+          <Property Name="startDate" Type="Int64" />
+          <Property Name="endDate" Type="Int64" />
+          <Property Name="isSelected" Type="Boolean" />
+          <Property Name="Status" Type="Int64" />
+          <Property Name="LastUpdatedStatus" Type="Int64" />
+          <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdDate" Type="Int64" />
+          <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updatedDate" Type="Int64" />
+          <Property Name="product_Id" Type="Int64" />
+          <Property Name="productAddress_Id" Type="Int64" />
+          <Property Name="user_Id" Type="Int64" />
+          <Property Name="state_eV_Id" Type="Int64" />
+          <Property Name="fullProductId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="monitoring_eV_Id" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblPrivilegedRole">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AuthenticatedPartID" Type="Int64" Nullable="false" />
+          <Property Name="RoleID" Type="Int64" Nullable="false" />
+          <Property Name="Status" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblPRM_AdminUnit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ParentID" Type="Int64" />
+          <Property Name="EnumValueID" Type="Int64" />
+          <Property Name="Status" Type="Int64" />
+          <Property Name="LastUpdatedStatus" Type="Int64" />
+          <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdDate" Type="Int64" />
+          <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updatedDate" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblPRM_ASCBranch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int64" />
+          <Property Name="LastUpdateStatus" Type="Int64" />
+          <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdDate" Type="Int64" />
+          <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updatedDate" Type="Int64" />
+          <Property Name="address_Id" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblPRM_KTNBranch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int64" />
+          <Property Name="LastUpdatedStatus" Type="Int64" />
+          <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdDate" Type="Int64" />
+          <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updatedDate" Type="Int64" />
+          <Property Name="address_Id" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblPRM_Thoroughfare">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AdminUnitID" Type="Int64" />
+          <Property Name="Status" Type="Int64" />
+          <Property Name="LastUpdatedStatus" Type="Int64" />
+          <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdDate" Type="Int64" />
+          <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updatedDate" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblProduct_Document">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="Int64" />
+          <Property Name="LastUpdatedStatus" Type="Int64" />
+          <Property Name="Product_catalog_Id" Type="Int64" />
+          <Property Name="documentUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="documentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="documentRealName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="documentTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="documentContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="documentSize" Type="Int64" />
+          <Property Name="document_type_ev_Id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdDate" Type="Int64" />
+          <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updatedDate" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblProductAddress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="adminUnit_Id" Type="Int64" />
+          <Property Name="thoroughfare_Id" Type="Int64" />
+          <Property Name="fullAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="addressDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="demand_production_id" Type="Int64" />
+          <Property Name="offer_production_id" Type="Int64" />
+          <Property Name="potensial_production_id" Type="Int64" />
+          <Property Name="production_type_ev_Id" Type="Int64" />
+          <Property Name="Latitude" Type="Decimal" Nullable="false" Precision="18" Scale="9" />
+          <Property Name="Longitude" Type="Decimal" Nullable="false" Precision="18" Scale="9" />
+          <Property Name="Status" Type="Int64" />
+          <Property Name="LastUpdatedStatus" Type="Int64" />
+          <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdDate" Type="Int64" />
+          <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updatedDate" Type="Int64" />
+          <Property Name="fullAddressId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblProductCatalog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductCatalogParentID" Type="Int64" />
+          <Property Name="ProductName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="canBeOrder" Type="Int64" />
+          <Property Name="CatalogLevel" Type="Int64" />
+          <Property Name="measurementUnit_enumValueId" Type="Int64" />
+          <Property Name="Status" Type="Int64" />
+          <Property Name="LastUpdatedStatus" Type="Int64" />
+          <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdDate" Type="Int64" />
+          <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updatedDate" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblProductCatalogControl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int64" Nullable="false" />
+          <Property Name="EnumCategoryId" Type="Int64" />
+          <Property Name="EnumValueId" Type="Int64" />
+          <Property Name="Status" Type="Int64" />
+          <Property Name="LastUpdatedStatus" Type="Int64" />
+          <Property Name="createUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createDate" Type="Int64" />
+          <Property Name="updateUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updateDate" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblProduction_Calendar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Production_Id" Type="Int64" />
+          <Property Name="Production_type_eV_Id" Type="Int64" />
+          <Property Name="Transportation_eV_Id" Type="Int64" />
+          <Property Name="Months" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Year" Type="Int64" />
+          <Property Name="Status" Type="Int64" />
+          <Property Name="LastUpdatedStatus" Type="Int64" />
+          <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdDate" Type="Int64" />
+          <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updatedDate" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblProduction_Document">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="grup_Id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int64" />
+          <Property Name="LastUpdatedStatus" Type="Int64" />
+          <Property Name="Demand_Production_Id" Type="Int64" />
+          <Property Name="Offer_Production_Id" Type="Int64" />
+          <Property Name="Potential_Production_Id" Type="Int64" />
+          <Property Name="Production_type_eV_Id" Type="Int64" />
+          <Property Name="documentUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="documentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="documentRealName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="documentTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="documentContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="documentSize" Type="Int64" />
+          <Property Name="document_type_ev_Id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdDate" Type="Int64" />
+          <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updatedDate" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblProductionControl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Demand_Production_Id" Type="Int64" />
+          <Property Name="Offer_Production_Id" Type="Int64" />
+          <Property Name="Potential_Production_Id" Type="Int64" />
+          <Property Name="Production_type_eV_Id" Type="Int64" />
+          <Property Name="EnumCategoryId" Type="Int64" />
+          <Property Name="EnumValueId" Type="Int64" />
+          <Property Name="Status" Type="Int64" />
+          <Property Name="LastUpdatedStatus" Type="Int64" />
+          <Property Name="createUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createDate" Type="Int64" />
+          <Property Name="updateUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updateDate" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblProductPrice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="productId" Type="Int64" />
+          <Property Name="unit_price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="year" Type="Int64" />
+          <Property Name="partOfYear" Type="Int64" />
+          <Property Name="Status" Type="Int64" />
+          <Property Name="LastUpdatedStatus" Type="Int64" />
+          <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdDate" Type="Int64" />
+          <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updatedDate" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblProductProfileImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="productId" Type="Int64" />
+          <Property Name="imageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int64" />
+          <Property Name="LastUpdatedStatus" Type="Int64" />
+          <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdDate" Type="Int64" />
+          <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updatedDate" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int64" Nullable="false" />
+          <Property Name="LastUpdatedStatus" Type="Int64" Nullable="false" />
+          <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdDate" Type="Int64" Nullable="false" />
+          <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updatedDate" Type="Int64" Nullable="false" />
+          <Property Name="party_Id" Type="Int64" />
+          <Property Name="roleType_enumCategoryId" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblTitle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int64" Nullable="false" />
+          <Property Name="LastUpdatedStatus" Type="Int64" Nullable="false" />
+          <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdDate" Type="Int64" Nullable="false" />
+          <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updatedDate" Type="Int64" Nullable="false" />
+          <Property Name="role_Id" Type="Int64" />
+          <Property Name="titleType_enumCategoryId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastLoginIP" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastLoginDate" Type="Int64" />
+          <Property Name="ProfileImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int64" />
+          <Property Name="LastUpdatedStatus" Type="Int64" />
+          <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdDate" Type="Int64" />
+          <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updatedDate" Type="Int64" />
+          <Property Name="userType_eV_ID" Type="Int64" />
+          <Property Name="ASC_ID" Type="Int64" />
+          <Property Name="KTN_ID" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tblUserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="RoleId" Type="Int64" Nullable="false" />
+          <Property Name="Status" Type="Int64" Nullable="false" />
+          <Property Name="LastUpdatedStatus" Type="Int64" Nullable="false" />
+          <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createdDate" Type="Int64" Nullable="false" />
+          <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="updatedDate" Type="Int64" Nullable="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EmsalDBModelStoreContainer" CdmEntityContainer="EmsalDBEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="EmsalDBModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAddresses">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblAddress">
+              <MappingFragment StoreEntitySet="tblAddress">
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="user_type_eV_Id" ColumnName="user_type_eV_Id" />
+                <ScalarProperty Name="user_Id" ColumnName="user_Id" />
+                <ScalarProperty Name="addressDesc" ColumnName="addressDesc" />
+                <ScalarProperty Name="fullAddress" ColumnName="fullAddress" />
+                <ScalarProperty Name="thoroughfare_Id" ColumnName="thoroughfare_Id" />
+                <ScalarProperty Name="adminUnit_Id" ColumnName="adminUnit_Id" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAnnouncements">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblAnnouncement">
+              <MappingFragment StoreEntitySet="tblAnnouncement">
+                <ScalarProperty Name="address_Id" ColumnName="address_Id" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="endDate" ColumnName="endDate" />
+                <ScalarProperty Name="startDate" ColumnName="startDate" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+                <ScalarProperty Name="quantity_type_Name" ColumnName="quantity_type_Name" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAuthenticatedParts">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblAuthenticatedPart">
+              <MappingFragment StoreEntitySet="tblAuthenticatedPart">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBranchResponsibilities">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblBranchResponsibility">
+              <MappingFragment StoreEntitySet="tblBranchResponsibility">
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="branchType_eVId" ColumnName="branchType_eVId" />
+                <ScalarProperty Name="adminUnitId" ColumnName="adminUnitId" />
+                <ScalarProperty Name="branchId" ColumnName="branchId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblComMessages">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblComMessage">
+              <MappingFragment StoreEntitySet="tblComMessage">
+                <ScalarProperty Name="isRead" ColumnName="isRead" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="toUserID" ColumnName="toUserID" />
+                <ScalarProperty Name="fromUserID" ColumnName="fromUserID" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="groupID" ColumnName="groupID" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Production_type_eV_Id" ColumnName="Production_type_eV_Id" />
+                <ScalarProperty Name="Production_Id" ColumnName="Production_Id" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCommunications">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblCommunication">
+              <MappingFragment StoreEntitySet="tblCommunication">
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="communication" ColumnName="communication" />
+                <ScalarProperty Name="priorty" ColumnName="priorty" />
+                <ScalarProperty Name="comType" ColumnName="comType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblConfirmationMessages">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblConfirmationMessage">
+              <MappingFragment StoreEntitySet="tblConfirmationMessage">
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDemand_Production">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblDemand_Production">
+              <MappingFragment StoreEntitySet="tblDemand_Production">
+                <ScalarProperty Name="monitoring_eV_Id" ColumnName="monitoring_eV_Id" />
+                <ScalarProperty Name="fullProductId" ColumnName="fullProductId" />
+                <ScalarProperty Name="state_eV_Id" ColumnName="state_eV_Id" />
+                <ScalarProperty Name="user_Id" ColumnName="user_Id" />
+                <ScalarProperty Name="product_Id" ColumnName="product_Id" />
+                <ScalarProperty Name="address_Id" ColumnName="address_Id" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="isAnnouncement" ColumnName="isAnnouncement" />
+                <ScalarProperty Name="isSelected" ColumnName="isSelected" />
+                <ScalarProperty Name="endDate" ColumnName="endDate" />
+                <ScalarProperty Name="startDate" ColumnName="startDate" />
+                <ScalarProperty Name="quantity_type_eV_Id" ColumnName="quantity_type_eV_Id" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="total_price" ColumnName="total_price" />
+                <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="grup_Id" ColumnName="grup_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEmployees">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblEmployee">
+              <MappingFragment StoreEntitySet="tblEmployee">
+                <ScalarProperty Name="user_Id" ColumnName="user_Id" />
+                <ScalarProperty Name="title_Id" ColumnName="title_Id" />
+                <ScalarProperty Name="personType_enumCategoryId" ColumnName="personType_enumCategoryId" />
+                <ScalarProperty Name="party_Id" ColumnName="party_Id" />
+                <ScalarProperty Name="organization_Id" ColumnName="organization_Id" />
+                <ScalarProperty Name="expertise_Id" ColumnName="expertise_Id" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEnumCategories">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblEnumCategory">
+              <MappingFragment StoreEntitySet="tblEnumCategory">
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="isProductDescibe" ColumnName="isProductDescibe" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEnumValues">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblEnumValue">
+              <MappingFragment StoreEntitySet="tblEnumValue">
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="enumCategory_enumCategoryId" ColumnName="enumCategory_enumCategoryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblExpertises">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblExpertise">
+              <MappingFragment StoreEntitySet="tblExpertise">
+                <ScalarProperty Name="role_Id" ColumnName="role_Id" />
+                <ScalarProperty Name="expertiseType_enumCategoryId" ColumnName="expertiseType_enumCategoryId" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblForeign_Organization">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblForeign_Organization">
+              <MappingFragment StoreEntitySet="tblForeign_Organization">
+                <ScalarProperty Name="legality_eV_Id" ColumnName="legality_eV_Id" />
+                <ScalarProperty Name="bankName" ColumnName="bankName" />
+                <ScalarProperty Name="accountNumber" ColumnName="accountNumber" />
+                <ScalarProperty Name="legalAddressId" ColumnName="legalAddressId" />
+                <ScalarProperty Name="actualFunctionAddressId" ColumnName="actualFunctionAddressId" />
+                <ScalarProperty Name="party_Id" ColumnName="party_Id" />
+                <ScalarProperty Name="parent_Id" ColumnName="parent_Id" />
+                <ScalarProperty Name="organisationType_eV_Id" ColumnName="organisationType_eV_Id" />
+                <ScalarProperty Name="manager_Id" ColumnName="manager_Id" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="voen" ColumnName="voen" />
+                <ScalarProperty Name="address_Id" ColumnName="address_Id" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOffer_Production">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblOffer_Production">
+              <MappingFragment StoreEntitySet="tblOffer_Production">
+                <ScalarProperty Name="monitoring_eV_Id" ColumnName="monitoring_eV_Id" />
+                <ScalarProperty Name="state_eV_Id" ColumnName="state_eV_Id" />
+                <ScalarProperty Name="user_Id" ColumnName="user_Id" />
+                <ScalarProperty Name="productAddress_Id" ColumnName="productAddress_Id" />
+                <ScalarProperty Name="product_Id" ColumnName="product_Id" />
+                <ScalarProperty Name="potentialProduct_Id" ColumnName="potentialProduct_Id" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="isSelected" ColumnName="isSelected" />
+                <ScalarProperty Name="endDate" ColumnName="endDate" />
+                <ScalarProperty Name="startDate" ColumnName="startDate" />
+                <ScalarProperty Name="quantity_type_eV_Id" ColumnName="quantity_type_eV_Id" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="total_price" ColumnName="total_price" />
+                <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="grup_Id" ColumnName="grup_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOrganizations">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblOrganization">
+              <MappingFragment StoreEntitySet="tblOrganization">
+                <ScalarProperty Name="legality_eV_Id" ColumnName="legality_eV_Id" />
+                <ScalarProperty Name="bankName" ColumnName="bankName" />
+                <ScalarProperty Name="accountNumber" ColumnName="accountNumber" />
+                <ScalarProperty Name="legalAddressId" ColumnName="legalAddressId" />
+                <ScalarProperty Name="actualFunctionAddressId" ColumnName="actualFunctionAddressId" />
+                <ScalarProperty Name="party_Id" ColumnName="party_Id" />
+                <ScalarProperty Name="parent_Id" ColumnName="parent_Id" />
+                <ScalarProperty Name="organization_type_eV_Id" ColumnName="organization_type_eV_Id" />
+                <ScalarProperty Name="manager_Id" ColumnName="manager_Id" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="voen" ColumnName="voen" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblParties">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblParty">
+              <MappingFragment StoreEntitySet="tblParty">
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPersons">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblPerson">
+              <MappingFragment StoreEntitySet="tblPerson">
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="address_Id" ColumnName="address_Id" />
+                <ScalarProperty Name="job_eV_Id" ColumnName="job_eV_Id" />
+                <ScalarProperty Name="educationLevel_eV_Id" ColumnName="educationLevel_eV_Id" />
+                <ScalarProperty Name="birtday" ColumnName="birtday" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PinNumber" ColumnName="PinNumber" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPotential_Production">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblPotential_Production">
+              <MappingFragment StoreEntitySet="tblPotential_Production">
+                <ScalarProperty Name="monitoring_eV_Id" ColumnName="monitoring_eV_Id" />
+                <ScalarProperty Name="fullProductId" ColumnName="fullProductId" />
+                <ScalarProperty Name="state_eV_Id" ColumnName="state_eV_Id" />
+                <ScalarProperty Name="user_Id" ColumnName="user_Id" />
+                <ScalarProperty Name="productAddress_Id" ColumnName="productAddress_Id" />
+                <ScalarProperty Name="product_Id" ColumnName="product_Id" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="isSelected" ColumnName="isSelected" />
+                <ScalarProperty Name="endDate" ColumnName="endDate" />
+                <ScalarProperty Name="startDate" ColumnName="startDate" />
+                <ScalarProperty Name="quantity_type_eV_Id" ColumnName="quantity_type_eV_Id" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="total_price" ColumnName="total_price" />
+                <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="grup_Id" ColumnName="grup_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPrivilegedRoles">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblPrivilegedRole">
+              <MappingFragment StoreEntitySet="tblPrivilegedRole">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="AuthenticatedPartID" ColumnName="AuthenticatedPartID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPRM_AdminUnit">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblPRM_AdminUnit">
+              <MappingFragment StoreEntitySet="tblPRM_AdminUnit">
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EnumValueID" ColumnName="EnumValueID" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPRM_ASCBranch">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblPRM_ASCBranch">
+              <MappingFragment StoreEntitySet="tblPRM_ASCBranch">
+                <ScalarProperty Name="address_Id" ColumnName="address_Id" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="LastUpdateStatus" ColumnName="LastUpdateStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPRM_KTNBranch">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblPRM_KTNBranch">
+              <MappingFragment StoreEntitySet="tblPRM_KTNBranch">
+                <ScalarProperty Name="address_Id" ColumnName="address_Id" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPRM_Thoroughfare">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblPRM_Thoroughfare">
+              <MappingFragment StoreEntitySet="tblPRM_Thoroughfare">
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="AdminUnitID" ColumnName="AdminUnitID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProduct_Document">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblProduct_Document">
+              <MappingFragment StoreEntitySet="tblProduct_Document">
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="document_type_ev_Id" ColumnName="document_type_ev_Id" />
+                <ScalarProperty Name="documentSize" ColumnName="documentSize" />
+                <ScalarProperty Name="documentContent" ColumnName="documentContent" />
+                <ScalarProperty Name="documentTitle" ColumnName="documentTitle" />
+                <ScalarProperty Name="documentRealName" ColumnName="documentRealName" />
+                <ScalarProperty Name="documentName" ColumnName="documentName" />
+                <ScalarProperty Name="documentUrl" ColumnName="documentUrl" />
+                <ScalarProperty Name="Product_catalog_Id" ColumnName="Product_catalog_Id" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProductAddresses">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblProductAddress">
+              <MappingFragment StoreEntitySet="tblProductAddress">
+                <ScalarProperty Name="fullAddressId" ColumnName="fullAddressId" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="production_type_ev_Id" ColumnName="production_type_ev_Id" />
+                <ScalarProperty Name="potensial_production_id" ColumnName="potensial_production_id" />
+                <ScalarProperty Name="offer_production_id" ColumnName="offer_production_id" />
+                <ScalarProperty Name="demand_production_id" ColumnName="demand_production_id" />
+                <ScalarProperty Name="addressDesc" ColumnName="addressDesc" />
+                <ScalarProperty Name="fullAddress" ColumnName="fullAddress" />
+                <ScalarProperty Name="thoroughfare_Id" ColumnName="thoroughfare_Id" />
+                <ScalarProperty Name="adminUnit_Id" ColumnName="adminUnit_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProductCatalogs">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblProductCatalog">
+              <MappingFragment StoreEntitySet="tblProductCatalog">
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="measurementUnit_enumValueId" ColumnName="measurementUnit_enumValueId" />
+                <ScalarProperty Name="CatalogLevel" ColumnName="CatalogLevel" />
+                <ScalarProperty Name="canBeOrder" ColumnName="canBeOrder" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductCatalogParentID" ColumnName="ProductCatalogParentID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProductCatalogControls">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblProductCatalogControl">
+              <MappingFragment StoreEntitySet="tblProductCatalogControl">
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+                <ScalarProperty Name="updateUser" ColumnName="updateUser" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="createUser" ColumnName="createUser" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EnumValueId" ColumnName="EnumValueId" />
+                <ScalarProperty Name="EnumCategoryId" ColumnName="EnumCategoryId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProduction_Calendar">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblProduction_Calendar">
+              <MappingFragment StoreEntitySet="tblProduction_Calendar">
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Months" ColumnName="Months" />
+                <ScalarProperty Name="Transportation_eV_Id" ColumnName="Transportation_eV_Id" />
+                <ScalarProperty Name="Production_type_eV_Id" ColumnName="Production_type_eV_Id" />
+                <ScalarProperty Name="Production_Id" ColumnName="Production_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProduction_Document">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblProduction_Document">
+              <MappingFragment StoreEntitySet="tblProduction_Document">
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="document_type_ev_Id" ColumnName="document_type_ev_Id" />
+                <ScalarProperty Name="documentSize" ColumnName="documentSize" />
+                <ScalarProperty Name="documentContent" ColumnName="documentContent" />
+                <ScalarProperty Name="documentTitle" ColumnName="documentTitle" />
+                <ScalarProperty Name="documentRealName" ColumnName="documentRealName" />
+                <ScalarProperty Name="documentName" ColumnName="documentName" />
+                <ScalarProperty Name="documentUrl" ColumnName="documentUrl" />
+                <ScalarProperty Name="Production_type_eV_Id" ColumnName="Production_type_eV_Id" />
+                <ScalarProperty Name="Potential_Production_Id" ColumnName="Potential_Production_Id" />
+                <ScalarProperty Name="Offer_Production_Id" ColumnName="Offer_Production_Id" />
+                <ScalarProperty Name="Demand_Production_Id" ColumnName="Demand_Production_Id" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="grup_Id" ColumnName="grup_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProductionControls">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblProductionControl">
+              <MappingFragment StoreEntitySet="tblProductionControl">
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+                <ScalarProperty Name="updateUser" ColumnName="updateUser" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="createUser" ColumnName="createUser" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EnumValueId" ColumnName="EnumValueId" />
+                <ScalarProperty Name="EnumCategoryId" ColumnName="EnumCategoryId" />
+                <ScalarProperty Name="Production_type_eV_Id" ColumnName="Production_type_eV_Id" />
+                <ScalarProperty Name="Potential_Production_Id" ColumnName="Potential_Production_Id" />
+                <ScalarProperty Name="Offer_Production_Id" ColumnName="Offer_Production_Id" />
+                <ScalarProperty Name="Demand_Production_Id" ColumnName="Demand_Production_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProductPrices">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblProductPrice">
+              <MappingFragment StoreEntitySet="tblProductPrice">
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="partOfYear" ColumnName="partOfYear" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+                <ScalarProperty Name="productId" ColumnName="productId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProductProfileImages">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblProductProfileImage">
+              <MappingFragment StoreEntitySet="tblProductProfileImage">
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="imageUrl" ColumnName="imageUrl" />
+                <ScalarProperty Name="productId" ColumnName="productId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRoles">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblRole">
+              <MappingFragment StoreEntitySet="tblRole">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="roleType_enumCategoryId" ColumnName="roleType_enumCategoryId" />
+                <ScalarProperty Name="party_Id" ColumnName="party_Id" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTitles">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblTitle">
+              <MappingFragment StoreEntitySet="tblTitle">
+                <ScalarProperty Name="titleType_enumCategoryId" ColumnName="titleType_enumCategoryId" />
+                <ScalarProperty Name="role_Id" ColumnName="role_Id" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsers">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="KTN_ID" ColumnName="KTN_ID" />
+                <ScalarProperty Name="ASC_ID" ColumnName="ASC_ID" />
+                <ScalarProperty Name="userType_eV_ID" ColumnName="userType_eV_ID" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ProfileImageUrl" ColumnName="ProfileImageUrl" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="LastLoginIP" ColumnName="LastLoginIP" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserRoles">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblUserRole">
+              <MappingFragment StoreEntitySet="tblUserRole">
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

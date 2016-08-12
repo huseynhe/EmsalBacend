@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E84D3B39-1CF6-4F17-8ADB-E5EDE0738972}</ProjectGuid>
+    <ProjectGuid>{99E1D23D-1D59-47D4-B440-1D081E12447F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EmsalBacend</RootNamespace>
-    <AssemblyName>EmsalBacend</AssemblyName>
+    <RootNamespace>Emsal.Utility</RootNamespace>
+    <AssemblyName>Emsal.Utility</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,8 +30,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.4.3.4\lib\net40\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,8 +44,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="CustomObjects\DataReaderExtensions.cs" />
+    <Compile Include="CustomObjects\DatetimeExtension.cs" />
+    <Compile Include="CustomObjects\Int64Extension.cs" />
+    <Compile Include="CustomObjects\StringExtension.cs" />
+    <Compile Include="CustomObjects\StripTag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UtilityObjects\Channel.cs" />
+    <Compile Include="UtilityObjects\ExceptionHandlingNlogLayoutsOpr.cs" />
+    <Compile Include="UtilityObjects\ExceptionHandlingOperation.cs" />
+    <Compile Include="UtilityObjects\IOUtil.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="NLog.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

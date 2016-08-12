@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace EmsalBacend
+namespace Emsal.Utility.CustomObjects
 {
-    public class Class1
+   public static class Int64Extension
     {
+      
     }
 }

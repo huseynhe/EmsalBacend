@@ -1,0 +1,145 @@
+C:\Users\Ferid\Desktop\Emsal\Emsal.WebSrv\bin\Emsal.WebSrv.dll.config
+C:\Users\Ferid\Desktop\Emsal\Emsal.WebSrv\bin\Emsal.WebSrv.dll
+C:\Users\Ferid\Desktop\Emsal\Emsal.WebSrv\bin\Emsal.WebSrv.pdb
+C:\Users\Ferid\Desktop\Emsal\Emsal.WebSrv\bin\Emsal.BLL.dll
+C:\Users\Ferid\Desktop\Emsal\Emsal.WebSrv\bin\Emsal.DAL.dll
+C:\Users\Ferid\Desktop\Emsal\Emsal.WebSrv\bin\EntityFramework.dll
+C:\Users\Ferid\Desktop\Emsal\Emsal.WebSrv\bin\Emsal.Utility.dll
+C:\Users\Ferid\Desktop\Emsal\Emsal.WebSrv\bin\NLog.dll
+C:\Users\Ferid\Desktop\Emsal\Emsal.WebSrv\bin\Emsal.BLL.pdb
+C:\Users\Ferid\Desktop\Emsal\Emsal.WebSrv\bin\Emsal.DAL.pdb
+C:\Users\Ferid\Desktop\Emsal\Emsal.WebSrv\bin\EntityFramework.xml
+C:\Users\Ferid\Desktop\Emsal\Emsal.WebSrv\bin\Emsal.Utility.pdb
+C:\Users\Ferid\Desktop\Emsal\Emsal.WebSrv\bin\NLog.xml
+C:\Users\Ferid\Desktop\Emsal\Emsal.WebSrv\obj\Debug\Emsal.WebSrv.csprojResolveAssemblyReference.cache
+C:\Users\Ferid\Desktop\Emsal\Emsal.WebSrv\obj\Debug\Emsal.WebSrv.dll
+C:\Users\Ferid\Desktop\Emsal\Emsal.WebSrv\obj\Debug\Emsal.WebSrv.pdb
+H:\projects\Emsal_20.07.2016_3\Emsal\Emsal.WebSrv\bin\Emsal.WebSrv.dll.config
+H:\projects\Emsal_20.07.2016_3\Emsal\Emsal.WebSrv\bin\Emsal.WebSrv.dll
+H:\projects\Emsal_20.07.2016_3\Emsal\Emsal.WebSrv\bin\Emsal.WebSrv.pdb
+H:\projects\Emsal_20.07.2016_3\Emsal\Emsal.WebSrv\bin\Emsal.BLL.dll
+H:\projects\Emsal_20.07.2016_3\Emsal\Emsal.WebSrv\bin\Emsal.DAL.dll
+H:\projects\Emsal_20.07.2016_3\Emsal\Emsal.WebSrv\bin\EntityFramework.dll
+H:\projects\Emsal_20.07.2016_3\Emsal\Emsal.WebSrv\bin\Emsal.Utility.dll
+H:\projects\Emsal_20.07.2016_3\Emsal\Emsal.WebSrv\bin\NLog.dll
+H:\projects\Emsal_20.07.2016_3\Emsal\Emsal.WebSrv\bin\Emsal.BLL.pdb
+H:\projects\Emsal_20.07.2016_3\Emsal\Emsal.WebSrv\bin\Emsal.DAL.pdb
+H:\projects\Emsal_20.07.2016_3\Emsal\Emsal.WebSrv\bin\EntityFramework.xml
+H:\projects\Emsal_20.07.2016_3\Emsal\Emsal.WebSrv\bin\Emsal.Utility.pdb
+H:\projects\Emsal_20.07.2016_3\Emsal\Emsal.WebSrv\bin\NLog.xml
+H:\projects\Emsal_20.07.2016_3\Emsal\Emsal.WebSrv\obj\Debug\Emsal.WebSrv.csprojResolveAssemblyReference.cache
+H:\projects\Emsal_20.07.2016_3\Emsal\Emsal.WebSrv\obj\Debug\Emsal.WebSrv.dll
+H:\projects\Emsal_20.07.2016_3\Emsal\Emsal.WebSrv\obj\Debug\Emsal.WebSrv.pdb
+H:\projects\Emsal_22.07.2016_2\Emsal\Emsal.WebSrv\bin\Emsal.WebSrv.dll.config
+H:\projects\Emsal_22.07.2016_2\Emsal\Emsal.WebSrv\bin\Emsal.WebSrv.dll
+H:\projects\Emsal_22.07.2016_2\Emsal\Emsal.WebSrv\bin\Emsal.WebSrv.pdb
+H:\projects\Emsal_22.07.2016_2\Emsal\Emsal.WebSrv\bin\Emsal.BLL.dll
+H:\projects\Emsal_22.07.2016_2\Emsal\Emsal.WebSrv\bin\Emsal.DAL.dll
+H:\projects\Emsal_22.07.2016_2\Emsal\Emsal.WebSrv\bin\EntityFramework.dll
+H:\projects\Emsal_22.07.2016_2\Emsal\Emsal.WebSrv\bin\Emsal.Utility.dll
+H:\projects\Emsal_22.07.2016_2\Emsal\Emsal.WebSrv\bin\NLog.dll
+H:\projects\Emsal_22.07.2016_2\Emsal\Emsal.WebSrv\bin\Emsal.BLL.pdb
+H:\projects\Emsal_22.07.2016_2\Emsal\Emsal.WebSrv\bin\Emsal.DAL.pdb
+H:\projects\Emsal_22.07.2016_2\Emsal\Emsal.WebSrv\bin\EntityFramework.xml
+H:\projects\Emsal_22.07.2016_2\Emsal\Emsal.WebSrv\bin\Emsal.Utility.pdb
+H:\projects\Emsal_22.07.2016_2\Emsal\Emsal.WebSrv\bin\NLog.xml
+H:\projects\Emsal_22.07.2016_2\Emsal\Emsal.WebSrv\obj\Debug\Emsal.WebSrv.csprojResolveAssemblyReference.cache
+H:\projects\Emsal_22.07.2016_2\Emsal\Emsal.WebSrv\obj\Debug\Emsal.WebSrv.dll
+H:\projects\Emsal_22.07.2016_2\Emsal\Emsal.WebSrv\obj\Debug\Emsal.WebSrv.pdb
+D:\KTN Porjects\Emsal\Emsal\Emsal.WebSrv\bin\Emsal.WebSrv.dll
+D:\KTN Porjects\Emsal\Emsal\Emsal.WebSrv\bin\Emsal.WebSrv.pdb
+D:\KTN Porjects\Emsal\Emsal\Emsal.WebSrv\bin\Emsal.BLL.dll
+D:\KTN Porjects\Emsal\Emsal\Emsal.WebSrv\bin\Emsal.DAL.dll
+D:\KTN Porjects\Emsal\Emsal\Emsal.WebSrv\bin\EntityFramework.dll
+D:\KTN Porjects\Emsal\Emsal\Emsal.WebSrv\bin\Emsal.Utility.dll
+D:\KTN Porjects\Emsal\Emsal\Emsal.WebSrv\bin\NLog.dll
+D:\KTN Porjects\Emsal\Emsal\Emsal.WebSrv\bin\Emsal.BLL.pdb
+D:\KTN Porjects\Emsal\Emsal\Emsal.WebSrv\bin\Emsal.DAL.pdb
+D:\KTN Porjects\Emsal\Emsal\Emsal.WebSrv\bin\EntityFramework.xml
+D:\KTN Porjects\Emsal\Emsal\Emsal.WebSrv\bin\Emsal.Utility.pdb
+D:\KTN Porjects\Emsal\Emsal\Emsal.WebSrv\bin\NLog.xml
+D:\KTN Porjects\Emsal\Emsal\Emsal.WebSrv\obj\Debug\Emsal.WebSrv.csprojResolveAssemblyReference.cache
+D:\KTN Porjects\Emsal\Emsal\Emsal.WebSrv\obj\Debug\Emsal.WebSrv.dll
+D:\KTN Porjects\Emsal\Emsal\Emsal.WebSrv\obj\Debug\Emsal.WebSrv.pdb
+D:\Emsal\Emsal.WebSrv\bin\Emsal.WebSrv.dll.config
+D:\Emsal\Emsal.WebSrv\bin\Emsal.WebSrv.dll
+D:\Emsal\Emsal.WebSrv\bin\Emsal.WebSrv.pdb
+D:\Emsal\Emsal.WebSrv\bin\Emsal.BLL.dll
+D:\Emsal\Emsal.WebSrv\bin\Emsal.DAL.dll
+D:\Emsal\Emsal.WebSrv\bin\EntityFramework.dll
+D:\Emsal\Emsal.WebSrv\bin\Emsal.Utility.dll
+D:\Emsal\Emsal.WebSrv\bin\NLog.dll
+D:\Emsal\Emsal.WebSrv\bin\Emsal.BLL.pdb
+D:\Emsal\Emsal.WebSrv\bin\Emsal.DAL.pdb
+D:\Emsal\Emsal.WebSrv\bin\EntityFramework.xml
+D:\Emsal\Emsal.WebSrv\bin\Emsal.Utility.pdb
+D:\Emsal\Emsal.WebSrv\bin\NLog.xml
+D:\Emsal\Emsal.WebSrv\obj\Debug\Emsal.WebSrv.csprojResolveAssemblyReference.cache
+D:\Emsal\Emsal.WebSrv\obj\Debug\Emsal.WebSrv.dll
+D:\Emsal\Emsal.WebSrv\obj\Debug\Emsal.WebSrv.pdb
+H:\projects\Emsal_25.07.2016_4\Emsal\Emsal.WebSrv\bin\Emsal.WebSrv.dll.config
+H:\projects\Emsal_25.07.2016_4\Emsal\Emsal.WebSrv\bin\Emsal.WebSrv.dll
+H:\projects\Emsal_25.07.2016_4\Emsal\Emsal.WebSrv\bin\Emsal.WebSrv.pdb
+H:\projects\Emsal_25.07.2016_4\Emsal\Emsal.WebSrv\bin\Emsal.BLL.dll
+H:\projects\Emsal_25.07.2016_4\Emsal\Emsal.WebSrv\bin\Emsal.DAL.dll
+H:\projects\Emsal_25.07.2016_4\Emsal\Emsal.WebSrv\bin\EntityFramework.dll
+H:\projects\Emsal_25.07.2016_4\Emsal\Emsal.WebSrv\bin\Emsal.Utility.dll
+H:\projects\Emsal_25.07.2016_4\Emsal\Emsal.WebSrv\bin\NLog.dll
+H:\projects\Emsal_25.07.2016_4\Emsal\Emsal.WebSrv\bin\Emsal.BLL.pdb
+H:\projects\Emsal_25.07.2016_4\Emsal\Emsal.WebSrv\bin\Emsal.DAL.pdb
+H:\projects\Emsal_25.07.2016_4\Emsal\Emsal.WebSrv\bin\EntityFramework.xml
+H:\projects\Emsal_25.07.2016_4\Emsal\Emsal.WebSrv\bin\Emsal.Utility.pdb
+H:\projects\Emsal_25.07.2016_4\Emsal\Emsal.WebSrv\bin\NLog.xml
+H:\projects\Emsal_25.07.2016_4\Emsal\Emsal.WebSrv\obj\Debug\Emsal.WebSrv.csprojResolveAssemblyReference.cache
+H:\projects\Emsal_25.07.2016_4\Emsal\Emsal.WebSrv\obj\Debug\Emsal.WebSrv.dll
+H:\projects\Emsal_25.07.2016_4\Emsal\Emsal.WebSrv\obj\Debug\Emsal.WebSrv.pdb
+C:\Windows\system32\config\systemprofile\Desktop\Emsal\Emsal.WebSrv\bin\Emsal.WebSrv.dll.config
+C:\Windows\system32\config\systemprofile\Desktop\Emsal\Emsal.WebSrv\bin\Emsal.WebSrv.dll
+C:\Windows\system32\config\systemprofile\Desktop\Emsal\Emsal.WebSrv\bin\Emsal.WebSrv.pdb
+C:\Windows\system32\config\systemprofile\Desktop\Emsal\Emsal.WebSrv\bin\Emsal.BLL.dll
+C:\Windows\system32\config\systemprofile\Desktop\Emsal\Emsal.WebSrv\bin\Emsal.DAL.dll
+C:\Windows\system32\config\systemprofile\Desktop\Emsal\Emsal.WebSrv\bin\EntityFramework.dll
+C:\Windows\system32\config\systemprofile\Desktop\Emsal\Emsal.WebSrv\bin\Emsal.Utility.dll
+C:\Windows\system32\config\systemprofile\Desktop\Emsal\Emsal.WebSrv\bin\NLog.dll
+C:\Windows\system32\config\systemprofile\Desktop\Emsal\Emsal.WebSrv\bin\Emsal.BLL.pdb
+C:\Windows\system32\config\systemprofile\Desktop\Emsal\Emsal.WebSrv\bin\Emsal.DAL.pdb
+C:\Windows\system32\config\systemprofile\Desktop\Emsal\Emsal.WebSrv\bin\EntityFramework.xml
+C:\Windows\system32\config\systemprofile\Desktop\Emsal\Emsal.WebSrv\bin\Emsal.Utility.pdb
+C:\Windows\system32\config\systemprofile\Desktop\Emsal\Emsal.WebSrv\bin\NLog.xml
+C:\Windows\system32\config\systemprofile\Desktop\Emsal\Emsal.WebSrv\obj\Debug\Emsal.WebSrv.csprojResolveAssemblyReference.cache
+C:\Windows\system32\config\systemprofile\Desktop\Emsal\Emsal.WebSrv\obj\Debug\Emsal.WebSrv.dll
+C:\Windows\system32\config\systemprofile\Desktop\Emsal\Emsal.WebSrv\obj\Debug\Emsal.WebSrv.pdb
+C:\Users\Ferid\Desktop\Emsal\Emsal.WebSrv\bin\System.Web.Mvc.dll
+C:\Users\Ferid\Desktop\Emsal\Emsal.WebSrv\bin\System.Web.Mvc.xml
+C:\Users\Ferid\Desktop\Emsal\Emsal.WebSrv\bin\System.Web.Razor.dll
+C:\Users\Ferid\Desktop\Emsal\Emsal.WebSrv\bin\System.Web.WebPages.dll
+C:\Users\Ferid\Desktop\Emsal\Emsal.WebSrv\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Ferid\Desktop\Emsal\Emsal.WebSrv\bin\System.Web.WebPages.Deployment.dll
+D:\KTN Porjects\Emsal Yeni\Emsal\Emsal\Emsal.WebSrv\bin\Emsal.WebSrv.dll
+D:\KTN Porjects\Emsal Yeni\Emsal\Emsal\Emsal.WebSrv\bin\Emsal.WebSrv.pdb
+D:\KTN Porjects\Emsal Yeni\Emsal\Emsal\Emsal.WebSrv\bin\Emsal.BLL.dll
+D:\KTN Porjects\Emsal Yeni\Emsal\Emsal\Emsal.WebSrv\bin\Emsal.DAL.dll
+D:\KTN Porjects\Emsal Yeni\Emsal\Emsal\Emsal.WebSrv\bin\EntityFramework.dll
+D:\KTN Porjects\Emsal Yeni\Emsal\Emsal\Emsal.WebSrv\bin\Emsal.Utility.dll
+D:\KTN Porjects\Emsal Yeni\Emsal\Emsal\Emsal.WebSrv\bin\NLog.dll
+D:\KTN Porjects\Emsal Yeni\Emsal\Emsal\Emsal.WebSrv\bin\Emsal.BLL.pdb
+D:\KTN Porjects\Emsal Yeni\Emsal\Emsal\Emsal.WebSrv\bin\Emsal.DAL.pdb
+D:\KTN Porjects\Emsal Yeni\Emsal\Emsal\Emsal.WebSrv\bin\EntityFramework.xml
+D:\KTN Porjects\Emsal Yeni\Emsal\Emsal\Emsal.WebSrv\bin\Emsal.Utility.pdb
+D:\KTN Porjects\Emsal Yeni\Emsal\Emsal\Emsal.WebSrv\bin\NLog.xml
+D:\KTN Porjects\Emsal Yeni\Emsal\Emsal\Emsal.WebSrv\obj\Debug\Emsal.WebSrv.csprojResolveAssemblyReference.cache
+D:\KTN Porjects\Emsal Yeni\Emsal\Emsal\Emsal.WebSrv\obj\Debug\Emsal.WebSrv.dll
+D:\KTN Porjects\Emsal Yeni\Emsal\Emsal\Emsal.WebSrv\obj\Debug\Emsal.WebSrv.pdb
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\Emsal.WebSrv\bin\Emsal.WebSrv.dll
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\Emsal.WebSrv\bin\Emsal.WebSrv.pdb
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\Emsal.WebSrv\bin\Emsal.BLL.dll
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\Emsal.WebSrv\bin\Emsal.DAL.dll
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\Emsal.WebSrv\bin\EntityFramework.dll
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\Emsal.WebSrv\bin\Emsal.Utility.dll
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\Emsal.WebSrv\bin\NLog.dll
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\Emsal.WebSrv\bin\Emsal.BLL.pdb
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\Emsal.WebSrv\bin\Emsal.DAL.pdb
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\Emsal.WebSrv\bin\Emsal.Utility.pdb
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\Emsal.WebSrv\obj\Debug\Emsal.WebSrv.csprojResolveAssemblyReference.cache
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\Emsal.WebSrv\obj\Debug\Emsal.WebSrv.dll
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\Emsal.WebSrv\obj\Debug\Emsal.WebSrv.pdb

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7763a26de8b54963ab9d5c0951c1e398" Name="Diagram1" ZoomLevel="61">
+        <EntityTypeShape EntityType="EmsalDBModel.tblAuthenticatedPart1" Width="5.125" PointX="0.625" PointY="2.125" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblPrivilegedRole1" Width="1.5" PointX="7.1846351265835739" PointY="11.628011619498958" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblBranchResponsibility" Width="1.5" PointX="7.4563992765994733" PointY="19.262949922710167" />
+        <EntityTypeShape EntityType="EmsalDBModel.C__MigrationHistory" Width="1.5" PointX="2.5087398749351224" PointY="27.255190519269178" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblAddress" Width="1.5" PointX="10.602197823395114" PointY="14.43678279893323" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblAnnouncement" Width="1.5" PointX="4" PointY="16.625" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblAuthenticatedPart" Width="1.5" PointX="13.25" PointY="13.5" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblComMessage" Width="1.5" PointX="8.28373548215429" PointY="23.1086823004804" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblCommunication" Width="1.5" PointX="2.375" PointY="3" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblConfirmationMessage" Width="1.5" PointX="5.25" PointY="18.25" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblDemand_Production" Width="1.5" PointX="11.718726720529947" PointY="18.783825629755775" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblEmployee" Width="1.5" PointX="10.81205441002364" PointY="5.0263997041743247" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblEnumCategory" Width="1.5" PointX="10" PointY="22" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblEnumValue" Width="1.5" PointX="2.0441183811259078" PointY="13.140244788089881" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblExpertise" Width="1.5" PointX="9.9344700919159088" PointY="23.288157548423928" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblForeign_Organization" Width="1.5" PointX="4.375" PointY="1.875" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblOffer_Production" Width="1.5" PointX="9.2570723934364842" PointY="9.48519331658501" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblOrganization" Width="1.5" PointX="0.66616527767207723" PointY="30.791998177204281" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblParty" Width="1.5" PointX="4.1826764644042944" PointY="29.549778922251324" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblPerson" Width="1.5" PointX="5.5" PointY="26.125" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblPotential_Production" Width="1.5" PointX="2.1419910928895658" PointY="19.948210069885576" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblPrivilegedRole" Width="1.5" PointX="5.5459957316266353" PointY="6.8182938428680853" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblPRM_AdminUnit" Width="1.5" PointX="6.69951208434045" PointY="30.628805532412979" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblPRM_ASCBranch" Width="1.5" PointX="0.41850284879026139" PointY="12.712830951769291" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblPRM_KTNBranch" Width="1.5" PointX="8.642348548696539" PointY="14.86670956707872" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblPRM_Thoroughfare" Width="1.5" PointX="6.75" PointY="8.875" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblProduct_Document" Width="1.5" PointX="1.5275850284507428" PointY="7.8333905226706486" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblProductAddress" Width="1.5" PointX="11.375" PointY="24.625" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblProductCatalog" Width="1.5" PointX="8.6419647972294911" PointY="6.7126935006644084" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblProductCatalogControl" Width="1.5" PointX="9.304304591056102" PointY="19.792290652074055" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblProduction_Calendar" Width="1.5" PointX="3.0821680887984897" PointY="25.549728211737111" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblProduction_Document" Width="1.5" PointX="0.28622635281003378" PointY="4.9843699806297055" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblProductionControl" Width="1.5" PointX="3.405625179133204" PointY="7.3139798228228372" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblProductPrice" Width="1.5" PointX="9.3012982817838417" PointY="16.122060425636388" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblProductProfileImage" Width="1.5" PointX="4.9141413555080735" PointY="23.297963108540497" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblRole" Width="1.5" PointX="4.4830793982758559" PointY="6.2044029115719734" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblTitle" Width="1.5" PointX="10.190529053188175" PointY="15.666739560508514" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblUser" Width="1.5" PointX="4.87134194973453" PointY="11.301727851527616" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblUserRole" Width="1.5" PointX="1.4979388795317798" PointY="22.01385125052829" />&gt;&gt;&gt;&gt;&gt;&gt;&gt; 3bf60b771b3586949ade40222b6c40224a72c115
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
