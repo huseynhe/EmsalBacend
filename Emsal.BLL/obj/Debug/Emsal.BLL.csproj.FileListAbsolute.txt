@@ -1,0 +1,392 @@
+C:\Users\Ferid\Desktop\Emsal\Emsal.BLL\bin\Debug\Emsal.BLL.dll.config
+C:\Users\Ferid\Desktop\Emsal\Emsal.BLL\bin\Debug\Emsal.BLL.dll
+C:\Users\Ferid\Desktop\Emsal\Emsal.BLL\bin\Debug\Emsal.BLL.pdb
+C:\Users\Ferid\Desktop\Emsal\Emsal.BLL\bin\Debug\Emsal.DAL.dll
+C:\Users\Ferid\Desktop\Emsal\Emsal.BLL\bin\Debug\Emsal.Utility.dll
+C:\Users\Ferid\Desktop\Emsal\Emsal.BLL\bin\Debug\EntityFramework.dll
+C:\Users\Ferid\Desktop\Emsal\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Ferid\Desktop\Emsal\Emsal.BLL\bin\Debug\NLog.dll
+C:\Users\Ferid\Desktop\Emsal\Emsal.BLL\bin\Debug\Emsal.DAL.pdb
+C:\Users\Ferid\Desktop\Emsal\Emsal.BLL\bin\Debug\Emsal.Utility.pdb
+C:\Users\Ferid\Desktop\Emsal\Emsal.BLL\bin\Debug\EntityFramework.xml
+C:\Users\Ferid\Desktop\Emsal\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Ferid\Desktop\Emsal\Emsal.BLL\bin\Debug\NLog.xml
+C:\Users\Ferid\Desktop\Emsal\Emsal.BLL\obj\Debug\Emsal.BLL.csprojResolveAssemblyReference.cache
+C:\Users\Ferid\Desktop\Emsal\Emsal.BLL\obj\Debug\Emsal.BLL.dll
+C:\Users\Ferid\Desktop\Emsal\Emsal.BLL\obj\Debug\Emsal.BLL.pdb
+D:\Emsal\Emsal.BLL\bin\Debug\Emsal.BLL.dll.config
+D:\Emsal\Emsal.BLL\bin\Debug\Emsal.BLL.dll
+D:\Emsal\Emsal.BLL\bin\Debug\Emsal.BLL.pdb
+D:\Emsal\Emsal.BLL\bin\Debug\Emsal.DAL.dll
+D:\Emsal\Emsal.BLL\bin\Debug\Emsal.Utility.dll
+D:\Emsal\Emsal.BLL\bin\Debug\EntityFramework.dll
+D:\Emsal\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Emsal\Emsal.BLL\bin\Debug\NLog.dll
+D:\Emsal\Emsal.BLL\bin\Debug\Emsal.DAL.pdb
+D:\Emsal\Emsal.BLL\bin\Debug\Emsal.Utility.pdb
+D:\Emsal\Emsal.BLL\bin\Debug\EntityFramework.xml
+D:\Emsal\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Emsal\Emsal.BLL\bin\Debug\NLog.xml
+D:\Emsal\Emsal.BLL\obj\Debug\Emsal.BLL.csprojResolveAssemblyReference.cache
+D:\Emsal\Emsal.BLL\obj\Debug\Emsal.BLL.dll
+D:\Emsal\Emsal.BLL\obj\Debug\Emsal.BLL.pdb
+D:\KTN Porjects\Emsal\Emsal\Emsal.BLL\obj\Debug\Emsal.BLL.csprojResolveAssemblyReference.cache
+D:\KTN Porjects\Emsal\Emsal\Emsal.BLL\obj\Debug\Emsal.BLL.dll
+D:\KTN Porjects\Emsal\Emsal\Emsal.BLL\bin\Debug\Emsal.BLL.dll.config
+D:\KTN Porjects\Emsal\Emsal\Emsal.BLL\bin\Debug\Emsal.BLL.dll
+D:\KTN Porjects\Emsal\Emsal\Emsal.BLL\bin\Debug\Emsal.BLL.pdb
+D:\KTN Porjects\Emsal\Emsal\Emsal.BLL\bin\Debug\Emsal.DAL.dll
+D:\KTN Porjects\Emsal\Emsal\Emsal.BLL\bin\Debug\Emsal.Utility.dll
+D:\KTN Porjects\Emsal\Emsal\Emsal.BLL\bin\Debug\EntityFramework.dll
+D:\KTN Porjects\Emsal\Emsal\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.dll
+D:\KTN Porjects\Emsal\Emsal\Emsal.BLL\bin\Debug\NLog.dll
+D:\KTN Porjects\Emsal\Emsal\Emsal.BLL\bin\Debug\Emsal.DAL.pdb
+D:\KTN Porjects\Emsal\Emsal\Emsal.BLL\bin\Debug\Emsal.Utility.pdb
+D:\KTN Porjects\Emsal\Emsal\Emsal.BLL\bin\Debug\EntityFramework.xml
+D:\KTN Porjects\Emsal\Emsal\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.xml
+D:\KTN Porjects\Emsal\Emsal\Emsal.BLL\bin\Debug\NLog.xml
+D:\KTN Porjects\Emsal\Emsal\Emsal.BLL\obj\Debug\Emsal.BLL.pdb
+H:\projects\Emsal_25.07.2016_4\Emsal\Emsal.BLL\bin\Debug\Emsal.BLL.dll.config
+H:\projects\Emsal_25.07.2016_4\Emsal\Emsal.BLL\bin\Debug\Emsal.BLL.dll
+H:\projects\Emsal_25.07.2016_4\Emsal\Emsal.BLL\bin\Debug\Emsal.BLL.pdb
+H:\projects\Emsal_25.07.2016_4\Emsal\Emsal.BLL\bin\Debug\Emsal.DAL.dll
+H:\projects\Emsal_25.07.2016_4\Emsal\Emsal.BLL\bin\Debug\Emsal.Utility.dll
+H:\projects\Emsal_25.07.2016_4\Emsal\Emsal.BLL\bin\Debug\EntityFramework.dll
+H:\projects\Emsal_25.07.2016_4\Emsal\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.dll
+H:\projects\Emsal_25.07.2016_4\Emsal\Emsal.BLL\bin\Debug\NLog.dll
+H:\projects\Emsal_25.07.2016_4\Emsal\Emsal.BLL\bin\Debug\Emsal.DAL.pdb
+H:\projects\Emsal_25.07.2016_4\Emsal\Emsal.BLL\bin\Debug\Emsal.Utility.pdb
+H:\projects\Emsal_25.07.2016_4\Emsal\Emsal.BLL\bin\Debug\EntityFramework.xml
+H:\projects\Emsal_25.07.2016_4\Emsal\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.xml
+H:\projects\Emsal_25.07.2016_4\Emsal\Emsal.BLL\bin\Debug\NLog.xml
+H:\projects\Emsal_25.07.2016_4\Emsal\Emsal.BLL\obj\Debug\Emsal.BLL.csprojResolveAssemblyReference.cache
+H:\projects\Emsal_25.07.2016_4\Emsal\Emsal.BLL\obj\Debug\Emsal.BLL.dll
+H:\projects\Emsal_25.07.2016_4\Emsal\Emsal.BLL\obj\Debug\Emsal.BLL.pdb
+C:\Windows\system32\config\systemprofile\Desktop\Emsal\Emsal.BLL\bin\Debug\Emsal.BLL.dll.config
+C:\Windows\system32\config\systemprofile\Desktop\Emsal\Emsal.BLL\bin\Debug\Emsal.BLL.dll
+C:\Windows\system32\config\systemprofile\Desktop\Emsal\Emsal.BLL\bin\Debug\Emsal.BLL.pdb
+C:\Windows\system32\config\systemprofile\Desktop\Emsal\Emsal.BLL\bin\Debug\Emsal.DAL.dll
+C:\Windows\system32\config\systemprofile\Desktop\Emsal\Emsal.BLL\bin\Debug\Emsal.Utility.dll
+C:\Windows\system32\config\systemprofile\Desktop\Emsal\Emsal.BLL\bin\Debug\EntityFramework.dll
+C:\Windows\system32\config\systemprofile\Desktop\Emsal\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Windows\system32\config\systemprofile\Desktop\Emsal\Emsal.BLL\bin\Debug\NLog.dll
+C:\Windows\system32\config\systemprofile\Desktop\Emsal\Emsal.BLL\bin\Debug\Emsal.DAL.pdb
+C:\Windows\system32\config\systemprofile\Desktop\Emsal\Emsal.BLL\bin\Debug\Emsal.Utility.pdb
+C:\Windows\system32\config\systemprofile\Desktop\Emsal\Emsal.BLL\bin\Debug\EntityFramework.xml
+C:\Windows\system32\config\systemprofile\Desktop\Emsal\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Windows\system32\config\systemprofile\Desktop\Emsal\Emsal.BLL\bin\Debug\NLog.xml
+C:\Windows\system32\config\systemprofile\Desktop\Emsal\Emsal.BLL\obj\Debug\Emsal.BLL.csprojResolveAssemblyReference.cache
+C:\Windows\system32\config\systemprofile\Desktop\Emsal\Emsal.BLL\obj\Debug\Emsal.BLL.dll
+C:\Windows\system32\config\systemprofile\Desktop\Emsal\Emsal.BLL\obj\Debug\Emsal.BLL.pdb
+C:\Users\Ferid\Desktop\Emsal\Emsal.BLL\bin\Debug\System.Web.Mvc.dll
+C:\Users\Ferid\Desktop\Emsal\Emsal.BLL\bin\Debug\System.Web.Mvc.xml
+D:\KTN Porjects\Emsal Yeni\Emsal\Emsal\Emsal.BLL\bin\Debug\Emsal.BLL.dll.config
+D:\KTN Porjects\Emsal Yeni\Emsal\Emsal\Emsal.BLL\bin\Debug\Emsal.BLL.dll
+D:\KTN Porjects\Emsal Yeni\Emsal\Emsal\Emsal.BLL\bin\Debug\Emsal.BLL.pdb
+D:\KTN Porjects\Emsal Yeni\Emsal\Emsal\Emsal.BLL\bin\Debug\Emsal.DAL.dll
+D:\KTN Porjects\Emsal Yeni\Emsal\Emsal\Emsal.BLL\bin\Debug\Emsal.Utility.dll
+D:\KTN Porjects\Emsal Yeni\Emsal\Emsal\Emsal.BLL\bin\Debug\EntityFramework.dll
+D:\KTN Porjects\Emsal Yeni\Emsal\Emsal\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.dll
+D:\KTN Porjects\Emsal Yeni\Emsal\Emsal\Emsal.BLL\bin\Debug\NLog.dll
+D:\KTN Porjects\Emsal Yeni\Emsal\Emsal\Emsal.BLL\bin\Debug\Emsal.DAL.pdb
+D:\KTN Porjects\Emsal Yeni\Emsal\Emsal\Emsal.BLL\bin\Debug\Emsal.Utility.pdb
+D:\KTN Porjects\Emsal Yeni\Emsal\Emsal\Emsal.BLL\bin\Debug\EntityFramework.xml
+D:\KTN Porjects\Emsal Yeni\Emsal\Emsal\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.xml
+D:\KTN Porjects\Emsal Yeni\Emsal\Emsal\Emsal.BLL\bin\Debug\NLog.xml
+D:\KTN Porjects\Emsal Yeni\Emsal\Emsal\Emsal.BLL\obj\Debug\Emsal.BLL.csprojResolveAssemblyReference.cache
+D:\KTN Porjects\Emsal Yeni\Emsal\Emsal\Emsal.BLL\obj\Debug\Emsal.BLL.dll
+D:\KTN Porjects\Emsal Yeni\Emsal\Emsal\Emsal.BLL\obj\Debug\Emsal.BLL.pdb
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.dll.config
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.dll
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.pdb
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.DAL.dll
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility.dll
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\Emsal.BLL\bin\Debug\NLog.dll
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.DAL.pdb
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility.pdb
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.csprojResolveAssemblyReference.cache
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.dll
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.pdb
+C:\Users\Ferid\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.dll.config
+C:\Users\Ferid\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.dll
+C:\Users\Ferid\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.pdb
+C:\Users\Ferid\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.DAL.dll
+C:\Users\Ferid\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility.dll
+C:\Users\Ferid\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.dll
+C:\Users\Ferid\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Ferid\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.Mvc.dll
+C:\Users\Ferid\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\NLog.dll
+C:\Users\Ferid\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.DAL.pdb
+C:\Users\Ferid\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility.pdb
+C:\Users\Ferid\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.xml
+C:\Users\Ferid\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Ferid\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.Mvc.xml
+C:\Users\Ferid\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\NLog.xml
+C:\Users\Ferid\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.csprojResolveAssemblyReference.cache
+C:\Users\Ferid\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.dll
+C:\Users\Ferid\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.pdb
+C:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.dll.config
+C:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.dll
+C:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.pdb
+C:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.DAL.dll
+C:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility.dll
+C:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.dll
+C:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.dll
+C:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\NLog.dll
+C:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.Razor.dll
+C:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.WebPages.Razor.dll
+C:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.WebPages.dll
+C:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.DAL.pdb
+C:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility.pdb
+C:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.xml
+C:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.xml
+C:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\NLog.xml
+C:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.Razor.xml
+C:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.WebPages.Razor.xml
+C:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.WebPages.xml
+C:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Microsoft.Web.Infrastructure.xml
+C:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.csprojResolveAssemblyReference.cache
+C:\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.dll
+C:\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.pdb
+C:\Proje\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.dll.config
+C:\Proje\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.dll
+C:\Proje\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.pdb
+C:\Proje\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.DAL.dll
+C:\Proje\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility.dll
+C:\Proje\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.dll
+C:\Proje\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Proje\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\NLog.dll
+C:\Proje\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.Razor.dll
+C:\Proje\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Proje\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.WebPages.dll
+C:\Proje\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Proje\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Proje\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.DAL.pdb
+C:\Proje\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility.pdb
+C:\Proje\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.xml
+C:\Proje\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Proje\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.Mvc.xml
+C:\Proje\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\NLog.xml
+C:\Proje\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.Razor.xml
+C:\Proje\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Proje\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.WebPages.xml
+C:\Proje\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Microsoft.Web.Infrastructure.xml
+C:\Proje\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Proje\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.csprojResolveAssemblyReference.cache
+C:\Proje\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.dll
+C:\Proje\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.pdb
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.dll.config
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.dll
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.pdb
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.DAL.dll
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility.dll
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.dll
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.dll
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\NLog.dll
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.DAL.pdb
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility.pdb
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.xml
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.xml
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\NLog.xml
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.csprojResolveAssemblyReference.cache
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.dll
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.pdb
+D:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.dll.config
+D:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.dll
+D:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.pdb
+D:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.DAL.dll
+D:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility.dll
+D:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.dll
+D:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.dll
+D:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\NLog.dll
+D:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.Razor.dll
+D:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.WebPages.Razor.dll
+D:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.WebPages.dll
+D:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.DAL.pdb
+D:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility.pdb
+D:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.xml
+D:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.xml
+D:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\NLog.xml
+D:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.Razor.xml
+D:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.WebPages.Razor.xml
+D:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.WebPages.xml
+D:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Microsoft.Web.Infrastructure.xml
+D:\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.csprojResolveAssemblyReference.cache
+D:\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.dll
+D:\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.pdb
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.dll.config
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.dll
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.pdb
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.DAL.dll
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility.dll
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.dll
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.dll
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\NLog.dll
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.DAL.pdb
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility.pdb
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.xml
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.xml
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\NLog.xml
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.csprojResolveAssemblyReference.cache
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.dll
+D:\KTN Porjects\Emsal Yeni\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.pdb
+D:\KTN Projeleri\Emsal\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.dll.config
+D:\KTN Projeleri\Emsal\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.dll
+D:\KTN Projeleri\Emsal\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.pdb
+D:\KTN Projeleri\Emsal\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.DAL.dll
+D:\KTN Projeleri\Emsal\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility.dll
+D:\KTN Projeleri\Emsal\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.dll
+D:\KTN Projeleri\Emsal\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.dll
+D:\KTN Projeleri\Emsal\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\NLog.dll
+D:\KTN Projeleri\Emsal\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.DAL.pdb
+D:\KTN Projeleri\Emsal\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility.pdb
+D:\KTN Projeleri\Emsal\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.xml
+D:\KTN Projeleri\Emsal\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.xml
+D:\KTN Projeleri\Emsal\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\NLog.xml
+D:\KTN Projeleri\Emsal\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.csprojResolveAssemblyReference.cache
+D:\KTN Projeleri\Emsal\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.dll
+D:\KTN Projeleri\Emsal\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.pdb
+C:\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.dll.config
+C:\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.dll
+C:\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.pdb
+C:\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.DAL.dll
+C:\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility.dll
+C:\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.dll
+C:\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.dll
+C:\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\NLog.dll
+C:\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.Razor.dll
+C:\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.WebPages.Razor.dll
+C:\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.WebPages.dll
+C:\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.DAL.pdb
+C:\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility.pdb
+C:\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.xml
+C:\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.xml
+C:\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\NLog.xml
+C:\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.Razor.xml
+C:\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.WebPages.Razor.xml
+C:\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.WebPages.xml
+C:\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Microsoft.Web.Infrastructure.xml
+C:\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.csprojResolveAssemblyReference.cache
+C:\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.dll
+C:\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.pdb
+D:\KTN Porjects\Emsal Yeni\Code\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.dll.config
+D:\KTN Porjects\Emsal Yeni\Code\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.dll
+D:\KTN Porjects\Emsal Yeni\Code\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.pdb
+D:\KTN Porjects\Emsal Yeni\Code\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.DAL.dll
+D:\KTN Porjects\Emsal Yeni\Code\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility.dll
+D:\KTN Porjects\Emsal Yeni\Code\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.dll
+D:\KTN Porjects\Emsal Yeni\Code\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.dll
+D:\KTN Porjects\Emsal Yeni\Code\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\NLog.dll
+D:\KTN Porjects\Emsal Yeni\Code\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.DAL.pdb
+D:\KTN Porjects\Emsal Yeni\Code\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility.pdb
+D:\KTN Porjects\Emsal Yeni\Code\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.xml
+D:\KTN Porjects\Emsal Yeni\Code\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.xml
+D:\KTN Porjects\Emsal Yeni\Code\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\NLog.xml
+D:\KTN Porjects\Emsal Yeni\Code\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.csprojResolveAssemblyReference.cache
+D:\KTN Porjects\Emsal Yeni\Code\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.dll
+D:\KTN Porjects\Emsal Yeni\Code\Backend\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.pdb
+C:\Users\emsal\Desktop\EmsalProje\EmsalBackend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.dll.config
+C:\Users\emsal\Desktop\EmsalProje\EmsalBackend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.dll
+C:\Users\emsal\Desktop\EmsalProje\EmsalBackend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.pdb
+C:\Users\emsal\Desktop\EmsalProje\EmsalBackend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.DAL.dll
+C:\Users\emsal\Desktop\EmsalProje\EmsalBackend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility.dll
+C:\Users\emsal\Desktop\EmsalProje\EmsalBackend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.dll
+C:\Users\emsal\Desktop\EmsalProje\EmsalBackend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\emsal\Desktop\EmsalProje\EmsalBackend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\NLog.dll
+C:\Users\emsal\Desktop\EmsalProje\EmsalBackend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.DAL.pdb
+C:\Users\emsal\Desktop\EmsalProje\EmsalBackend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility.pdb
+C:\Users\emsal\Desktop\EmsalProje\EmsalBackend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.xml
+C:\Users\emsal\Desktop\EmsalProje\EmsalBackend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\emsal\Desktop\EmsalProje\EmsalBackend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\NLog.xml
+C:\Users\emsal\Desktop\EmsalProje\EmsalBackend\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.csprojResolveAssemblyReference.cache
+C:\Users\emsal\Desktop\EmsalProje\EmsalBackend\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.dll
+C:\Users\emsal\Desktop\EmsalProje\EmsalBackend\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.pdb
+D:\KTN Porjects\Emsal Yeni\Code\Backend\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.dll.config
+D:\KTN Porjects\Emsal Yeni\Code\Backend\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.dll
+D:\KTN Porjects\Emsal Yeni\Code\Backend\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.pdb
+D:\KTN Porjects\Emsal Yeni\Code\Backend\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.DAL.dll
+D:\KTN Porjects\Emsal Yeni\Code\Backend\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility.dll
+D:\KTN Porjects\Emsal Yeni\Code\Backend\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.dll
+D:\KTN Porjects\Emsal Yeni\Code\Backend\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.dll
+D:\KTN Porjects\Emsal Yeni\Code\Backend\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\NLog.dll
+D:\KTN Porjects\Emsal Yeni\Code\Backend\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.DAL.pdb
+D:\KTN Porjects\Emsal Yeni\Code\Backend\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility.pdb
+D:\KTN Porjects\Emsal Yeni\Code\Backend\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.xml
+D:\KTN Porjects\Emsal Yeni\Code\Backend\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.xml
+D:\KTN Porjects\Emsal Yeni\Code\Backend\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\NLog.xml
+D:\KTN Porjects\Emsal Yeni\Code\Backend\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.csprojResolveAssemblyReference.cache
+D:\KTN Porjects\Emsal Yeni\Code\Backend\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.dll
+D:\KTN Porjects\Emsal Yeni\Code\Backend\EmsalBacend\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.pdb
+H:\projects\Emsal_31.10.2016\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.dll.config
+H:\projects\Emsal_31.10.2016\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.dll
+H:\projects\Emsal_31.10.2016\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.pdb
+H:\projects\Emsal_31.10.2016\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.DAL.dll
+H:\projects\Emsal_31.10.2016\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility.dll
+H:\projects\Emsal_31.10.2016\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.dll
+H:\projects\Emsal_31.10.2016\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.dll
+H:\projects\Emsal_31.10.2016\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\NLog.dll
+H:\projects\Emsal_31.10.2016\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.DAL.pdb
+H:\projects\Emsal_31.10.2016\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility.pdb
+H:\projects\Emsal_31.10.2016\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.xml
+H:\projects\Emsal_31.10.2016\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.xml
+H:\projects\Emsal_31.10.2016\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\NLog.xml
+H:\projects\Emsal_31.10.2016\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.csprojResolveAssemblyReference.cache
+H:\projects\Emsal_31.10.2016\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.dll
+H:\projects\Emsal_31.10.2016\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.pdb
+C:\Users\emsal\Desktop\EmsalProject\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.dll.config
+C:\Users\emsal\Desktop\EmsalProject\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.dll
+C:\Users\emsal\Desktop\EmsalProject\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.pdb
+C:\Users\emsal\Desktop\EmsalProject\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.DAL.dll
+C:\Users\emsal\Desktop\EmsalProject\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility.dll
+C:\Users\emsal\Desktop\EmsalProject\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.dll
+C:\Users\emsal\Desktop\EmsalProject\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\emsal\Desktop\EmsalProject\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\NLog.dll
+C:\Users\emsal\Desktop\EmsalProject\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.DAL.pdb
+C:\Users\emsal\Desktop\EmsalProject\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility.pdb
+C:\Users\emsal\Desktop\EmsalProject\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.xml
+C:\Users\emsal\Desktop\EmsalProject\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\emsal\Desktop\EmsalProject\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\NLog.xml
+C:\Users\emsal\Desktop\EmsalProject\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.csprojResolveAssemblyReference.cache
+C:\Users\emsal\Desktop\EmsalProject\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.dll
+C:\Users\emsal\Desktop\EmsalProject\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.pdb
+C:\Users\emsal\Desktop\EmsalProje\Bakend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.dll.config
+C:\Users\emsal\Desktop\EmsalProje\Bakend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.dll
+C:\Users\emsal\Desktop\EmsalProje\Bakend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.pdb
+C:\Users\emsal\Desktop\EmsalProje\Bakend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.DAL.dll
+C:\Users\emsal\Desktop\EmsalProje\Bakend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility.dll
+C:\Users\emsal\Desktop\EmsalProje\Bakend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.dll
+C:\Users\emsal\Desktop\EmsalProje\Bakend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\emsal\Desktop\EmsalProje\Bakend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\NLog.dll
+C:\Users\emsal\Desktop\EmsalProje\Bakend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.DAL.pdb
+C:\Users\emsal\Desktop\EmsalProje\Bakend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility.pdb
+C:\Users\emsal\Desktop\EmsalProje\Bakend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.xml
+C:\Users\emsal\Desktop\EmsalProje\Bakend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\emsal\Desktop\EmsalProje\Bakend\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\NLog.xml
+C:\Users\emsal\Desktop\EmsalProje\Bakend\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.csprojResolveAssemblyReference.cache
+C:\Users\emsal\Desktop\EmsalProje\Bakend\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.dll
+C:\Users\emsal\Desktop\EmsalProje\Bakend\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.pdb
+C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.dll.config
+C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.dll
+C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.BLL.pdb
+C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.DAL.dll
+C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility.dll
+C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.dll
+C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\NLog.dll
+C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.DAL.pdb
+C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility.pdb
+C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.xml
+C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\NLog.xml
+C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.csprojResolveAssemblyReference.cache
+C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.dll
+C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.pdb

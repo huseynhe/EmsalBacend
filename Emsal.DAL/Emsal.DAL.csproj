@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0CAA1DD7-1600-4E30-BB8A-21CC22BC5C5D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Emsal.DAL</RootNamespace>
+    <AssemblyName>Emsal.DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CodeObjects\Audit.cs" />
+    <Compile Include="CodeObjects\BaseInput.cs" />
+    <Compile Include="CustomObjects\AnnouncementDetail.cs" />
+    <Compile Include="CustomObjects\DemandDetialOPA.cs" />
+    <Compile Include="CustomObjects\DemandOfferDetail.cs" />
+    <Compile Include="CustomObjects\DemanOfferProduction.cs" />
+    <Compile Include="CustomObjects\DemanProductionGroup.cs" />
+    <Compile Include="CustomObjects\OfferProductionDetail.cs" />
+    <Compile Include="CustomObjects\OfferProducts.cs" />
+    <Compile Include="CustomObjects\PersonInformation.cs" />
+    <Compile Include="CustomObjects\PotentialClientDetail.cs" />
+    <Compile Include="CustomObjects\PotesialProducts.cs" />
+    <Compile Include="CustomObjects\ProductCatalogDetail.cs" />
+    <Compile Include="CustomObjects\ProductionDetail.cs" />
+    <Compile Include="CustomObjects\ProductionInfo.cs" />
+    <Compile Include="CustomObjects\ProductPriceDetail.cs" />
+    <Compile Include="CustomObjects\ProductionCalendarDetail.cs" />
+    <Compile Include="CustomObjects\UserInfo.cs" />
+    <Compile Include="C__MigrationHistory.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBUtil.cs" />
+    <Compile Include="EmsalLog.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmsalModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmsalModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmsalModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmsalModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmsalModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="OperationLogic.cs" />
+    <Compile Include="CodeObjects\BaseOutput.cs" />
+    <Compile Include="CodeObjects\BOBaseOutputResponse.cs" />
+    <Compile Include="EmsalDBContext.cs" />
+    <Compile Include="EmsalDBInitializer.cs" />
+    <Compile Include="Enum\BOResultTypes.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchObject\DemandProductionDetailistForUser.cs" />
+    <Compile Include="SearchObject\DemandProductsForAccountingSearch.cs" />
+    <Compile Include="SearchObject\GetDemandProductionDetailistForEValueIdSearch.cs" />
+    <Compile Include="SearchObject\OfferProductionDetailSearch.cs" />
+    <Compile Include="SearchObject\PotensialUserForAdminUnitIdList.cs" />
+    <Compile Include="SqlOperationLogic.cs" />
+    <Compile Include="SqlOperationLogicAccounting.cs" />
+    <Compile Include="tblAddress.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblAnnouncement.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblAuthenticatedPart.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblBranchResponsibility.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblComMessage.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblComMessageAttachment.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblCommunication.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblConfirmationMessage.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblContract.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblDemand_Production.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblEmployee.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblEnumCategory.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblEnumValue.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblExpertise.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblForeign_Organization.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblOffer_Production.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblOrganization.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblParty.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblPerson.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblPotential_Production.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblPrivilegedRole.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblPRM_AdminUnit.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblPRM_ASCBranch.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblPRM_KTNBranch.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblPRM_Thoroughfare.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblProductAddress.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblProductCatalog.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblProductCatalogControl.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblProductionCalendar.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblProductionControl.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblProduction_Calendar.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblProduction_Document.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblProductPrice.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblProductProfileImage.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblProduct_Document.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblPropertyDetail.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblPropertyType.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblRole.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblTitle.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblUser.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblUserRole.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="EmsalModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EmsalModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EmsalModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EmsalModel.edmx</DependentUpon>
+      <LastGenOutput>EmsalModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="EmsalModel.edmx.diagram">
+      <DependentUpon>EmsalModel.edmx</DependentUpon>
+    </None>
+    <None Include="EmsalModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EmsalModel.edmx</DependentUpon>
+      <LastGenOutput>EmsalModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Emsal.Utility\Emsal.Utility.csproj">
+      <Project>{99e1d23d-1d59-47d4-b440-1d081e12447f}</Project>
+      <Name>Emsal.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
