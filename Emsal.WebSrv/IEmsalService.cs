@@ -1054,6 +1054,11 @@ namespace Emsal.WebSrv
 
         #region Optimisation
         [OperationContract]
+        BaseOutput WS_GetOfferProductionDetailistForEValueId_OP1(BaseInput baseinput, OfferProductionDetailSearch ops, out List<GetOfferProductionDetailistForEValueId> itemList);
+        [OperationContract]
+        BaseOutput WS_GetOfferProductionDetailistForEValueId_OPC1(BaseInput baseinput, OfferProductionDetailSearch ops, out Int64 count);
+        
+        [OperationContract]
         BaseOutput WS_GetDemandProductDetailInfoForAccounting_Search(BaseInput baseinput, Int64 state_eV_Id, Int64 year, Int64 partOfYear, string productID, out List<ProductionDetail> itemList);
 
         [OperationContract]

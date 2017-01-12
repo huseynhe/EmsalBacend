@@ -44,6 +44,8 @@ namespace Emsal.DAL.CustomObjects
         public string fullForeignOrganization { get; set; }
         public Nullable<long> forgId { get; set; }
         public string name { get; set; }
+         
+          
         public string surname { get; set; }
         public Int64 birtday { get; set; }
         public string gender { get; set; }

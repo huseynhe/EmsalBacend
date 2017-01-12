@@ -2055,6 +2055,14 @@ namespace Emsal.WebSrv
         }
 
         #region Optimisation
+        public BaseOutput WS_GetOfferProductionDetailistForEValueId_OP1(BaseInput baseinput, OfferProductionDetailSearch ops, out List<GetOfferProductionDetailistForEValueId> itemList)
+        {
+            return businessLogic.GetOfferProductionDetailistForEValueId_OP1(baseinput, ops, out itemList);
+        }
+        public BaseOutput WS_GetOfferProductionDetailistForEValueId_OPC1(BaseInput baseinput, OfferProductionDetailSearch ops, out Int64 count)
+        {
+            return businessLogic.GetOfferProductionDetailistForEValueId_OPC1(baseinput, ops, out count);
+        }
         public BaseOutput WS_GetDemandProductDetailInfoForAccounting_Search(BaseInput baseinput, Int64 state_eV_Id, Int64 year, Int64 partOfYear, string productID, out List<ProductionDetail> itemList)
         {
 

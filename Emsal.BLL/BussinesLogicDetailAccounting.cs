@@ -194,6 +194,64 @@ namespace Emsal.BLL
 
             }
         }
+        public BaseOutput GetOfferProductionDetailistForEValueId_OP1(BaseInput baseinput, OfferProductionDetailSearch ops, out List<GetOfferProductionDetailistForEValueId> itemList)
+        {
+            BaseOutput baseOutput;
+            List<GetOfferProductionDetailistForEValueId> objlist = new List<GetOfferProductionDetailistForEValueId>();
+            try
+            {
+                itemList = sqloperationLogicAccounting.GetOfferProductionDetailistForEValueId_OP1(ops);
+
+                foreach (var item in itemList)
+                {
+
+
+
+
+                    List<tblCommunication> comlist = operationLogic.GetCommunicationByPersonId(item.personID);
+
+                    item.personcomList = comlist;
+
+
+                    item.productionCalendarList = sqloperationLogic.GetProductionCalendarOfferId(item.productionID);
+                    objlist.Add(item);
+                }
+
+                itemList = objlist;
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+
+        }
+        public BaseOutput GetOfferProductionDetailistForEValueId_OPC1(BaseInput baseinput, OfferProductionDetailSearch ops, out Int64 count)
+        {
+            BaseOutput baseOutput;
+            count = 0;
+            try
+            {
+                count = sqloperationLogic.GetOfferProductionDetailistForEValueId_OPC(ops);
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                count = 0;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
     }
 }
 
