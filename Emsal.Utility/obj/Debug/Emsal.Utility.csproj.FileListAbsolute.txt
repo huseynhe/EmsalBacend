@@ -141,10 +141,3 @@ C:\Users\emsal\Desktop\EmsalProje\Bakend\EmsalBacend\EmsalBacend\Emsal.Utility\b
 C:\Users\emsal\Desktop\EmsalProje\Bakend\EmsalBacend\EmsalBacend\Emsal.Utility\obj\Debug\Emsal.Utility.dll
 C:\Users\emsal\Desktop\EmsalProje\Bakend\EmsalBacend\EmsalBacend\Emsal.Utility\obj\Debug\Emsal.Utility.pdb
 C:\EmsalBacend\EmsalBacend\Emsal.Utility\obj\Debug\Emsal.Utility.csprojResolveAssemblyReference.cache
-C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.Utility\bin\Debug\Emsal.Utility.dll
-C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.Utility\bin\Debug\Emsal.Utility.pdb
-C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.Utility\bin\Debug\NLog.dll
-C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.Utility\bin\Debug\NLog.xml
-C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.Utility\obj\Debug\Emsal.Utility.dll
-C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.Utility\obj\Debug\Emsal.Utility.pdb
-C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.Utility\obj\Debug\Emsal.Utility.csprojResolveAssemblyReference.cache

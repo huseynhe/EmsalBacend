@@ -65,6 +65,7 @@
     <Compile Include="CustomObjects\GetOfferProductionDetailistForEValueId.cs" />
     <Compile Include="CustomObjects\OfferProductionDetail.cs" />
     <Compile Include="CustomObjects\OfferProducts.cs" />
+    <Compile Include="CustomObjects\PersonDetail.cs" />
     <Compile Include="CustomObjects\PersonInformation.cs" />
     <Compile Include="CustomObjects\PotentialClientDetail.cs" />
     <Compile Include="CustomObjects\PotesialProducts.cs" />

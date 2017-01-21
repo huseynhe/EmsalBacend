@@ -86,7 +86,7 @@ namespace Emsal.DAL.CustomObjects
         public List<tblCommunication> personcomList { get; set; }
         public Int64 personID { get; set; }
         public Int64 productAddressID { get; set; }
-        public string phoneNumber { get; set; }
+        //public string phoneNumber { get; set; }
         public string roleDescription { get; set; }
     }
 }

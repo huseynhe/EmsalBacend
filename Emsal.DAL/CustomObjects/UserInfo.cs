@@ -34,6 +34,8 @@ namespace Emsal.DAL.CustomObjects
         public string fatherName { get; set; }
         public string gender { get; set; }
         public Int64 birtday { get; set; }
+        public Int64 state_Ev_ID { get; set; }
+        public Int64 ID { get; set; }
      
         public string profilPicture { get; set; }
         public Int64 adress_Id { get; set; }

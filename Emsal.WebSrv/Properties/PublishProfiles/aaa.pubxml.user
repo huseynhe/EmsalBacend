@@ -11,43 +11,43 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Emsal.BLL.dll">
-      <publishTime>01/11/2017 16:30:56</publishTime>
+      <publishTime>01/21/2017 16:31:33</publishTime>
     </File>
     <File Include="bin/Emsal.DAL.dll">
-      <publishTime>01/11/2017 16:30:55</publishTime>
+      <publishTime>01/21/2017 16:28:56</publishTime>
     </File>
     <File Include="bin/Emsal.Utility.dll">
-      <publishTime>12/21/2016 22:43:23</publishTime>
+      <publishTime>01/12/2017 12:11:40</publishTime>
     </File>
     <File Include="bin/Emsal.WebSrv.dll">
-      <publishTime>01/11/2017 16:30:56</publishTime>
+      <publishTime>01/21/2017 16:31:34</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
-      <publishTime>12/21/2016 12:41:15</publishTime>
+      <publishTime>01/12/2017 11:41:03</publishTime>
     </File>
     <File Include="bin/NLog.config">
-      <publishTime>12/21/2016 12:41:15</publishTime>
+      <publishTime>01/12/2017 11:41:02</publishTime>
     </File>
     <File Include="bin/NLog.dll">
-      <publishTime>12/21/2016 12:41:15</publishTime>
+      <publishTime>01/12/2017 11:41:03</publishTime>
     </File>
     <File Include="bin/System.Web.Mvc.dll">
-      <publishTime>12/21/2016 12:41:15</publishTime>
+      <publishTime>01/12/2017 11:41:03</publishTime>
     </File>
     <File Include="EmsalService.svc">
-      <publishTime>12/21/2016 12:36:11</publishTime>
+      <publishTime>01/12/2017 11:41:02</publishTime>
     </File>
     <File Include="NLog.config">
-      <publishTime>12/21/2016 12:41:15</publishTime>
+      <publishTime>01/12/2017 11:41:02</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>12/21/2016 12:41:15</publishTime>
+      <publishTime>01/12/2017 11:41:03</publishTime>
     </File>
     <File Include="Properties/Settings.settings">
-      <publishTime>12/21/2016 12:36:11</publishTime>
+      <publishTime>01/12/2017 11:41:02</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>01/11/2017 16:30:56</publishTime>
+      <publishTime>01/21/2017 16:31:34</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -3,6 +3,7 @@ using Emsal.DAL.CodeObjects;
 using Emsal.DAL.CustomObjects;
 using Emsal.DAL.Enum;
 using Emsal.DAL.SearchObject;
+using Emsal.Utility.UtilityObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,18 +17,20 @@ namespace Emsal.BLL
 
         SqlOperationLogic sqloperationLogic = new SqlOperationLogic();
 
-        public BaseOutput GetPersonalinformationByRoleId(BaseInput baseinput, Int64 roleId, Int64 userId, out List<UserInfo> itemList)
+        public BaseOutput GetPersonalinformationByRoleId(BaseInput baseinput, PotensialUserForAdminUnitIdList ops, out List<UserInfo> itemList)
         {
             BaseOutput baseOutput;
             try
             {
-                itemList = sqloperationLogic.GetPersonalinformationByRoleId(roleId, userId);
+             //   Int64 channelId = Convert.ToInt64(baseinput.ChannelId);
+             //   ExceptionHandlingOperation.SaveInputInformation((IOUtil.GetObjValue(baseinput) + IOUtil.GetObjValue(ops)), "0", "0", 10, (ChannelEnum)channelId);
+                itemList = sqloperationLogic.GetPersonalinformationByRoleId(ops);
                 foreach (var item in itemList)
                 {
                     List<tblCommunication> comlist = operationLogic.GetCommunicationByPersonId(item.personId);
                     item.personcomList = comlist;
                 }
-                
+
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
 
 
@@ -1705,12 +1708,12 @@ namespace Emsal.BLL
 
             }
         }
-        public BaseOutput GetPotensialUserList_OP(BaseInput baseinput, int page, int pageSize, out List<UserInfo> itemList)
+        public BaseOutput GetPotensialUserList_OP(BaseInput baseinput,PotensialUserForAdminUnitIdList ops, out List<UserInfo> itemList)
         {
             BaseOutput baseOutput;
             try
             {
-                itemList = sqloperationLogic.GetPotensialUserList_OP(page, pageSize);
+                itemList = sqloperationLogic.GetPotensialUserList_OP(ops);
 
                 foreach (var item in itemList)
                 {
@@ -1732,13 +1735,13 @@ namespace Emsal.BLL
             }
 
         }
-        public BaseOutput GetPotensialUserList_OPC(BaseInput baseinput, out Int64 count)
+        public BaseOutput GetPotensialUserList_OPC(BaseInput baseinput,PotensialUserForAdminUnitIdList ops, out Int64 count)
         {
             BaseOutput baseOutput;
             count = 0;
             try
             {
-                count = sqloperationLogic.GetPotensialUserList_OPC();
+                count = sqloperationLogic.GetPotensialUserList_OPC(ops);
 
 
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
@@ -1779,13 +1782,13 @@ namespace Emsal.BLL
             }
 
         }
-        public BaseOutput GetPotensialUserForAdminUnitIdList_OPC(BaseInput baseinput, out Int64 count)
+        public BaseOutput GetPotensialUserForAdminUnitIdList_OPC(BaseInput baseinput,PotensialUserForAdminUnitIdList ops, out Int64 count)
         {
             BaseOutput baseOutput;
             count = 0;
             try
             {
-                count = sqloperationLogic.GetPotensialUserForAdminUnitIdList_OPC();
+                count = sqloperationLogic.GetPotensialUserForAdminUnitIdList_OPC(ops);
 
 
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");

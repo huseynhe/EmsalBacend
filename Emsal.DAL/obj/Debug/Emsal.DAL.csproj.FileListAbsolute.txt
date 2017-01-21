@@ -287,17 +287,3 @@ C:\Users\emsal\Desktop\EmsalProje\Bakend\EmsalBacend\EmsalBacend\Emsal.DAL\bin\D
 C:\Users\emsal\Desktop\EmsalProje\Bakend\EmsalBacend\EmsalBacend\Emsal.DAL\obj\Debug\Emsal.DAL.csprojResolveAssemblyReference.cache
 C:\Users\emsal\Desktop\EmsalProje\Bakend\EmsalBacend\EmsalBacend\Emsal.DAL\obj\Debug\Emsal.DAL.dll
 C:\Users\emsal\Desktop\EmsalProje\Bakend\EmsalBacend\EmsalBacend\Emsal.DAL\obj\Debug\Emsal.DAL.pdb
-C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.DAL\bin\Debug\Emsal.DAL.dll.config
-C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.DAL\bin\Debug\Emsal.DAL.dll
-C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.DAL\bin\Debug\Emsal.DAL.pdb
-C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.DAL\bin\Debug\Emsal.Utility.dll
-C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.DAL\bin\Debug\EntityFramework.dll
-C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.DAL\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.DAL\bin\Debug\NLog.dll
-C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.DAL\bin\Debug\Emsal.Utility.pdb
-C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.DAL\bin\Debug\EntityFramework.xml
-C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.DAL\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.DAL\bin\Debug\NLog.xml
-C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.DAL\obj\Debug\Emsal.DAL.csprojResolveAssemblyReference.cache
-C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.DAL\obj\Debug\Emsal.DAL.dll
-C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.DAL\obj\Debug\Emsal.DAL.pdb

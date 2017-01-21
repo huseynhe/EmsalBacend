@@ -2041,7 +2041,27 @@ namespace Emsal.DAL
                 {
                     var offerProductions = (from p in context.tblOffer_Production
                                             join ev in context.tblEnumValues on p.state_eV_Id equals ev.Id
-                                            where p.user_Id == UserId && p.Status == 1 && ev.Status==1 && ev.Id!=41 
+                                            where p.user_Id == UserId && p.Status == 1 && ev.Status==1 
+                                            select p);
+
+                    return offerProductions.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public List<tblOffer_Production> GetOffer_ProductionsByUserId1(Int64 UserId)
+        {
+            try
+            {
+                using (var context = new EmsalDBEntities())
+                {
+                    var offerProductions = (from p in context.tblOffer_Production
+                                            join ev in context.tblEnumValues on p.state_eV_Id equals ev.Id
+                                            where p.user_Id == UserId && p.Status == 1  && ev.Status == 1 && ev.Id != 41 && ev.Id != 1
                                             select p);
 
                     return offerProductions.ToList();

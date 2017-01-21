@@ -508,6 +508,11 @@ namespace Emsal.WebSrv
 
             return businessLogic.GetOffer_ProductionsByUserId(baseinput, UserID, out OfferProductionList);
         }
+        public BaseOutput WS_GetOffer_ProductionsByUserID1(BaseInput baseinput, Int64 UserID, out List<tblOffer_Production> OfferProductionList)
+        {
+            
+            return businessLogic.GetOffer_ProductionsByUserId1(baseinput, UserID, out OfferProductionList);
+        }
         public BaseOutput WS_GetOffAirOffer_ProductionsByUserID(BaseInput baseinput, tblOffer_Production Offer, out List<tblOffer_Production> OfferProductionList)
         {
             return businessLogic.GetOffAirOffer_ProductionsByUserId(baseinput, Offer, out OfferProductionList);
@@ -1433,9 +1438,9 @@ namespace Emsal.WebSrv
 
         }
 
-        public BaseOutput WS_GetPersonalinformationByRoleId(BaseInput baseinput, Int64 roleId, Int64 userId, out List<UserInfo> itemList)
+        public BaseOutput WS_GetPersonalinformationByRoleId(BaseInput baseinput, PotensialUserForAdminUnitIdList ops, out List<UserInfo> itemList)
         {
-            return businessLogic.GetPersonalinformationByRoleId(baseinput, roleId, userId, out itemList);
+            return businessLogic.GetPersonalinformationByRoleId(baseinput, ops, out itemList);
 
         }
         public BaseOutput WS_GetDemandOfferProductionTotal(BaseInput baseinput, Int64 addressID, out List<DemandOfferDetail> itemList)
@@ -2055,6 +2060,14 @@ namespace Emsal.WebSrv
         }
 
         #region Optimisation
+        public BaseOutput WS_GetUserDetailInfoForOffers_OP(BaseInput baseinput, GetDemandProductionDetailistForEValueIdSearch ops, out List<PersonDetail> itemList)
+        {
+            return businessLogic.GetUserDetailInfoForOffers_OP(baseinput, ops, out itemList);
+        }
+        public BaseOutput WS_GetUserDetailInfoForOffers_OPC(BaseInput baseinput, GetDemandProductionDetailistForEValueIdSearch ops, out Int64 count)
+        {
+            return businessLogic.GetUserDetailInfoForOffers_OPC(baseinput, ops, out count);
+        }
         public BaseOutput WS_GetOfferProductionDetailistForEValueId_OP1(BaseInput baseinput, OfferProductionDetailSearch ops, out List<GetOfferProductionDetailistForEValueId> itemList)
         {
             return businessLogic.GetOfferProductionDetailistForEValueId_OP1(baseinput, ops, out itemList);
@@ -2073,22 +2086,22 @@ namespace Emsal.WebSrv
         {
             return businessLogic.GetDemandProductDetailInfoForAccounting_OPP(baseinput, ops, year, partOfYear, out totalPrice);
         }
-        public BaseOutput WS_GetPotensialUserList_OP(BaseInput baseinput, int page, int pageSize, out List<UserInfo> itemList)
+        public BaseOutput WS_GetPotensialUserList_OP(BaseInput baseinput, PotensialUserForAdminUnitIdList ops, out List<UserInfo> itemList)
         {
-            return businessLogic.GetPotensialUserList_OP(baseinput, page, pageSize, out itemList);
+            return businessLogic.GetPotensialUserList_OP(baseinput,ops, out itemList);
         }
-        public BaseOutput WS_GetPotensialUserList_OPC(BaseInput baseinput, out Int64 count)
+        public BaseOutput WS_GetPotensialUserList_OPC(BaseInput baseinput,PotensialUserForAdminUnitIdList ops, out Int64 count)
         {
-            return businessLogic.GetPotensialUserList_OPC(baseinput, out count);
+            return businessLogic.GetPotensialUserList_OPC(baseinput,ops, out count);
 
         }
         public BaseOutput WS_GetPotensialUserForAdminUnitIdList_OP(BaseInput baseinput, PotensialUserForAdminUnitIdList ops, out List<UserInfo> itemList)
         {
             return businessLogic.GetPotensialUserForAdminUnitIdList_OP(baseinput, ops, out itemList);
         }
-        public BaseOutput WS_GetPotensialUserForAdminUnitIdList_OPC(BaseInput baseinput, out Int64 count)
+        public BaseOutput WS_GetPotensialUserForAdminUnitIdList_OPC(BaseInput baseinput,PotensialUserForAdminUnitIdList ops, out Int64 count)
         {
-            return businessLogic.GetPotensialUserForAdminUnitIdList_OPC(baseinput, out count);
+            return businessLogic.GetPotensialUserForAdminUnitIdList_OPC(baseinput,ops, out count);
         }
         public BaseOutput WS_GetDemandProductionDetailistForEValueId_OP(BaseInput baseinput, GetDemandProductionDetailistForEValueIdSearch ops, out List<ProductionDetail> itemList)
         {

@@ -252,6 +252,72 @@ namespace Emsal.BLL
 
             }
         }
+        public BaseOutput GetUserDetailInfoForOffers_OP(BaseInput baseinput, GetDemandProductionDetailistForEValueIdSearch ops, out List<PersonDetail> itemList)
+        {
+            BaseOutput baseOutput;
+           // itemList = new List<PersonDetail>();
+            List<PersonDetail> objlist = new List<PersonDetail>();
+
+            try
+            {
+                itemList = sqloperationLogicAccounting.GetUserDetailInfoForOffers_OP(ops);
+
+                foreach (var item in itemList)
+                {
+                    tblContract contract = operationLogic.GetContractById(item.contractID);
+                    //tblContract contract1 = operationLogic.GetContractById(item.contractID);
+                    if (item.contractStatus != 0)
+                    {
+                        if (contract != null)
+                        {
+                            item.contractList = contract;
+                        }
+
+                    }
+                    else if (item.contractStatus == 0)
+                    {
+                        if (contract == null)
+                        {
+                            item.contractList = contract;
+                        }
+                    }
+                    objlist.Add(item);
+                }
+                itemList = objlist;
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput GetUserDetailInfoForOffers_OPC(BaseInput baseinput, GetDemandProductionDetailistForEValueIdSearch ops, out Int64 count)
+        {
+            BaseOutput baseOutput;
+            count = 0;
+            try
+            {
+                count = sqloperationLogicAccounting.GetUserDetailInfoForOffers_OPC(ops);
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                count = 0;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
     }
 }
 

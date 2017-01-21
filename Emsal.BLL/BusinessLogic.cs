@@ -1512,6 +1512,22 @@ namespace Emsal.BLL
                 return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
             }
         }
+        public BaseOutput GetOffer_ProductionsByUserId1(BaseInput baseinput, Int64 UserId, out List<tblOffer_Production> itemList)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                itemList = operationLogic.GetOffer_ProductionsByUserId1(UserId);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+            }
+        }
 
         public BaseOutput GetOffAirOffer_ProductionsByUserId(BaseInput baseinput, tblOffer_Production Offer, out List<tblOffer_Production> itemList)
         {
