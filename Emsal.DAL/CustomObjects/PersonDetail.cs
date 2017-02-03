@@ -17,8 +17,9 @@ namespace Emsal.DAL.CustomObjects
         public string profilePicture { get; set; }
         public string gender { get; set; }
         public Int64 userId { get; set; }
-        public Int64 contractStatus { get; set; }
+    
         public tblContract contractList { get; set; }
         public Int64 contractID { get; set; }
+        public bool contractStatus { get; set; }
     }
 }

@@ -26,5 +26,11 @@ namespace Emsal.DAL.SearchObject
         public Int64 adminUnitID { get; set; }
         [DataMember(IsRequired = true)]
         public Int64 userID { get; set; }
+        [DataMember(IsRequired = true)]
+        public string pinNumber { get; set; }
+        [DataMember(IsRequired = true)]
+        public string voen { get; set; }
+        [DataMember(IsRequired = true)]
+        public Int64 productID { get; set; }
     }
 }

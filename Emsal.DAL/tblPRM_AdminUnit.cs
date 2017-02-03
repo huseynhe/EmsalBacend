@@ -27,5 +27,6 @@ namespace Emsal.DAL
         public Nullable<long> updatedDate { get; set; }
         public Nullable<long> iamasId { get; set; }
         public bool isCity { get; set; }
+        public Nullable<long> ParentRegionID { get; set; }
     }
 }

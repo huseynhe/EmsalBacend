@@ -15,6 +15,7 @@ namespace Emsal.DAL.CustomObjects
         public tblProductCatalog productCatalog { get; set; }
         public tblProductCatalog parentProductCatalog { get; set; }
         public string productName { get; set; }
+        public long productId { get; set; }
         public List<tblProduct_Document> productCatalogDocumentList { get; set; }
 
     }

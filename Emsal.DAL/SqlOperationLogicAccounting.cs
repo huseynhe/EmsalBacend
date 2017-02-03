@@ -81,7 +81,8 @@ namespace Emsal.DAL
 					 
                       where   
                 op.monitoring_eV_Id= @monitoring_eV_Id and
-        op.Status=1 
+                op.state_eV_Id=2 and 
+                op.Status=1 
                     ) as FirstTable   
                      left join [dbo].[tblEnumValue] ev on FirstTable.EnumValueId=ev.Id and ev.Status=1  
 					 left join [dbo].[tblPerson] person on FirstTable.address_Id=person.address_Id and person.Status=1
@@ -92,7 +93,7 @@ namespace Emsal.DAL
 					 left join  [dbo].[tblAddress] adr on adr.Id=person.address_Id and adr.Status=1
 					   left join [dbo].[tblEnumValue] ev on table2.userType_eV_ID=ev.Id and ev.Status=1  
 					    left join  [dbo].[tblForeign_Organization] fo on table2.user_Id=fo.userId and fo.Status=1
-               left join tblUserRole ur on table2.user_Id=ur.UserId and ur.Status=1
+               left join tblUserRole ur on table2.user_Id=ur.UserId and ur.Status=1 
 			 left  join tblProductAddress padr on table2.productAddress_Id=padr.Id and padr.Status=1
 			   join tblPRM_AdminUnit au on padr.adminUnit_Id =au.Id 
 	   
@@ -103,7 +104,7 @@ namespace Emsal.DAL
 							 		)
            
 
-            ) as tb where tb.EnumCategoryId=5
+            ) as tb where tb.EnumCategoryId=5 and tb.RoleId in (11,15)
 
 ";
             var query3 = @"
@@ -286,8 +287,9 @@ namespace Emsal.DAL
 					 left join  [dbo].[tblPotential_Production] pp on us.Id=pp.user_Id and pp.Status=1
 					 
                       where   
-                op.monitoring_eV_Id= @monitoring_eV_Id and
-        op.Status=1 
+                    op.monitoring_eV_Id= @monitoring_eV_Id and
+                    op.state_eV_Id=2 and 
+                    op.Status=1 
                     ) as FirstTable   
 					 left join [dbo].[tblPerson] person on FirstTable.address_Id=person.address_Id and person.Status=1
 					 left join  [dbo].[tblAddress] adr on adr.Id=person.address_Id and adr.Status=1
@@ -309,7 +311,7 @@ namespace Emsal.DAL
            
 
             ) as tb
-  where tb.EnumCategoryId=5 ";
+  where tb.EnumCategoryId=5 and  tb.RoleId in (11,15) ";
 
             var queryadminID = @"  WHERE Id=@addressID ";
             squeryID.Append(query1);
@@ -537,8 +539,7 @@ namespace Emsal.DAL
                        left join    tblUserRole ur on us.Id=ur.UserId and ur.Status=1
                   left join [dbo].[tblRole] r on ur.RoleId=r.Id and r.Status=1
                       where    op.Status=1 and r.Id in (11,15)
-
-					  and op.state_eV_Id=@state_eV_Id
+                     and op.state_eV_Id=@state_eV_Id
 					 
                     ) as FirstTable   
                    left   join [dbo].[tblEnumValue] ev on FirstTable.EnumValueId=ev.Id and ev.Status=1
@@ -1048,17 +1049,15 @@ left join tblContract cnt on person.UserId=cnt.SupplierUserID and cnt.Status=1
             var queryMonitoringId = @"  and monitoring_eV_Id=@monitoring_eV_Id";
             var queryName = @" and (Name like '%'+@Name+'%' or Surname like '%'+@Name+'%' or FatherName like '%'+@Name+'%' or organizationName like '%'+@Name+'%')";
             var queryVoen = @"  and (voen like '%'+@voen+'%' or PinNumber Like '%'+@PinNumber+'%')";
+            // var queryCStatus = @"  and contractStatus=@contractStatus";
             //var queryUserID = @" and userId=@userId";
             //var queryPinNumber = @" and PinNumber=@PinNumber";
             if (ops.roleID != 0)
             {
                 squery.Append(queryRoleId);
             }
-            if (ops.contractId != 0)
-            {
-                squery.Append(queryContractID);
-            }
-            if (ops.Name != null)
+
+            if (!String.IsNullOrEmpty(ops.Name))
             {
                 squery.Append(queryName);
             }
@@ -1067,13 +1066,23 @@ left join tblContract cnt on person.UserId=cnt.SupplierUserID and cnt.Status=1
                 squery.Append(queryMonitoringId);
 
             }
-            if (ops.voen != null || ops.pinNumber != null)
+            if (!String.IsNullOrEmpty(ops.voen) || !String.IsNullOrEmpty(ops.pinNumber))
             {
                 squery.Append(queryVoen);
             }
-            //if (ops.user_Id != 0)
+            //if (ops.contractStatus == true)
             //{
-            //    squery.Append(queryUserID);
+            //    if (ops.contractId != 0)
+            //    {
+            //        squery.Append(queryContractID);
+            //    }
+            //}
+            //else
+            //{
+            //    if (ops.contractId == 0)
+            //    {
+            //        squery.Append(queryContractID);
+            //    }
             //}
 
 
@@ -1097,6 +1106,7 @@ left join tblContract cnt on person.UserId=cnt.SupplierUserID and cnt.Status=1
                     command.Parameters.AddWithValue("@contractId", ops.contractId);
                     command.Parameters.AddWithValue("@monitoring_eV_Id", ops.monitoring_Ev_Id);
                     command.Parameters.AddWithValue("@userID", ops.user_Id);
+                    // command.Parameters.Add(ops.contractStatus);
 
                     var reader = command.ExecuteReader();
                     while (reader.Read())
@@ -1114,7 +1124,7 @@ left join tblContract cnt on person.UserId=cnt.SupplierUserID and cnt.Status=1
                             organizationName = reader.GetStringOrEmpty(8),
                             voen = reader.GetStringOrEmpty(9),
                             contractID = reader.GetInt64OrDefaultValue(11),
-                            contractStatus = reader.GetInt64OrDefaultValue(14),
+                            // contractStatus = reader.GetInt64OrDefaultValue(14),
 
                         });
                     }
@@ -1236,11 +1246,20 @@ select  person.Id,person.Name,person.Surname,person.FatherName,person.profilePic
             {
                 squery.Append(queryVoen);
             }
-            //if (ops.user_Id != 0)
+            //if (ops.contractStatus == true)
             //{
-            //    squery.Append(queryUserID);
+            //    if (ops.contractId != 0)
+            //    {
+            //        squery.Append(queryContractID);
+            //    }
             //}
-
+            //else
+            //{
+            //    if (ops.contractId == 0)
+            //    {
+            //        squery.Append(queryContractID);
+            //    }
+            //}
 
 
 
@@ -1278,5 +1297,452 @@ select  person.Id,person.Name,person.Surname,person.FatherName,person.profilePic
 
             return count;
         }
+        public List<ForeignOrganization> GetGovermentOrganisatinByAdminID(Int64 adminID)
+        {
+            var result = new List<ForeignOrganization>();
+            StringBuilder squery = new StringBuilder();
+            StringBuilder squeryUnion = new StringBuilder();
+
+            var query1 = @" with cte(Id) AS 
+ (
+  SELECT au.Id
+  FROM dbo.tblPRM_AdminUnit au  ";
+            squeryUnion.Append(query1);
+            var queryadmin = @" where au.Id=@adminID";
+            if (adminID != 0)
+            {
+                squeryUnion.Append(queryadmin);
+            }
+            var query2 = @" 
+      UNION ALL 
+   SELECT au.Id
+
+  FROM dbo.tblPRM_AdminUnit au  JOIN cte c ON au.parentId = c.Id
+  
+  )select fo.Id, fo.name as organizationName,pa.adminUnit_Id from tblForeign_Organization  fo
+ join tblAddress pa on fo.address_Id=pa.Id and pa.Status=1
+
+ join tblPRM_AdminUnit au on pa.adminUnit_Id=au.Id and au.Status=1
+
+		   	   and  au.Id 
+			   in (
+							select Id from cte
+							 		)
+where fo.Status=1";
+            squery.Append(squeryUnion.ToString());
+
+
+            squery.Append(query2);
+            using (var connection = new SqlConnection(DBUtil.ConnectionString))
+            {
+                connection.Open();
+
+                using (var command = new SqlCommand(squery.ToString(), connection))
+                {
+                    command.Parameters.AddWithValue("@adminID", adminID);
+                    var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        result.Add(new ForeignOrganization()
+                        {
+                            ID = reader.GetInt64OrDefaultValue(0),
+                            organizationName = reader.GetStringOrEmpty(1),
+
+                        });
+                    }
+
+
+                    connection.Close();
+                }
+
+                return result;
+            }
+        }
+        public List<adminUnit> GetPRM_AdminUnitByAdminID(Int64 adminID)
+        {
+            var result = new List<adminUnit>();
+
+
+            var query = @" with cte(Id) AS 
+ (
+  SELECT au.Id
+  FROM dbo.tblPRM_AdminUnit au  
+      UNION ALL 
+   SELECT au.Id
+
+  FROM dbo.tblPRM_AdminUnit au  JOIN cte c ON au.parentId = c.Id
+  
+  )select fo.Id, fo.name as organizationName,pa.adminUnit_Id from tblForeign_Organization  fo
+ join tblAddress pa on fo.address_Id=pa.Id and pa.Status=1
+
+ join tblPRM_AdminUnit au on pa.adminUnit_Id=au.Id and au.Status=1
+
+		   	   and  au.Id 
+			   in (
+							select Id from cte
+							 		)
+where fo.Status=1";
+
+            using (var connection = new SqlConnection(DBUtil.ConnectionString))
+            {
+                connection.Open();
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@adminID", adminID);
+                    var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        result.Add(new adminUnit()
+                        {
+
+                            adminUnitID = reader.GetInt64OrDefaultValue(2)
+                        });
+                    }
+
+
+                    connection.Close();
+                }
+
+                return result;
+            }
+        }
+
+        public List<DemanProductionGroup> GetTotalDemandOffers(Int64 page, Int64 page_size,DemandOfferProductsSearch ops)
+        {
+            var result = new List<DemanProductionGroup>();
+            StringBuilder squery = new StringBuilder();
+            var query = @" ;WITH RESULTS AS
+    (
+        SELECT *
+            , ROW_NUMBER() OVER (ORDER BY tb.product_Id DESC) AS rn
+            , ROW_NUMBER() OVER (ORDER BY tb.product_Id ASC) AS rn_reversed
+        FROM ( 
+ select table1.*,pc.ProductName as parentName,
+table1.toplam *unit_price as totalDemandPrice from (
+select  
+op.product_Id,pc.ProductCatalogParentID,pc.ProductName,
+SUM(quantity) as toplam,price.unit_price,ev.name as kategoryName
+,prc.EnumValueId  from tblDemand_Production op
+ join tblProductCatalog pc on op.product_Id=pc.Id and pc.Status=1
+ join tblProductPrice price on op.product_Id=price.productId and price.Status=1
+ join tblProductCatalogControl prc on prc.ProductId=op.product_Id and prc.Status=1
+ join tblEnumValue ev on prc.EnumValueId=ev.Id  and ev.Status=1 
+where op.Status=1 --and op.product_Id=250 
+and ev.enumCategory_enumCategoryId=5
+and op.state_eV_Id=2
+--and op.product_Id=334
+group by op.product_Id,pc.ProductCatalogParentID,pc.ProductName,price.unit_price,
+ev.name
+,prc.EnumValueId  
+
+) as table1
+ join tblProductCatalog pc on table1.ProductCatalogParentID=pc.Id and pc.Status=1
+
+) as tb 
+           ";
+            var query2 = @"
+           )SELECT *
+        , CAST(rn + rn_reversed - 1 AS INT) AS total_rows
+        , CAST(CASE (rn + rn_reversed - 1) % @page_size
+            WHEN 0 THEN (rn + rn_reversed - 1) / @page_size
+            ELSE ((rn + rn_reversed - 1) / @page_size) + 1 
+            END AS INT) AS total_pages
+    FROM RESULTS a
+    WHERE a.rn BETWEEN 1 + ((@page_num - 1) * @page_size) AND @page_num * @page_size
+    ORDER BY ProductName";
+            var queryproduct = @" where product_Id=@product_Id";
+            squery.Append(query);
+            if (ops.productId!=0)
+            {
+                squery.Append(queryproduct);
+            }
+            squery.Append(query2);
+            using (var connection = new SqlConnection(DBUtil.ConnectionString))
+            {
+                connection.Open();
+
+                using (var command = new SqlCommand(squery.ToString(), connection))
+                {
+                    command.Parameters.AddWithValue("@page_num", page);
+                    command.Parameters.AddWithValue("@page_size", page_size);
+                    command.Parameters.AddWithValue("@product_Id", ops.productId);
+                    var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        result.Add(new DemanProductionGroup()
+                        {
+                            productId = reader.GetInt64OrDefaultValue(0),
+                            productName = reader.GetStringOrEmpty(2),
+                            totalQuantity = reader.GetDecimalOrDefaultValue(3),
+                            unitPrice = reader.GetDecimalOrDefaultValue(4),
+                            enumValueName = reader.GetStringOrEmpty(5),
+                            productParentName = reader.GetStringOrEmpty(7),
+                            totalQuantityPrice = reader.GetDecimalOrDefaultValue(8),
+
+
+
+
+
+                        });
+                    }
+
+
+                    connection.Close();
+                }
+
+                return result;
+            }
+        }
+        public Int64 GetTotalDemandOffers_OPC(DemandOfferProductsSearch ops)
+        {
+            Int64 count = 0;
+            StringBuilder squery = new StringBuilder();
+            //var query1 = @"";
+            var query = @"select count(*) as count
+        FROM ( 
+ select table1.*,pc.ProductName as parentName,
+table1.toplam *unit_price as totalDemandPrice from (
+select  
+op.product_Id,pc.ProductCatalogParentID,pc.ProductName,
+SUM(quantity) as toplam,price.unit_price,ev.name as kategoryName
+,prc.EnumValueId  from tblDemand_Production op
+ join tblProductCatalog pc on op.product_Id=pc.Id and pc.Status=1
+ join tblProductPrice price on op.product_Id=price.productId and price.Status=1
+ join tblProductCatalogControl prc on prc.ProductId=op.product_Id and prc.Status=1
+ join tblEnumValue ev on prc.EnumValueId=ev.Id  and ev.Status=1 
+where op.Status=1 --and op.product_Id=250 
+and ev.enumCategory_enumCategoryId=5
+and op.state_eV_Id=2
+--and op.product_Id=334
+group by op.product_Id,pc.ProductCatalogParentID,pc.ProductName,price.unit_price,
+ev.name
+,prc.EnumValueId  
+
+) as table1
+ join tblProductCatalog pc on table1.ProductCatalogParentID=pc.Id and pc.Status=1
+
+) as tb 
+
+left join (
+select  * from (
+select  table1.*,pc.ProductName as parentName,ev.name as kategoryName
+ from (
+select op.Id,op.product_Id,pc.ProductCatalogParentID,pc.ProductName
+,op.quantity,price.unit_price,r.Name as roleName,r.Description as roleDesc,ur.RoleId,ev.name as usertype,u.userType_eV_ID,
+person.id as personID,
+person.Name as personName, person.Surname,
+' ' as voen,' ' as organisationName,
+prc.EnumValueId ,
+cntr.ContractStartDate,person.PinNumber,person.FatherName
+from tblOffer_Production op
+ join tblProductCatalog pc on op.product_Id=pc.Id and pc.Status=1
+ join tblProductPrice price on op.product_Id=price.productId and price.Status=1
+ join tblUserRole ur on op.user_Id=ur.UserId and ur.Status=1
+ join tblRole r on r.Id=ur.RoleId and r.Status=1
+ join tblUser u on u.Id=op.user_Id and u.Status=1
+ join tblEnumValue ev on u.userType_eV_ID=ev.Id  and ev.Status=1
+ left join tblPerson person on person.UserId=op.user_Id and person.Status=1
+left join tblContract cntr on op.user_Id=cntr.SupplierUserID and cntr.Status=1
+ join tblProductCatalogControl prc on prc.ProductId=op.product_Id and prc.Status=1
+ -- left join tblCommunication com on com.PersonId=person.ID and com.Status=1 and com.comType=10120
+where op.Status=1 and u.userType_eV_ID=26 and op.state_eV_Id=2
+) as table1
+ join tblProductCatalog pc on table1.ProductCatalogParentID=pc.Id and pc.Status=1
+ join tblEnumValue ev on table1.EnumValueId=ev.Id and ev.Status=1
+
+  where ev.enumCategory_enumCategoryId=5
+ union all
+ select table1.*,pc.ProductName as parentName,ev.name as kategoryName-- ,com.communication as phoneNumber
+  from (
+select op.Id,op.product_Id,pc.ProductCatalogParentID,pc.ProductName
+,op.quantity,price.unit_price,r.Name as roleName,r.Description as roleDesc,ur.RoleId,ev.name as usertype,u.userType_eV_ID,
+
+person.id as personID,
+person.Name as personName, person.Surname,
+fo.voen,fo.name as organisationName,
+prc.EnumValueId  ,
+cntr.ContractStartDate,person.PinNumber,person.FatherName
+from tblOffer_Production op
+ join tblProductCatalog pc on op.product_Id=pc.Id and pc.Status=1
+ join tblProductPrice price on op.product_Id=price.productId and price.Status=1
+ join tblUserRole ur on op.user_Id=ur.UserId and ur.Status=1
+ join tblRole r on r.Id=ur.RoleId and r.Status=1
+ join tblUser u on u.Id=op.user_Id and u.Status=1
+ join tblEnumValue ev on u.userType_eV_ID=ev.Id  and ev.Status=1
+left join tblForeign_Organization fo on fo.userId=op.user_Id and fo.Status=1
+left join tblPerson person on person.Id=fo.manager_Id and person.Status=1
+left join tblContract cntr on op.user_Id=cntr.SupplierUserID and cntr.Status=1
+ join tblProductCatalogControl prc on prc.ProductId=op.product_Id and prc.Status=1
+-- left join tblCommunication com on com.PersonId=person.id and com.Status=1 and com.comType=10120
+where op.Status=1 and u.userType_eV_ID=50 and op.state_eV_Id=2
+) as table1
+ join tblProductCatalog pc on table1.ProductCatalogParentID=pc.Id and pc.Status=1
+ join tblEnumValue ev on table1.EnumValueId=ev.Id and ev.Status=1
+ 
+ where ev.enumCategory_enumCategoryId=5
+ ) as table2 
+ where 
+ table2.EnumValueId in (19,20)
+ ) as table3 on tb.product_Id=table3.product_Id       
+";
+            squery.Append(query);
+            var queryproduct = @"  where  table3.product_Id=@product_Id";
+           
+            if (ops.productId != 0)
+            {
+                squery.Append(queryproduct);
+            }
+           
+           
+            using (var connection = new SqlConnection(DBUtil.ConnectionString))
+            {
+                connection.Open();
+
+                using (var command = new SqlCommand(squery.ToString(), connection))
+                {
+                    command.Parameters.AddWithValue("@product_Id", ops.productId);
+                    
+                    var reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        count = Convert.ToInt32(reader["Count"]);
+                    }
+
+                }
+                connection.Close();
+            }
+
+            return count;
+        }
+        public List<DemanOfferProduction> GetTotalOffersbyProductID(Int64 productID,DemandOfferProductsSearch ops)
+        {
+            var result = new List<DemanOfferProduction>();
+            StringBuilder squery = new StringBuilder();
+            var query = @" select  * from (
+select  table1.*,pc.ProductName as parentName,ev.name as kategoryName
+ from (
+select op.Id,op.product_Id,pc.ProductCatalogParentID,pc.ProductName
+,op.quantity,price.unit_price,r.Name as roleName,r.Description as roleDesc,ur.RoleId,ev.name as usertype,u.userType_eV_ID,
+person.id as personID,
+person.Name as personName, person.Surname,
+' ' as voen,' ' as organisationName,
+prc.EnumValueId ,
+cntr.ContractStartDate,person.PinNumber,person.FatherName
+from tblOffer_Production op
+ join tblProductCatalog pc on op.product_Id=pc.Id and pc.Status=1
+ join tblProductPrice price on op.product_Id=price.productId and price.Status=1
+ join tblUserRole ur on op.user_Id=ur.UserId and ur.Status=1
+ join tblRole r on r.Id=ur.RoleId and r.Status=1
+ join tblUser u on u.Id=op.user_Id and u.Status=1
+ join tblEnumValue ev on u.userType_eV_ID=ev.Id  and ev.Status=1
+ left join tblPerson person on person.UserId=op.user_Id and person.Status=1
+left join tblContract cntr on op.user_Id=cntr.SupplierUserID and cntr.Status=1
+ join tblProductCatalogControl prc on prc.ProductId=op.product_Id and prc.Status=1
+ -- left join tblCommunication com on com.PersonId=person.ID and com.Status=1 and com.comType=10120
+where op.Status=1 and u.userType_eV_ID=26 and op.state_eV_Id=2
+) as table1
+ join tblProductCatalog pc on table1.ProductCatalogParentID=pc.Id and pc.Status=1
+ join tblEnumValue ev on table1.EnumValueId=ev.Id and ev.Status=1
+
+  where ev.enumCategory_enumCategoryId=5
+ union all
+ select table1.*,pc.ProductName as parentName,ev.name as kategoryName-- ,com.communication as phoneNumber
+  from (
+select op.Id,op.product_Id,pc.ProductCatalogParentID,pc.ProductName
+,op.quantity,price.unit_price,r.Name as roleName,r.Description as roleDesc,ur.RoleId,ev.name as usertype,u.userType_eV_ID,
+
+person.id as personID,
+person.Name as personName, person.Surname,
+fo.voen,fo.name as organisationName,
+prc.EnumValueId  ,
+cntr.ContractStartDate,person.PinNumber,person.FatherName
+from tblOffer_Production op
+ join tblProductCatalog pc on op.product_Id=pc.Id and pc.Status=1
+ join tblProductPrice price on op.product_Id=price.productId and price.Status=1
+ join tblUserRole ur on op.user_Id=ur.UserId and ur.Status=1
+ join tblRole r on r.Id=ur.RoleId and r.Status=1
+ join tblUser u on u.Id=op.user_Id and u.Status=1
+ join tblEnumValue ev on u.userType_eV_ID=ev.Id  and ev.Status=1
+left join tblForeign_Organization fo on fo.userId=op.user_Id and fo.Status=1
+left join tblPerson person on person.Id=fo.manager_Id and person.Status=1
+left join tblContract cntr on op.user_Id=cntr.SupplierUserID and cntr.Status=1
+ join tblProductCatalogControl prc on prc.ProductId=op.product_Id and prc.Status=1
+-- left join tblCommunication com on com.PersonId=person.id and com.Status=1 and com.comType=10120
+where op.Status=1 and u.userType_eV_ID=50 and op.state_eV_Id=2
+) as table1
+ join tblProductCatalog pc on table1.ProductCatalogParentID=pc.Id and pc.Status=1
+ join tblEnumValue ev on table1.EnumValueId=ev.Id and ev.Status=1
+ 
+ where ev.enumCategory_enumCategoryId=5
+ ) as table2 
+ where table2.product_Id= @productID  and
+ table2.EnumValueId in (19,20)
+ order by ProductName";
+            squery.Append(query);
+            var queryRole = @"  and RoleId=@RoleId";
+            var queryVoen = @" and (voen like '%'+@voen+'%' or PinNumber like '%'+@pinNumber+'%')";
+           if (ops.roleID!=0)
+            {
+                squery.Append(queryRole);
+           }
+            if (!string.IsNullOrEmpty(ops.voen) || !string.IsNullOrEmpty(ops.pinNumber))
+           {
+                squery.Append(queryVoen);
+           }
+            using (var connection = new SqlConnection(DBUtil.ConnectionString))
+            {
+                connection.Open();
+
+                using (var command = new SqlCommand(squery.ToString(), connection))
+                {
+                    command.Parameters.AddWithValue("@productID", productID);
+                    command.Parameters.AddWithValue("@pinNumber", ops.pinNumber ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@voen", ops.voen ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@RoleId", ops.roleID);
+                  
+                    var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        result.Add(new DemanOfferProduction()
+                        {
+                            productionID=reader.GetInt64OrDefaultValue(0),
+                            productId = reader.GetInt64OrDefaultValue(1),
+                            productName = reader.GetStringOrEmpty(3),
+                            quantity = reader.GetDecimalOrDefaultValue(4),
+                            unit_price = reader.GetDecimalOrDefaultValue(5),
+                            roleName=reader.GetStringOrEmpty(6),
+                            roledesc=reader.GetStringOrEmpty(7),
+                            roleId=reader.GetInt64OrDefaultValue(8),
+                            usertype=reader.GetStringOrEmpty(9),
+                            personID=reader.GetInt64OrDefaultValue(11),
+                            personName=reader.GetStringOrEmpty(12),
+                            surname=reader.GetStringOrEmpty(13),
+                            voen=reader.GetStringOrEmpty(14),
+                            organizationName=reader.GetStringOrEmpty(15),
+                            pinNumber=reader.GetStringOrEmpty(18),
+                            fatherName=reader.GetStringOrEmpty(19),
+                            productParentName = reader.GetStringOrEmpty(20),
+
+                          
+                            enumValueName = reader.GetStringOrEmpty(21),
+                           
+                            
+
+
+
+
+                        });
+                    }
+
+
+                    connection.Close();
+                }
+
+                return result;
+            }
+        }
     }
 }
+

@@ -265,8 +265,8 @@ namespace Emsal.BLL
                 foreach (var item in itemList)
                 {
                     tblContract contract = operationLogic.GetContractById(item.contractID);
-                    //tblContract contract1 = operationLogic.GetContractById(item.contractID);
-                    if (item.contractStatus != 0)
+                    tblContract contract1 = operationLogic.GetContractById(item.contractID);
+                    if (item.contractStatus==true)
                     {
                         if (contract != null)
                         {
@@ -274,7 +274,7 @@ namespace Emsal.BLL
                         }
 
                     }
-                    else if (item.contractStatus == 0)
+                    else if (item.contractStatus!=true)
                     {
                         if (contract == null)
                         {
@@ -306,6 +306,139 @@ namespace Emsal.BLL
                 count = sqloperationLogicAccounting.GetUserDetailInfoForOffers_OPC(ops);
 
 
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                count = 0;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput GetGovermentOrganisatinByAdminID(BaseInput baseinput, Int64 adminId, out List<ForeignOrganization> itemList)
+        {
+            BaseOutput baseOutput;
+            itemList = new List<ForeignOrganization>();
+
+
+            try
+            {
+                itemList = sqloperationLogicAccounting.GetGovermentOrganisatinByAdminID(adminId);
+                //foreach (var item in itemList)
+                //{
+                //    item.adminUnitIdList = sqloperationLogicAccounting.GetPRM_AdminUnitByAdminID(adminId);
+                //}
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput GetPRM_AdminUnitByAdminID(BaseInput baseinput, Int64 adminId, out List<adminUnit> itemList)
+        {
+            BaseOutput baseOutput;
+            itemList = new List<adminUnit>();
+
+
+            try
+            {
+                itemList = sqloperationLogicAccounting.GetPRM_AdminUnitByAdminID(adminId);
+
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput GetTotalDemandOffers(BaseInput baseinput, Int64 page, Int64 page_size,DemandOfferProductsSearch ops, out List<DemanProductionGroup> itemList)
+        {
+            BaseOutput baseOutput;
+            itemList = new List<DemanProductionGroup>();
+
+
+            try
+            {
+                itemList = sqloperationLogicAccounting.GetTotalDemandOffers(page, page_size,ops);
+
+                foreach (var item in itemList)
+                {
+                    item.offerProductsList = sqloperationLogicAccounting.GetTotalOffersbyProductID(item.productId,ops);
+                    foreach (var citem in  item.offerProductsList)
+                    {
+                        citem.comList = operationLogic.GetCommunicationByPersonId(citem.personID);
+                    }
+                }
+                
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput GetTotalOffersbyProductID(BaseInput baseinput, Int64 productID,DemandOfferProductsSearch ops, out List<DemanOfferProduction> itemList)
+        {
+            BaseOutput baseOutput;
+            itemList = new List<DemanOfferProduction>();
+
+
+            try
+            {
+                itemList = sqloperationLogicAccounting.GetTotalOffersbyProductID(productID,ops);
+                foreach (var item in itemList)
+                {
+                    item.comList = operationLogic.GetCommunicationByPersonId(item.personID);
+                }
+
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput GetTotalDemandOffers_OPC(BaseInput baseinput, DemandOfferProductsSearch ops, out Int64 count)
+        {
+            BaseOutput baseOutput;
+            count = 0;
+            try
+            {
+                count = sqloperationLogicAccounting.GetTotalDemandOffers_OPC(ops);
+
+                
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
 
 

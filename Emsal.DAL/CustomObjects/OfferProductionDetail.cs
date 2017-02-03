@@ -25,7 +25,8 @@ namespace Emsal.DAL.CustomObjects
         public string quantityType { get; set; }
         [DataMember(IsRequired = true)]
         public string quantityTypeDescription { get; set; }
-      
+        [DataMember(IsRequired = true)]
+        public Int64 roleID { get; set; }
 
     }
 }

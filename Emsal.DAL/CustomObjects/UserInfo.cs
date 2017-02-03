@@ -42,7 +42,7 @@ namespace Emsal.DAL.CustomObjects
         public string potentialProduct { get; set; }
         public decimal potentialProductQuantity { get; set; }
         public string personAdress { get; set; }
-        public string personAdressDesc { get; set; }
+        public string adressDesc { get; set; }
         public string parantName { get; set; }
         public decimal productUnitPrice { get; set; }
         public Int64 month_Ev_Id { get; set; }
@@ -60,6 +60,7 @@ namespace Emsal.DAL.CustomObjects
         public string phoneNumber { get; set; }
         public string phoneNumberDesc { get; set; }
         public List<tblCommunication> personcomList { get; set; }
+        public List<tblPotential_Production> potentialProductionList { get; set; }
     }
 }
 

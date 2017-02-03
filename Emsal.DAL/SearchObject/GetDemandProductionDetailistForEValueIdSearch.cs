@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
+//using System.Runtime.Serialization;
 using System.Text;
 
 namespace Emsal.DAL.SearchObject
 {
+
     [DataContract]
     public class GetDemandProductionDetailistForEValueIdSearch
     {
@@ -33,6 +35,7 @@ namespace Emsal.DAL.SearchObject
         public Int64 monitoring_Ev_Id { get; set; }
         [DataMember(IsRequired = true)]
         public Int64 user_Id { get; set; }
-
+        [DataMember(IsRequired = true)]
+        public bool contractStatus { get; set; }
     }
 }

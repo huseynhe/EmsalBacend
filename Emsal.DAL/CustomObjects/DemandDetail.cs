@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Emsal.DAL.CustomObjects
+{
+   public class DemandDetail
+    {
+     
+        public string productName { get; set; }
+        public Int64 productionID { get; set; }
+        public Int64 userId { get; set; }
+        public Int64 state_Ev_Id { get; set; }
+        public string parentName { get; set; }
+        public string fullAddress { get; set; }
+        public string addressDesc { get; set; }
+        public string kategoryName { get; set; }
+        public tblDemand_Production demandList { get; set; }
+        public List<ProductionCalendarDetail> calendarList { get; set; }
+
+    }
+}

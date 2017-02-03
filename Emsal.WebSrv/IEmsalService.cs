@@ -19,8 +19,8 @@ namespace Emsal.WebSrv
 
         #region CreateDB
 
-        [OperationContract]
-        void WS_createDb();
+        //[OperationContract]
+        //void WS_createDb();
 
         #endregion
 
@@ -249,7 +249,7 @@ namespace Emsal.WebSrv
         #endregion
         #region WS_Offer_Production
         [OperationContract]
-        BaseOutput WS_GetOfferProducts(BaseInput baseinput, out List<OfferProducts> itemList);
+        BaseOutput WS_GetOrderProducts(BaseInput baseinput, out List<OfferProducts> itemList);
         [OperationContract]
         BaseOutput WS_AddOffer_Production(BaseInput baseinput, tblOffer_Production offer_Production, out tblOffer_Production Offer_ProductionOut);
         [OperationContract]
@@ -706,6 +706,8 @@ namespace Emsal.WebSrv
 
         [OperationContract]
         BaseOutput WS_GetPersonalinformationByRoleId(BaseInput baseinput, PotensialUserForAdminUnitIdList ops, out List<UserInfo> itemList);
+        [OperationContract]
+        BaseOutput WS_GetPersonalinformationByRoleId_OPC(BaseInput baseinput, PotensialUserForAdminUnitIdList ops, out Int64 count);
 
         [OperationContract]
         BaseOutput WS_GetDemandOfferProductionTotal(BaseInput baseinput, Int64 addressID, out List<DemandOfferDetail> itemList);
@@ -1054,17 +1056,17 @@ namespace Emsal.WebSrv
         BaseOutput WS_GetOfferProductionDetailistForMonitoringEVId(BaseInput baseinput, Int64 monintoring_eV_Id, long userID, out List<ProductionDetail> itemList);
 
 
-        #region Optimisation public 
+        #region Optimisation public
         [OperationContract]
         BaseOutput WS_GetUserDetailInfoForOffers_OP(BaseInput baseinput, GetDemandProductionDetailistForEValueIdSearch ops, out List<PersonDetail> itemList);
-       [OperationContract]
-         BaseOutput WS_GetUserDetailInfoForOffers_OPC(BaseInput baseinput, GetDemandProductionDetailistForEValueIdSearch ops, out Int64 count);
-       
+        [OperationContract]
+        BaseOutput WS_GetUserDetailInfoForOffers_OPC(BaseInput baseinput, GetDemandProductionDetailistForEValueIdSearch ops, out Int64 count);
+
         [OperationContract]
         BaseOutput WS_GetOfferProductionDetailistForEValueId_OP1(BaseInput baseinput, OfferProductionDetailSearch ops, out List<GetOfferProductionDetailistForEValueId> itemList);
         [OperationContract]
         BaseOutput WS_GetOfferProductionDetailistForEValueId_OPC1(BaseInput baseinput, OfferProductionDetailSearch ops, out Int64 count);
-        
+
         [OperationContract]
         BaseOutput WS_GetDemandProductDetailInfoForAccounting_Search(BaseInput baseinput, Int64 state_eV_Id, Int64 year, Int64 partOfYear, string productID, out List<ProductionDetail> itemList);
 
@@ -1107,7 +1109,7 @@ namespace Emsal.WebSrv
         BaseOutput WS_GetPotensialUserList_OP(BaseInput baseinput, PotensialUserForAdminUnitIdList ops, out List<UserInfo> itemList);
 
         [OperationContract]
-        BaseOutput WS_GetPotensialUserList_OPC(BaseInput baseinput,PotensialUserForAdminUnitIdList ops, out Int64 count);
+        BaseOutput WS_GetPotensialUserList_OPC(BaseInput baseinput, PotensialUserForAdminUnitIdList ops, out Int64 count);
         [OperationContract]
         BaseOutput WS_GetAnnouncementDetails_OP(BaseInput baseinput, int page, int pageSize, out List<AnnouncementDetail> itemList);
         [OperationContract]
@@ -1122,11 +1124,11 @@ namespace Emsal.WebSrv
         BaseOutput WS_GetDemandProductionDetailistForEValueId_OPA(BaseInput baseinput, Int64 stateEvId, int page, int pagesize, out List<DemandDetialOPA> itemList);
         [OperationContract]
         BaseOutput WS_GetPotensialUserForAdminUnitIdList_OP(BaseInput baseinput, PotensialUserForAdminUnitIdList ops, out List<UserInfo> itemList);
-         [OperationContract]
-        BaseOutput WS_GetPotensialUserForAdminUnitIdList_OPC(BaseInput baseinput, PotensialUserForAdminUnitIdList ops, out Int64 count);
-       
         [OperationContract]
-        BaseOutput WS_GetOfferProductionDetailistForMonitoringEVId_OP(BaseInput baseinput, OfferProductionDetailSearch opds,out List<ProductionDetail> itemList);
+        BaseOutput WS_GetPotensialUserForAdminUnitIdList_OPC(BaseInput baseinput, PotensialUserForAdminUnitIdList ops, out Int64 count);
+
+        [OperationContract]
+        BaseOutput WS_GetOfferProductionDetailistForMonitoringEVId_OP(BaseInput baseinput, OfferProductionDetailSearch opds, out List<ProductionDetail> itemList);
         [OperationContract]
         BaseOutput WS_GetOfferProductionDetailistForStateEVId_OP(BaseInput baseinput, OfferProductionDetailSearch opds, out List<ProductionDetail> itemList);
         [OperationContract]
@@ -1195,14 +1197,32 @@ namespace Emsal.WebSrv
         [OperationContract]
         BaseOutput WS_GetOfferGroupedProductionDetailistForAccountingByProductId(BaseInput baseinput, Int64 productID, out  List<OfferProductionDetail> itemList);
         [OperationContract]
-        BaseOutput WS_GetOfferGroupedProductionDetailistForAccountingByRoleId(BaseInput baseinput, Int64 roleID, out  List<OfferProductionDetail> itemList);
+        BaseOutput WS_GetOfferGroupedProductionDetailistForAccountingByRoleId(BaseInput baseinput, long roleID, out  List<OfferProductionDetail> itemList);
         [OperationContract]
         BaseOutput WS_GetOfferGroupedProductionDetailistForAccountingBySearch(BaseInput baseinput, OfferProductionDetailSearch ops, out  List<OfferProductionDetail> itemList);
-
+       
+        [OperationContract]
+        BaseOutput WS_GetDemandByForganistion_OPC(BaseInput baseinput, DemandForegnOrganization ops, out Int64 count);
+        [OperationContract]
+        BaseOutput WS_GetDemandByForganistion_OP(BaseInput baseinput, DemandForegnOrganization ops, out  List<OrganizationDetail> itemList);
+        [OperationContract]
+        BaseOutput WS_GetTotalDemandOffers(BaseInput baseinput, Int64 page, Int64 page_size,DemandOfferProductsSearch ops, out List<DemanProductionGroup> itemList);
+        [OperationContract]
+        BaseOutput WS_GetTotalOffersbyProductID(BaseInput baseinput, Int64 productID,DemandOfferProductsSearch ops, out List<DemanOfferProduction> itemList);
+        [OperationContract]
+        BaseOutput WS_GetTotalDemandOffers_OPC(BaseInput baseinput, DemandOfferProductsSearch ops, out Int64 count);
+       
         #endregion
         [OperationContract]
         BaseOutput WS_GetAnnouncementDetails_Search(BaseInput baseinput, OfferProductionDetailSearch ops, out List<AnnouncementDetail> itemList);
-        
+        [OperationContract]
+        BaseOutput WS_GetDemand_ProductionsByStateAndUserID1(BaseInput baseinput, Int64 userID, Int64 state_Ev_Id, out List<DemandDetail> itemList);
+        [OperationContract]
+        BaseOutput WS_GetGovermentOrganisatinByAdminID(BaseInput baseinput, Int64 adminId, out List<ForeignOrganization> itemList);
+        [OperationContract]
+        BaseOutput WS_GetPRM_AdminUnitByAdminID(BaseInput baseinput, Int64 adminId, out List<adminUnit> itemList);
+       
+
 
     }
 }

@@ -19,13 +19,13 @@ namespace Emsal.DAL
         public Nullable<long> capacity_measuriment_evID { get; set; }
         public Nullable<long> addressID { get; set; }
         public Nullable<long> releaseDate { get; set; }
+        public Nullable<decimal> area { get; set; }
+        public Nullable<decimal> capacity { get; set; }
         public Nullable<long> Status { get; set; }
         public Nullable<long> LastUpdatedStatus { get; set; }
         public string createdUser { get; set; }
         public Nullable<long> createdDate { get; set; }
         public string updatedUser { get; set; }
         public Nullable<long> updatedDate { get; set; }
-        public Nullable<decimal> area { get; set; }
-        public Nullable<decimal> capacity { get; set; }
     }
 }
