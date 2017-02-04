@@ -1425,7 +1425,7 @@ op.product_Id,pc.ProductCatalogParentID,pc.ProductName,
 SUM(quantity) as toplam,price.unit_price,ev.name as kategoryName
 ,prc.EnumValueId  from tblDemand_Production op
  join tblProductCatalog pc on op.product_Id=pc.Id and pc.Status=1
- join tblProductPrice price on op.product_Id=price.productId and price.Status=1
+ join tblProductPrice price on op.product_Id=price.productId and price.Status=1 and price.year=2016 and price.partOfYear=4
  join tblProductCatalogControl prc on prc.ProductId=op.product_Id and prc.Status=1
  join tblEnumValue ev on prc.EnumValueId=ev.Id  and ev.Status=1 
 where op.Status=1 --and op.product_Id=250 
@@ -1508,7 +1508,7 @@ op.product_Id,pc.ProductCatalogParentID,pc.ProductName,
 SUM(quantity) as toplam,price.unit_price,ev.name as kategoryName
 ,prc.EnumValueId  from tblDemand_Production op
  join tblProductCatalog pc on op.product_Id=pc.Id and pc.Status=1
- join tblProductPrice price on op.product_Id=price.productId and price.Status=1
+ join tblProductPrice price on op.product_Id=price.productId and price.Status=1 and price.year=2016 and price.partOfYear=4
  join tblProductCatalogControl prc on prc.ProductId=op.product_Id and prc.Status=1
  join tblEnumValue ev on prc.EnumValueId=ev.Id  and ev.Status=1 
 where op.Status=1 --and op.product_Id=250 
@@ -1529,7 +1529,7 @@ select  * from (
 select  table1.*,pc.ProductName as parentName,ev.name as kategoryName
  from (
 select op.Id,op.product_Id,pc.ProductCatalogParentID,pc.ProductName
-,op.quantity,price.unit_price,r.Name as roleName,r.Description as roleDesc,ur.RoleId,ev.name as usertype,u.userType_eV_ID,
+,op.quantity,op.total_price,r.Name as roleName,r.Description as roleDesc,ur.RoleId,ev.name as usertype,u.userType_eV_ID,
 person.id as personID,
 person.Name as personName, person.Surname,
 ' ' as voen,' ' as organisationName,
@@ -1537,7 +1537,6 @@ prc.EnumValueId ,
 cntr.ContractStartDate,person.PinNumber,person.FatherName
 from tblOffer_Production op
  join tblProductCatalog pc on op.product_Id=pc.Id and pc.Status=1
- join tblProductPrice price on op.product_Id=price.productId and price.Status=1
  join tblUserRole ur on op.user_Id=ur.UserId and ur.Status=1
  join tblRole r on r.Id=ur.RoleId and r.Status=1
  join tblUser u on u.Id=op.user_Id and u.Status=1
@@ -1556,7 +1555,7 @@ where op.Status=1 and u.userType_eV_ID=26 and op.state_eV_Id=2
  select table1.*,pc.ProductName as parentName,ev.name as kategoryName-- ,com.communication as phoneNumber
   from (
 select op.Id,op.product_Id,pc.ProductCatalogParentID,pc.ProductName
-,op.quantity,price.unit_price,r.Name as roleName,r.Description as roleDesc,ur.RoleId,ev.name as usertype,u.userType_eV_ID,
+,op.quantity,op.total_price,r.Name as roleName,r.Description as roleDesc,ur.RoleId,ev.name as usertype,u.userType_eV_ID,
 
 person.id as personID,
 person.Name as personName, person.Surname,
@@ -1565,7 +1564,6 @@ prc.EnumValueId  ,
 cntr.ContractStartDate,person.PinNumber,person.FatherName
 from tblOffer_Production op
  join tblProductCatalog pc on op.product_Id=pc.Id and pc.Status=1
- join tblProductPrice price on op.product_Id=price.productId and price.Status=1
  join tblUserRole ur on op.user_Id=ur.UserId and ur.Status=1
  join tblRole r on r.Id=ur.RoleId and r.Status=1
  join tblUser u on u.Id=op.user_Id and u.Status=1
@@ -1624,7 +1622,7 @@ where op.Status=1 and u.userType_eV_ID=50 and op.state_eV_Id=2
 select  table1.*,pc.ProductName as parentName,ev.name as kategoryName
  from (
 select op.Id,op.product_Id,pc.ProductCatalogParentID,pc.ProductName
-,op.quantity,price.unit_price,r.Name as roleName,r.Description as roleDesc,ur.RoleId,ev.name as usertype,u.userType_eV_ID,
+,op.quantity,op.total_price,r.Name as roleName,r.Description as roleDesc,ur.RoleId,ev.name as usertype,u.userType_eV_ID,
 person.id as personID,
 person.Name as personName, person.Surname,
 ' ' as voen,' ' as organisationName,
@@ -1632,7 +1630,6 @@ prc.EnumValueId ,
 cntr.ContractStartDate,person.PinNumber,person.FatherName
 from tblOffer_Production op
  join tblProductCatalog pc on op.product_Id=pc.Id and pc.Status=1
- join tblProductPrice price on op.product_Id=price.productId and price.Status=1
  join tblUserRole ur on op.user_Id=ur.UserId and ur.Status=1
  join tblRole r on r.Id=ur.RoleId and r.Status=1
  join tblUser u on u.Id=op.user_Id and u.Status=1
@@ -1651,7 +1648,7 @@ where op.Status=1 and u.userType_eV_ID=26 and op.state_eV_Id=2
  select table1.*,pc.ProductName as parentName,ev.name as kategoryName-- ,com.communication as phoneNumber
   from (
 select op.Id,op.product_Id,pc.ProductCatalogParentID,pc.ProductName
-,op.quantity,price.unit_price,r.Name as roleName,r.Description as roleDesc,ur.RoleId,ev.name as usertype,u.userType_eV_ID,
+,op.quantity,op.total_price,r.Name as roleName,r.Description as roleDesc,ur.RoleId,ev.name as usertype,u.userType_eV_ID,
 
 person.id as personID,
 person.Name as personName, person.Surname,
@@ -1660,7 +1657,6 @@ prc.EnumValueId  ,
 cntr.ContractStartDate,person.PinNumber,person.FatherName
 from tblOffer_Production op
  join tblProductCatalog pc on op.product_Id=pc.Id and pc.Status=1
- join tblProductPrice price on op.product_Id=price.productId and price.Status=1
  join tblUserRole ur on op.user_Id=ur.UserId and ur.Status=1
  join tblRole r on r.Id=ur.RoleId and r.Status=1
  join tblUser u on u.Id=op.user_Id and u.Status=1
@@ -1679,7 +1675,8 @@ where op.Status=1 and u.userType_eV_ID=50 and op.state_eV_Id=2
  ) as table2 
  where table2.product_Id= @productID  and
  table2.EnumValueId in (19,20)
- order by ProductName";
+ order by ProductName
+";
             squery.Append(query);
             var queryRole = @"  and RoleId=@RoleId";
             var queryVoen = @" and (voen like '%'+@voen+'%' or PinNumber like '%'+@pinNumber+'%')";
@@ -1711,7 +1708,7 @@ where op.Status=1 and u.userType_eV_ID=50 and op.state_eV_Id=2
                             productId = reader.GetInt64OrDefaultValue(1),
                             productName = reader.GetStringOrEmpty(3),
                             quantity = reader.GetDecimalOrDefaultValue(4),
-                            unit_price = reader.GetDecimalOrDefaultValue(5),
+                            totalQuantityPrice = reader.GetDecimalOrDefaultValue(5),
                             roleName=reader.GetStringOrEmpty(6),
                             roledesc=reader.GetStringOrEmpty(7),
                             roleId=reader.GetInt64OrDefaultValue(8),
