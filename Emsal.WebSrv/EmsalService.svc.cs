@@ -2345,10 +2345,17 @@ namespace Emsal.WebSrv
         {
             return businessLogic.GetGovermentOrganisatinByAdminID(baseinput, adminId, out itemList);
         }
-        public BaseOutput WS_GetPRM_AdminUnitByAdminID(BaseInput baseinput, Int64 adminId, out List<adminUnit> itemList)
+        public BaseOutput WS_GetPRM_AdminUnitByAdminID(BaseInput baseinput, Int64 adminId, out List<AdminUnitRegion> itemList)
         {
             return businessLogic.GetPRM_AdminUnitByAdminID(baseinput, adminId, out itemList);
         }
-
+        public BaseOutput WS_GetPRM_AdminUnitRegionByAddressId(BaseInput baseinput, Int64 adminId, out List<tblPRM_AdminUnit> itemList)
+        {
+            return businessLogic.GetPRM_AdminUnitRegionByAddressId(baseinput, adminId, out itemList);
+        }
+        public BaseOutput WS_GetPRM_AdminUnitRegionList(BaseInput baseinput, out List<AdminUnitRegion> itemList)
+        {
+            return businessLogic.GetPRM_AdminUnitRegionList(baseinput, out itemList);
+        }
     }
 }

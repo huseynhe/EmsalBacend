@@ -57,7 +57,7 @@
   <ItemGroup>
     <Compile Include="CodeObjects\Audit.cs" />
     <Compile Include="CodeObjects\BaseInput.cs" />
-    <Compile Include="CustomObjects\adminUnit.cs" />
+    <Compile Include="CustomObjects\AdminUnitRegion.cs" />
     <Compile Include="CustomObjects\AnnouncementDetail.cs" />
     <Compile Include="CustomObjects\DemandDetail.cs" />
     <Compile Include="CustomObjects\DemandDetialOPA.cs" />

@@ -3420,6 +3420,36 @@ namespace Emsal.BLL
             }
 
         }
+        //public BaseOutput GetPRM_AdminUnitRegionList(BaseInput baseinput,Int64 id, out List<tblPRM_AdminUnit> itemList)
+        //{
+        //    BaseOutput baseOutput;
+        //    try
+        //    {
+        //        itemList = operationLogic.GetPRM_AdminUnitRegionList(id);
+        //        return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        itemList = null;
+        //        return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+        //    }
+
+        //}
+        public BaseOutput GetPRM_AdminUnitRegionByAddressId(BaseInput baseinput, Int64 adminID, out List<tblPRM_AdminUnit> itemList)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                itemList = operationLogic.GetPRM_AdminUnitRegionByAddressId(adminID);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+            }
+            catch (Exception ex)
+            {
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+            }
+
+        }
 
 
         public BaseOutput WS_GetForeignOrganizationListByUserId(BaseInput baseinput, long userId, out List<tblForeign_Organization> itemList)

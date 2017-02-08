@@ -2204,7 +2204,34 @@ namespace Emsal.BLL
             }
 
         }
+     
+        public BaseOutput GetPRM_AdminUnitRegionList(BaseInput baseinput, out List<AdminUnitRegion> itemList)
+        {
+            BaseOutput baseOutput;
+            itemList = new List<AdminUnitRegion>();
 
+
+            try
+            {
+                itemList = sqloperationLogic.GetPRM_AdminUnitRegionList();
+                foreach (var item in itemList)
+                {
+                    item.adminUNitList = operationLogic.GetPRM_AdminUnitById(item.ID);
+                }
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
     }
 }
 

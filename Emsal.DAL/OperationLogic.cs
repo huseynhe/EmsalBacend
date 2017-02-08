@@ -3320,7 +3320,7 @@ namespace Emsal.DAL
                                      join ev  in context.tblEnumValues on p.quantity_type_Name equals ev.name into sr
                                      from x in sr.DefaultIfEmpty()
                                      where p.product_id == productId && p.Status == 1 
-                                     && p.startDate <= curentDate 
+                                    // && p.startDate <= curentDate 
                                      &&
                                      p.endDate >= curentDate
                                      select
@@ -3396,7 +3396,8 @@ namespace Emsal.DAL
                               join ev in context.tblEnumValues on p.quantity_type_Name equals ev.name 
                                into sr
                                      from x in sr.DefaultIfEmpty()
-                                     where p.Status == 1 && p.startDate <= curentDate && p.endDate >= curentDate
+                                     where p.Status == 1 && //p.startDate <= curentDate &&
+                                     p.endDate >= curentDate
                                    
 
                                      select new AnnouncementDetail
@@ -5001,7 +5002,57 @@ namespace Emsal.DAL
                 throw;
             }
         }
+        ///dila GetPRM_AdminUnitRegionByAddressId
+        //public List<tblPRM_AdminUnit> GetPRM_AdminUnitRegionList(Int64 id)
+        //{
+        //    try
+        //    {
+        //        using (var context = new EmsalDBEntities())
+        //        {
 
+        //            var organisations = (from p in context.tblPRM_AdminUnit
+        //                                 where p.Id == id && p.Status == 1
+        //                                 select p);
+        //            return organisations.ToList();
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw;
+        //    }
+        //}
+        public List<tblPRM_AdminUnit> GetPRM_AdminUnitRegionByAddressId(Int64 id)
+        {
+           
+            try
+            {
+                using (var context = new EmsalDBEntities())
+                {
+                    if (id!=0)
+                    {
+                       var  organisations = (from p in context.tblPRM_AdminUnit
+                                             where p.ParentRegionID == id && p.Status == 1
+                                             select p);
+                       return organisations.ToList();
+                    }
+                    else if(id==0)
+                    {
+                       var organisations1 = (from p in context.tblPRM_AdminUnit
+                                         where p.ParentRegionID != 0 && p.Status == 1
+                                         select p);
+                       return organisations1.ToList();
+                    }
+
+                    return null;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         #endregion
 
 

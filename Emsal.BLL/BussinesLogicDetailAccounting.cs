@@ -265,18 +265,18 @@ namespace Emsal.BLL
                 foreach (var item in itemList)
                 {
                     tblContract contract = operationLogic.GetContractById(item.contractID);
-                    tblContract contract1 = operationLogic.GetContractById(item.contractID);
+               
                     if (item.contractStatus==true)
                     {
-                        if (contract != null)
+                        if (item.contractID != 0 )
                         {
                             item.contractList = contract;
                         }
 
                     }
-                    else if (item.contractStatus!=true)
+                    else if (item.contractStatus==false)
                     {
-                        if (contract == null)
+                        if (item.contractID == 0)
                         {
                             item.contractList = contract;
                         }
@@ -345,10 +345,10 @@ namespace Emsal.BLL
 
             }
         }
-        public BaseOutput GetPRM_AdminUnitByAdminID(BaseInput baseinput, Int64 adminId, out List<adminUnit> itemList)
+        public BaseOutput GetPRM_AdminUnitByAdminID(BaseInput baseinput, Int64 adminId, out List<AdminUnitRegion> itemList)
         {
             BaseOutput baseOutput;
-            itemList = new List<adminUnit>();
+            itemList = new List<AdminUnitRegion>();
 
 
             try
@@ -369,6 +369,7 @@ namespace Emsal.BLL
 
             }
         }
+
         public BaseOutput GetTotalDemandOffers(BaseInput baseinput, Int64 page, Int64 page_size,DemandOfferProductsSearch ops, out List<DemanProductionGroup> itemList)
         {
             BaseOutput baseOutput;

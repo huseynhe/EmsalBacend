@@ -1220,9 +1220,13 @@ namespace Emsal.WebSrv
         [OperationContract]
         BaseOutput WS_GetGovermentOrganisatinByAdminID(BaseInput baseinput, Int64 adminId, out List<ForeignOrganization> itemList);
         [OperationContract]
-        BaseOutput WS_GetPRM_AdminUnitByAdminID(BaseInput baseinput, Int64 adminId, out List<adminUnit> itemList);
-       
+        BaseOutput WS_GetPRM_AdminUnitByAdminID(BaseInput baseinput, Int64 adminId, out List<AdminUnitRegion> itemList);
+        [OperationContract]
+        BaseOutput WS_GetPRM_AdminUnitRegionByAddressId(BaseInput baseinput, Int64 adminId, out List<tblPRM_AdminUnit> itemList);
+        [OperationContract]
 
+        BaseOutput WS_GetPRM_AdminUnitRegionList(BaseInput baseinput, out List<AdminUnitRegion> itemList);
+       
 
     }
 }

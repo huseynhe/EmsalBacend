@@ -10,6 +10,6 @@ namespace Emsal.DAL.CustomObjects
         public Int64 ID { get; set; }
         public string organizationName { get; set; }
         
-        public List<adminUnit> adminUnitIdList { get; set; }
+        public List<AdminUnitRegion> adminUnitIdList { get; set; }
     }
 }

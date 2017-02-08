@@ -972,7 +972,8 @@ select table3.* ,pc.ProductName as potentialProduct from( select table2.*, perso
                       left join [dbo].[tblEnumCategory] ec on ev.enumCategory_enumCategoryId=ec.Id and ec.Status=1   
                          where 
 						op.user_Id=@userID and 
-						  ev.Id!=13 and op.isSelected=1  and op.Status=1
+						  ev.Id!=13 and op.isSelected=1 
+and op.Status=1
                       ) as FirstTable   
                        left join [dbo].[tblEnumValue] ev on FirstTable.EnumValueId=ev.Id and ev.Status=1 
 					  
@@ -3973,7 +3974,8 @@ select FirstTable.Id,FirstTable.unit_price,FirstTable.quantity,FirstTable.descri
                       left join tblUserRole ur on us.Id=ur.UserId and ur.Status=1
                          where 
 						op.user_Id=@userID and 
-						  ev.Id!=13 and op.isSelected=1  and op.Status=1
+						  ev.Id!=13 and op.isSelected=1
+and op.Status=1
  
                       ) as FirstTable   
                        left join [dbo].[tblEnumValue] ev on FirstTable.EnumValueId=ev.Id and ev.Status=1 
@@ -4088,7 +4090,8 @@ select FirstTable.Id,FirstTable.unit_price,FirstTable.quantity,FirstTable.descri
   left join tblUserRole ur on us.Id=ur.UserId and ur.Status=1 
                          where 
 						op.user_Id=@userID and 
-						  ev.Id!=13 and op.isSelected=1  and op.Status=1
+						  ev.Id!=13 and op.isSelected=1 
+and op.Status=1
                       ) as FirstTable   
                        left join [dbo].[tblEnumValue] ev on FirstTable.EnumValueId=ev.Id and ev.Status=1 
 					  
@@ -4099,34 +4102,7 @@ select FirstTable.Id,FirstTable.unit_price,FirstTable.quantity,FirstTable.descri
   where tb.EnumCategoryId=5
                          ";
             squery.Append(query);
-            //if (ops.productName != null && ops.roleID == 0 && ops.userType_eV_ID == 0)
-            //{
-            //    squery.Append(" and (ProductName Like '%' + @productName + '%' or ProductParentName Like '%' + @productName + '%') ");
-            //}
-            //else if (ops.roleID != 0 && ops.productName == null && ops.userType_eV_ID == 0)
-            //{
-            //    squery.Append(" and RoleId=@RoleId");
-            //}
-            //else if (ops.userType_eV_ID != 0 && ops.roleID == 0 && ops.productName == null)
-            //{
-            //    squery.Append(" and userType_eV_ID=@userType_eV_ID");
-            //}
-            //else if (ops.roleID != 0 && ops.productName == null && ops.userType_eV_ID != 0)
-            //{
-            //    squery.Append(" and RoleId=@RoleId and userType_eV_ID=@userType_eV_ID");
-            //}
-            //else if (ops.roleID != 0 && ops.productName != null && ops.userType_eV_ID == 0)
-            //{
-            //    squery.Append(" and RoleId=@RoleId  and (ProductName Like '%' + @productName + '%' or ProductParentName Like '%' + @productName + '%') ");
-            //}
-            //else if (ops.roleID != 0 && ops.productName != null && ops.userType_eV_ID != 0)
-            //{
-            //    squery.Append(" and RoleId=@RoleId and userType_eV_ID=@userType_eV_ID  and (ProductName Like '%' + @productName + '%' or ProductParentName Like '%' + @productName + '%') ");
-            //}
-            //else if (ops.roleID == 0 && ops.productName != null && ops.userType_eV_ID != 0)
-            //{
-            //    squery.Append(" and userType_eV_ID=@userType_eV_ID  and (ProductName Like '%' + @productName + '%' or ProductParentName Like '%' + @productName + '%') ");
-            //}
+           
             if (ops.productID != 0)
             {
                 squery.Append(" and product_Id=@product_Id");
@@ -4198,7 +4174,7 @@ select FirstTable.Id,FirstTable.unit_price,FirstTable.quantity,FirstTable.descri
     ORDER BY rn ASC ";
             var queryRole = @" and RoleId=@RoleId";
             var queryName = @"  and Name like '%'+@name+'%' or Surname like '%'+@name+'%' or userType like '%'+@name+'%' ";
-            var queryState = @" and RoleId=11 and state_eV_Id=2";
+          
 
             squery.Append(query);
 
@@ -5823,6 +5799,49 @@ left join tblProductCatalog pc on tb.ProductCatalogParentID=pc.Id and pc.Status=
 
             return result;
         }
+
+        public List<AdminUnitRegion> GetPRM_AdminUnitRegionList()
+        {
+            var result = new List<AdminUnitRegion>();
+            StringBuilder squery = new StringBuilder();
+            var query = @" select distinct tb.*,au.Name as regionName from(select au.ParentRegionID from tblPRM_AdminUnit au
+where au.Status=1
+)as tb
+ join tblPRM_AdminUnit au on tb.ParentRegionID=au.Id and au.Status=1
+							 ";
+
+            using (var connection = new SqlConnection(DBUtil.ConnectionString))
+            {
+                connection.Open();
+
+                using (var command = new SqlCommand(query, connection))
+                {
+
+                    var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        result.Add(new AdminUnitRegion()
+                        {
+
+
+
+
+
+
+                            ID = reader.GetInt64OrDefaultValue(0),
+                            regionName = reader.GetStringOrEmpty(1)
+
+
+
+                        });
+                    }
+                }
+                connection.Close();
+            }
+
+            return result;
+        }
+
 
     }
 
