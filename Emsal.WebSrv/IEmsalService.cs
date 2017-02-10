@@ -14,6 +14,7 @@ namespace Emsal.WebSrv
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
     [ServiceContract]
+   
     public interface IEmsalService
     {
 
@@ -191,7 +192,11 @@ namespace Emsal.WebSrv
         #endregion
 
         #region ProductCatalog
-
+        [OperationContract]
+        BaseOutput WS_GetProductCatalogsOffer(BaseInput baseinput, out List<ProductCatalogDetail> pCatalogDetailList);
+        [OperationContract]
+        BaseOutput WS_GetProductCatalogsDemand(BaseInput baseinput, out List<ProductCatalogDetail> pCatalogDetailList);
+      
         [OperationContract]
         BaseOutput WS_DeleteProductCatalog(BaseInput baseinput, tblProductCatalog productCatalog);
 
@@ -431,7 +436,9 @@ namespace Emsal.WebSrv
         BaseOutput WS_GetRoleByName(BaseInput baseinput, string name, out tblRole item);
         [OperationContract]
         BaseOutput WS_GetRolesNotOwnedByUser(BaseInput baseinput, long userId, out List<tblRole> itemList);
-
+        [OperationContract]
+        BaseOutput WS_GetRoles1(BaseInput baseinput, out List<tblRole> itemList);
+       
         [OperationContract]
         BaseOutput WS_GetRolesNotAllowedInPage(BaseInput baseinput, long pageId, out List<tblRole> itemList);
         #endregion
@@ -1206,12 +1213,17 @@ namespace Emsal.WebSrv
         [OperationContract]
         BaseOutput WS_GetDemandByForganistion_OP(BaseInput baseinput, DemandForegnOrganization ops, out  List<OrganizationDetail> itemList);
         [OperationContract]
-        BaseOutput WS_GetTotalDemandOffers(BaseInput baseinput, Int64 page, Int64 page_size,DemandOfferProductsSearch ops, out List<DemanProductionGroup> itemList);
+        BaseOutput WS_GetTotalDemandOffers(BaseInput baseinput, int page, int page_size,DemandOfferProductsSearch ops, out List<DemanProductionGroup> itemList);
+        [OperationContract]
+        BaseOutput WS_GetTotalDemandOffers1(BaseInput baseinput, int page, int page_size, DemandOfferProductsSearch ops, out List<DemanProductionGroup> itemList);
         [OperationContract]
         BaseOutput WS_GetTotalOffersbyProductID(BaseInput baseinput, Int64 productID,DemandOfferProductsSearch ops, out List<DemanOfferProduction> itemList);
         [OperationContract]
         BaseOutput WS_GetTotalDemandOffers_OPC(BaseInput baseinput, DemandOfferProductsSearch ops, out Int64 count);
+        [OperationContract]
+        BaseOutput WS_GetTotalOffersbyProductID_OPC(BaseInput baseinput, Int64 productID,DemandOfferProductsSearch ops, out Int64 count);
        
+
         #endregion
         [OperationContract]
         BaseOutput WS_GetAnnouncementDetails_Search(BaseInput baseinput, OfferProductionDetailSearch ops, out List<AnnouncementDetail> itemList);
@@ -1226,6 +1238,10 @@ namespace Emsal.WebSrv
         [OperationContract]
 
         BaseOutput WS_GetPRM_AdminUnitRegionList(BaseInput baseinput, out List<AdminUnitRegion> itemList);
+        [OperationContract]
+        BaseOutput WS_GetTotalDemandOffersRegion(BaseInput baseinput,DemandOfferProductsSearch ops, out List<DemandDetail> itemList);
+        [OperationContract]
+        BaseOutput WS_GetTotalDemandOffersRegion_OPC(BaseInput baseinput, DemandOfferProductsSearch ops, out Int64 count);
        
 
     }

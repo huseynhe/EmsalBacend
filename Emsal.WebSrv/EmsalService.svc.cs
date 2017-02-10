@@ -356,7 +356,20 @@ namespace Emsal.WebSrv
             BusinessLogic businessLogic = new BusinessLogic();
             return businessLogic.DeleteProductCatalog(baseinput, productCatalog);
         }
+        public BaseOutput WS_GetProductCatalogsOffer(BaseInput baseinput, out List<ProductCatalogDetail> pCatalogDetailList)
+        {
 
+            return businessLogic.GetProductCatalogsOffer(baseinput, out pCatalogDetailList);
+
+
+        }
+        public BaseOutput WS_GetProductCatalogsDemand(BaseInput baseinput, out List<ProductCatalogDetail> pCatalogDetailList)
+        {
+
+            return businessLogic.GetProductCatalogsDemand(baseinput, out pCatalogDetailList);
+
+
+        }
         public BaseOutput WS_AddProductCatalog(BaseInput baseinput, tblProductCatalog productCatalog, out tblProductCatalog productCatalogOut)
         {
             BusinessLogic businessLogic = new BusinessLogic();
@@ -869,7 +882,11 @@ namespace Emsal.WebSrv
         {
             return businessLogic.GetRoleById(baseinput, ID, out item);
         }
+        public BaseOutput WS_GetRoles1(BaseInput baseinput, out List<tblRole> itemList)
+        {
+            return businessLogic.GetRoles1(baseinput, out itemList);
 
+        }
         public BaseOutput WS_GetRoles(BaseInput baseinput, out List<tblRole> itemList)
         {
             return businessLogic.GetRoles(baseinput, out itemList);
@@ -2295,9 +2312,13 @@ namespace Emsal.WebSrv
         {
             return businessLogic.GetDemandByForganistion_OP(baseinput, ops, out itemList);
         }
-        public BaseOutput WS_GetTotalDemandOffers(BaseInput baseinput, Int64 page, Int64 page_size,DemandOfferProductsSearch ops, out List<DemanProductionGroup> itemList)
+        public BaseOutput WS_GetTotalDemandOffers(BaseInput baseinput, int page, int page_size,DemandOfferProductsSearch ops, out List<DemanProductionGroup> itemList)
         {
             return businessLogic.GetTotalDemandOffers(baseinput, page, page_size,ops, out itemList);
+        }
+        public BaseOutput WS_GetTotalDemandOffers1(BaseInput baseinput, int page, int page_size, DemandOfferProductsSearch ops, out List<DemanProductionGroup> itemList)
+        {
+            return businessLogic.GetTotalDemandOffers1(baseinput, page, page_size, ops, out itemList);
         }
         public BaseOutput WS_GetTotalDemandOffers_OPC(BaseInput baseinput, DemandOfferProductsSearch ops, out Int64 count)
         {
@@ -2310,6 +2331,10 @@ namespace Emsal.WebSrv
         public BaseOutput WS_GetTotalOffersbyProductID(BaseInput baseinput, Int64 productID,DemandOfferProductsSearch ops, out List<DemanOfferProduction> itemList)
         {
             return businessLogic.GetTotalOffersbyProductID(baseinput, productID,ops, out itemList);
+        }
+        public BaseOutput WS_GetTotalOffersbyProductID_OPC(BaseInput baseinput, Int64 productID,DemandOfferProductsSearch ops, out Int64 count)
+        {
+            return businessLogic.GetTotalOffersbyProductID_OPC(baseinput, productID,ops, out count);
         }
 
 
@@ -2356,6 +2381,14 @@ namespace Emsal.WebSrv
         public BaseOutput WS_GetPRM_AdminUnitRegionList(BaseInput baseinput, out List<AdminUnitRegion> itemList)
         {
             return businessLogic.GetPRM_AdminUnitRegionList(baseinput, out itemList);
+        }
+        public BaseOutput WS_GetTotalDemandOffersRegion(BaseInput baseinput,DemandOfferProductsSearch ops, out List<DemandDetail> itemList)
+        {
+            return businessLogic.GetTotalDemandOffersRegion(baseinput,ops, out itemList);
+        }
+        public BaseOutput WS_GetTotalDemandOffersRegion_OPC(BaseInput baseinput, DemandOfferProductsSearch ops, out Int64 count)
+        {
+            return businessLogic.GetTotalDemandOffersRegion_OPC(baseinput, ops, out count);
         }
     }
 }

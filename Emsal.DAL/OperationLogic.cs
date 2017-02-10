@@ -1463,8 +1463,9 @@ namespace Emsal.DAL
 
 
                     var pcatalogs = (from p in context.tblProductCatalogs
+                              
                                      where p.Status == 1
-                                     select p);
+                                     select p).Distinct();
 
                     return pcatalogs.ToList();
 
@@ -1476,7 +1477,54 @@ namespace Emsal.DAL
             }
 
         }
+        public List<tblProductCatalog> GetProductCatalogsOffer()
+        {
 
+            try
+            {
+                using (var context = new EmsalDBEntities())
+                {
+
+
+                    var pcatalogs = (from p in context.tblProductCatalogs
+                                     join ev in context.tblOffer_Production on p.Id equals ev.product_Id
+                                     where p.Status == 1 && ev.Status == 1
+                                     select p).Distinct();
+
+                    return pcatalogs.ToList();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+        public List<tblProductCatalog> GetProductCatalogsDemand()
+        {
+
+            try
+            {
+                using (var context = new EmsalDBEntities())
+                {
+
+
+                    var pcatalogs = (from p in context.tblProductCatalogs
+                                     join ev in context.tblDemand_Production on p.Id equals ev.product_Id
+                                     where p.Status == 1 && ev.Status == 1
+                                     select p).Distinct();
+
+                    return pcatalogs.ToList();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
         public List<tblProductCatalog> GetRootProductCatalogs()
         {
 
@@ -3970,6 +4018,29 @@ namespace Emsal.DAL
 
                     var pcatalogs = (from p in context.tblRoles
                                      where p.Status == 1
+                                     select p);
+
+                    return pcatalogs.ToList();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+        public List<tblRole> GetRoles1()
+        {
+
+            try
+            {
+                using (var context = new EmsalDBEntities())
+                {
+
+
+                    var pcatalogs = (from p in context.tblRoles
+                                     where p.Status == 1 &&( p.Id==11 || p.Id==15)
                                      select p);
 
                     return pcatalogs.ToList();
@@ -9110,7 +9181,8 @@ namespace Emsal.DAL
 
                     var ecatalogs = (from p in context.tblAnnouncements
                                      join pc in context.tblProductCatalogs on p.product_id equals pc.Id
-                                     where p.product_id == productId && p.Status == 1 && p.startDate <= curentDate && p.endDate >= curentDate
+                                     where p.product_id == productId  && p.Status == 1 
+                                     && p.startDate <= curentDate && p.endDate >= curentDate
                                      
                                  select
                                  new AnnouncementDetail
@@ -9186,7 +9258,7 @@ namespace Emsal.DAL
 
 
 
-                                     }).Skip((page - 1) * pageSize).Take(pageSize); ;
+                                     }).OrderBy(i => i.announcement.Id).Skip((page - 1) * pageSize).Take(pageSize); ;
 
                     return pcatalogs.ToList();
 

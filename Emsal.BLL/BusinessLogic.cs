@@ -2789,6 +2789,25 @@ namespace Emsal.BLL
             }
 
         }
+        public BaseOutput GetRoles1(BaseInput baseinput, out List<tblRole> itemList)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                itemList = operationLogic.GetRoles1();
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+
+        }
         public BaseOutput GetRoleByName(BaseInput baseinput, string name, out tblRole item)
         {
             BaseOutput baseOutput;

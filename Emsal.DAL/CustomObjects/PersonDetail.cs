@@ -20,6 +20,6 @@ namespace Emsal.DAL.CustomObjects
     
         public tblContract contractList { get; set; }
         public Int64 contractID { get; set; }
-        public bool contractStatus { get; set; }
+       
     }
 }

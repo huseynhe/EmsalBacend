@@ -1314,9 +1314,7 @@ namespace Emsal.BLL
                     try
                     {
                         pCatalogDetail.productName = sqloperationLogic.GetProducParentProductByProductID(item.Id).ProductName;
-                      //  pCatalogDetail.productId = sqloperationLogic.GetProducListByUserID(userID)
-                        //pCatalogDetail.productId = sqloperationLogic.GetProducParentProductByProductID(item.ProductCatalogParentID);
-                       // pCatalogDetail.productId = operationLogic.GetProductCatalogsById(item.Id).ProductCatalogParentID
+                    
                     }
                     catch (Exception)
                     {
@@ -1435,8 +1433,102 @@ namespace Emsal.BLL
 
 
         }
+        public BaseOutput GetProductCatalogsOffer(BaseInput baseinput, out List<ProductCatalogDetail> pCatalogDetailList)
+        {
+
+            pCatalogDetailList = new List<ProductCatalogDetail>();
+
+            BaseOutput baseOutput;
+            try
+            {
+                OperationLogic operationLogic = new OperationLogic();
+                List<tblProductCatalog> pCatalogList = operationLogic.GetProductCatalogsOffer();
 
 
+                foreach (var item in pCatalogList)
+                {
+                    if (item.Status == 1)
+                    {
+                        ProductCatalogDetail pCatalogDetail = new ProductCatalogDetail();
+                        pCatalogDetail.productCatalog = item;
+
+                        try
+                        {
+
+                            pCatalogDetail.productName = sqloperationLogic.GetProducParentProductByProductID(item.Id).ProductName;
+
+                        }
+                        catch (Exception)
+                        {
+
+
+                        }
+                        pCatalogDetailList.Add(pCatalogDetail);
+                    }
+                }
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+            }
+
+            catch (Exception ex)
+            {
+
+                pCatalogDetailList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+
+
+        }
+        public BaseOutput GetProductCatalogsDemand(BaseInput baseinput, out List<ProductCatalogDetail> pCatalogDetailList)
+        {
+
+            pCatalogDetailList = new List<ProductCatalogDetail>();
+
+            BaseOutput baseOutput;
+            try
+            {
+                OperationLogic operationLogic = new OperationLogic();
+                List<tblProductCatalog> pCatalogList = operationLogic.GetProductCatalogsDemand();
+
+
+                foreach (var item in pCatalogList)
+                {
+                    if (item.Status == 1)
+                    {
+                        ProductCatalogDetail pCatalogDetail = new ProductCatalogDetail();
+                        pCatalogDetail.productCatalog = item;
+
+                        try
+                        {
+
+                            pCatalogDetail.productName = sqloperationLogic.GetProducParentProductByProductID(item.Id).ProductName;
+
+                        }
+                        catch (Exception)
+                        {
+
+
+                        }
+                        pCatalogDetailList.Add(pCatalogDetail);
+                    }
+                }
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+            }
+
+            catch (Exception ex)
+            {
+
+                pCatalogDetailList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+
+
+        }
         #endregion
 
         #region Optimastion
@@ -1741,8 +1833,17 @@ namespace Emsal.BLL
             BaseOutput baseOutput;
             try
             {
-                itemList = sqloperationLogic.GetPotensialUserList_OP(ops);
 
+                string ipNumber = "12345678";
+                string _requestID = "223344";
+                Int64 channelId = Convert.ToInt64(baseinput.ChannelId);
+
+                _lineNumber = (new System.Diagnostics.StackFrame(0, true)).GetFileLineNumber() + 1;
+                ExceptionHandlingOperation.SaveInputInformation((IOUtil.GetObjValue(baseinput) + IOUtil.GetObjValue(ops)), ipNumber, _requestID, _lineNumber, (ChannelEnum)channelId);
+               
+                itemList = sqloperationLogic.GetPotensialUserList_OP(ops);
+                ExceptionHandlingOperation.SaveInputInformation((IOUtil.GetObjValue(baseinput) + IOUtil.GetObjValue(ops)), itemList.Count().ToString(), _requestID, _lineNumber, (ChannelEnum)channelId);
+                ExceptionHandlingOperation.SaveOutputInformation( IOUtil.GetObjValue(itemList), ipNumber, _requestID, _lineNumber, (ChannelEnum)channelId);
                 foreach (var item in itemList)
                 {
                     List<ProductCatalogDetail> list = new List<ProductCatalogDetail>();

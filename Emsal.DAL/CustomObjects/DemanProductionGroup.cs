@@ -18,6 +18,7 @@ namespace Emsal.DAL.CustomObjects
         public string productParentName { get; set; }
         public decimal totalQuantityPrice { get; set; }
         public List<DemanOfferProduction> offerProductsList { get; set; }
+        public List<OfferProducts> offerProducts { get; set; }
         public string documentUrl { get; set; }
         public string documentName { get; set; }
        

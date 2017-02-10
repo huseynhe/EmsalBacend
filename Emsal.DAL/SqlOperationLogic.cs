@@ -4135,32 +4135,60 @@ and op.Status=1
         {
             var result = new List<UserInfo>();
             StringBuilder squery = new StringBuilder();
+            StringBuilder squeryunion = new StringBuilder();
+            var queryAdminID = @"  with cte(Id) AS 
+ (
+  SELECT au.Id
+  FROM dbo.tblPRM_AdminUnit au";
+            squeryunion.Append(queryAdminID);
 
-            var query = @"  WITH RESULTS AS ( SELECT * , ROW_NUMBER() OVER (ORDER BY tb.Id DESC) AS rn , ROW_NUMBER() OVER (ORDER BY tb.Id ASC) AS rn_reversed FROM 
+            var queryadminID = @" WHERE  Id=@adminUnitID ";
+            if (ops.adminUnitID != 0)
+            {
+                squeryunion.Append(queryadminID);
+            }
+            var query = @" 
+   UNION ALL 
+   SELECT au.Id
+
+  FROM dbo.tblPRM_AdminUnit au  JOIN cte c ON au.parentId = c.Id
+  
+  )
+  --select ID from cte;
+  , RESULTS AS (
+ SELECT * , ROW_NUMBER() OVER (ORDER BY tb.Id DESC) AS rn , ROW_NUMBER() OVER (ORDER BY tb.Id ASC) AS rn_reversed FROM 
 (select distinct tb.* ,op.state_eV_Id from ( select p.Name,p.Surname,adr.fullAddress,u.Email,u.Id as userId,u.userType_eV_ID,ev.name as userType,
-                             ur.Id as userRoleId ,ur.RoleId,r.Id ,r.Name as roleName,p.PinNumber ,'' as voen
-                             from dbo.tblUser u ,tblPerson p,tblUserRole ur,dbo.tblAddress adr,dbo.tblEnumValue ev,dbo.tblRole r
+                             ur.Id as userRoleId ,ur.RoleId,r.Id ,r.Name as roleName,p.PinNumber ,'' as voen,au.Name as adminUnitName
+                             from dbo.tblUser u ,tblPerson p,tblUserRole ur,dbo.tblAddress adr,dbo.tblEnumValue ev,dbo.tblRole r,
+							 tblPRM_AdminUnit au
                              where u.Id=p.UserId and u.Id=ur.UserId and u.Id=adr.user_Id
                              and ur.RoleId=r.Id
                              and u.userType_eV_ID=ev.Id
                              and r.Id in (11,15) and u.userType_eV_ID=26
 							 and u.Status=1 and p.Status=1 and ur.Status=1 and adr.Status=1
-							 and ev.Status=1 and r.Status=1
+							 and ev.Status=1 and r.Status=1 and au.Id=adr.adminUnit_Id and au.Status=1  and  au.Id 
+			   in (
+							select Id from cte
+							 		)
 							 union 
 							 select fo.Name,fo.description as Surname,adr.fullAddress,u.Email,u.Id as userId,u.userType_eV_ID,ev.name as userType,
-                             ur.Id as userRoleId ,ur.RoleId,r.Id ,r.Name,'' as PinNumber , fo.voen
+                             ur.Id as userRoleId ,ur.RoleId,r.Id ,r.Name,'' as PinNumber , fo.voen,au.Name as adminUnitName
                              from dbo.tblUser u ,[dbo].[tblForeign_Organization] fo,
-							 tblUserRole ur,dbo.tblAddress adr,dbo.tblEnumValue ev,dbo.tblRole r
+							 tblUserRole ur,dbo.tblAddress adr,dbo.tblEnumValue ev,dbo.tblRole r,tblPRM_AdminUnit au
                              where u.Id=fo.UserId and u.Id=ur.UserId and u.Id=adr.user_Id
                              and ur.RoleId=r.Id
                              and u.userType_eV_ID=ev.Id
                                and r.Id in (11,15) and u.userType_eV_ID=50
 							 and u.Status=1 and fo.Status=1 and ur.Status=1 and adr.Status=1
-							 and ev.Status=1 and r.Status=1  
+							 and ev.Status=1 and r.Status=1 and au.Id=adr.adminUnit_Id and au.Status=1  and  au.Id 
+			   in (
+							select Id from cte
+							 		)
 							 )as tb
 							left join tblOffer_Production op on op.user_Id=tb.userId and op.Status=1
                              and ((tb.RoleId  = 11 AND op.state_eV_Id=2) OR (tb.RoleId=15))
-							 ) as tb where (tb.PinNumber!='' or tb.voen!='')
+							 
+							 ) as tb where (tb.PinNumber!='' or tb.voen!='') 
  
                          ";
             var query1 = @")  SELECT *
@@ -4174,8 +4202,9 @@ and op.Status=1
     ORDER BY rn ASC ";
             var queryRole = @" and RoleId=@RoleId";
             var queryName = @"  and Name like '%'+@name+'%' or Surname like '%'+@name+'%' or userType like '%'+@name+'%' ";
-          
+            var queryadminName = @" and adminUnitName=@adminUnitName";
 
+            squery.Append(squeryunion.ToString());
             squery.Append(query);
 
             if (ops.roleID != 0 )
@@ -4185,7 +4214,11 @@ and op.Status=1
           
             if (!String.IsNullOrEmpty(ops.name))
             {
-                squery.Append(queryName);
+               // squery.Append(queryName);
+            }
+            if (!String.IsNullOrEmpty(ops.adminUnitName))
+            {
+                //squery.Append(queryadminName);
             }
            
             squery.Append(query1);
@@ -4199,6 +4232,9 @@ and op.Status=1
                     command.Parameters.AddWithValue("@page_num", ops.page);
                     command.Parameters.AddWithValue("@page_size", ops.pageSize);
                     command.Parameters.AddWithValue("@name", ops.name);
+                    command.Parameters.AddWithValue("@adminUnitName", ops.adminUnitName);
+                    command.Parameters.AddWithValue("@adminUnitID", ops.adminUnitID);
+                 
                  
              
                     var reader = command.ExecuteReader();
@@ -4218,7 +4254,8 @@ and op.Status=1
 
                             pinNumber = reader.GetStringOrEmpty(11),
                             voen = reader.GetStringOrEmpty(12),
-                            state_Ev_ID=reader.GetInt64OrDefaultValue(13),
+                            adminUnitName=reader.GetStringOrEmpty(13),
+                            state_Ev_ID=reader.GetInt64OrDefaultValue(14),
 
                         });
                     }

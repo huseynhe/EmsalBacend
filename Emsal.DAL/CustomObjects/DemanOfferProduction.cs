@@ -27,10 +27,11 @@ namespace Emsal.DAL.CustomObjects
         public string productParentName { get; set; }
         public decimal totalQuantityPrice { get; set; }
         public Int64  roleId { get; set; }
-             
+        public Int64 monthID { get; set; }
         public string enumValueName { get; set; }
         public List<tblCommunication> comList { get; set; }
         public string fatherName { get; set; }
+     
      
     }
 }
