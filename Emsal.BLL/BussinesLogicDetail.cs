@@ -1834,16 +1834,9 @@ namespace Emsal.BLL
             try
             {
 
-                string ipNumber = "12345678";
-                string _requestID = "223344";
-                Int64 channelId = Convert.ToInt64(baseinput.ChannelId);
-
-                _lineNumber = (new System.Diagnostics.StackFrame(0, true)).GetFileLineNumber() + 1;
-                ExceptionHandlingOperation.SaveInputInformation((IOUtil.GetObjValue(baseinput) + IOUtil.GetObjValue(ops)), ipNumber, _requestID, _lineNumber, (ChannelEnum)channelId);
                
                 itemList = sqloperationLogic.GetPotensialUserList_OP(ops);
-                ExceptionHandlingOperation.SaveInputInformation((IOUtil.GetObjValue(baseinput) + IOUtil.GetObjValue(ops)), itemList.Count().ToString(), _requestID, _lineNumber, (ChannelEnum)channelId);
-                ExceptionHandlingOperation.SaveOutputInformation( IOUtil.GetObjValue(itemList), ipNumber, _requestID, _lineNumber, (ChannelEnum)channelId);
+                
                 foreach (var item in itemList)
                 {
                     List<ProductCatalogDetail> list = new List<ProductCatalogDetail>();
@@ -1881,8 +1874,7 @@ namespace Emsal.BLL
 
                     item.potentialProductionList = operationLogic.GetPotential_ProductionsByUserID(item.userID);
                 }
-
-
+               
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
 
             }
@@ -1898,19 +1890,21 @@ namespace Emsal.BLL
         public BaseOutput GetPotensialUserList_OPC(BaseInput baseinput, PotensialUserForAdminUnitIdList ops, out Int64 count)
         {
             BaseOutput baseOutput;
-            count = 0;
+            count = 0; 
             try
             {
+               
+
+               
                 count = sqloperationLogic.GetPotensialUserList_OPC(ops);
 
-
+              
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
 
 
             }
             catch (Exception ex)
             {
-
                 count = 0;
                 return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
 

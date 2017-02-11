@@ -1120,7 +1120,7 @@ namespace Emsal.WebSrv
         [OperationContract]
         BaseOutput WS_GetAnnouncementDetails_OP(BaseInput baseinput, int page, int pageSize, out List<AnnouncementDetail> itemList);
         [OperationContract]
-        BaseOutput WS_GetAnnouncementDetails_OPC(BaseInput baseinput, Int64 productID, out Int64 count);
+        BaseOutput WS_GetAnnouncementDetails_OPC(BaseInput baseinput, out Int64 count);
         [OperationContract]
         BaseOutput WS_GetDemandProductsForAccounting_OPC(BaseInput baseinput, DemandProductsForAccountingSearch ops, out Int64 count);
         [OperationContract]

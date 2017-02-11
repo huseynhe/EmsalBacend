@@ -14,5 +14,9 @@ namespace Emsal.Utility.CustomObjects
         {
             return str.Split(new char[] { ' ', '.', '?' }, StringSplitOptions.RemoveEmptyEntries).Length;
         }
+        public static string GetStringOrEmptyData(this String data)
+        {
+            return  String.IsNullOrEmpty( data)? String.Empty : data;
+        }
     }
 }

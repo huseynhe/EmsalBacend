@@ -9249,7 +9249,7 @@ namespace Emsal.DAL
 
                     var pcatalogs = (from p in context.tblAnnouncements
                                      join pc in context.tblProductCatalogs on p.product_id equals pc.Id
-
+                                     orderby pc.ProductName
                                      where p.Status == 1 && p.startDate <= curentDate && p.endDate >= curentDate
 
                                      select new AnnouncementDetail

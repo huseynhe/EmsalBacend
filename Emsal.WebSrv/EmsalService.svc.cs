@@ -2168,7 +2168,7 @@ namespace Emsal.WebSrv
         {
             return businessLogic.GetAnnouncementDetails_OP(baseinput, page, pageSize, out itemList);
         }
-        public BaseOutput WS_GetAnnouncementDetails_OPC(BaseInput baseinput, Int64 productID, out Int64 count)
+        public BaseOutput WS_GetAnnouncementDetails_OPC(BaseInput baseinput,  out Int64 count)
         {
             return businessLogic.GetAnnouncementDetails_OPC(baseinput, out count);
         }
