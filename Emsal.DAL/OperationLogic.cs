@@ -1501,6 +1501,89 @@ namespace Emsal.DAL
             }
 
         }
+        public List<tblProductCatalog> GetProductCatalogsOfferWitoutTypeOfEV(Int64 userID)
+        {
+
+            try
+            {
+                using (var context = new EmsalDBEntities())
+                {
+
+
+                    var pcatalogs = 
+                                    (from p in context.tblProductCatalogs
+                                     join ev in context.tblOffer_Production on p.Id equals ev.product_Id
+                                    
+                                     join prc in context.tblProductCatalogControls on p.Id equals prc.ProductId
+                                     where p.Status == 1 && prc.Status == 1 && prc.EnumCategoryId != 27 
+                                     && ev.user_Id == userID && ev.Status==1
+                                     select p).Distinct();
+
+                    return pcatalogs.ToList();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+        public List<tblProductCatalog> GetProductCatalogsOfferWitoutTypeOfEV1(Int64 productID,Int64 userID)
+        {
+
+            try
+            {
+                using (var context = new EmsalDBEntities())
+                {
+
+
+                    var pcatalogs =
+                                    (from p in context.tblProductCatalogs
+                                     join ev in context.tblOffer_Production on p.Id equals ev.product_Id
+
+                                     join prc in context.tblProductCatalogControls on p.Id equals prc.ProductId
+                                     where p.Status == 1 && prc.Status == 1 && prc.EnumCategoryId == 27 && p.Id == productID && ev.Status == 1 && ev.user_Id==userID
+                                     select p).Distinct();
+
+                    return pcatalogs.ToList();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+        public List<tblProductCatalog> GetProductCatalogsOfferWitoutTypeOfEV2(Int64 productID,Int64 userid)
+        {
+
+            try
+            {
+                using (var context = new EmsalDBEntities())
+                {
+
+
+                    var pcatalogs =
+                                    (from p in context.tblProductCatalogs
+                                     join ev in context.tblOffer_Production on p.Id equals ev.product_Id
+
+                                     join prc in context.tblProductCatalogControls on p.Id equals prc.ProductId
+                                     where p.Status == 1 && prc.Status == 1 && prc.EnumCategoryId != 27 && p.Id == productID && ev.Status == 1 
+                                     && ev.user_Id==userid
+                                     select p).Distinct();
+
+                    return pcatalogs.ToList();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
         public List<tblProductCatalog> GetProductCatalogsDemand()
         {
 
@@ -2083,6 +2166,9 @@ namespace Emsal.DAL
 
         public List<tblOffer_Production> GetOffer_ProductionsByUserId(Int64 UserId)
         {
+            /*from row in _db.Movies 
+             orderby row.Category descending, row.Name
+             select row;*/
             try
             {
                 using (var context = new EmsalDBEntities())
@@ -2090,6 +2176,7 @@ namespace Emsal.DAL
                     var offerProductions = (from p in context.tblOffer_Production
                                             join ev in context.tblEnumValues on p.state_eV_Id equals ev.Id
                                             where p.user_Id == UserId && p.Status == 1 && ev.Status==1 
+                                            //orderby p.
                                             select p);
 
                     return offerProductions.ToList();
@@ -3032,7 +3119,31 @@ namespace Emsal.DAL
                 using (var context = new EmsalDBEntities())
                 {
                     var ecatalogs = (from p in context.tblDemand_Production
-                                     where p.user_Id == item.user_Id && p.Status == 1 && p.state_eV_Id == item.state_eV_Id
+                                     where p.user_Id == item.user_Id &&
+                                     p.Status == 1 && p.state_eV_Id == item.state_eV_Id
+                                     select p);
+
+                    return ecatalogs.ToList();
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+        public List<tblDemand_Production> GetDemand_ProductionsByStateAndUserIDDila(Int64 userID,Int64 stateID)
+        {
+
+            try
+            {
+                using (var context = new EmsalDBEntities())
+                {
+                    var ecatalogs = (from p in context.tblDemand_Production
+                                     where p.user_Id == userID && p.Status == 1 
+&& p.state_eV_Id ==stateID
                                      select p);
 
                     return ecatalogs.ToList();
@@ -3250,6 +3361,31 @@ namespace Emsal.DAL
             }
 
         }
+        public tblAnnouncement GetAnnouncementById1(Int64 prodcutID)
+        {
+            Int64 curentDate = DateTime.Now.getInt64ShortDate();
+            try
+            {
+                using (var context = new EmsalDBEntities())
+                {
+
+
+                    var ecatalogs = (from p in context.tblAnnouncements
+                                     where p.product_id == prodcutID && p.Status == 1 && p.startDate <= curentDate &&
+                                     p.endDate >= curentDate
+                                     select p).FirstOrDefault();
+
+                    return ecatalogs;
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
         public List<tblAnnouncement> GetAnnouncements()
         {
 
@@ -3395,7 +3531,74 @@ namespace Emsal.DAL
 
         }
 
-       
+        public Int64 GetAnnouncementDetailsByProductIdOPC(Int64 productId)
+        {
+            Int64 curentDate = DateTime.Now.getInt64ShortDate();
+
+            try
+            {
+                using (var context = new EmsalDBEntities())
+                {
+
+                    if (productId != 0)
+                    {
+
+
+                        var ecatalogs = (from p in context.tblAnnouncements
+                                         join pc in context.tblProductCatalogs on p.product_id equals pc.Id
+                                         join ev in context.tblEnumValues on p.quantity_type_Name equals ev.name into sr
+                                         from x in sr.DefaultIfEmpty()
+                                         where p.product_id == productId && p.Status == 1
+                                             // && p.startDate <= curentDate 
+                                         &&
+                                         p.endDate >= curentDate
+                                         select
+                                        new AnnouncementDetail
+                                        {
+
+                                            announcement = p,
+                                            description = x.description,
+                                            productName = pc.ProductName,
+
+
+
+                                        });
+                        return ecatalogs.Count();
+                    }
+                    else
+                    {
+                        var ecatalogs = (from p in context.tblAnnouncements
+                                         join pc in context.tblProductCatalogs on p.product_id equals pc.Id
+                                         join ev in context.tblEnumValues on p.quantity_type_Name equals ev.name into sr
+                                         from x in sr.DefaultIfEmpty()
+                                         where p.Status == 1
+                                             // && p.startDate <= curentDate 
+                                         &&
+                                         p.endDate >= curentDate
+                                         select
+                                        new AnnouncementDetail
+                                        {
+
+                                            announcement = p,
+                                            description = x.description,
+                                            productName = pc.ProductName,
+
+
+
+                                        });
+                        return ecatalogs.Count();
+                    }
+                    //  return ecatalogs.ToList();
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
 
         public List<AnnouncementDetail> GetAnnouncementDetailsOld()
         {
@@ -5093,37 +5296,38 @@ namespace Emsal.DAL
         //        throw;
         //    }
         //}
-        public List<tblPRM_AdminUnit> GetPRM_AdminUnitRegionByAddressId(Int64 id)
-        {
+        //public List<tblPRM_AdminUnit> GetPRM_AdminUnitRegionByAddressId(Int64 id)
+        //{
            
-            try
-            {
-                using (var context = new EmsalDBEntities())
-                {
-                    if (id!=0)
-                    {
-                       var  organisations = (from p in context.tblPRM_AdminUnit
-                                             where p.ParentRegionID == id && p.Status == 1
-                                             select p);
-                       return organisations.ToList();
-                    }
-                    else if(id==0)
-                    {
-                       var organisations1 = (from p in context.tblPRM_AdminUnit
-                                         where p.ParentRegionID != 0 && p.Status == 1
-                                         select p);
-                       return organisations1.ToList();
-                    }
+        //    try
+        //    {
+        //        using (var context = new EmsalDBEntities())
+        //        {
+        //            if (id!=0)
+        //            {
+        //               var  organisations = (from p in context.tblPRM_AdminUnit
+        //                                     where p.ParentRegionID == id && p.Status == 1
+        //                                     select p);
+        //               return organisations.ToList();
+        //            }
+        //            else if(id==0)
+        //            {
+        //               var organisations1 = (from p in context.tblPRM_AdminUnit
+                                            
+        //                                     where p.ParentID != 0 && p.Status == 1 && p.ParentID != 11100001
+        //                                 select p);
+        //               return organisations1.ToList();
+        //            }
 
-                    return null;
-                }
-            }
-            catch (Exception)
-            {
+        //            return null;
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
 
-                throw;
-            }
-        }
+        //        throw;
+        //    }
+        //}
         #endregion
 
 
@@ -9168,142 +9372,151 @@ namespace Emsal.DAL
 
         #region Optimastion 
 
-        public List<AnnouncementDetail> GetAnnouncementDetailsByProductId_OP(Int64 productId,int page,int pageSize)
-        {
-            Int64 curentDate = DateTime.Now.getInt64ShortDate();
+        //public List<AnnouncementDetail> GetAnnouncementDetailsByProductId_OP(Int64 productId,int page,int pageSize)
+        //{
+        //    Int64 curentDate = DateTime.Now.getInt64ShortDate();
 
 
-            try
-            {
-                using (var context = new EmsalDBEntities())
-                {
+        //    try
+        //    {
+        //        using (var context = new EmsalDBEntities())
+        //        {
 
 
-                    var ecatalogs = (from p in context.tblAnnouncements
-                                     join pc in context.tblProductCatalogs on p.product_id equals pc.Id
-                                     where p.product_id == productId  && p.Status == 1 
-                                     && p.startDate <= curentDate && p.endDate >= curentDate
+        //            var ecatalogs = (from p in context.tblAnnouncements
+        //                             join pc in context.tblProductCatalogs on p.product_id equals pc.Id
+        //                             orderby pc.ProductName
+        //                             where p.product_id == productId  && p.Status == 1 
+        //                             && p.startDate <= curentDate && p.endDate >= curentDate
                                      
-                                 select
-                                 new AnnouncementDetail
-                                   {
+        //                         select
+        //                         new AnnouncementDetail
+        //                           {
 
-                                        announcement = p,
+        //                                announcement = p,
 
-                                   }
-                                   ).OrderBy(i => i.announcement.Id).Skip((page - 1) * pageSize).Take(pageSize);
+        //                           }
+        //                           ).OrderBy(i => i.announcement.product_name).Skip((page - 1) * pageSize).Take(pageSize);
 
-                    return ecatalogs.ToList();
+        //            return ecatalogs.ToList();
 
-                }
-            }
-            catch (Exception ex)
-            {
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                throw ex;
-            }
+        //        throw ex;
+        //    }
 
-        }
-        public  Int64 GetAnnouncementDetailsByProductId_OPC(Int64 productId)
-        {
-            Int64 curentDate = DateTime.Now.getInt64ShortDate();
+        //}
+//        public  Int64 GetAnnouncementDetailsByProductId_OPC(Int64 productId)
+//        {
+//            Int64 curentDate = DateTime.Now.getInt64ShortDate();
 
-            Int64 count = 0;
-            try
-            {
-                using (var context = new EmsalDBEntities())
-                {
-
-
-                    count = (from p in context.tblAnnouncements
-                                     join pc in context.tblProductCatalogs on p.product_id equals pc.Id
-                                     where p.product_id == productId && p.Status == 1 && p.startDate <= curentDate && p.endDate >= curentDate
-                                     select
-                                    new AnnouncementDetail
-                                    {
-
-                                        announcement = p,
-
-                                    }).Count();
-
-                    return count;
-;
-
-                }
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-
-        }
-        public List<AnnouncementDetail> GetAnnouncementDetails_OP(int page, int pageSize)
-        {
-            Int64 curentDate = DateTime.Now.getInt64ShortDate();
-            try
-            {
-                using (var context = new EmsalDBEntities())
-                {
+//            Int64 count = 0;
+//            try
+//            {
+//                using (var context = new EmsalDBEntities())
+//                {
 
 
-                    var pcatalogs = (from p in context.tblAnnouncements
-                                     join pc in context.tblProductCatalogs on p.product_id equals pc.Id
-                                     orderby pc.ProductName
-                                     where p.Status == 1 && p.startDate <= curentDate && p.endDate >= curentDate
+//                    count = (from p in context.tblAnnouncements
+//                                     join pc in context.tblProductCatalogs on p.product_id equals pc.Id
+//                                     where p.product_id == productId && p.Status == 1 && p.startDate <= curentDate && p.endDate >= curentDate
+//                                     select
+//                                    new AnnouncementDetail
+//                                    {
 
-                                     select new AnnouncementDetail
-                                     {
-                                         announcement = p,
+//                                        announcement = p,
 
+//                                    }).Count();
 
+//                    return count;
+//;
 
-                                     }).OrderBy(i => i.announcement.Id).Skip((page - 1) * pageSize).Take(pageSize); ;
+//                }
+//            }
+//            catch (Exception ex)
+//            {
 
-                    return pcatalogs.ToList();
+//                throw ex;
+//            }
 
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-        }
-        public Int64 GetAnnouncementDetails_OPC()
-        {
-            Int64 curentDate = DateTime.Now.getInt64ShortDate();
-
-            Int64 count = 0;
-            try
-            {
-                using (var context = new EmsalDBEntities())
-                {
+//        }
+        //public List<AnnouncementDetail> GetAnnouncementDetails_OP(int page, int pageSize)
+        //{
+        //    Int64 curentDate = DateTime.Now.getInt64ShortDate();
+        //    try
+        //    {
+        //        using (var context = new EmsalDBEntities())
+        //        {
 
 
-                    count = (from p in context.tblAnnouncements
-                             join pc in context.tblProductCatalogs on p.product_id equals pc.Id
-                             where  p.Status == 1 && p.startDate <= curentDate && p.endDate >= curentDate
-                             select
-                            new AnnouncementDetail
-                            {
+        //            var pcatalogs = (from p in context.tblAnnouncements
+        //                             join pc in context.tblProductCatalogs on p.product_id equals pc.Id
+                                   
+        //                           //  orderby pc.ProductName
+        //                             where p.Status == 1 && p.startDate <= curentDate && p.endDate >= curentDate
 
-                                announcement = p,
+        //                             select new AnnouncementDetail
+        //                             {
+        //                                 announcement = p,
+        //                                 productName=pc.ProductName,
+                                  
+                                         
 
-                            }).Count();
 
-                    return count;
+
+        //                             }).OrderBy(i => i.announcement.product_name).Skip((page - 1) * pageSize).Take(pageSize); ;
+
+        //            return pcatalogs.ToList();
+
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+
+        //}
+         
+        
+        
+        
+        //public Int64 GetAnnouncementDetails_OPC()
+        //{
+        //    Int64 curentDate = DateTime.Now.getInt64ShortDate();
+
+        //    Int64 count = 0;
+        //    try
+        //    {
+        //        using (var context = new EmsalDBEntities())
+        //        {
+
+
+        //            count = (from p in context.tblAnnouncements
+        //                     join pc in context.tblProductCatalogs on p.product_id equals pc.Id
+        //                     where  p.Status == 1 && p.startDate <= curentDate && p.endDate >= curentDate
+        //                     select
+        //                    new AnnouncementDetail
+        //                    {
+
+        //                        announcement = p,
+
+        //                    }).Count();
+
+        //            return count;
                     
 
-                }
-            }
-            catch (Exception ex)
-            {
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                throw ex;
-            }
+        //        throw ex;
+        //    }
 
-        }
+        //}
         #endregion
         #region tblPropertyDetail
         public tblPropertyDetail GetPropertyDetailArea(decimal area)
@@ -9796,7 +10009,159 @@ namespace Emsal.DAL
 
         #endregion
 
-        
+        #region ContactTemp
+        public tblContractDetailTemp AddtblContractDetailTemp(tblContractDetailTemp item)
+        {
+
+            try
+            {
+                using (var context = new EmsalDBEntities())
+                {
+                    context.tblContractDetailTemps.Add(item);
+                    context.SaveChanges();
+                    return item;
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public tblContractDetailTemp UpdatetblContractDetailTemp(tblContractDetailTemp item)
+        {
+            try
+            {
+                tblContractDetailTemp oldItem;
+                using (var context = new EmsalDBEntities())
+                {
+                    oldItem = (from p in context.tblContractDetailTemps
+                               where p.Id == item.Id  && p.Status==1
+                               select p).FirstOrDefault();
+
+                }
+
+                if (oldItem != null)
+                {
+                    using (var context = new EmsalDBEntities())
+                    {
+                        item.createdDate = oldItem.createdDate;
+                        item.createdUser = oldItem.createdUser;
+                        item.Status = oldItem.Status;
+
+                        oldItem = item;
+
+                        context.tblContractDetailTemps.Attach(oldItem);
+                        context.Entry(oldItem).State = System.Data.Entity.EntityState.Modified;
+                        context.SaveChanges();
+                        return oldItem;
+                    }
+                }
+                else
+                {
+                    Exception ex = new Exception("Bu nomrede setir recor yoxdur");
+                    throw ex;
+                }
+
+
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+        public List<tblContractDetailTemp> GettblContractDetailTempByOfferId(Int64 offerID)
+        {
+
+            try
+            {
+                using (var context = new EmsalDBEntities())
+                {
+                    var detail = (from p in context.tblContractDetailTemps
+                                  where p.offerID == offerID && p.Status == 1
+                                  select p).ToList();
+
+                    return detail;
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+        public List<tblContractDetailTemp> GettblContractDetailTempById(Int64 ID)
+        {
+
+            try
+            {
+                using (var context = new EmsalDBEntities())
+                {
+                    var detail = (from p in context.tblContractDetailTemps
+                                  where p.Id == ID && p.Status == 1
+                                  select p).ToList();
+
+                    return detail;
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+        public bool DeletetblContractDetailTemp(tblContractDetailTemp item)
+        {
+
+            try
+            {
+                tblContractDetailTemp oldItem;
+                using (var context = new EmsalDBEntities())
+                {
+
+                    oldItem = (from p in context.tblContractDetailTemps
+                               where p.Id == item.Id && p.Status == 1
+                               select p).FirstOrDefault();
+
+                }
+
+                if (oldItem != null)
+                {
+                    using (var context = new EmsalDBEntities())
+                    {
+                        oldItem.Status = 0;
+                      
+                        oldItem.updatedDate = item.updatedDate;
+                        oldItem.updatedUser = item.updatedUser;
+                        context.tblContractDetailTemps.Attach(oldItem);
+                        context.Entry(oldItem).State = System.Data.Entity.EntityState.Modified;
+                        context.SaveChanges();
+                        return true;
+                    }
+                }
+                else
+                {
+                    Exception ex = new Exception("Bu nomrede setir recor yoxdur");
+                    throw ex;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+        #endregion
+
     }
 }
 

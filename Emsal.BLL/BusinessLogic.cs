@@ -26,8 +26,8 @@ namespace Emsal.BLL
         public BaseOutput AddPerson(BaseInput baseinput, tblPerson person, out tblPerson personOut)
         {
             BaseOutput baseOutput;
-           
-           // string ip = baseinput.IpNumber.GetIpOrEmpty();
+
+            // string ip = baseinput.IpNumber.GetIpOrEmpty();
             string ipNumber = baseinput.IpNumber.GetIpOrEmpty();
             string _requestID = baseinput.TransactionId.GetTransactionId();
             Int64 channelId = Convert.ToInt64(baseinput.ChannelId);
@@ -38,25 +38,25 @@ namespace Emsal.BLL
                 person = AuditingLogic.SetAuditingInfo(baseinput, (int)CRUD.Insert, person);
                 personOut = operationLogic.AddPerson(person);
 
-                
+
                 _lineNumber = (new System.Diagnostics.StackFrame(0, true)).GetFileLineNumber() + 1;
-                ExceptionHandlingOperation.SaveInputInformation((IOUtil.GetObjValue(baseinput) + IOUtil.GetObjValue(person)), ipNumber, _requestID, _lineNumber, (ChannelEnum) channelId);
+                ExceptionHandlingOperation.SaveInputInformation((IOUtil.GetObjValue(baseinput) + IOUtil.GetObjValue(person)), ipNumber, _requestID, _lineNumber, (ChannelEnum)channelId);
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
 
             }
             catch (Exception ex)
             {
                 personOut = null;
-              ExceptionHandlingOperation.HandleException(ex, ipNumber, _requestID, ChannelEnum.Emsal);
-                
-           
+                ExceptionHandlingOperation.HandleException(ex, ipNumber, _requestID, ChannelEnum.Emsal);
+
+
                 return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
 
             }
             finally
             {
                 _lineNumber = (new System.Diagnostics.StackFrame(0, true)).GetFileLineNumber() + 1;
-               ExceptionHandlingOperation.SaveOutputInformation(IOUtil.GetObjValue(personOut), ipNumber, _requestID, _lineNumber, ChannelEnum.Emsal);
+                ExceptionHandlingOperation.SaveOutputInformation(IOUtil.GetObjValue(personOut), ipNumber, _requestID, _lineNumber, ChannelEnum.Emsal);
             }
 
         }
@@ -64,28 +64,28 @@ namespace Emsal.BLL
         public BaseOutput DeletePerson(BaseInput baseinput, tblPerson Person)
         {
             BaseOutput baseOutput;
-          
+
             try
             {
                 Person = AuditingLogic.SetAuditingInfo(baseinput, (int)CRUD.Delete, Person);
                 operationLogic.DeletePerson(Person);
 
 
-                
+
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
             }
             catch (Exception ex)
             {
-               
+
                 return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
             }
-          
+
         }
 
         public BaseOutput GetPersons(BaseInput baseInput, out List<tblPerson> itemList)
         {
             BaseOutput baseOutput;
-           
+
             try
             {
                 itemList = operationLogic.GetPersons();
@@ -1140,7 +1140,7 @@ namespace Emsal.BLL
         public BaseOutput GetProductCatalogDetailsById(BaseInput baseinput, int productID, out ProductCatalogDetail pCatalogDetail)
         {
             BaseOutput baseOutput;
-           tblProductCatalog pCatalog = new tblProductCatalog();
+            tblProductCatalog pCatalog = new tblProductCatalog();
             pCatalogDetail = new ProductCatalogDetail();
             try
             {
@@ -1164,12 +1164,12 @@ namespace Emsal.BLL
 
         public BaseOutput GetProductCatalogsById(BaseInput baseinput, int productID, out tblProductCatalog pCatalog)
         {
-           
+
             BaseOutput baseOutput;
             try
             {
                 pCatalog = operationLogic.GetProductCatalogsById(productID);
-               
+
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
 
 
@@ -1461,7 +1461,7 @@ namespace Emsal.BLL
             BaseOutput baseOutput;
             try
             {
-               count = operationLogic.GetOffer_ProductionByProductIdandStateEVId(productId,state_Ev_Id);
+                count = operationLogic.GetOffer_ProductionByProductIdandStateEVId(productId, state_Ev_Id);
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
 
 
@@ -1558,7 +1558,7 @@ namespace Emsal.BLL
                 return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
             }
         }
-        public BaseOutput GetOnAirOfferCount_ProductionsByUserId(BaseInput baseinput, tblOffer_Production Offer,out List<tblOffer_Production> OfferProductionList)
+        public BaseOutput GetOnAirOfferCount_ProductionsByUserId(BaseInput baseinput, tblOffer_Production Offer, out List<tblOffer_Production> OfferProductionList)
         {
             BaseOutput baseOutput;
             try
@@ -1692,7 +1692,7 @@ namespace Emsal.BLL
                 return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
             }
         }
-      
+
         public BaseOutput GetOffer_ProductionsByContractId(BaseInput baseinput, Int64 contractId, out List<tblOffer_Production> offerOut)
         {
             BaseOutput baseOutput;
@@ -2048,7 +2048,7 @@ namespace Emsal.BLL
 
             }
         }
-        public BaseOutput GetDemandProductionForUserId(BaseInput baseinput,Int64 userId, out List<tblDemand_Production> itemList)
+        public BaseOutput GetDemandProductionForUserId(BaseInput baseinput, Int64 userId, out List<tblDemand_Production> itemList)
         {
             BaseOutput baseOutput;
             try
@@ -2404,10 +2404,10 @@ namespace Emsal.BLL
         {
             BaseOutput baseOutput;
             count = 0;
-            try 
-	      {	        
-		
-	       count=operationLogic.GetAnnouncementDetailsCount();
+            try
+            {
+
+                count = operationLogic.GetAnnouncementDetailsCount();
 
 
 
@@ -3454,21 +3454,7 @@ namespace Emsal.BLL
         //    }
 
         //}
-        public BaseOutput GetPRM_AdminUnitRegionByAddressId(BaseInput baseinput, Int64 adminID, out List<tblPRM_AdminUnit> itemList)
-        {
-            BaseOutput baseOutput;
-            try
-            {
-                itemList = operationLogic.GetPRM_AdminUnitRegionByAddressId(adminID);
-                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
-            }
-            catch (Exception ex)
-            {
-                itemList = null;
-                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
-            }
-
-        }
+       
 
 
         public BaseOutput WS_GetForeignOrganizationListByUserId(BaseInput baseinput, long userId, out List<tblForeign_Organization> itemList)
@@ -5759,7 +5745,7 @@ namespace Emsal.BLL
             BaseOutput baseOutput;
             try
             {
-                ProductionCalendar = operationLogic.GeProductionCalendarProductionId2(Production_Id,Production_type_eV_Id);
+                ProductionCalendar = operationLogic.GeProductionCalendarProductionId2(Production_Id, Production_type_eV_Id);
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
             }
             catch (Exception ex)
@@ -5857,7 +5843,7 @@ namespace Emsal.BLL
         }
 
 
-       
+
         public BaseOutput UpdateComMessageAttachment(BaseInput baseinput, tblComMessageAttachment comMessageAttachment, out tblComMessageAttachment comMessageAttachmentOut)
         {
             BaseOutput baseOutput;
@@ -6023,24 +6009,24 @@ namespace Emsal.BLL
         {
             try
             {
-              return operationLogic.GetProductionCalendar().ToArray();
-               // return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+                return operationLogic.GetProductionCalendar().ToArray();
+                // return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
             }
             catch (Exception ex)
             {
-              return  null;
-               // return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+                return null;
+                // return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
             }
         }
-        #region Optimastion         
+        #region Optimastion
         public BaseOutput GetAnnouncementDetailsByProductId_OPC(BaseInput baseinput, Int64 productID, out Int64 count)
         {
             BaseOutput baseOutput;
             count = 0;
             try
             {
-                count = operationLogic.GetAnnouncementDetailsByProductId_OPC(productID);
-
+                count = sqloperationLogic.GetAnnouncementDetailsByProductId_OPC(productID);
+                
 
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
 
@@ -6055,56 +6041,56 @@ namespace Emsal.BLL
             }
         }
 
-        public BaseOutput GetAnnouncementDetails_OP(BaseInput baseinput, int page, int pageSize, out List<AnnouncementDetail> itemList)
-        {
-            BaseOutput baseOutput;
-            itemList = new List<AnnouncementDetail>();
-            List<AnnouncementDetail> tblAnouncementlist = new List<AnnouncementDetail>();
-            try
-            {
-                tblAnouncementlist = operationLogic.GetAnnouncementDetails_OP(page,pageSize);
-                foreach (var obj in tblAnouncementlist)
-                {
-                    AnnouncementDetail item = new AnnouncementDetail();
-                    item = obj;
-                    try
-                    {
-                        item.parentName = sqloperationLogic.GetProducParentProductByProductID((long)obj.announcement.product_id).ProductName;
+        //public BaseOutput GetAnnouncementDetails_OP(BaseInput baseinput, int page, int pageSize, out List<AnnouncementDetail> itemList)
+        //{
+        //    BaseOutput baseOutput;
+        //    itemList = new List<AnnouncementDetail>();
+        //    List<AnnouncementDetail> tblAnouncementlist = new List<AnnouncementDetail>();
+        //    try
+        //    {
+        //        tblAnouncementlist = operationLogic.GetAnnouncementDetails_OP(page, pageSize);
+        //        foreach (var obj in tblAnouncementlist)
+        //        {
+        //            AnnouncementDetail item = new AnnouncementDetail();
+        //            item = obj;
+        //            try
+        //            {
+        //                item.parentName = sqloperationLogic.GetProducParentProductByProductID((long)obj.announcement.product_id).ProductName;
 
-                    }
-                    catch (Exception ex)
-                    {
+        //            }
+        //            catch (Exception ex)
+        //            {
 
-                    }
-
-
-                    item.productCatalogDocumentList = operationLogic.GetProductDocumentsByProductCatalogId((long)obj.announcement.product_id);
-
-                    itemList.Add(item);
-                }
+        //            }
 
 
+        //            item.productCatalogDocumentList = operationLogic.GetProductDocumentsByProductCatalogId((long)obj.announcement.product_id);
+
+        //            itemList.Add(item);
+        //        }
 
 
-                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
 
 
-            }
-            catch (Exception ex)
-            {
+        //        return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
 
-                itemList = null;
-                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
 
-            }
-        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        itemList = null;
+        //        return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+        //    }
+        //}
         public BaseOutput GetAnnouncementDetails_OPC(BaseInput baseinput, out Int64 count)
         {
             BaseOutput baseOutput;
             count = 0;
             try
             {
-                count = operationLogic.GetAnnouncementDetails_OPC();
+                count = sqloperationLogic.GetAnnouncementDetails_OPC();
 
 
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
@@ -6464,7 +6450,7 @@ namespace Emsal.BLL
             }
         }
 
-       
+
 
         public BaseOutput UpdatePropertyType(BaseInput baseinput, tblPropertyType detail, out tblPropertyType detailOut)
         {
@@ -6495,7 +6481,7 @@ namespace Emsal.BLL
             }
         }
 
-       
+
         public BaseOutput GetPropertyTypeByAddressId(BaseInput baseinput, Int64 adressId, out tblPropertyType item)
         {
             BaseOutput baseOutput;
@@ -6511,11 +6497,173 @@ namespace Emsal.BLL
 
             }
         }
-    
+
+        #endregion
+        #region tblContractDetailTemp
+        public BaseOutput AddtblContractDetailTemp(BaseInput baseinput, tblContractDetailTemp contractDetail, out tblContractDetailTemp contractDetailOut)
+        {
+            BaseOutput baseOutput;
+
+            // string ip = baseinput.IpNumber.GetIpOrEmpty();
+            string ipNumber = baseinput.IpNumber.GetIpOrEmpty();
+            string _requestID = baseinput.TransactionId.GetTransactionId();
+            Int64 channelId = Convert.ToInt64(baseinput.ChannelId);
+            contractDetailOut = null;
+            try
+            {
+
+                contractDetail = AuditingLogic.SetAuditingInfo(baseinput, (int)CRUD.Insert, contractDetail);
+                contractDetailOut = operationLogic.AddtblContractDetailTemp(contractDetail);
+
+
+                _lineNumber = (new System.Diagnostics.StackFrame(0, true)).GetFileLineNumber() + 1;
+                ExceptionHandlingOperation.SaveInputInformation((IOUtil.GetObjValue(baseinput) + IOUtil.GetObjValue(contractDetail)), ipNumber, _requestID, _lineNumber, (ChannelEnum)channelId);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+            }
+            catch (Exception ex)
+            {
+                contractDetailOut = null;
+                ExceptionHandlingOperation.HandleException(ex, ipNumber, _requestID, ChannelEnum.Emsal);
+
+
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+            finally
+            {
+                _lineNumber = (new System.Diagnostics.StackFrame(0, true)).GetFileLineNumber() + 1;
+                ExceptionHandlingOperation.SaveOutputInformation(IOUtil.GetObjValue(contractDetailOut), ipNumber, _requestID, _lineNumber, ChannelEnum.Emsal);
+            }
+
+        }
+        public BaseOutput UpdatetblContractDetailTemp(BaseInput baseinput, tblContractDetailTemp detail, out tblContractDetailTemp detailOut)
+        {
+            BaseOutput baseOutput;
+            detailOut = null;
+            string ipNumber = baseinput.IpNumber.GetIpOrEmpty();
+            string _requestID = baseinput.TransactionId.GetTransactionId();
+            Int64 channelId = Convert.ToInt64(baseinput.ChannelId);
+            try
+            {
+                detail = AuditingLogic.SetAuditingInfo(baseinput, (int)CRUD.Update, detail);
+                detailOut = operationLogic.UpdatetblContractDetailTemp(detail);
+                _lineNumber = (new System.Diagnostics.StackFrame(0, true)).GetFileLineNumber() + 1;
+                ExceptionHandlingOperation.SaveInputInformation((IOUtil.GetObjValue(baseinput) + IOUtil.GetObjValue(detail)), ipNumber, _requestID, _lineNumber, (ChannelEnum)channelId);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+            }
+            catch (Exception ex)
+            {
+                detailOut = null;
+                ExceptionHandlingOperation.HandleException(ex, ipNumber, _requestID, ChannelEnum.Emsal);
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+            }
+            finally
+            {
+                _lineNumber = (new System.Diagnostics.StackFrame(0, true)).GetFileLineNumber() + 1;
+                ExceptionHandlingOperation.SaveOutputInformation(IOUtil.GetObjValue(detailOut), ipNumber, _requestID, _lineNumber, ChannelEnum.Emsal);
+            }
+        }
+        public BaseOutput GettblContractDetailTempByOfferId(BaseInput baseinput, long offerID, out List<tblContractDetailTemp> itemList)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                itemList = operationLogic.GettblContractDetailTempByOfferId(offerID);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput GettblContractDetailTempById(BaseInput baseinput, long ID, out List<tblContractDetailTemp> itemList)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                itemList = operationLogic.GettblContractDetailTempById(ID);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+
+        public BaseOutput DeletetblContractDetailTemp(BaseInput baseinput, tblContractDetailTemp item)
+        {
+            BaseOutput baseOutput;
+
+            try
+            {
+                item = AuditingLogic.SetAuditingInfo(baseinput, (int)CRUD.Delete, item);
+                operationLogic.DeletetblContractDetailTemp(item);
+
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+            }
+            catch (Exception ex)
+            {
+
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+            }
+
+        }
         #endregion
 
+        public BaseOutput GetProductCatalogsOfferWitoutTypeOfEV(BaseInput baseinput, Int64 userID, out List<tblProductCatalog> itemList)
+        {
+            List<tblProductCatalog> itemL = new List<tblProductCatalog>();
+            List<tblProductCatalog> item1 = new List<tblProductCatalog>();
+            List<tblProductCatalog> itemL1 = new List<tblProductCatalog>();
+            List<tblProductCatalog> itemL2 = new List<tblProductCatalog>();
+            List<tblProductCatalog> list = new List<tblProductCatalog>();
+           
+         //   List<tblProductCatalog> item2 = new List<tblProductCatalog>();
+            BaseOutput baseOutput;
+            try
+            {
+                itemL = operationLogic.GetProductCatalogsOfferWitoutTypeOfEV(userID);
+                foreach (var item in itemL)
+                {
+                    item1 = operationLogic.GetProductCatalogsOfferWitoutTypeOfEV1(item.Id, userID);
+                    if (item1.Count()==0)
+                    {
+                        itemL = operationLogic.GetProductCatalogsOfferWitoutTypeOfEV2(item.Id, userID);
+                        foreach (var item2 in itemL)
+                        {
+                            list.Add(item2);
+                        }
+                    }
+                }
+                itemList = list;
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
 
-      
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+
+
     }
 }
 

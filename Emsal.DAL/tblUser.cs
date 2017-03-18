@@ -30,5 +30,6 @@ namespace Emsal.DAL
         public Nullable<long> userType_eV_ID { get; set; }
         public Nullable<long> ASC_ID { get; set; }
         public Nullable<long> KTN_ID { get; set; }
+        public Nullable<short> TaxexType { get; set; }
     }
 }

@@ -1449,9 +1449,9 @@ namespace Emsal.WebSrv
         #endregion
 
         #region Sql OperationGetDemandProductsForAccounting
-        public BaseOutput WS_GetDemandProductionAmountOfEachProduct(BaseInput baseinput, out List<DemandOfferDetail> itemList)
+        public BaseOutput WS_GetDemandProductionAmountOfEachProduct(BaseInput baseinput,Int64 startDate,Int64 endDate, out List<DemandOfferDetail> itemList)
         {
-            return businessLogic.GetDemandProductionAmountOfEachProduct(baseinput, out itemList);
+            return businessLogic.GetDemandProductionAmountOfEachProduct(baseinput,startDate,endDate, out itemList);
 
         }
 
@@ -1974,9 +1974,9 @@ namespace Emsal.WebSrv
         }
 
 
-        public BaseOutput WS_GetProducListByUserID(BaseInput baseinput, long userID, out List<ProductCatalogDetail> pCatalogDetailList)
+        public BaseOutput WS_GetProducListByUserID(BaseInput baseinput, Int64 userID, Int64 productId, out List<ProductCatalogDetail> pCatalogDetailList)
         {
-            return businessLogic.GetProducListByUserID(baseinput, userID, out pCatalogDetailList);
+            return businessLogic.GetProducListByUserID(baseinput, userID,productId, out pCatalogDetailList);
         }
         #region tblComMessageAttachment
 
@@ -2081,11 +2081,11 @@ namespace Emsal.WebSrv
         }
 
         #region Optimisation
-        public BaseOutput WS_GetUserDetailInfoForOffers_OP(BaseInput baseinput, GetDemandProductionDetailistForEValueIdSearch ops, out List<PersonDetail> itemList)
+        public BaseOutput WS_GetUserDetailInfoForOffers_OP(BaseInput baseinput, GetDemandProductionDetailistForEValueIdSearch1 ops, out List<PersonDetail> itemList)
         {
             return businessLogic.GetUserDetailInfoForOffers_OP(baseinput, ops, out itemList);
         }
-        public BaseOutput WS_GetUserDetailInfoForOffers_OPC(BaseInput baseinput, GetDemandProductionDetailistForEValueIdSearch ops, out Int64 count)
+        public BaseOutput WS_GetUserDetailInfoForOffers_OPC(BaseInput baseinput, GetDemandProductionDetailistForEValueIdSearch1 ops, out Int64 count)
         {
             return businessLogic.GetUserDetailInfoForOffers_OPC(baseinput, ops, out count);
         }
@@ -2133,25 +2133,28 @@ namespace Emsal.WebSrv
             return businessLogic.GetDemandProductionDetailistForEValueId_OPC(baseinput, ops, out count);
         }
 
-        public BaseOutput WS_GetAnnouncementDetailsByProductId_OP(BaseInput baseinput, long productID, int page, int pageSize, out List<AnnouncementDetail> itemList)
+        public BaseOutput WS_GetAnnouncementDetailsByProductId_OP(BaseInput baseinput, int productID, int page, int pageSize, out List<AnnouncementDetail> itemList)
         {
             return businessLogic.GetAnnouncementDetailsByProductId_OP(baseinput, productID, page, pageSize, out itemList);
         }
-
-        public BaseOutput WS_GetOfferProductionDetailistForEValueId_OP(BaseInput baseinput, OfferProductionDetailSearch ops, out List<ProductionDetail> itemList)
+        public BaseOutput GetAnnouncementDetailsByProductIdOPC(BaseInput baseinput, int ops, out Int64 count)
+        {
+            return businessLogic.GetAnnouncementDetailsByProductIdOPC(baseinput, ops, out count);
+        }
+        public BaseOutput WS_GetOfferProductionDetailistForEValueId_OP(BaseInput baseinput, OfferProductionDetailSearch1 ops, out List<ProductionDetail> itemList)
         {
             return businessLogic.GetOfferProductionDetailistForEValueId_OP(baseinput, ops, out itemList);
         }
-        public BaseOutput WS_GetOfferProductionDetailistForEValueId_OPC(BaseInput baseinput, OfferProductionDetailSearch ops, out Int64 count)
+        public BaseOutput WS_GetOfferProductionDetailistForEValueId_OPC(BaseInput baseinput, OfferProductionDetailSearch1 ops, out Int64 count)
         {
             return businessLogic.GetOfferProductionDetailistForEValueId_OPC(baseinput, ops, out count);
         }
 
-        public BaseOutput WS_GetPotensialProductionDetailistForEValueId_OP(BaseInput baseinput, GetDemandProductionDetailistForEValueIdSearch ops, out List<ProductionDetail> itemList)
+        public BaseOutput WS_GetPotensialProductionDetailistForEValueId_OP(BaseInput baseinput, GetDemandProductionDetailistForEValueIdSearch1 ops, out List<ProductionDetail> itemList)
         {
             return businessLogic.GetPotensialProductionDetailistForEValueId_OP(baseinput, ops, out itemList);
         }
-        public BaseOutput WS_GetPotensialProductionDetailistForEValueId_OPC(BaseInput baseinput, GetDemandProductionDetailistForEValueIdSearch ops, out Int64 count)
+        public BaseOutput WS_GetPotensialProductionDetailistForEValueId_OPC(BaseInput baseinput, GetDemandProductionDetailistForEValueIdSearch1 ops, out Int64 count)
         {
             return businessLogic.GetPotensialProductionDetailistForEValueId_OPC(baseinput, ops, out count);
         }
@@ -2275,7 +2278,33 @@ namespace Emsal.WebSrv
         }
 
         #endregion
+        #region tblContractDetailTemp
+          public BaseOutput WS_AddtblContractDetailTemp(BaseInput baseinput, tblContractDetailTemp contractDetail, out tblContractDetailTemp contractDetailOut)
+        {
+            return businessLogic.AddtblContractDetailTemp(baseinput, contractDetail, out contractDetailOut);
 
+
+        }
+         public BaseOutput WS_UpdatetblContractDetailTemp(BaseInput baseinput, tblContractDetailTemp detail, out tblContractDetailTemp detailOut)
+         {
+             return businessLogic.UpdatetblContractDetailTemp(baseinput, detail, out detailOut);
+
+
+         }
+         public BaseOutput WS_GettblContractDetailTempByOfferId(BaseInput baseinput, Int64 OfferId, out List<tblContractDetailTemp> Detail)
+         {
+             return businessLogic.GettblContractDetailTempByOfferId(baseinput, OfferId, out Detail);
+         }
+         public BaseOutput WS_DeletetblContractDetailTemp(BaseInput baseinput, tblContractDetailTemp item)
+         {
+             return businessLogic.DeletetblContractDetailTemp(baseinput, item);
+
+         }
+         public BaseOutput WS_GettblContractDetailTempById(BaseInput baseinput, Int64 ID, out List<tblContractDetailTemp> Detail)
+         {
+             return businessLogic.GettblContractDetailTempById(baseinput, ID, out Detail);
+         }
+        #endregion
 
         #region YeniHesabatlar
         public BaseOutput WS_GetOfferGroupedProductionDetailistForAccounting(BaseInput baseinput, out List<OfferProductionDetail> itemList)
@@ -2292,9 +2321,9 @@ namespace Emsal.WebSrv
             return businessLogic.GetOfferGroupedProductionDetailistForAccountingByProductId(baseinput, productID, out itemList);
 
         }
-        public BaseOutput WS_GetOfferGroupedProductionDetailistForAccountingByRoleId(BaseInput baseinput, long roleID, out  List<OfferProductionDetail> itemList)
+        public BaseOutput WS_GetOfferGroupedProductionDetailistForAccountingByRoleId(BaseInput baseinput,Int64 RoleId, out  List<OfferProductionDetail> itemList)
         {
-            return businessLogic.GetOfferGroupedProductionDetailistForAccountingByRoleId(baseinput, roleID, out itemList);
+            return businessLogic.GetOfferGroupedProductionDetailistForAccountingByRoleId(baseinput,RoleId, out itemList);
         }
 
 
@@ -2304,21 +2333,21 @@ namespace Emsal.WebSrv
             return businessLogic.GetOfferGroupedProductionDetailistForAccountingBySearch(baseinput, ops, out itemList);
         }
 
-        public BaseOutput WS_GetDemandByForganistion_OPC(BaseInput baseinput, DemandForegnOrganization ops, out Int64 count)
+        public BaseOutput WS_GetDemandByForganistion_OPC(BaseInput baseinput, DemandForegnOrganization1 ops, out Int64 count)
         {
             return businessLogic.GetDemandByForganistion_OPC(baseinput, ops, out count);
         }
-        public BaseOutput WS_GetDemandByForganistion_OP(BaseInput baseinput, DemandForegnOrganization ops, out  List<OrganizationDetail> itemList)
+        public BaseOutput WS_GetDemandByForganistion_OP(BaseInput baseinput, DemandForegnOrganization1 ops, out  List<OrganizationDetail> itemList)
         {
             return businessLogic.GetDemandByForganistion_OP(baseinput, ops, out itemList);
         }
-        public BaseOutput WS_GetTotalDemandOffers(BaseInput baseinput, int page, int page_size,DemandOfferProductsSearch ops, out List<DemanProductionGroup> itemList)
+        public BaseOutput WS_GetTotalDemandOffers(BaseInput baseinput,DemandOfferProductsSearch ops, out List<DemanProductionGroup> itemList)
         {
-            return businessLogic.GetTotalDemandOffers(baseinput, page, page_size,ops, out itemList);
+            return businessLogic.GetTotalDemandOffers(baseinput,ops, out itemList);
         }
-        public BaseOutput WS_GetTotalDemandOffers1(BaseInput baseinput, int page, int page_size, DemandOfferProductsSearch ops, out List<DemanProductionGroup> itemList)
+        public BaseOutput WS_GetTotalDemandOffersPA(BaseInput baseinput, DemandOfferProductsSearch ops, out List<DemanProductionGroup> itemList)
         {
-            return businessLogic.GetTotalDemandOffers1(baseinput, page, page_size, ops, out itemList);
+            return businessLogic.GetTotalDemandOffersPA(baseinput, ops, out itemList);
         }
         public BaseOutput WS_GetTotalDemandOffers_OPC(BaseInput baseinput, DemandOfferProductsSearch ops, out Int64 count)
         {
@@ -2362,13 +2391,17 @@ namespace Emsal.WebSrv
         {
             return businessLogic.GetAnnouncementDetails_Search(baseinput, ops, out itemList);
         }
+        public BaseOutput WS_GetAnnouncementDetails_Search_OPC(BaseInput baseinput, OfferProductionDetailSearch ops, out Int64 count)
+        {
+            return businessLogic.GetAnnouncementDetails_Search_OPC(baseinput, ops, out count);
+        }
         public BaseOutput WS_GetDemand_ProductionsByStateAndUserID1(BaseInput baseinput, Int64 userID, Int64 state_Ev_Id, out List<DemandDetail> itemList)
         {
             return businessLogic.GetDemand_ProductionsByStateAndUserID1(baseinput, userID, state_Ev_Id, out itemList);
         }
-        public BaseOutput WS_GetGovermentOrganisatinByAdminID(BaseInput baseinput, Int64 adminId, out List<ForeignOrganization> itemList)
+        public BaseOutput WS_GetGovermentOrganisatinByAdminID(BaseInput baseinput, string adminIdList, out List<ForeignOrganization> itemList)
         {
-            return businessLogic.GetGovermentOrganisatinByAdminID(baseinput, adminId, out itemList);
+            return businessLogic.GetGovermentOrganisatinByAdminID(baseinput, adminIdList, out itemList);
         }
         public BaseOutput WS_GetPRM_AdminUnitByAdminID(BaseInput baseinput, Int64 adminId, out List<AdminUnitRegion> itemList)
         {
@@ -2389,6 +2422,21 @@ namespace Emsal.WebSrv
         public BaseOutput WS_GetTotalDemandOffersRegion_OPC(BaseInput baseinput, DemandOfferProductsSearch ops, out Int64 count)
         {
             return businessLogic.GetTotalDemandOffersRegion_OPC(baseinput, ops, out count);
+        }
+
+
+        public BaseOutput WS_GetProductCatalogsOfferWitoutTypeOfEV(BaseInput baseinput,Int64 userID,  out List<tblProductCatalog> itemList)
+        {
+            return businessLogic.GetProductCatalogsOfferWitoutTypeOfEV(baseinput,userID,  out itemList);
+        }
+        public BaseOutput WS_GetTotalOffer1(BaseInput baseinput, OfferProductionDetailSearch ops, out List<ProductionDetail> itemList)
+        {
+            return businessLogic.GetTotalOffer1(baseinput,ops, out itemList);
+        }
+        public BaseOutput WS_GetTotalOffer1_OPC(BaseInput baseinput, OfferProductionDetailSearch ops, out Int64 count)
+        {
+            return businessLogic.GetTotalOffer1_OPC(baseinput, ops
+                , out count);
         }
     }
 }

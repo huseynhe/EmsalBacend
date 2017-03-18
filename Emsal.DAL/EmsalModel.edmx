@@ -17,6 +17,7 @@
           <EntitySet Name="tblCommunication" EntityType="EmsalDBModel.Store.tblCommunication" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblConfirmationMessage" EntityType="EmsalDBModel.Store.tblConfirmationMessage" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblContract" EntityType="EmsalDBModel.Store.tblContract" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblContractDetailTemp" EntityType="EmsalDBModel.Store.tblContractDetailTemp" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblDemand_Production" EntityType="EmsalDBModel.Store.tblDemand_Production" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblEmployee" EntityType="EmsalDBModel.Store.tblEmployee" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblEnumCategory" EntityType="EmsalDBModel.Store.tblEnumCategory" store:Type="Tables" Schema="dbo" />
@@ -229,6 +230,25 @@
           <Property Name="createdDate" Type="bigint" />
           <Property Name="updatedUser" Type="nvarchar(max)" />
           <Property Name="updatedDate" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblContractDetailTemp">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="offerID" Type="bigint" />
+          <Property Name="ContractNumber " Type="nvarchar(max)" />
+          <Property Name="ContractDate" Type="bigint" />
+          <Property Name="product_unit_price" Type="decimal" Scale="3" />
+          <Property Name="product_asc_price" Type="decimal" Scale="3" />
+          <Property Name="product_total_count" Type="decimal" Scale="3" />
+          <Property Name="product_total_price" Type="decimal" Scale="3" />
+          <Property Name="Status" Type="bigint" />
+          <Property Name="createdUser" Type="nvarchar(max)" />
+          <Property Name="createdDate" Type="bigint" />
+          <Property Name="updatedUser" Type="nvarchar(max)" />
+          <Property Name="updatedDate" Type="bigint" />
+          <Property Name="description" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="tblDemand_Production">
           <Key>
@@ -602,6 +622,7 @@
           <Property Name="createdDate" Type="bigint" />
           <Property Name="updatedUser" Type="nvarchar(max)" />
           <Property Name="updatedDate" Type="bigint" />
+          <Property Name="productCode" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="tblProductCatalogControl">
           <Key>
@@ -683,6 +704,7 @@
           <Property Name="transportation_eV_Id" Type="bigint" />
           <Property Name="year" Type="bigint" />
           <Property Name="partOfyear" Type="bigint" />
+          <Property Name="date_" Type="date" />
         </EntityType>
         <EntityType Name="tblProductionControl">
           <Key>
@@ -816,6 +838,7 @@
           <Property Name="userType_eV_ID" Type="bigint" />
           <Property Name="ASC_ID" Type="bigint" />
           <Property Name="KTN_ID" Type="bigint" />
+          <Property Name="TaxexType" Type="smallint" />
         </EntityType>
         <EntityType Name="tblUserRole">
           <Key>
@@ -831,6 +854,29 @@
           <Property Name="updatedUser" Type="nvarchar(max)" />
           <Property Name="updatedDate" Type="bigint" Nullable="false" />
         </EntityType>
+        <Function Name="AdminUnitRelation" ReturnType="nvarchar(max)" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="dateReturn" ReturnType="bigint" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="Y" Type="int" Mode="In" />
+          <Parameter Name="M" Type="int" Mode="In" />
+          <Parameter Name="D" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_getMonth_by_months_eV_Id" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="months_eV_Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_GetAnnouncementDetails_Search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="page_number" Type="int" Mode="In" />
+          <Parameter Name="page_size" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="splitstring" ReturnType="nvarchar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="stringToSplit" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="splitstring1" ReturnType="nvarchar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="stringToSplit" Type="nvarchar(max)" Mode="In" />
+        </Function>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -869,7 +915,6 @@
           <EntitySet Name="tblProductCatalogControls" EntityType="EmsalDBModel.tblProductCatalogControl" />
           <EntitySet Name="tblProduction_Calendar" EntityType="EmsalDBModel.tblProduction_Calendar" />
           <EntitySet Name="tblProduction_Document" EntityType="EmsalDBModel.tblProduction_Document" />
-          <EntitySet Name="tblProductionCalendars" EntityType="EmsalDBModel.tblProductionCalendar" />
           <EntitySet Name="tblProductionControls" EntityType="EmsalDBModel.tblProductionControl" />
           <EntitySet Name="tblProductPrices" EntityType="EmsalDBModel.tblProductPrice" />
           <EntitySet Name="tblProductProfileImages" EntityType="EmsalDBModel.tblProductProfileImage" />
@@ -879,6 +924,13 @@
           <EntitySet Name="tblTitles" EntityType="EmsalDBModel.tblTitle" />
           <EntitySet Name="tblUsers" EntityType="EmsalDBModel.tblUser" />
           <EntitySet Name="tblUserRoles" EntityType="EmsalDBModel.tblUserRole" />
+          <EntitySet Name="tblContractDetailTemps" EntityType="EmsalDBModel.tblContractDetailTemp" />
+          <FunctionImport Name="PA_GetAnnouncementDetails_Search" ReturnType="Collection(EmsalDBModel.PA_GetAnnouncementDetails_Search_Result)">
+            <Parameter Name="page_number" Mode="In" Type="Int32" />
+            <Parameter Name="page_size" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="tblProductionCalendars" EntityType="EmsalDBModel.tblProductionCalendar" />
         </EntityContainer>
         <EntityType Name="C__MigrationHistory">
           <Key>
@@ -1432,6 +1484,7 @@
           <Property Type="Int64" Name="createdDate" />
           <Property Type="String" Name="updatedUser" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="Int64" Name="updatedDate" />
+          <Property Type="String" Name="productCode" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tblProductCatalogControl">
           <Key>
@@ -1488,31 +1541,6 @@
           <Property Type="Int64" Name="createdDate" />
           <Property Type="String" Name="updatedUser" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="Int64" Name="updatedDate" />
-        </EntityType>
-        <EntityType Name="tblProductionCalendar">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int64" Name="type_eV_Id" />
-          <Property Type="Int64" Name="Production_type_eV_Id" />
-          <Property Type="Int64" Name="Production_Id" />
-          <Property Type="Int64" Name="day" />
-          <Property Type="Int64" Name="months_eV_Id" />
-          <Property Type="Int64" Name="oclock" />
-          <Property Type="Decimal" Name="price" Precision="18" Scale="2" />
-          <Property Type="Int64" Name="demand_Id" />
-          <Property Type="Int64" Name="offer_Id" />
-          <Property Type="Decimal" Name="quantity" Precision="18" Scale="2" />
-          <Property Type="Int64" Name="Status" />
-          <Property Type="Int64" Name="LastUpdateStatus" />
-          <Property Type="String" Name="createdUser" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="Int64" Name="createdDate" />
-          <Property Type="String" Name="updatedUser" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="Int64" Name="updatedDate" />
-          <Property Type="Int64" Name="transportation_eV_Id" />
-          <Property Type="Int64" Name="year" />
-          <Property Type="Int64" Name="partOfyear" />
         </EntityType>
         <EntityType Name="tblProductionControl">
           <Key>
@@ -1646,6 +1674,7 @@
           <Property Type="Int64" Name="userType_eV_ID" />
           <Property Type="Int64" Name="ASC_ID" />
           <Property Type="Int64" Name="KTN_ID" />
+          <Property Type="Int16" Name="TaxexType" />
         </EntityType>
         <EntityType Name="tblUserRole">
           <Key>
@@ -1660,6 +1689,58 @@
           <Property Type="Int64" Name="createdDate" Nullable="false" />
           <Property Type="String" Name="updatedUser" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="Int64" Name="updatedDate" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblContractDetailTemp">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="offerID" />
+          <Property Type="String" Name="ContractNumber_" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="ContractDate" />
+          <Property Type="Decimal" Name="product_unit_price" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="product_asc_price" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="product_total_count" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="product_total_price" Precision="18" Scale="3" />
+          <Property Type="Int64" Name="Status" />
+          <Property Type="String" Name="createdUser" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="createdDate" />
+          <Property Type="String" Name="updatedUser" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="updatedDate" />
+          <Property Type="String" Name="description" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="PA_GetAnnouncementDetails_Search_Result">
+          <Property Type="Int64" Name="announcementId" Nullable="false" />
+          <Property Type="Int64" Name="productID" Nullable="true" />
+          <Property Type="String" Name="productParentName" Nullable="true" />
+          <Property Type="String" Name="ProductName" Nullable="true" />
+          <Property Type="String" Name="description" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="tblProductionCalendar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="type_eV_Id" />
+          <Property Type="Int64" Name="Production_type_eV_Id" />
+          <Property Type="Int64" Name="Production_Id" />
+          <Property Type="Int64" Name="day" />
+          <Property Type="Int64" Name="months_eV_Id" />
+          <Property Type="Int64" Name="oclock" />
+          <Property Type="Decimal" Name="price" Precision="18" Scale="2" />
+          <Property Type="Int64" Name="demand_Id" />
+          <Property Type="Int64" Name="offer_Id" />
+          <Property Type="Decimal" Name="quantity" Precision="18" Scale="2" />
+          <Property Type="Int64" Name="Status" />
+          <Property Type="Int64" Name="LastUpdateStatus" />
+          <Property Type="String" Name="createdUser" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="createdDate" />
+          <Property Type="String" Name="updatedUser" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="updatedDate" />
+          <Property Type="Int64" Name="transportation_eV_Id" />
+          <Property Type="Int64" Name="year" />
+          <Property Type="Int64" Name="partOfyear" />
+          <Property Type="DateTime" Name="date_" Precision="0" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -2233,6 +2314,7 @@
           <EntitySetMapping Name="tblProductCatalogs">
             <EntityTypeMapping TypeName="EmsalDBModel.tblProductCatalog">
               <MappingFragment StoreEntitySet="tblProductCatalog">
+                <ScalarProperty Name="productCode" ColumnName="productCode" />
                 <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
                 <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
                 <ScalarProperty Name="createdDate" ColumnName="createdDate" />
@@ -2304,32 +2386,6 @@
                 <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="grup_Id" ColumnName="grup_Id" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblProductionCalendars">
-            <EntityTypeMapping TypeName="EmsalDBModel.tblProductionCalendar">
-              <MappingFragment StoreEntitySet="tblProductionCalendar">
-                <ScalarProperty Name="partOfyear" ColumnName="partOfyear" />
-                <ScalarProperty Name="year" ColumnName="year" />
-                <ScalarProperty Name="transportation_eV_Id" ColumnName="transportation_eV_Id" />
-                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
-                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
-                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
-                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
-                <ScalarProperty Name="LastUpdateStatus" ColumnName="LastUpdateStatus" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="quantity" ColumnName="quantity" />
-                <ScalarProperty Name="offer_Id" ColumnName="offer_Id" />
-                <ScalarProperty Name="demand_Id" ColumnName="demand_Id" />
-                <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="oclock" ColumnName="oclock" />
-                <ScalarProperty Name="months_eV_Id" ColumnName="months_eV_Id" />
-                <ScalarProperty Name="day" ColumnName="day" />
-                <ScalarProperty Name="Production_Id" ColumnName="Production_Id" />
-                <ScalarProperty Name="Production_type_eV_Id" ColumnName="Production_type_eV_Id" />
-                <ScalarProperty Name="type_eV_Id" ColumnName="type_eV_Id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -2456,6 +2512,7 @@
           <EntitySetMapping Name="tblUsers">
             <EntityTypeMapping TypeName="EmsalDBModel.tblUser">
               <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="TaxexType" ColumnName="TaxexType" />
                 <ScalarProperty Name="KTN_ID" ColumnName="KTN_ID" />
                 <ScalarProperty Name="ASC_ID" ColumnName="ASC_ID" />
                 <ScalarProperty Name="userType_eV_ID" ColumnName="userType_eV_ID" />
@@ -2486,6 +2543,64 @@
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblContractDetailTemps">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblContractDetailTemp">
+              <MappingFragment StoreEntitySet="tblContractDetailTemp">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="product_total_price" ColumnName="product_total_price" />
+                <ScalarProperty Name="product_total_count" ColumnName="product_total_count" />
+                <ScalarProperty Name="product_asc_price" ColumnName="product_asc_price" />
+                <ScalarProperty Name="product_unit_price" ColumnName="product_unit_price" />
+                <ScalarProperty Name="ContractDate" ColumnName="ContractDate" />
+                <ScalarProperty Name="ContractNumber_" ColumnName="ContractNumber " />
+                <ScalarProperty Name="offerID" ColumnName="offerID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PA_GetAnnouncementDetails_Search" FunctionName="EmsalDBModel.Store.PA_GetAnnouncementDetails_Search">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EmsalDBModel.PA_GetAnnouncementDetails_Search_Result">
+                <ScalarProperty Name="announcementId" ColumnName="announcementId" />
+                <ScalarProperty Name="productID" ColumnName="productID" />
+                <ScalarProperty Name="productParentName" ColumnName="productParentName" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="tblProductionCalendars">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblProductionCalendar">
+              <MappingFragment StoreEntitySet="tblProductionCalendar">
+                <ScalarProperty Name="date_" ColumnName="date_" />
+                <ScalarProperty Name="partOfyear" ColumnName="partOfyear" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="transportation_eV_Id" ColumnName="transportation_eV_Id" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="LastUpdateStatus" ColumnName="LastUpdateStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="offer_Id" ColumnName="offer_Id" />
+                <ScalarProperty Name="demand_Id" ColumnName="demand_Id" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="oclock" ColumnName="oclock" />
+                <ScalarProperty Name="months_eV_Id" ColumnName="months_eV_Id" />
+                <ScalarProperty Name="day" ColumnName="day" />
+                <ScalarProperty Name="Production_Id" ColumnName="Production_Id" />
+                <ScalarProperty Name="Production_type_eV_Id" ColumnName="Production_type_eV_Id" />
+                <ScalarProperty Name="type_eV_Id" ColumnName="type_eV_Id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

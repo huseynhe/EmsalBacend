@@ -12,8 +12,13 @@ namespace Emsal.DAL.CustomObjects
         public string parentName { get; set; }
         public decimal totalQuantity { get; set; }
         public decimal totalPrice { get; set; }
+        public decimal unitPriceAnnouncement { get; set; }
         public Int64 roleId { get; set; }
         public Int64 monthID { get; set; }
         public string type { get; set; }
+        public decimal totalQualityForMonth { get; set; }
+        public string kategoryName { get; set; }
+        public List<OfferPerson> personList { get; set; }
+      
     }
 }

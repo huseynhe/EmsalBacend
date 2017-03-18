@@ -29,7 +29,7 @@ namespace Emsal.DAL.CustomObjects
         public string enumValueDescription { get; set; }
         public Int64 enumCategoryId { get; set; }
         public Int64 enumValueId { get; set; }
-        public Int64 userId { get; set; }
+        public Int64 userId { get; set; } 
         public string organizationName { get; set; }
         public string groupId { get; set; }
         public List<string> months { get; set; }
@@ -41,6 +41,7 @@ namespace Emsal.DAL.CustomObjects
         public List<tblProduction_Document> productionDocumentList { get; set; }
         public List<ProductionCalendarDetail> productionCalendarList { get; set; }
         public List<tblProduct_Document> productDocumentList { get; set; }
+      
         public string fullForeignOrganization { get; set; }
         public Nullable<long> forgId { get; set; }
         public string name { get; set; }
@@ -75,8 +76,9 @@ namespace Emsal.DAL.CustomObjects
         public string userType { get; set; }
         public string organizationManagerName { get; set; }
         public string  productOriginName { get; set; }
-        public Int64 contractID { get; set; }
+        public string ContractNumber { get; set; }
         public Int64 roleID { get; set; }
+        public Int64 contractID { get; set; }
         public Int64 managerId { get; set; }
         public Int64 organizationId { get; set; }
         public Int64 userType_eV_ID { get; set; }
@@ -88,5 +90,8 @@ namespace Emsal.DAL.CustomObjects
         public Int64 productAddressID { get; set; }
         //public string phoneNumber { get; set; }
         public string roleDescription { get; set; }
+        public decimal unitPriceAnnouncement { get; set; }
+        public string organizationAddress { get; set; }
+        public Int64 contTempID { get; set; }
     }
 }

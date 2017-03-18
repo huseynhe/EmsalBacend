@@ -66,6 +66,7 @@
     <Compile Include="CustomObjects\DemanProductionGroup.cs" />
     <Compile Include="CustomObjects\ForeignOrganization.cs" />
     <Compile Include="CustomObjects\GetOfferProductionDetailistForEValueId.cs" />
+    <Compile Include="CustomObjects\OfferPerson.cs" />
     <Compile Include="CustomObjects\OfferProductionDetail.cs" />
     <Compile Include="CustomObjects\OfferProducts.cs" />
     <Compile Include="CustomObjects\OrganizationDetail.cs" />
@@ -107,13 +108,19 @@
     <Compile Include="EmsalDBContext.cs" />
     <Compile Include="EmsalDBInitializer.cs" />
     <Compile Include="Enum\BOResultTypes.cs" />
+    <Compile Include="PA_GetAnnouncementDetails_Search_Result.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchObject\DemandForegnOrganization.cs" />
+    <Compile Include="SearchObject\DemandForegnOrganization1.cs" />
     <Compile Include="SearchObject\DemandOfferProductsSearch.cs" />
     <Compile Include="SearchObject\DemandProductionDetailistForUser.cs" />
     <Compile Include="SearchObject\DemandProductsForAccountingSearch.cs" />
     <Compile Include="SearchObject\GetDemandProductionDetailistForEValueIdSearch.cs" />
+    <Compile Include="SearchObject\GetDemandProductionDetailistForEValueIdSearch1.cs" />
     <Compile Include="SearchObject\OfferProductionDetailSearch.cs" />
+    <Compile Include="SearchObject\OfferProductionDetailSearch1.cs" />
     <Compile Include="SearchObject\PotensialUserForAdminUnitIdList.cs" />
     <Compile Include="SqlOperationLogic.cs" />
     <Compile Include="SqlOperationLogicAccounting.cs" />
@@ -142,6 +149,9 @@
       <DependentUpon>EmsalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tblContract.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblContractDetailTemp.cs">
       <DependentUpon>EmsalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tblDemand_Production.cs">

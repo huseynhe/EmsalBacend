@@ -34,7 +34,6 @@
     <EntitySet Name="tblProductCatalogControls" EntityType="EmsalDBModel.tblProductCatalogControl" />
     <EntitySet Name="tblProduction_Calendar" EntityType="EmsalDBModel.tblProduction_Calendar" />
     <EntitySet Name="tblProduction_Document" EntityType="EmsalDBModel.tblProduction_Document" />
-    <EntitySet Name="tblProductionCalendars" EntityType="EmsalDBModel.tblProductionCalendar" />
     <EntitySet Name="tblProductionControls" EntityType="EmsalDBModel.tblProductionControl" />
     <EntitySet Name="tblProductPrices" EntityType="EmsalDBModel.tblProductPrice" />
     <EntitySet Name="tblProductProfileImages" EntityType="EmsalDBModel.tblProductProfileImage" />
@@ -44,6 +43,13 @@
     <EntitySet Name="tblTitles" EntityType="EmsalDBModel.tblTitle" />
     <EntitySet Name="tblUsers" EntityType="EmsalDBModel.tblUser" />
     <EntitySet Name="tblUserRoles" EntityType="EmsalDBModel.tblUserRole" />
+    <EntitySet Name="tblContractDetailTemps" EntityType="EmsalDBModel.tblContractDetailTemp" />
+    <FunctionImport Name="PA_GetAnnouncementDetails_Search" ReturnType="Collection(EmsalDBModel.PA_GetAnnouncementDetails_Search_Result)">
+      <Parameter Name="page_number" Mode="In" Type="Int32" />
+      <Parameter Name="page_size" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="tblProductionCalendars" EntityType="EmsalDBModel.tblProductionCalendar" />
   </EntityContainer>
   <EntityType Name="C__MigrationHistory">
     <Key>
@@ -597,6 +603,7 @@
     <Property Type="Int64" Name="createdDate" />
     <Property Type="String" Name="updatedUser" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="Int64" Name="updatedDate" />
+    <Property Type="String" Name="productCode" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="tblProductCatalogControl">
     <Key>
@@ -653,31 +660,6 @@
     <Property Type="Int64" Name="createdDate" />
     <Property Type="String" Name="updatedUser" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="Int64" Name="updatedDate" />
-  </EntityType>
-  <EntityType Name="tblProductionCalendar">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="Int64" Name="type_eV_Id" />
-    <Property Type="Int64" Name="Production_type_eV_Id" />
-    <Property Type="Int64" Name="Production_Id" />
-    <Property Type="Int64" Name="day" />
-    <Property Type="Int64" Name="months_eV_Id" />
-    <Property Type="Int64" Name="oclock" />
-    <Property Type="Decimal" Name="price" Precision="18" Scale="2" />
-    <Property Type="Int64" Name="demand_Id" />
-    <Property Type="Int64" Name="offer_Id" />
-    <Property Type="Decimal" Name="quantity" Precision="18" Scale="2" />
-    <Property Type="Int64" Name="Status" />
-    <Property Type="Int64" Name="LastUpdateStatus" />
-    <Property Type="String" Name="createdUser" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="Int64" Name="createdDate" />
-    <Property Type="String" Name="updatedUser" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="Int64" Name="updatedDate" />
-    <Property Type="Int64" Name="transportation_eV_Id" />
-    <Property Type="Int64" Name="year" />
-    <Property Type="Int64" Name="partOfyear" />
   </EntityType>
   <EntityType Name="tblProductionControl">
     <Key>
@@ -811,6 +793,7 @@
     <Property Type="Int64" Name="userType_eV_ID" />
     <Property Type="Int64" Name="ASC_ID" />
     <Property Type="Int64" Name="KTN_ID" />
+    <Property Type="Int16" Name="TaxexType" />
   </EntityType>
   <EntityType Name="tblUserRole">
     <Key>
@@ -825,5 +808,57 @@
     <Property Type="Int64" Name="createdDate" Nullable="false" />
     <Property Type="String" Name="updatedUser" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="Int64" Name="updatedDate" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblContractDetailTemp">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="offerID" />
+    <Property Type="String" Name="ContractNumber_" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="ContractDate" />
+    <Property Type="Decimal" Name="product_unit_price" Precision="18" Scale="3" />
+    <Property Type="Decimal" Name="product_asc_price" Precision="18" Scale="3" />
+    <Property Type="Decimal" Name="product_total_count" Precision="18" Scale="3" />
+    <Property Type="Decimal" Name="product_total_price" Precision="18" Scale="3" />
+    <Property Type="Int64" Name="Status" />
+    <Property Type="String" Name="createdUser" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="createdDate" />
+    <Property Type="String" Name="updatedUser" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="updatedDate" />
+    <Property Type="String" Name="description" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="PA_GetAnnouncementDetails_Search_Result">
+    <Property Type="Int64" Name="announcementId" Nullable="false" />
+    <Property Type="Int64" Name="productID" Nullable="true" />
+    <Property Type="String" Name="productParentName" Nullable="true" />
+    <Property Type="String" Name="ProductName" Nullable="true" />
+    <Property Type="String" Name="description" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="tblProductionCalendar">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="type_eV_Id" />
+    <Property Type="Int64" Name="Production_type_eV_Id" />
+    <Property Type="Int64" Name="Production_Id" />
+    <Property Type="Int64" Name="day" />
+    <Property Type="Int64" Name="months_eV_Id" />
+    <Property Type="Int64" Name="oclock" />
+    <Property Type="Decimal" Name="price" Precision="18" Scale="2" />
+    <Property Type="Int64" Name="demand_Id" />
+    <Property Type="Int64" Name="offer_Id" />
+    <Property Type="Decimal" Name="quantity" Precision="18" Scale="2" />
+    <Property Type="Int64" Name="Status" />
+    <Property Type="Int64" Name="LastUpdateStatus" />
+    <Property Type="String" Name="createdUser" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="createdDate" />
+    <Property Type="String" Name="updatedUser" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="updatedDate" />
+    <Property Type="Int64" Name="transportation_eV_Id" />
+    <Property Type="Int64" Name="year" />
+    <Property Type="Int64" Name="partOfyear" />
+    <Property Type="DateTime" Name="date_" Precision="0" />
   </EntityType>
 </Schema>

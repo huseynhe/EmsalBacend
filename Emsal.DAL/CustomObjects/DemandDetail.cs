@@ -17,12 +17,13 @@ namespace Emsal.DAL.CustomObjects
         public string fullAddress { get; set; }
         public string addressDesc { get; set; }
         public string kategoryName { get; set; }
-        public tblDemand_Production demandList { get; set; }
+        public List<tblDemand_Production> demandList { get; set; }
         public List<ProductionCalendarDetail> calendarList { get; set; }
         public decimal totalQuantity { get; set; }
         public decimal totalPrice { get; set; }
         public decimal unit_price { get; set; }
         public string regionName { get; set; }
+      
         public List<OfferProducts> offerList { get; set; }
 
     }

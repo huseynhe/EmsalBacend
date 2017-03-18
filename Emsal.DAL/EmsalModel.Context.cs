@@ -12,6 +12,9 @@ namespace Emsal.DAL
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Objects;
+    using System.Data.Objects.DataClasses;
+    using System.Linq;
     
     public partial class EmsalDBEntities : DbContext
     {
@@ -58,7 +61,6 @@ namespace Emsal.DAL
         public DbSet<tblProductCatalogControl> tblProductCatalogControls { get; set; }
         public DbSet<tblProduction_Calendar> tblProduction_Calendar { get; set; }
         public DbSet<tblProduction_Document> tblProduction_Document { get; set; }
-        public DbSet<tblProductionCalendar> tblProductionCalendars { get; set; }
         public DbSet<tblProductionControl> tblProductionControls { get; set; }
         public DbSet<tblProductPrice> tblProductPrices { get; set; }
         public DbSet<tblProductProfileImage> tblProductProfileImages { get; set; }
@@ -68,5 +70,9 @@ namespace Emsal.DAL
         public DbSet<tblTitle> tblTitles { get; set; }
         public DbSet<tblUser> tblUsers { get; set; }
         public DbSet<tblUserRole> tblUserRoles { get; set; }
+        public DbSet<tblContractDetailTemp> tblContractDetailTemps { get; set; }
+        public DbSet<tblProductionCalendar> tblProductionCalendars { get; set; }
+    
+        
     }
 }

@@ -3,6 +3,7 @@ using Emsal.DAL.CodeObjects;
 using Emsal.DAL.CustomObjects;
 using Emsal.DAL.Enum;
 using Emsal.DAL.SearchObject;
+using Emsal.Utility.UtilityObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,19 +23,21 @@ namespace Emsal.BLL
             try
             {
                 itemList = sqloperationLogicAccounting.GetOfferProductionDetailistForMonitoringEVId_OP(opds);
-                
+
                 foreach (var item in itemList)
                 {
                     if (item.userType_eV_ID == 50)
                     {
                         //tblPerson person = operationLogic.GetPersonByUserId(item.managerId);
                         //item.person = person;
-                        PersonInformation person1 = sqloperationLogic.GetPersonInformationUserID(item.managerId);
+                       // List<PersonInformation> person1 = new List<PersonInformation>();
+                     PersonInformation person1 = sqloperationLogic.GetPersonInformationuserIDNew(item.userId);
+                       // person1 = sqloperationLogic.GetPersonInformationuserIDNew(item.userId);
                         item.personInformation = person1;
                     }
                     else
                     {
-                        PersonInformation person1 = sqloperationLogic.GetPersonInformationUserID(item.userId);
+                        PersonInformation person1 = sqloperationLogic.GetPersonInformationuserIDNew(item.userId);
                         item.personInformation = person1;
                     }
 
@@ -52,11 +55,12 @@ namespace Emsal.BLL
                     List<tblCommunication> comlist = operationLogic.GetCommunicationByPersonId(item.personId);
                     item.personcomList = comlist;
                 }*/
-                   
-                      comlist=  operationLogic.GetCommunicationByPersonId(item.personID);
+
+                    comlist = operationLogic.GetCommunicationByPersonId(item.personID);
                     item.personcomList = comlist;
                     item.productionDocumentList = productionDocumentList;
                     item.productionCalendarList = sqloperationLogic.GetProductionCalendarOfferId(item.productionID);
+
                     objlist.Add(item);
                 }
                 itemList = objlist;
@@ -170,17 +174,17 @@ namespace Emsal.BLL
         {
             BaseOutput baseOutput;
             itemList = new List<AnnouncementDetail>();
-          
+
 
             try
             {
                 itemList = sqloperationLogicAccounting.GetAnnouncementDetails_Search(ops);
                 foreach (var item in itemList)
                 {
-                    item.announcement =operationLogic.GetAnnouncementById(item.announcementID);
+                    item.announcement = operationLogic.GetAnnouncementById(item.announcementID);
                     item.productCatalogDocumentList = operationLogic.GetProductDocumentsByProductCatalogId((long)item.announcement.product_id);
                 }
-                
+
 
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
 
@@ -237,7 +241,8 @@ namespace Emsal.BLL
             count = 0;
             try
             {
-                count = sqloperationLogic.GetOfferProductionDetailistForEValueId_OPC(ops);
+                count = sqloperationLogicAccounting.GetOfferProductionDetailistForEValueId_OPC1(ops);
+              
 
 
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
@@ -252,7 +257,7 @@ namespace Emsal.BLL
 
             }
         }
-        public BaseOutput GetUserDetailInfoForOffers_OP(BaseInput baseinput, GetDemandProductionDetailistForEValueIdSearch ops, out List<PersonDetail> itemList)
+        public BaseOutput GetUserDetailInfoForOffers_OP(BaseInput baseinput, GetDemandProductionDetailistForEValueIdSearch1 ops, out List<PersonDetail> itemList)
         {
             BaseOutput baseOutput;
             // itemList = new List<PersonDetail>();
@@ -269,17 +274,17 @@ namespace Emsal.BLL
                     if (ops.contractStatus == true && item.contractID > 0)
                     {
 
-                       
-                            tblContract contract = operationLogic.GetContractById(item.contractID);
-                            item.contractList = contract;
-                     
+
+                        tblContract contract = operationLogic.GetContractById(item.contractID);
+                        item.contractList = contract;
+
 
                     }
                     else if (ops.contractStatus == false || item.contractID == 0)
                     {
-                        
-                            item.contractList = null;
-                      
+
+                        item.contractList = null;
+
                     }
                     objlist.Add(item);
                 }
@@ -297,7 +302,7 @@ namespace Emsal.BLL
 
             }
         }
-        public BaseOutput GetUserDetailInfoForOffers_OPC(BaseInput baseinput, GetDemandProductionDetailistForEValueIdSearch ops, out Int64 count)
+        public BaseOutput GetUserDetailInfoForOffers_OPC(BaseInput baseinput, GetDemandProductionDetailistForEValueIdSearch1 ops, out Int64 count)
         {
             BaseOutput baseOutput;
             count = 0;
@@ -318,7 +323,7 @@ namespace Emsal.BLL
 
             }
         }
-        public BaseOutput GetGovermentOrganisatinByAdminID(BaseInput baseinput, Int64 adminId, out List<ForeignOrganization> itemList)
+        public BaseOutput GetGovermentOrganisatinByAdminID(BaseInput baseinput, string adminIdList, out List<ForeignOrganization> itemList)
         {
             BaseOutput baseOutput;
             itemList = new List<ForeignOrganization>();
@@ -326,7 +331,7 @@ namespace Emsal.BLL
 
             try
             {
-                itemList = sqloperationLogicAccounting.GetGovermentOrganisatinByAdminID(adminId);
+                itemList = sqloperationLogicAccounting.GetGovermentOrganisatinByAdminID(adminIdList);
                 //foreach (var item in itemList)
                 //{
                 //    item.adminUnitIdList = sqloperationLogicAccounting.GetPRM_AdminUnitByAdminID(adminId);
@@ -370,7 +375,7 @@ namespace Emsal.BLL
             }
         }
 
-        public BaseOutput GetTotalDemandOffers(BaseInput baseinput, int page, int page_size,DemandOfferProductsSearch ops, out List<DemanProductionGroup> itemList)
+        public BaseOutput GetTotalDemandOffers(BaseInput baseinput, DemandOfferProductsSearch ops, out List<DemanProductionGroup> itemList)
         {
             BaseOutput baseOutput;
             itemList = new List<DemanProductionGroup>();
@@ -378,17 +383,21 @@ namespace Emsal.BLL
 
             try
             {
-                itemList = sqloperationLogicAccounting.GetTotalDemandOffers(page, page_size,ops);
+                itemList = sqloperationLogicAccounting.GetTotalDemandOffers(ops);
 
                 foreach (var item in itemList)
                 {
-                    item.offerProductsList = sqloperationLogicAccounting.GetTotalOffersbyProductID(item.productId,ops);
-                    foreach (var citem in  item.offerProductsList)
+                    item.offerProductsList = sqloperationLogicAccounting.GetTotalOffersbyProductID(item.productId, ops);
+              
+                    foreach (var citem in item.offerProductsList)
                     {
                         citem.comList = operationLogic.GetCommunicationByPersonId(citem.personID);
+                        citem.contractTempList = operationLogic.GettblContractDetailTempByOfferId(citem.productionID);
+                    
+                     
                     }
                 }
-                
+
 
 
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
@@ -403,7 +412,7 @@ namespace Emsal.BLL
 
             }
         }
-        public BaseOutput GetTotalDemandOffers1(BaseInput baseinput, int page, int page_size, DemandOfferProductsSearch ops, out List<DemanProductionGroup> itemList)
+        public BaseOutput GetTotalDemandOffersPA(BaseInput baseinput, DemandOfferProductsSearch ops, out List<DemanProductionGroup> itemList)
         {
             BaseOutput baseOutput;
             itemList = new List<DemanProductionGroup>();
@@ -411,14 +420,33 @@ namespace Emsal.BLL
 
             try
             {
-                itemList = sqloperationLogicAccounting.GetTotalDemandOffers(page, page_size, ops);
+                itemList = sqloperationLogicAccounting.GetTotalDemandOffers(ops);
 
-                foreach (var item in itemList)
+                try
                 {
-                    item.offerProducts = sqloperationLogicAccounting.GetTotalOffers(item.productId,ops.monthID);
-                   
-                }
+                    foreach (var item in itemList)
+                    {
+                        List<OfferProducts> oproduct = sqloperationLogicAccounting.GetTotalOffer(item.productId, ops.monthID);
 
+                        foreach (var item1 in oproduct)
+                        {
+
+
+                            item.totalOfferQuantity = item1.totalQuantity;
+                            item.totalOfferPrice = item1.totalPrice;
+                         
+                        }      
+
+                       
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    
+                    
+                }
+              
 
 
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
@@ -433,18 +461,23 @@ namespace Emsal.BLL
 
             }
         }
-        public BaseOutput GetTotalOffersbyProductID(BaseInput baseinput, Int64 productID,DemandOfferProductsSearch ops, out List<DemanOfferProduction> itemList)
+        public BaseOutput GetTotalOffersbyProductID(BaseInput baseinput, Int64 productID, DemandOfferProductsSearch ops, out List<DemanOfferProduction> itemList)
         {
             BaseOutput baseOutput;
             itemList = new List<DemanOfferProduction>();
-
+        
 
             try
             {
-                itemList = sqloperationLogicAccounting.GetTotalOffersbyProductID(productID,ops);
+
+            
+                itemList = sqloperationLogicAccounting.GetTotalOffersbyProductID(productID, ops);
                 foreach (var item in itemList)
                 {
                     item.comList = operationLogic.GetCommunicationByPersonId(item.personID);
+                    item.contractTempList = operationLogic.GettblContractDetailTempByOfferId(item.productionID);
+                
+
                 }
 
 
@@ -469,7 +502,7 @@ namespace Emsal.BLL
             {
                 count = sqloperationLogicAccounting.GetTotalDemandOffers_OPC(ops);
 
-                
+
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
 
 
@@ -483,13 +516,13 @@ namespace Emsal.BLL
             }
         }
 
-        public BaseOutput GetTotalOffersbyProductID_OPC(BaseInput baseinput, Int64 productID,DemandOfferProductsSearch ops, out Int64 count)
+        public BaseOutput GetTotalOffersbyProductID_OPC(BaseInput baseinput, Int64 productID, DemandOfferProductsSearch ops, out Int64 count)
         {
             BaseOutput baseOutput;
             count = 0;
             try
             {
-                count = sqloperationLogicAccounting.GetTotalOffersbyProductID_OPC(productID,ops);
+                count = sqloperationLogicAccounting.GetTotalOffersbyProductID_OPC(productID, ops);
 
 
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
@@ -504,7 +537,7 @@ namespace Emsal.BLL
 
             }
         }
-        public BaseOutput GetTotalDemandOffersRegion(BaseInput baseinput,DemandOfferProductsSearch ops, out List<DemandDetail> itemList)
+        public BaseOutput GetTotalDemandOffersRegion(BaseInput baseinput, DemandOfferProductsSearch ops, out List<DemandDetail> itemList)
         {
             BaseOutput baseOutput;
             itemList = new List<DemandDetail>();
@@ -532,6 +565,27 @@ namespace Emsal.BLL
 
             }
         }
+        public BaseOutput GetAnnouncementDetails_Search_OPC(BaseInput baseinput, OfferProductionDetailSearch ops, out Int64 count)
+        {
+            BaseOutput baseOutput;
+            count = 0;
+            try
+            {
+                count = sqloperationLogicAccounting.GetAnnouncementDetails_Search_OPC(ops);
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                count = 0;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
         public BaseOutput GetTotalDemandOffersRegion_OPC(BaseInput baseinput, DemandOfferProductsSearch ops, out Int64 count)
         {
             BaseOutput baseOutput;
@@ -539,6 +593,93 @@ namespace Emsal.BLL
             try
             {
                 count = sqloperationLogicAccounting.GetTotalDemandOffersRegion_OPC(ops);
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                count = 0;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput GetTotalOffer1(BaseInput baseinput, OfferProductionDetailSearch ops, out List<ProductionDetail> itemList)
+        {
+            BaseOutput baseOutput;
+            itemList = new List<ProductionDetail>();
+            decimal unitprice = 0;
+
+            try
+            {
+                itemList = sqloperationLogicAccounting.GetTotalOffer1(ops);
+
+                foreach (var item in itemList)
+                {
+                   
+                   item.personcomList = operationLogic.GetCommunicationByPersonId(item.personID);;
+                   // item.unitPrice = sqloperationLogicAccounting.GetOfferPriceCount(item.productionID, item.productId);
+                   // 
+                }
+
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput GetOfferPersonByProductID(BaseInput baseinput, Int64 productID, out List<OfferPerson> itemList)
+        {
+            BaseOutput baseOutput;
+            itemList = new List<OfferPerson>();
+          
+
+            try
+            {
+
+               
+                itemList = sqloperationLogicAccounting.GetOfferPersonByProductID(productID);
+                foreach (var item in itemList)
+                {
+                    item.comList = operationLogic.GetCommunicationByPersonId(item.personID);
+                  
+                    item.unit_price = sqloperationLogicAccounting.GetOfferPriceCount(item.productionID, productID);
+                 
+
+                }
+
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput GetTotalOffer1_OPC(BaseInput baseinput, OfferProductionDetailSearch ops, out Int64 count)
+        {
+            BaseOutput baseOutput;
+            count = 0;
+            try
+            {
+                count = sqloperationLogicAccounting.GetTotalOffer1_OPC(ops);
 
 
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");

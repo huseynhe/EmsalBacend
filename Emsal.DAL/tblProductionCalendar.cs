@@ -34,5 +34,6 @@ namespace Emsal.DAL
         public Nullable<long> transportation_eV_Id { get; set; }
         public Nullable<long> year { get; set; }
         public Nullable<long> partOfyear { get; set; }
+        public Nullable<System.DateTime> date_ { get; set; }
     }
 }

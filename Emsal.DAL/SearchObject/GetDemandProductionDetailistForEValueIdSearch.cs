@@ -37,5 +37,9 @@ namespace Emsal.DAL.SearchObject
         public Int64 user_Id { get; set; }
         [DataMember(IsRequired = true)]
         public bool contractStatus { get; set; }
+        [DataMember(IsRequired = true)]
+        public Int64 endate { get; set; }
+        [DataMember(IsRequired = true)]
+        public Int64 startDate { get; set; }
     }
 }

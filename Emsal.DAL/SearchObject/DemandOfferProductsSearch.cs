@@ -6,20 +6,25 @@ using System.Text;
 
 namespace Emsal.DAL.SearchObject
 {
-     
-   public class DemandOfferProductsSearch
+
+    [DataContract]
+    public class DemandOfferProductsSearch
     {
-         
+        [DataMember(IsRequired = true)]
         public Int64 productId { get; set; }
+        [DataMember(IsRequired = true)]
         public Int64 adminID { get; set; }
-       
+        [DataMember(IsRequired = true)]
         public string voen { get; set; }
-        
+        [DataMember(IsRequired = true)]
         public string pinNumber { get; set; }
-        
+        [DataMember(IsRequired = true)]
         public Int64 roleID { get; set; }
+        [DataMember(IsRequired = true)]
         public int page { get; set; }
+        [DataMember(IsRequired = true)]
         public int page_size { get; set; }
+        [DataMember(IsRequired = true)]
         public Int64 monthID { get; set; }
     }
 }

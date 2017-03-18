@@ -37,6 +37,10 @@ namespace Emsal.DAL.SearchObject
         public string voen { get; set; }
         [DataMember(IsRequired = true)]
         public string pinNumber { get; set; }
-
+        [DataMember(IsRequired = true)]
+        public string productName { get; set; }
+         [DataMember(IsRequired = true)]
+        public Int64 countryId  { get; set; }
+       
     }
 }

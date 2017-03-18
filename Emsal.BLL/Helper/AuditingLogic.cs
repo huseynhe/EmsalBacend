@@ -1204,6 +1204,32 @@ namespace Emsal.BLL.Helper
                 }
                 genericObj = item;
             }
+            else if (typeof(T) == typeof(tblContractDetailTemp))
+            {
+
+                tblContractDetailTemp item = (tblContractDetailTemp)(object)t;
+
+
+
+
+
+                //insert Operation
+                if (crudOperation == 1)
+                {
+                    item.Status = 1;
+                }
+                //update Operation
+                else if (crudOperation == 2)
+                {
+                    item.Status = 1;
+                }
+                //delete Operation
+                else if (crudOperation == 3)
+                {
+                    item.Status = 0;
+                }
+                genericObj = item;
+            }
             return (T)Convert.ChangeType(genericObj, typeof(T));
 
              

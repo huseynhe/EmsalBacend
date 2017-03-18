@@ -23,6 +23,8 @@ namespace Emsal.DAL.SearchObject
         public Int64 organizationID { get; set; }
         [DataMember(IsRequired = true)]
         public Int64 page_size { get; set; }
+        [DataMember(IsRequired = true)]
+        public string listAdminID { get; set; }
         
     }
 }
