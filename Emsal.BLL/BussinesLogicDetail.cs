@@ -2005,23 +2005,63 @@ namespace Emsal.BLL
         }
 
 
-
+        ///unitPrice  sohebti
         public BaseOutput GetDemandProductDetailInfoForAccounting_OP(BaseInput baseinput, GetDemandProductionDetailistForEValueIdSearch ops, long year, long partOfYear, out List<ProductionDetail> itemList)
         {
             BaseOutput baseOutput;
             List<ProductionDetail> objlist = new List<ProductionDetail>();
+            List<ProductionDetail> objlist1 = new List<ProductionDetail>();
+            List<ProductionDetail> objlist2 = new List<ProductionDetail>();
             try
             {
-                itemList = sqloperationLogic.GetDemandProductDetailInfoForAccounting_OP(ops, year, partOfYear);
+                objlist1 = sqloperationLogic.GetDemandProductDetailInfoForAccounting_OP(ops, year, partOfYear);
+                if (objlist1.Count() != 0)
+                {
 
-                foreach (var item in itemList)
+
+                    foreach (var item in objlist1)
                 {
                     item.foreignOrganization = operationLogic.GetForeign_OrganizationByUserId(item.userId);
 
                    item.productionCalendarList = sqloperationLogic.GetProductionCalendarDemandId1(item.productionID,ops.startDate,ops.endate);
                     objlist.Add(item);
                 }
-                itemList = objlist;
+               objlist1=objlist;
+                }
+                else if (objlist1.Count() == 0)
+                {
+                   // List<ProductionDetail> objlist12 = new List<ProductionDetail>();
+                  //  year = year - 1;
+                    //partOfYear = 4;
+                    for (int i = 1; i < year; i++)
+                    {
+                        if (objlist1.Count()==0)
+                        {
+                            year = year - 1;
+                            objlist1 = sqloperationLogic.GetDemandProductDetailInfoForAccounting_OP(ops,year , 4);
+                        }
+                        else 
+                        {
+                           // year = year - i;
+                            objlist2 = sqloperationLogic.GetDemandProductDetailInfoForAccounting_OP(ops, year, 4);
+                            objlist1 = objlist2;
+                            break;
+                           
+                        }
+                         
+                    }
+                   
+                    foreach (var item in objlist1)
+                    {
+                        item.foreignOrganization = operationLogic.GetForeign_OrganizationByUserId(item.userId);
+
+                        item.productionCalendarList = sqloperationLogic.GetProductionCalendarDemandId1(item.productionID, ops.startDate, ops.endate);
+                        objlist.Add(item);
+                    }
+                    objlist1 = objlist;
+                   // itemList = objlist1;
+                }
+                itemList = objlist1;
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
 
 
@@ -2412,6 +2452,83 @@ namespace Emsal.BLL
                 return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
             }
 
+        }
+        public BaseOutput GetDemandProduct(BaseInput baseinput, tblDemand_Production item, int page, int page_size, out List<DemandDetails> itemList)
+        {
+            BaseOutput baseOutput;
+            List<DemandDetails> objlist = new List<DemandDetails>();
+            try
+            {
+                itemList = sqloperationLogic.GetDemandProduct(item,page,page_size);
+
+                foreach (var item1 in itemList)
+                {
+
+                    item1.productionCalendarList = sqloperationLogic.GetProductionCalendarDemandId(item1.Id);
+                    objlist.Add(item1);
+                }
+                itemList = objlist;
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+
+        }
+        public BaseOutput GetOfferProduct(BaseInput baseinput, Int64 userID, int page, int page_size, out List<OfferDetails> itemList)
+        {
+            BaseOutput baseOutput;
+            List<OfferDetails> objlist = new List<OfferDetails>();
+            try
+            {
+                itemList = sqloperationLogic.GetOFFerProduct(userID, page, page_size);
+
+                foreach (var item1 in itemList)
+                {
+
+                    item1.productionCalendarList = sqloperationLogic.GetProductionCalendarOfferId(item1.Id);
+                    objlist.Add(item1);
+                }
+                itemList = objlist;
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+
+        }
+        public BaseOutput GetUserTypeEvID(BaseInput baseinput,Int64 usertype_eV_Id,int page,int page_size,out List<UserDetails> itemList)
+        {
+            BaseOutput baseOutput;
+            List<OfferDetails> objlist = new List<OfferDetails>();
+            try
+            {
+                itemList = sqloperationLogic.GetUserUserTypeEVID(usertype_eV_Id, page, page_size);
+
+                
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
         }
     }
 }

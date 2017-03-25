@@ -17,7 +17,7 @@
         <EntityTypeShape EntityType="EmsalDBModel.tblConfirmationMessage" Width="1.5" PointX="5.8154736337324016" PointY="7.823691058821832" />
         <EntityTypeShape EntityType="EmsalDBModel.tblContract" Width="1.5" PointX="5.2628544444510972" PointY="12.069687685030367" />
         <EntityTypeShape EntityType="EmsalDBModel.tblDemand_Production" Width="1.5" PointX="10.227805209452196" PointY="21.71272889790718" />
-        <EntityTypeShape EntityType="EmsalDBModel.tblEmployee" Width="1.5" PointX="9.7437664502038466" PointY="9.5195511325819187" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblEmployee" Width="1.5" PointX="11" PointY="8" />
         <EntityTypeShape EntityType="EmsalDBModel.tblEnumCategory" Width="1.5" PointX="3.25" PointY="20.75" />
         <EntityTypeShape EntityType="EmsalDBModel.tblEnumValue" Width="1.5" PointX="2.6114671335609012" PointY="29.702240227582976" />
         <EntityTypeShape EntityType="EmsalDBModel.tblExpertise" Width="1.5" PointX="7.5605136228541436" PointY="10.239974727034557" />
@@ -32,7 +32,7 @@
         <EntityTypeShape EntityType="EmsalDBModel.tblPRM_ASCBranch" Width="1.5" PointX="7.5614185163571577" PointY="24.930455681369853" />
         <EntityTypeShape EntityType="EmsalDBModel.tblPRM_KTNBranch" Width="1.5" PointX="8.0342898033719" PointY="18.097124078356252" />
         <EntityTypeShape EntityType="EmsalDBModel.tblPRM_Thoroughfare" Width="1.5" PointX="9.5293266556827945" PointY="17.562389933300388" />
-        <EntityTypeShape EntityType="EmsalDBModel.tblProduct_Document" Width="1.5" PointX="10.619977460531507" PointY="8.3246401885173462" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblProduct_Document" Width="1.5" PointX="13.125" PointY="8.125" />
         <EntityTypeShape EntityType="EmsalDBModel.tblProductAddress" Width="1.5" PointX="3.2428601976683646" PointY="25.702356007742861" />
         <EntityTypeShape EntityType="EmsalDBModel.tblProductCatalog" Width="2.75" PointX="5.875" PointY="4.25" />
         <EntityTypeShape EntityType="EmsalDBModel.tblProductCatalogControl" Width="2.875" PointX="2.5" PointY="26.375" />

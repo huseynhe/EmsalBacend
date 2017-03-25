@@ -2438,5 +2438,19 @@ namespace Emsal.WebSrv
             return businessLogic.GetTotalOffer1_OPC(baseinput, ops
                 , out count);
         }
+        public BaseOutput GetDemandProduct(BaseInput baseinput, tblDemand_Production item, int page, int page_size, out List<DemandDetails> itemList)
+        {
+            return businessLogic.GetDemandProduct(baseinput, item, page, page_size, out itemList);
+        }
+        public BaseOutput GetOfferProduct(BaseInput baseInput,Int64 userID,int page,int page_size,out List<OfferDetails> itemlist)
+        {
+
+            return businessLogic.GetOfferProduct(baseInput, userID, page, page_size, out itemlist);
+
+        }
+        public BaseOutput GetUsertype(BaseInput baseInput, Int64 userType_eV_Id, int page, int page_size, out List<UserDetails> itemList)
+        {
+            return businessLogic.GetUserTypeEvID(baseInput, userType_eV_Id, page, page_size, out itemList);
+        }
     }
 }

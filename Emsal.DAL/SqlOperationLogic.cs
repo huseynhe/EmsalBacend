@@ -720,7 +720,7 @@ from (select FirstTable.Id,FirstTable.unit_price,FirstTable.quantity,FirstTable.
 						
 						
                       where    op.Status=1  
-				  and op.monitoring_eV_Id=10118  
+				  and op.monitoring_eV_Id=@monintoring_eV_Id  
 					  and op.state_eV_Id=2 --and op.updatedUser='KTN'
                     ) as FirstTable   
                     left  join [dbo].[tblEnumValue] ev on FirstTable.EnumValueId=ev.Id and ev.Status=1) as table2
@@ -749,7 +749,7 @@ from (select FirstTable.Id,FirstTable.unit_price,FirstTable.quantity,FirstTable.
 				 or aunit.ParentID= branchResp.adminUnitId)
 				-- and branchResp.adminUnitId=80400001
         --    
-	and user_Id=20687
+	and user_Id=@userID
 				) as table4
 				 )
 	
@@ -779,7 +779,7 @@ from (select FirstTable.Id,FirstTable.unit_price,FirstTable.quantity,FirstTable.
 						
 						
                       where    op.Status=1  
-				  and op.monitoring_eV_Id=10118  
+				  and op.monitoring_eV_Id=@monintoring_eV_Id  
 					  and op.state_eV_Id=2 --and op.updatedUser='KTN'
                     ) as FirstTable   
                     left  join [dbo].[tblEnumValue] ev on FirstTable.EnumValueId=ev.Id and ev.Status=1) as table2
@@ -808,7 +808,7 @@ from (select FirstTable.Id,FirstTable.unit_price,FirstTable.quantity,FirstTable.
 				 or aunit.ParentID= branchResp.adminUnitId)
 				-- and branchResp.adminUnitId=80400001
         --    
-		and user_Id=20687
+		and user_Id=@userID
 				) as table4 
 				
 	)
@@ -2347,7 +2347,9 @@ select FirstTable.* ,aunit.Name as ParantName,op.state_eV_Id from (
 			  from (
 			 select pc.Id, pc.type_eV_Id,pc.Production_Id,pc.year,pc.day,pc.oclock,pc.partOfyear,
              pc.months_eV_Id,pc.offer_Id,
-              pc.demand_Id,pc.Production_type_eV_Id,pc.price,pc.transportation_eV_Id,pc.quantity, ev.name as MonthName,ev.description as MonthDescription from [dbo].[tblProductionCalendar]pc ,[dbo].[tblEnumValue] ev 
+              pc.demand_Id,pc.Production_type_eV_Id,pc.price,pc.transportation_eV_Id,pc.quantity, ev.name as MonthName,
+ev.description as MonthDescription,pc.date_ 
+from [dbo].[tblProductionCalendar]pc ,[dbo].[tblEnumValue] ev 
              where pc.months_eV_Id=ev.Id and pc.Status=1 and pc.demand_Id=@demand_Id 
 ) table1,
              [dbo].[tblEnumValue] ev 
@@ -5372,7 +5374,7 @@ select  distinct
 	where 	 enumCategory_enumCategoryId=5 
 	)as tb ";
             squery.Append(query);
-            if (ops.startDate!=0|| ops.endate!=0)
+            if (ops.startDate != 0 || ops.endate != 0)
             {
                 squery.Append(queryDate);
             }
@@ -6021,7 +6023,7 @@ and  product_Id Like '%' + @product_Id + '%'
             var queryProductID = @" and op.product_Id =@productID ";
             var queryRoleId = @" and ur.RoleId=  @RoleID";
             var queryStateId = @" and  op.state_eV_Id= @state_eV_Id ";
-            if (ops.adminID != 0 )
+            if (ops.adminID != 0)
             {
                 sQuery.Append(queryAdminID);
 
@@ -6190,7 +6192,7 @@ select COUNT(*) as Count from(
             }
             squery.Append(squeryunion.ToString());
             squery.Append(query2);
-            if (ops.startDate!=0&& ops.endDate!=0)
+            if (ops.startDate != 0 && ops.endDate != 0)
             {
                 squery.Append(queryDate);
             }
@@ -6832,6 +6834,233 @@ where tb.product_id=@product_id
             }
 
             return count;
+        }
+        public List<DemandDetails> GetDemandProduct(tblDemand_Production item, int page, int pageSize)
+        {
+            var result = new List<DemandDetails>();
+            //  StringBuilder squery = new StringBuilder();
+            var query = @" 
+ 
+select tb.*,pc.ProductName as parentName from(select dp.*,pc.ProductName,pc.ProductCatalogParentID
+from tblDemand_Production dp
+join tblProductCatalog pc on dp.product_Id=pc.Id and pc.Status=1
+where dp.Status=1
+) as tb
+join tblProductCatalog pc on pc.Id=tb.ProductCatalogParentID and pc.Status=1
+where tb.user_Id=@user_Id and tb.state_eV_Id=@state_eV_Id
+order by ProductName,parentName asc
+OFFSET ( @PageNo - 1 ) * @RecordsPerPage ROWS
+FETCH NEXT @RecordsPerPage ROWS ONLY
+ 
+";
+
+            using (var connection = new SqlConnection(DBUtil.ConnectionString))
+            {
+                connection.Open();
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@PageNo", page);
+                    command.Parameters.AddWithValue("@RecordsPerPage", pageSize);
+                    command.Parameters.AddWithValue("@user_Id", item.user_Id);
+                    command.Parameters.AddWithValue("@state_eV_Id", item.state_eV_Id);
+
+
+                    var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        result.Add(new DemandDetails()
+                        {
+
+                            Id = reader.GetInt64OrDefaultValue(0),
+                            grup_Id = reader.GetStringOrEmpty(1),
+                            title = reader.GetStringOrEmpty(2),
+                            description = reader.GetStringOrEmpty(3),
+                            unit_price = reader.GetDecimalOrDefaultValue(4),
+                            total_price = reader.GetDecimalOrDefaultValue(5),
+                            quantity = reader.GetDecimalOrDefaultValue(6),
+                            quantity_type_eV_Id=reader.GetInt64OrDefaultValue(7),
+                            startDate=reader.GetInt64OrDefaultValue(8),
+                            endDate=reader.GetInt64OrDefaultValue(9),
+                            isSelected=reader.GetBoolean(10),
+                            isAnnouncement=reader.GetBoolean(11),
+                            Status=reader.GetInt64OrDefaultValue(12),
+                            LastUpdatedStatus=reader.GetInt64OrDefaultValue(13),
+                            createdUser=reader.GetStringOrEmpty(14),
+                            createdDate=reader.GetInt64OrDefaultValue(15),
+                            updatedUser=reader.GetStringOrEmpty(16),
+                            updatedDate=reader.GetInt64OrDefaultValue(17),
+                            address_Id=reader.GetInt64OrDefaultValue(18),
+                            product_Id=reader.GetInt64OrDefaultValue(19),
+                            user_Id=reader.GetInt64OrDefaultValue(20),
+                            state_eV_Id=reader.GetInt64OrDefaultValue(21),
+                            fullProductId=reader.GetStringOrEmpty(22),
+                            monitoring_eV_Id=reader.GetInt64OrDefaultValue(23),
+                            isNew=reader.GetInt64OrDefaultValue(24),
+                            productName=reader.GetStringOrEmpty(25),
+                            parentName=reader.GetStringOrEmpty(27)
+
+
+
+                        });
+                    }
+                }
+                connection.Close();
+            }
+
+            return result;
+        }
+        public List<OfferDetails> GetOFFerProduct(Int64 userId, int page, int pageSize)
+        {
+            var result = new List<OfferDetails>();
+            //  StringBuilder squery = new StringBuilder();
+            var query = @" 
+ 
+select tb.*,pc.ProductName as parentName from(select op.*,pc.ProductName,pc.ProductCatalogParentID from tblOffer_Production op
+ join tblProductCatalog pc on op.product_Id=pc.Id and pc.Status=1
+where op.Status=1
+) as tb
+join tblProductCatalog pc on pc.Id=tb.ProductCatalogParentID and pc.Status=1
+where tb.user_Id=@user_Id
+order by ProductName,parentName asc
+OFFSET ( @PageNo - 1 ) * @RecordsPerPage ROWS
+FETCH NEXT @RecordsPerPage ROWS ONLY
+
+ 
+";
+
+            using (var connection = new SqlConnection(DBUtil.ConnectionString))
+            {
+                connection.Open();
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@PageNo", page);
+                    command.Parameters.AddWithValue("@RecordsPerPage", pageSize);
+                    command.Parameters.AddWithValue("@user_Id", userId);
+                 
+
+                    var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        result.Add(new OfferDetails()
+                        {
+
+                            Id = reader.GetInt64OrDefaultValue(0),
+                            grup_Id = reader.GetStringOrEmpty(1),
+                            title = reader.GetStringOrEmpty(2),
+                            description = reader.GetStringOrEmpty(3),
+                            unit_price = reader.GetDecimalOrDefaultValue(4),
+                            total_price = reader.GetDecimalOrDefaultValue(5),
+                            quantity = reader.GetDecimalOrDefaultValue(6),
+                            quantity_type_eV_Id = reader.GetInt64OrDefaultValue(7),
+                            startDate = reader.GetInt64OrDefaultValue(8),
+                            endDate = reader.GetInt64OrDefaultValue(9),
+                            isSelected = reader.GetBoolean(10),
+                         
+                            Status = reader.GetInt64OrDefaultValue(11),
+                            LastUpdatedStatus = reader.GetInt64OrDefaultValue(12),
+                            createdUser = reader.GetStringOrEmpty(13),
+                            createdDate = reader.GetInt64OrDefaultValue(14),
+                            updatedUser = reader.GetStringOrEmpty(15),
+                            updatedDate = reader.GetInt64OrDefaultValue(16),
+                            potentialProduct_Id = reader.GetInt64OrDefaultValue(17),
+                            product_Id = reader.GetInt64OrDefaultValue(18),
+                            productAddress_Id=reader.GetInt64OrDefaultValue(19),
+                            user_Id = reader.GetInt64OrDefaultValue(20),
+                            state_eV_Id = reader.GetInt64OrDefaultValue(21),
+                          
+                            monitoring_eV_Id = reader.GetInt64OrDefaultValue(22),
+                            productOrigin=reader.GetInt64OrDefaultValue(23),
+                            contractId=reader.GetInt64OrDefaultValue(24),
+                            isNew = reader.GetInt64OrDefaultValue(25),
+                            productName = reader.GetStringOrEmpty(26),
+                            parentName = reader.GetStringOrEmpty(28)
+
+
+
+                        });
+                    }
+                }
+                connection.Close();
+            }
+
+            return result;
+        }
+        public List<UserDetails> GetUserUserTypeEVID(Int64 usertype_eV_iD, int page, int pageSize)
+        {
+            var result = new List<UserDetails>();
+            //  StringBuilder squery = new StringBuilder();
+            var query = @" 
+select tb.*,au.Name as regionName from(select u.*,au.ParentRegionID,fo.name as organizationName,
+person.Name ,person.Surname,person.FatherName from tblUser u
+left join tblAddress adr on adr.user_Id=u.Id and adr.Status=1
+left join tblPRM_AdminUnit au on adr.adminUnit_Id=au.Id and au.Status=1
+left join tblForeign_Organization fo on fo.userId=u.Id and fo.Status=1
+left join tblPerson person on person.Id=fo.manager_Id and person.Status=1
+where u.Status=1
+) as tb
+
+left join tblPRM_AdminUnit au on tb.ParentRegionID=au.Id and au.Status=1
+where tb.userType_eV_ID=@userType_eV_ID
+order by Username,organizationName
+OFFSET ( @PageNo - 1 ) * @RecordsPerPage ROWS
+FETCH NEXT @RecordsPerPage ROWS ONLY
+ 
+";
+
+            using (var connection = new SqlConnection(DBUtil.ConnectionString))
+            {
+                connection.Open();
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@PageNo", page);
+                    command.Parameters.AddWithValue("@RecordsPerPage", pageSize);
+                    command.Parameters.AddWithValue("@userType_eV_ID", usertype_eV_iD);
+
+
+                    var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        result.Add(new UserDetails()
+                        {
+
+                            Id=reader.GetInt64OrDefaultValue(0),
+                            Username=reader.GetStringOrEmpty(1),
+                            Email=reader.GetStringOrEmpty(2),
+                            Password=reader.GetStringOrEmpty(3),
+                            LastLoginIP=reader.GetStringOrEmpty(4),
+                            LastLoginDate=reader.GetInt64OrDefaultValue(5),
+                            ProfileImageUrl=reader.GetStringOrEmpty(6),
+                            Status=reader.GetInt64OrDefaultValue(7),
+                            LastUpdatedStatus=reader.GetInt64OrDefaultValue(8),
+                            createdUser=reader.GetStringOrEmpty(9),
+                            createdDate=reader.GetInt64OrDefaultValue(10),
+                            updatedUser=reader.GetStringOrEmpty(11),
+                            updatedDate=reader.GetInt64OrDefaultValue(12),
+                            userType_eV_ID=reader.GetInt64OrDefaultValue(13),
+                            ASC_ID=reader.GetInt64OrDefaultValue(14),
+                            KTN_ID=reader.GetInt64OrDefaultValue(15),
+                            TaxexType=reader.GetInt16(16),
+                            organizationName=reader.GetStringOrEmpty(18),
+                            name=reader.GetStringOrEmpty(19),
+                            surName=reader.GetStringOrEmpty(20),
+                            fatherName=reader.GetStringOrEmpty(21),
+                            regionName=reader.GetStringOrEmpty(22),
+
+
+
+
+
+
+                        });
+                    }
+                }
+                connection.Close();
+            }
+
+            return result;
         }
     }
 

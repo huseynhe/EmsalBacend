@@ -60,12 +60,14 @@
     <Compile Include="CustomObjects\AdminUnitRegion.cs" />
     <Compile Include="CustomObjects\AnnouncementDetail.cs" />
     <Compile Include="CustomObjects\DemandDetail.cs" />
+    <Compile Include="CustomObjects\DemandDetails.cs" />
     <Compile Include="CustomObjects\DemandDetialOPA.cs" />
     <Compile Include="CustomObjects\DemandOfferDetail.cs" />
     <Compile Include="CustomObjects\DemanOfferProduction.cs" />
     <Compile Include="CustomObjects\DemanProductionGroup.cs" />
     <Compile Include="CustomObjects\ForeignOrganization.cs" />
     <Compile Include="CustomObjects\GetOfferProductionDetailistForEValueId.cs" />
+    <Compile Include="CustomObjects\OfferDetails.cs" />
     <Compile Include="CustomObjects\OfferPerson.cs" />
     <Compile Include="CustomObjects\OfferProductionDetail.cs" />
     <Compile Include="CustomObjects\OfferProducts.cs" />
@@ -79,6 +81,7 @@
     <Compile Include="CustomObjects\ProductionInfo.cs" />
     <Compile Include="CustomObjects\ProductPriceDetail.cs" />
     <Compile Include="CustomObjects\ProductionCalendarDetail.cs" />
+    <Compile Include="CustomObjects\UserDetails.cs" />
     <Compile Include="CustomObjects\UserInfo.cs" />
     <Compile Include="C__MigrationHistory.cs">
       <DependentUpon>EmsalModel.tt</DependentUpon>

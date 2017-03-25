@@ -1264,7 +1264,12 @@ namespace Emsal.WebSrv
         BaseOutput WS_GetTotalOffer1(BaseInput baseinput, OfferProductionDetailSearch ops, out List<ProductionDetail> itemList);
         [OperationContract]
         BaseOutput WS_GetTotalOffer1_OPC(BaseInput baseinput, OfferProductionDetailSearch ops, out Int64 count);
-        
-
+        [OperationContract]
+        BaseOutput GetDemandProduct(BaseInput baseinput, tblDemand_Production item, int page, int page_size, out List<DemandDetails> itemList);
+        [OperationContract]
+        BaseOutput GetOfferProduct(BaseInput baseinput, Int64 userId, int page, int page_size, out List<OfferDetails> itemList);
+        [OperationContract]
+        BaseOutput GetUsertype(BaseInput baseInput, Int64 userType_eV_Id, int page, int page_size, out List<UserDetails> itemList);
+      
     }
 }
