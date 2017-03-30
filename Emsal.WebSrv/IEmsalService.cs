@@ -268,9 +268,11 @@ namespace Emsal.WebSrv
         [OperationContract]
         BaseOutput WS_GetOffer_Productions(BaseInput baseinput, out List<tblOffer_Production> itemList);
         [OperationContract]
-        BaseOutput WS_GetOffer_ProductionsByUserID(BaseInput baseinput, Int64 UserID, out List<tblOffer_Production> itemList);
+        BaseOutput WS_GetOffer_ProductionsByUserID_OP(BaseInput baseinput, Int64 UserID,int page ,int page_size, out List<OfferDetails> itemList);
         [OperationContract]
         BaseOutput WS_GetOffer_ProductionsByUserID1(BaseInput baseinput, Int64 UserID, out List<tblOffer_Production> itemList);
+        [OperationContract]
+        BaseOutput WS_GetOffer_ProductionsByUserID(BaseInput baseinput, Int64 UserID, out List<tblOffer_Production> itemList);
         [OperationContract]
         BaseOutput WS_GetOffAirOffer_ProductionsByUserID(BaseInput baseinput, tblOffer_Production Offer, out List<tblOffer_Production> itemList);
         [OperationContract]
@@ -351,6 +353,8 @@ namespace Emsal.WebSrv
         BaseOutput WS_UpdateDemand_ProductionForStartAndEndDate(BaseInput baseinput, tblDemand_Production item, out List<tblDemand_Production> itemList);
 
         [OperationContract]
+        BaseOutput WS_GetDemand_ProductionsByStateAndUserID_OP(BaseInput baseinput, tblDemand_Production item,int page,int page_size, out List<DemandDetails> itemList);
+        [OperationContract]
         BaseOutput WS_GetDemand_ProductionsByStateAndUserID(BaseInput baseinput, tblDemand_Production item, out List<tblDemand_Production> itemList);
         [OperationContract]
         BaseOutput WS_GetDemandProductionForUserId(BaseInput baseinput, Int64 userId, out List<tblDemand_Production> itemList);
@@ -418,6 +422,8 @@ namespace Emsal.WebSrv
         [OperationContract]
         BaseOutput WS_GetOrganisationTypeUsers(BaseInput baseinput, long govRoleEnum, long userType, out List<tblUser> itemList);
 
+        [OperationContract]
+        BaseOutput WS_GetUsersByUserType_OP(BaseInput baseinput, long userTypeID,int page,int page_size, out List<UserDetails> itemList);
         [OperationContract]
         BaseOutput WS_GetUsersByUserType(BaseInput baseinput, long userTypeID, out List<tblUser> itemList);
         #endregion
@@ -1265,11 +1271,8 @@ namespace Emsal.WebSrv
         [OperationContract]
         BaseOutput WS_GetTotalOffer1_OPC(BaseInput baseinput, OfferProductionDetailSearch ops, out Int64 count);
         [OperationContract]
-        BaseOutput GetDemandProduct(BaseInput baseinput, tblDemand_Production item, int page, int page_size, out List<DemandDetails> itemList);
-        [OperationContract]
-        BaseOutput GetOfferProduct(BaseInput baseinput, Int64 userId, int page, int page_size, out List<OfferDetails> itemList);
-        [OperationContract]
-        BaseOutput GetUsertype(BaseInput baseInput, Int64 userType_eV_Id, int page, int page_size, out List<UserDetails> itemList);
+        BaseOutput WS_GetOfferProductionDetailistForEValueId_OPEX(BaseInput baseinput, OfferProductionDetailSearch ops,int startDate,int endDate, out List<ProductionDetail> itemList);
+       
       
     }
 }

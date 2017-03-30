@@ -2175,7 +2175,7 @@ namespace Emsal.DAL
                 {
                     var offerProductions = (from p in context.tblOffer_Production
                                             join ev in context.tblEnumValues on p.state_eV_Id equals ev.Id
-                                            where p.user_Id == UserId && p.Status == 1 && ev.Status==1 
+                                            where p.user_Id == UserId && p.Status == 1 && ev.Status == 1
                                             //orderby p.
                                             select p);
 
@@ -4075,7 +4075,7 @@ namespace Emsal.DAL
                 throw ex;
             }
 
-        }
+       }
 
         #endregion
         #region tblRole

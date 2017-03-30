@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 using System.Text;
 namespace Emsal.DAL.SearchObject
 {
-   public class OfferProductionDetailSearch1
+    public class OfferProductionDetailSearch1
     {
         [DataMember(IsRequired = true)]
         public Int64 monintoring_eV_Id { get; set; }

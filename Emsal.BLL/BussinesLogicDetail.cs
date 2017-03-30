@@ -2453,13 +2453,13 @@ namespace Emsal.BLL
             }
 
         }
-        public BaseOutput GetDemandProduct(BaseInput baseinput, tblDemand_Production item, int page, int page_size, out List<DemandDetails> itemList)
+        public BaseOutput GetDemand_ProductionsByStateAndUserID_OP(BaseInput baseinput, tblDemand_Production item, int page, int page_size, out List<DemandDetails> itemList)
         {
             BaseOutput baseOutput;
             List<DemandDetails> objlist = new List<DemandDetails>();
             try
             {
-                itemList = sqloperationLogic.GetDemandProduct(item,page,page_size);
+                itemList = sqloperationLogic.GetDemand_ProductionsByStateAndUserID_OP(item, page, page_size);
 
                 foreach (var item1 in itemList)
                 {
@@ -2481,13 +2481,13 @@ namespace Emsal.BLL
             }
 
         }
-        public BaseOutput GetOfferProduct(BaseInput baseinput, Int64 userID, int page, int page_size, out List<OfferDetails> itemList)
+        public BaseOutput GetOffer_ProductionsByUserId_OP(BaseInput baseinput, Int64 userID, int page, int page_size, out List<OfferDetails> itemList)
         {
             BaseOutput baseOutput;
             List<OfferDetails> objlist = new List<OfferDetails>();
             try
             {
-                itemList = sqloperationLogic.GetOFFerProduct(userID, page, page_size);
+                itemList = sqloperationLogic.GetOffer_ProductionsByUserId_OP(userID, page, page_size);
 
                 foreach (var item1 in itemList)
                 {
@@ -2509,13 +2509,13 @@ namespace Emsal.BLL
             }
 
         }
-        public BaseOutput GetUserTypeEvID(BaseInput baseinput,Int64 usertype_eV_Id,int page,int page_size,out List<UserDetails> itemList)
+        public BaseOutput GetUsersByUserType_OP(BaseInput baseinput, Int64 usertype_eV_Id, int page, int page_size, out List<UserDetails> itemList)
         {
             BaseOutput baseOutput;
             List<OfferDetails> objlist = new List<OfferDetails>();
             try
             {
-                itemList = sqloperationLogic.GetUserUserTypeEVID(usertype_eV_Id, page, page_size);
+                itemList = sqloperationLogic.GetUsersByUserType_OP(usertype_eV_Id, page, page_size);
 
                 
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
@@ -2530,6 +2530,53 @@ namespace Emsal.BLL
 
             }
         }
+        public BaseOutput GetOfferProductionDetailistForEValueId_OPEX(BaseInput baseinput, OfferProductionDetailSearch ops, int startDate, int endDate, out List<ProductionDetail> itemList)
+        {
+            BaseOutput baseOutput;
+            List<ProductionDetail> objlist = new List<ProductionDetail>();
+            try
+            {
+                itemList = sqloperationLogic.GetOfferProductionDetailistForEValueId_OPEX(ops, startDate, endDate);
+
+                foreach (var item in itemList)
+                {
+
+                    tblPerson person = operationLogic.GetPersonByUserId(item.userId);
+                    if (person != null)
+                    {
+                        item.person = person;
+
+                    }
+
+
+                    List<tblProduction_Document> productionDocumentList = operationLogic.GetProductionDocumentsByOffer_Production_Id(
+                      new tblProduction_Document
+                      {
+                          Offer_Production_Id = item.productionID
+                      });
+                    List<tblCommunication> comlist = operationLogic.GetCommunicationByPersonId(item.personID);
+                    item.personcomList = comlist;
+                    item.productDocumentList = operationLogic.GetProductDocumentsByProductCatalogId((long)item.productId);
+                    item.productionDocumentList = productionDocumentList;
+                 item.productionCalendarList = sqloperationLogic.GetProductionCalendarOfferId1(item.productionID, startDate,endDate);
+                    objlist.Add(item);
+                }
+
+                itemList = objlist;
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+
+        }
+        
     }
 }
 

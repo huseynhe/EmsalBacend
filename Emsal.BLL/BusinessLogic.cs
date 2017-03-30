@@ -2087,6 +2087,23 @@ namespace Emsal.BLL
             }
         }
 
+        //public BaseOutput GetDemand_ProductionsByStateAndUserID(BaseInput baseinput, tblDemand_Production item, out List<tblDemand_Production> itemList)
+        //{
+        //    BaseOutput baseOutput;
+        //    itemList = null;
+        //    try
+        //    {
+        //        itemList = operationLogic.GetDemand_ProductionsByStateAndUserID(item);
+        //        return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+        //    }
+        //}
         public BaseOutput GetDemand_ProductionsByStateAndUserID(BaseInput baseinput, tblDemand_Production item, out List<tblDemand_Production> itemList)
         {
             BaseOutput baseOutput;
@@ -2104,7 +2121,6 @@ namespace Emsal.BLL
 
             }
         }
-
         #endregion
         #region tblAnnouncement
 
@@ -2679,6 +2695,7 @@ namespace Emsal.BLL
             try
             {
                 itemList = operationLogic.GetUsersByUserType(userTypeID);
+              
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
 
 

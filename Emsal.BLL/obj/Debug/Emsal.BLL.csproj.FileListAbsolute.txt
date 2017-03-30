@@ -11,6 +11,6 @@ C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\Emsal.Utility
 C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.xml
 C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\bin\Debug\NLog.xml
+C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.csprojResolveAssemblyReference.cache
 C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.dll
 C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.pdb
-C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.BLL\obj\Debug\Emsal.BLL.csprojResolveAssemblyReference.cache

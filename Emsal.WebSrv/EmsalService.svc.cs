@@ -516,15 +516,20 @@ namespace Emsal.WebSrv
         {
             return businessLogic.GetOffer_Productions(baseinput, out itemList);
         }
-        public BaseOutput WS_GetOffer_ProductionsByUserID(BaseInput baseinput, Int64 UserID, out List<tblOffer_Production> OfferProductionList)
+        public BaseOutput WS_GetOffer_ProductionsByUserID_OP(BaseInput baseinput, Int64 UserID, int page, int page_size, out List<OfferDetails> OfferProductionList)
         {
 
-            return businessLogic.GetOffer_ProductionsByUserId(baseinput, UserID, out OfferProductionList);
+            return businessLogic.GetOffer_ProductionsByUserId_OP(baseinput, UserID,page,page_size ,out OfferProductionList);
         }
         public BaseOutput WS_GetOffer_ProductionsByUserID1(BaseInput baseinput, Int64 UserID, out List<tblOffer_Production> OfferProductionList)
         {
 
             return businessLogic.GetOffer_ProductionsByUserId1(baseinput, UserID, out OfferProductionList);
+        }
+        public BaseOutput WS_GetOffer_ProductionsByUserID(BaseInput baseinput, Int64 UserID, out List<tblOffer_Production> OfferProductionList)
+        {
+
+            return businessLogic.GetOffer_ProductionsByUserId(baseinput, UserID, out OfferProductionList);
         }
         public BaseOutput WS_GetOffAirOffer_ProductionsByUserID(BaseInput baseinput, tblOffer_Production Offer, out List<tblOffer_Production> OfferProductionList)
         {
@@ -675,6 +680,10 @@ namespace Emsal.WebSrv
         public BaseOutput WS_GetDemand_ProductionsByStateAndUserID(BaseInput baseinput, tblDemand_Production item, out List<tblDemand_Production> itemList)
         {
             return businessLogic.GetDemand_ProductionsByStateAndUserID(baseinput, item, out itemList);
+        }
+        public BaseOutput WS_GetDemand_ProductionsByStateAndUserID_OP(BaseInput baseinput, tblDemand_Production item,int page,int page_size, out List<DemandDetails> itemList)
+        {
+            return businessLogic.GetDemand_ProductionsByStateAndUserID_OP(baseinput, item,page,page_size, out itemList);
         }
         public BaseOutput WS_GetDemandProductionForUserId(BaseInput baseinput, Int64 userId, out List<tblDemand_Production> itemList)
         {
@@ -855,10 +864,16 @@ namespace Emsal.WebSrv
         {
             return businessLogic.GetOrganisationTypeUsers(baseinput, govRoleEnum, userType, out itemList);
         }
+        public BaseOutput WS_GetUsersByUserType_OP(BaseInput baseinput, long userTypeID,int page,int page_size, out List<UserDetails> itemList)
+        {
+            //return businessLogic.GetUsersByUserType_OP(baseinput, userTypeID, page, page_size, out itemList);
+            return businessLogic.GetUsersByUserType_OP(baseinput, userTypeID, page, page_size, out itemList);
+        }
         public BaseOutput WS_GetUsersByUserType(BaseInput baseinput, long userTypeID, out List<tblUser> itemList)
         {
             return businessLogic.GetUsersByUserType(baseinput, userTypeID, out itemList);
-        }
+        } 
+
 
         #endregion
         #region WS_Role
@@ -2438,19 +2453,12 @@ namespace Emsal.WebSrv
             return businessLogic.GetTotalOffer1_OPC(baseinput, ops
                 , out count);
         }
-        public BaseOutput GetDemandProduct(BaseInput baseinput, tblDemand_Production item, int page, int page_size, out List<DemandDetails> itemList)
+        public BaseOutput WS_GetOfferProductionDetailistForEValueId_OPEX(BaseInput baseinput, OfferProductionDetailSearch ops, int startDate, int endDate, out List<ProductionDetail> itemList)
         {
-            return businessLogic.GetDemandProduct(baseinput, item, page, page_size, out itemList);
-        }
-        public BaseOutput GetOfferProduct(BaseInput baseInput,Int64 userID,int page,int page_size,out List<OfferDetails> itemlist)
-        {
-
-            return businessLogic.GetOfferProduct(baseInput, userID, page, page_size, out itemlist);
+            return businessLogic.GetOfferProductionDetailistForEValueId_OPEX(baseinput, ops, startDate, endDate, out itemList);
 
         }
-        public BaseOutput GetUsertype(BaseInput baseInput, Int64 userType_eV_Id, int page, int page_size, out List<UserDetails> itemList)
-        {
-            return businessLogic.GetUserTypeEvID(baseInput, userType_eV_Id, page, page_size, out itemList);
-        }
+       
+      
     }
 }
