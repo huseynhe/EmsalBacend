@@ -11,16 +11,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Emsal.BLL.dll">
-      <publishTime>03/30/2017 11:41:09</publishTime>
+      <publishTime>03/31/2017 10:45:16</publishTime>
     </File>
     <File Include="bin/Emsal.DAL.dll">
-      <publishTime>03/30/2017 11:41:09</publishTime>
+      <publishTime>03/31/2017 10:45:15</publishTime>
     </File>
     <File Include="bin/Emsal.Utility.dll">
       <publishTime>03/16/2017 10:46:48</publishTime>
     </File>
     <File Include="bin/Emsal.WebSrv.dll">
-      <publishTime>03/30/2017 11:41:10</publishTime>
+      <publishTime>03/31/2017 10:45:17</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>01/12/2017 11:41:03</publishTime>
@@ -50,7 +50,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/12/2017 11:41:02</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>03/30/2017 11:41:10</publishTime>
+      <publishTime>03/31/2017 10:45:18</publishTime>
     </File>
   </ItemGroup>
 </Project>

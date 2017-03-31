@@ -4646,9 +4646,9 @@ and op.Status=1
   , RESULTS AS (
  SELECT * , ROW_NUMBER() OVER (ORDER BY tb.Name,tb.Surname,tb.adminUnitName DESC) AS rn
 , ROW_NUMBER() OVER (ORDER BY tb.Name,tb.Surname,tb.adminUnitName ASC) AS rn_reversed FROM 
-(select distinct tb.* --,op.state_eV_Id
+(select distinct tb.* ,au.Name as adminParentName--,op.state_eV_Id
 from ( select p.Name,p.Surname,adr.fullAddress,u.Email,u.Id as userId,u.userType_eV_ID,ev.name as userType,
-                             ur.Id as userRoleId ,ur.RoleId,r.Id ,r.Name as roleName,p.PinNumber ,'' as voen,au.Name as adminUnitName
+                             ur.Id as userRoleId ,ur.RoleId,r.Id ,r.Name as roleName,p.PinNumber ,'' as voen,au.Name as adminUnitName,au.ParentID
                              from dbo.tblUser u ,tblPerson p,tblUserRole ur,dbo.tblAddress adr,dbo.tblEnumValue ev,dbo.tblRole r,
 							 tblPRM_AdminUnit au
                              where u.Id=p.UserId and u.Id=ur.UserId and u.Id=adr.user_Id
@@ -4662,7 +4662,7 @@ from ( select p.Name,p.Surname,adr.fullAddress,u.Email,u.Id as userId,u.userType
 							 		)
 							 union 
 							 select fo.Name,fo.description as Surname,adr.fullAddress,u.Email,u.Id as userId,u.userType_eV_ID,ev.name as userType,
-                             ur.Id as userRoleId ,ur.RoleId,r.Id ,r.Name,'' as PinNumber , fo.voen,au.Name as adminUnitName
+                             ur.Id as userRoleId ,ur.RoleId,r.Id ,r.Name,'' as PinNumber , fo.voen,au.Name as adminUnitName,au.ParentID
                              from dbo.tblUser u ,[dbo].[tblForeign_Organization] fo,
 							 tblUserRole ur,dbo.tblAddress adr,dbo.tblEnumValue ev,dbo.tblRole r,tblPRM_AdminUnit au
                              where u.Id=fo.UserId and u.Id=ur.UserId and u.Id=adr.user_Id
@@ -4675,6 +4675,7 @@ from ( select p.Name,p.Surname,adr.fullAddress,u.Email,u.Id as userId,u.userType
 							select Id from cte
 							 		)
 							 )as tb
+                            left join tblPRM_AdminUnit au on au.Id=tb.ParentID and au.Status=1
 							left join tblOffer_Production op on op.user_Id=tb.userId and op.Status=1
                              and ((tb.RoleId  = 11 AND op.state_eV_Id=2) OR (tb.RoleId=15 ))
 							 
@@ -4746,6 +4747,7 @@ from ( select p.Name,p.Surname,adr.fullAddress,u.Email,u.Id as userId,u.userType
                             pinNumber = reader.GetStringOrEmpty(11),
                             voen = reader.GetStringOrEmpty(12),
                             adminUnitName = reader.GetStringOrEmpty(13),
+                            adminParentName=reader.GetStringOrEmpty(15),
                             //state_Ev_ID = reader.GetInt64OrDefaultValue(14),
 
                         });

@@ -729,12 +729,199 @@ left join tblProductCatalog pc on table1.ProductCatalogParentID=pc.Id and pc.Sta
 
             return count;
         }
+//        public List<GetOfferProductionDetailistForEValueId> GetOfferProductionDetailistForEValueId_OP1(OfferProductionDetailSearch ops)
+//        {
+//            var result = new List<GetOfferProductionDetailistForEValueId>();
+//            StringBuilder squery = new StringBuilder();
+//            StringBuilder squeryunion = new StringBuilder();
+//            var queryPro1 = @" with cte(Id) AS 
+// (
+//  SELECT au.Id
+//  FROM dbo.tblProductCatalog au
+// where Id=19
+//
+//   UNION ALL 
+//   SELECT au.Id
+//
+//  FROM dbo.tblProductCatalog au  JOIN cte c ON au.ProductCatalogParentID = c.Id
+//  
+//  )";
+//            var query1 = @" with cte(Id) AS 
+// (
+//  SELECT au.Id
+//  FROM dbo.tblPRM_AdminUnit au
+//";
+
+//            var query2 = @" UNION ALL 
+//   SELECT au.Id
+//
+//  FROM dbo.tblPRM_AdminUnit au  JOIN cte c ON au.parentId = c.Id
+//  
+//  )
+//  --select ID from cte;
+//  , RESULTS AS
+//    (
+//        SELECT *
+//            , ROW_NUMBER() OVER (ORDER BY tb.Id DESC) AS rn
+//            , ROW_NUMBER() OVER (ORDER BY tb.Id ASC) AS rn_reversed
+//        FROM
+//		 (
+//select distinct table1.*,pc.ProductName as productParentName,ev.name as kategoryName from (select op.Id ,op.unit_price,op.quantity,pc.ProductName,pc.ProductCatalogParentID
+//,pdocument.documentName,pdocument.documentRealName,pdocument.documentUrl,op.product_Id,pdocument.documentSize,
+//person.Name as personName,person.Surname,person.FatherName,person.gender,person.PinNumber,fo.name as organizationName,fo.voen
+//,pa.fullAddress,prc.EnumValueId,prc.EnumCategoryId,ur.RoleId,u.userType_eV_ID,op.productAddress_Id,u.Email,person.Id as personId
+// from tblOffer_Production op
+//left join tblProductCatalog pc on op.product_Id=pc.Id and pc.Status=1
+//left join tblProduct_Document pdocument on pc.Id=pdocument.Product_catalog_Id and pdocument.Status=1
+//left join tblPerson person on person.UserId=op.user_Id and op.Status=1
+//left join tblForeign_Organization fo on op.user_Id=fo.userId and fo.Status=1
+//left join tblProductAddress pa on op.Id=pa.offer_production_id and pa.Status=1
+//left join tblProductCatalogControl prc on prc.ProductId=op.product_Id and prc.Status=1
+//left join tblUserRole ur on op.user_Id=ur.UserId  and ur.Status=1
+//left join tblUser u on op.user_Id=u.Id and u.Status=1
+//--left join tblCommunication com on person.Id=com.PersonId and person.Status=1
+//where op.Status=1 and op.state_eV_Id=@state_eV_Id
+//)as table1
+//left join tblProductCatalog pc on table1.ProductCatalogParentID=pc.Id and pc.Status=1
+//left join tblEnumValue ev on table1.EnumValueId=ev.Id and ev.Status=1 
+// left  join tblProductAddress padr on table1.productAddress_Id=padr.Id and padr.Status=1
+//			   join tblPRM_AdminUnit au on padr.adminUnit_Id =au.Id 
+//	   
+//           
+//		   	   and  au.Id 
+//			   in (
+//							select Id from cte
+//							 		)
+//           
+//
+//            ) as tb where tb.EnumCategoryId=5 ";
+//            var query3 = @"  )  SELECT *
+//        , CAST(rn + rn_reversed - 1 AS INT) AS total_rows
+//        , CAST(CASE (rn + rn_reversed - 1) % @page_size
+//            WHEN 0 THEN (rn + rn_reversed - 1) / @page_size
+//            ELSE ((rn + rn_reversed - 1) / @page_size) + 1 
+//            END AS INT) AS total_pages
+//    FROM RESULTS a
+//    WHERE a.rn BETWEEN 1 + ((@page_num - 1) * @page_size) AND @page_num * @page_size
+//    ORDER BY rn ASC ";
+
+//            var queryadminID = @"  WHERE Id=@addressID ";
+
+
+
+//            var queryProductId = @" and product_Id=@productID  ";
+//            var queryRoleId = @" and RoleId=@roleID ";
+//            var queryName = @" and  (personName like '%'+@name+'%' or Surname like '%'+@name+'%'  or FatherName like '%'+@name+'%')  ";
+//            //var queryVoen = @" and voen like '%'+@voen+'%' ";//voen=@voen
+//            var queryPinNumber = @" and  (PinNumber like '%'+@pinNumber+'%' or voen like '%'+@voen+'%' ) ";
+//            var queryUserType = @" and  userType_eV_ID=@usertypeEvId      ";
+//            squeryunion.Append(query1);
+//            if (ops.adminID != 0)
+//            {
+//                squeryunion.Append(queryadminID);
+//            }
+//            squery.Append(squeryunion.ToString());
+//            squery.Append(query2);
+//            if (!String.IsNullOrEmpty(ops.name))
+//            {
+//                squery.Append(queryName);
+//            }
+//            if (ops.productID != 0)
+//            {
+//                squery.Append(queryProductId);
+//            }
+//            if (ops.roleID != 0)
+//            {
+//                squery.Append(queryRoleId);
+//            }
+//            if (ops.usertypeEvId != 0)
+//            {
+//                squery.Append(queryUserType);
+//            }
+//            if (!String.IsNullOrEmpty(ops.pinNumber)|| !String.IsNullOrEmpty( ops.voen))
+//            {
+//                squery.Append(queryPinNumber);
+//            }
+
+
+
+
+//            squery.Append(query3);
+
+//            using (var connection = new SqlConnection(DBUtil.ConnectionString))
+//            {
+//                connection.Open();
+
+//                using (var command = new SqlCommand(squery.ToString(), connection))
+//                {
+//                    command.Parameters.AddWithValue("@state_eV_Id", ops.state_eV_Id);
+//                    command.Parameters.AddWithValue("@page_num", ops.page);
+//                    command.Parameters.AddWithValue("@page_size", ops.pageSize);
+//                    command.Parameters.AddWithValue("@roleID", ops.roleID);
+//                    command.Parameters.AddWithValue("@name", ops.name.GetStringOrEmptyData());
+//                    command.Parameters.AddWithValue("@productID", ops.productID);
+//                    command.Parameters.AddWithValue("@voen", ops.voen.GetStringOrEmptyData());
+//                    command.Parameters.AddWithValue("@pinNumber", ops.pinNumber.GetStringOrEmptyData());
+//                    command.Parameters.AddWithValue("@usertypeEvId", ops.usertypeEvId);
+//                    command.Parameters.AddWithValue("@addressID", ops.adminID);
+
+//                    var reader = command.ExecuteReader();
+//                    while (reader.Read())
+//                    {
+//                        result.Add(new GetOfferProductionDetailistForEValueId()
+//                        {
+//                            productionID = reader.GetInt64OrDefaultValue(0),
+//                            unitPrice = reader.GetDecimalOrDefaultValue(1),
+//                            quantity = reader.GetDecimalOrDefaultValue(2),
+//                            productName = reader.GetStringOrEmpty(3),
+//                            documentName = reader.GetStringOrEmpty(5),
+//                            documentRealName = reader.GetStringOrEmpty(6),
+//                            documentUrl = reader.GetStringOrEmpty(7),
+//                            productId = reader.GetInt64OrDefaultValue(8),
+//                            documentSize = reader.GetInt64OrDefaultValue(9),
+//                            name = reader.GetStringOrEmpty(10),
+//                            surname = reader.GetStringOrEmpty(11),
+//                            fatherName = reader.GetStringOrEmpty(12),
+//                            gender = reader.GetStringOrEmpty(13),
+//                            pinNumber = reader.GetStringOrEmpty(14),
+//                            organizationName = reader.GetStringOrEmpty(15),
+//                            voen = reader.GetStringOrEmpty(16),
+//                            fullAddress = reader.GetStringOrEmpty(17),
+//                            email = reader.GetStringOrEmpty(23),
+//                            personID = reader.GetInt64OrDefaultValue(24),
+//                            productParentName = reader.GetStringOrEmpty(25),
+//                            kategoryName = reader.GetStringOrEmpty(26),
+
+//                        });
+//                    }
+//                }
+//                connection.Close();
+//            }
+
+//            return result;
+//        } 
         public List<GetOfferProductionDetailistForEValueId> GetOfferProductionDetailistForEValueId_OP1(OfferProductionDetailSearch ops)
         {
             var result = new List<GetOfferProductionDetailistForEValueId>();
             StringBuilder squery = new StringBuilder();
             StringBuilder squeryunion = new StringBuilder();
-            var query1 = @" with cte(Id) AS 
+            StringBuilder squeryproduct = new StringBuilder();
+            var queryPro1 = @" with cte(Id) AS 
+ (
+  SELECT au.Id
+  FROM dbo.tblProductCatalog au
+ 
+
+  
+  
+  ";
+            var queryProduct = @" where Id=@productID";
+           
+            var queryPro2 = @" UNION ALL 
+   SELECT au.Id
+
+  FROM dbo.tblProductCatalog au  JOIN cte c ON au.ProductCatalogParentID = c.Id) ";
+            var query1 = @" , cte1(Id) AS 
  (
   SELECT au.Id
   FROM dbo.tblPRM_AdminUnit au
@@ -743,7 +930,7 @@ left join tblProductCatalog pc on table1.ProductCatalogParentID=pc.Id and pc.Sta
             var query2 = @" UNION ALL 
    SELECT au.Id
 
-  FROM dbo.tblPRM_AdminUnit au  JOIN cte c ON au.parentId = c.Id
+  FROM dbo.tblPRM_AdminUnit au  JOIN cte1 c ON au.parentId = c.Id
   
   )
   --select ID from cte;
@@ -759,7 +946,7 @@ select distinct table1.*,pc.ProductName as productParentName,ev.name as kategory
 person.Name as personName,person.Surname,person.FatherName,person.gender,person.PinNumber,fo.name as organizationName,fo.voen
 ,pa.fullAddress,prc.EnumValueId,prc.EnumCategoryId,ur.RoleId,u.userType_eV_ID,op.productAddress_Id,u.Email,person.Id as personId
  from tblOffer_Production op
-left join tblProductCatalog pc on op.product_Id=pc.Id and pc.Status=1
+ join tblProductCatalog pc on op.product_Id=pc.Id and pc.Status=1  and pc.Id in (select Id from cte)
 left join tblProduct_Document pdocument on pc.Id=pdocument.Product_catalog_Id and pdocument.Status=1
 left join tblPerson person on person.UserId=op.user_Id and op.Status=1
 left join tblForeign_Organization fo on op.user_Id=fo.userId and fo.Status=1
@@ -778,7 +965,7 @@ left join tblEnumValue ev on table1.EnumValueId=ev.Id and ev.Status=1
            
 		   	   and  au.Id 
 			   in (
-							select Id from cte
+							select Id from cte1
 							 		)
            
 
@@ -797,13 +984,20 @@ left join tblEnumValue ev on table1.EnumValueId=ev.Id and ev.Status=1
 
 
 
-            var queryProductId = @" and product_Id=@productID  ";
+         //   var queryProductId = @" and product_Id=@productID  ";
             var queryRoleId = @" and RoleId=@roleID ";
             var queryName = @" and  (personName like '%'+@name+'%' or Surname like '%'+@name+'%'  or FatherName like '%'+@name+'%')  ";
             //var queryVoen = @" and voen like '%'+@voen+'%' ";//voen=@voen
             var queryPinNumber = @" and  (PinNumber like '%'+@pinNumber+'%' or voen like '%'+@voen+'%' ) ";
             var queryUserType = @" and  userType_eV_ID=@usertypeEvId      ";
             squeryunion.Append(query1);
+            squeryproduct.Append(queryPro1);
+            if (ops.productID != 0)
+            {
+                squeryproduct.Append(queryProduct);
+            }
+            squeryproduct.Append(queryPro2);
+            squery.Append(squeryproduct.ToString());
             if (ops.adminID != 0)
             {
                 squeryunion.Append(queryadminID);
@@ -814,10 +1008,7 @@ left join tblEnumValue ev on table1.EnumValueId=ev.Id and ev.Status=1
             {
                 squery.Append(queryName);
             }
-            if (ops.productID != 0)
-            {
-                squery.Append(queryProductId);
-            }
+           
             if (ops.roleID != 0)
             {
                 squery.Append(queryRoleId);
@@ -826,7 +1017,7 @@ left join tblEnumValue ev on table1.EnumValueId=ev.Id and ev.Status=1
             {
                 squery.Append(queryUserType);
             }
-            if (!String.IsNullOrEmpty(ops.pinNumber)|| !String.IsNullOrEmpty( ops.voen))
+            if (!String.IsNullOrEmpty(ops.pinNumber) || !String.IsNullOrEmpty(ops.voen))
             {
                 squery.Append(queryPinNumber);
             }
@@ -894,7 +1085,23 @@ left join tblEnumValue ev on table1.EnumValueId=ev.Id and ev.Status=1
             Int64 count = 0;
             StringBuilder squery = new StringBuilder();
             StringBuilder squeryunion = new StringBuilder();
-            var query1 = @" with cte(Id) AS 
+            StringBuilder squeryproduct = new StringBuilder();
+            var queryPro1 = @" with cte(Id) AS 
+ (
+  SELECT au.Id
+  FROM dbo.tblProductCatalog au
+ 
+
+  
+  
+  ";
+            var queryProduct = @" where Id=@productID";
+
+            var queryPro2 = @" UNION ALL 
+   SELECT au.Id
+
+  FROM dbo.tblProductCatalog au  JOIN cte c ON au.ProductCatalogParentID = c.Id) ";
+            var query1 = @" , cte1(Id) AS 
  (
   SELECT au.Id
   FROM dbo.tblPRM_AdminUnit au
@@ -903,7 +1110,7 @@ left join tblEnumValue ev on table1.EnumValueId=ev.Id and ev.Status=1
             var query2 = @" UNION ALL 
    SELECT au.Id
 
-  FROM dbo.tblPRM_AdminUnit au  JOIN cte c ON au.parentId = c.Id
+  FROM dbo.tblPRM_AdminUnit au  JOIN cte1 c ON au.parentId = c.Id
   
   )
    select COUNT(*) as Count  from (
@@ -913,7 +1120,7 @@ left join tblEnumValue ev on table1.EnumValueId=ev.Id and ev.Status=1
 person.Name as personName,person.Surname,person.FatherName,person.gender,person.PinNumber,fo.name as organizationName,fo.voen
 ,pa.fullAddress,prc.EnumValueId,prc.EnumCategoryId,ur.RoleId,u.userType_eV_ID,op.productAddress_Id,u.Email,person.Id as personId
  from tblOffer_Production op
-left join tblProductCatalog pc on op.product_Id=pc.Id and pc.Status=1
+ join tblProductCatalog pc on op.product_Id=pc.Id and pc.Status=1 and pc.Id in (select Id from cte)
 left join tblProduct_Document pdocument on pc.Id=pdocument.Product_catalog_Id and pdocument.Status=1
 left join tblPerson person on person.UserId=op.user_Id and op.Status=1
 left join tblForeign_Organization fo on op.user_Id=fo.userId and fo.Status=1
@@ -924,7 +1131,7 @@ left join tblUser u on op.user_Id=u.Id and u.Status=1
 --left join tblCommunication com on person.Id=com.PersonId and person.Status=1
 where op.Status=1 and op.state_eV_Id=@state_eV_Id
 )as table1
-left join tblProductCatalog pc on table1.ProductCatalogParentID=pc.Id and pc.Status=1
+ join tblProductCatalog pc on table1.ProductCatalogParentID=pc.Id and pc.Status=1
 left join tblEnumValue ev on table1.EnumValueId=ev.Id and ev.Status=1 
  left  join tblProductAddress padr on table1.productAddress_Id=padr.Id and padr.Status=1
 			   join tblPRM_AdminUnit au on padr.adminUnit_Id =au.Id 
@@ -933,7 +1140,7 @@ left join tblEnumValue ev on table1.EnumValueId=ev.Id and ev.Status=1
            
 		   	   and  au.Id 
 			   in (
-							select Id from cte
+							select Id from cte1
 							 		)
            
 
@@ -945,13 +1152,21 @@ left join tblEnumValue ev on table1.EnumValueId=ev.Id and ev.Status=1
 
 
 
-            var queryProductId = @" and product_Id=@productID  ";
+         
             var queryRoleId = @" and RoleId=@roleID ";
             var queryName = @" and  (personName like '%'+@name+'%' or Surname like '%'+@name+'%'  or FatherName like '%'+@name+'%')  ";
             //var queryVoen = @" and voen like '%'+@voen+'%' ";//voen=@voen
             var queryPinNumber = @" and  (PinNumber like '%'+@pinNumber+'%' or voen like '%'+@voen+'%' ) ";
             var queryUserType = @" and  userType_eV_ID=@usertypeEvId      ";
+
             squeryunion.Append(query1);
+            squeryproduct.Append(queryPro1);
+            if (ops.productID != 0)
+            {
+                squeryproduct.Append(queryProduct);
+            }
+            squeryproduct.Append(queryPro2);
+            squery.Append(squeryproduct.ToString());
             if (ops.adminID != 0)
             {
                 squeryunion.Append(queryadminID);
@@ -962,10 +1177,7 @@ left join tblEnumValue ev on table1.EnumValueId=ev.Id and ev.Status=1
             {
                 squery.Append(queryName);
             }
-            if (ops.productID != 0)
-            {
-                squery.Append(queryProductId);
-            }
+           
             if (ops.roleID != 0)
             {
                 squery.Append(queryRoleId);
@@ -974,7 +1186,7 @@ left join tblEnumValue ev on table1.EnumValueId=ev.Id and ev.Status=1
             {
                 squery.Append(queryUserType);
             }
-            if (ops.pinNumber != null || ops.voen != null)
+            if (!String.IsNullOrEmpty(ops.pinNumber) || !String.IsNullOrEmpty(ops.voen))
             {
                 squery.Append(queryPinNumber);
             }

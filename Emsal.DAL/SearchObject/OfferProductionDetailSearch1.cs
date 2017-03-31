@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.Text;
 namespace Emsal.DAL.SearchObject
 {
+    [DataContract]
     public class OfferProductionDetailSearch1
     {
         [DataMember(IsRequired = true)]
