@@ -61,7 +61,7 @@ namespace Emsal.DAL.CustomObjects
         public string phoneNumberDesc { get; set; }
         public List<tblCommunication> personcomList { get; set; }
         public List<tblPotential_Production> potentialProductionList { get; set; }
-        public string adminParentName { get; set; }
+     
     }
 }
 

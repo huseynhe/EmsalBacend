@@ -125,6 +125,7 @@
     <Compile Include="SearchObject\OfferProductionDetailSearch.cs" />
     <Compile Include="SearchObject\OfferProductionDetailSearch1.cs" />
     <Compile Include="SearchObject\PotensialUserForAdminUnitIdList.cs" />
+    <Compile Include="SearchObject\PotensialUserForAdminUnitIdList1.cs" />
     <Compile Include="SqlOperationLogic.cs" />
     <Compile Include="SqlOperationLogicAccounting.cs" />
     <Compile Include="tblAddress.cs">
