@@ -4868,144 +4868,187 @@ and op.Status=1
 
 //            return result;
 //        } 
-//        public List<UserInfo> GetPotensialUserList_OPPreantVAr(PotensialUserForAdminUnitIdList ops)
-//        {
-//            var result = new List<UserInfo>();
-//            StringBuilder squery = new StringBuilder();
-//            StringBuilder squeryunion = new StringBuilder();
-//            var queryAdminID = @"  with cte(Id) AS 
-// (
-//  SELECT au.Id
-//  FROM dbo.tblPRM_AdminUnit au";
-//            squeryunion.Append(queryAdminID);
-
-//            var queryadminID = @" WHERE  Id=@adminUnitID ";
-//            if (ops.adminUnitID != 0)
-//            {
-//                squeryunion.Append(queryadminID);
-//            }
-//            var query = @" 
-//   UNION ALL 
-//   SELECT au.Id
-//
-//  FROM dbo.tblPRM_AdminUnit au  JOIN cte c ON au.parentId = c.Id
-//  
-//  )
-//  --select ID from cte;
-//  , RESULTS AS (
-// SELECT * , ROW_NUMBER() OVER (ORDER BY tb.Name,tb.Surname,tb.adminUnitName DESC) AS rn
-//, ROW_NUMBER() OVER (ORDER BY tb.Name,tb.Surname,tb.adminUnitName ASC) AS rn_reversed FROM 
-//(select distinct tb.*,au.Name as adminParentName --,op.state_eV_Id
-//from ( select p.Name,p.Surname,adr.fullAddress,u.Email,u.Id as userId,u.userType_eV_ID,ev.name as userType,
-//                             ur.Id as userRoleId ,ur.RoleId,r.Id ,r.Name as roleName,p.PinNumber ,'' as voen,au.Name as adminUnitName,au.ParentID
-//                             from dbo.tblUser u ,tblPerson p,tblUserRole ur,dbo.tblAddress adr,dbo.tblEnumValue ev,dbo.tblRole r,
-//							 tblPRM_AdminUnit au
-//                             where u.Id=p.UserId and u.Id=ur.UserId and u.Id=adr.user_Id
-//                             and ur.RoleId=r.Id
-//                             and u.userType_eV_ID=ev.Id
-//                             and r.Id in (11,15) and u.userType_eV_ID=26
-//							 and u.Status=1 and p.Status=1 and ur.Status=1 and adr.Status=1
-//							 and ev.Status=1 and r.Status=1 and au.Id=adr.adminUnit_Id and au.Status=1  and  au.Id 
-//			                  in (
-//							select Id from cte
-//							 		)
-//							 union 
-//							 select fo.Name,fo.description as Surname,adr.fullAddress,u.Email,u.Id as userId,u.userType_eV_ID,ev.name as userType,
-//                             ur.Id as userRoleId ,ur.RoleId,r.Id ,r.Name,'' as PinNumber , fo.voen,au.Name as adminUnitName,au.ParentID
-//                             from dbo.tblUser u ,[dbo].[tblForeign_Organization] fo,
-//							 tblUserRole ur,dbo.tblAddress adr,dbo.tblEnumValue ev,dbo.tblRole r,tblPRM_AdminUnit au
-//                             where u.Id=fo.UserId and u.Id=ur.UserId and u.Id=adr.user_Id
-//                             and ur.RoleId=r.Id
-//                             and u.userType_eV_ID=ev.Id
-//                               and r.Id in (11,15) and u.userType_eV_ID=50
-//							 and u.Status=1 and fo.Status=1 and ur.Status=1 and adr.Status=1
-//							 and ev.Status=1 and r.Status=1 and au.Id=adr.adminUnit_Id and au.Status=1  and  au.Id 
-//			   in (
-//							select Id from cte
-//							 		)
-//							 )as tb
-//							left join tblOffer_Production op on op.user_Id=tb.userId and op.Status=1
-//                             and ((tb.RoleId  = 11 AND op.state_eV_Id=2) OR (tb.RoleId=15 ))
-//							  left join tblPRM_AdminUnit au on au.Id=tb.ParentID and au.Status=1
-//							 ) as tb where (tb.PinNumber!='' or tb.voen!='') 
-// 
-//                         ";
-//            var query1 = @")  SELECT *
-//        , CAST(rn + rn_reversed - 1 AS INT) AS total_rows
-//        , CAST(CASE (rn + rn_reversed - 1) % @page_size
-//            WHEN 0 THEN (rn + rn_reversed - 1) / @page_size
-//            ELSE ((rn + rn_reversed - 1) / @page_size) + 1 
-//            END AS INT) AS total_pages
-//    FROM RESULTS a
-//    WHERE a.rn BETWEEN 1 + ((@page_num - 1) * @page_size) AND @page_num * @page_size
-//    ORDER BY rn ASC ";
-//            var queryRole = @" and RoleId=@RoleId";
-//            var queryName = @"  and Name like '%'+@name+'%' or Surname like '%'+@name+'%' or userType like '%'+@name+'%' ";
-//            var queryadminName = @" and adminUnitName=@adminUnitName";
-
-//            squery.Append(squeryunion.ToString());
-//            squery.Append(query);
-
-
-//            if (ops.roleID != 0)
-//            {
-//                squery.Append(queryRole);
-//            }
-
-//            if (!String.IsNullOrEmpty(ops.name))
-//            {
-//                squery.Append(queryName);
-//            }
-//            if (!String.IsNullOrEmpty(ops.adminUnitName))
-//            {
-//                squery.Append(queryadminName);
-//            }
-
-//            squery.Append(query1);
-//            using (var connection = new SqlConnection(DBUtil.ConnectionString))
-//            {
-//                connection.Open();
-
-//                using (var command = new SqlCommand(squery.ToString(), connection))
-//                {
-//                    command.Parameters.AddWithValue("@RoleId", ops.roleID);
-//                    command.Parameters.AddWithValue("@page_num", ops.page);
-//                    command.Parameters.AddWithValue("@page_size", ops.pageSize);
-//                    command.Parameters.AddWithValue("@name", ops.name.GetStringOrEmptyData());
-//                    command.Parameters.AddWithValue("@adminUnitName", ops.adminUnitName.GetStringOrEmptyData());
-//                    command.Parameters.AddWithValue("@adminUnitID", ops.adminUnitID);
-
-
-
-//                    var reader = command.ExecuteReader();
-//                    while (reader.Read())
-//                    {
-//                        result.Add(new UserInfo()
-//                        {
-//                            name = reader.GetStringOrEmpty(0),
-//                            surname = reader.GetStringOrEmpty(1),
-//                            fullAddress = reader.GetStringOrEmpty(2),
-//                            email = reader.GetStringOrEmpty(3),
-//                            userID = reader.GetInt64OrDefaultValue(4),
-//                            userTypeID = reader.GetInt64OrDefaultValue(5),
-//                            userType = reader.GetStringOrEmpty(6),
-//                            userRoleID = reader.GetInt64OrDefaultValue(7),
-//                            roleID = reader.GetInt64OrDefaultValue(8),
-
-//                            pinNumber = reader.GetStringOrEmpty(11),
-//                            voen = reader.GetStringOrEmpty(12),
-//                            adminUnitName = reader.GetStringOrEmpty(13),
-//                            parentAdminUnitName=reader.GetStringOrEmpty(15),
-
-//                        });
-//                    }
-//                }
-//                connection.Close();
-//            }
-
-//            return result;
-//        }
         public List<UserInfo> GetPotensialUserList_OP(PotensialUserForAdminUnitIdList1 ops)
+        {
+            var result = new List<UserInfo>();
+            StringBuilder squery = new StringBuilder();
+            StringBuilder squeryunion = new StringBuilder();
+            StringBuilder squeryOrder = new StringBuilder();
+            StringBuilder squeryOrder2 = new StringBuilder();
+            var queryAdminID = @"  with cte(Id) AS 
+ (
+  SELECT au.Id
+  FROM dbo.tblPRM_AdminUnit au";
+            squeryunion.Append(queryAdminID);
+
+            var queryadminID = @" WHERE  Id=@adminUnitID ";
+            if (ops.adminUnitID != 0)
+            {
+                squeryunion.Append(queryadminID);
+            }
+            var query = @" 
+   UNION ALL 
+   SELECT au.Id
+
+  FROM dbo.tblPRM_AdminUnit au  JOIN cte c ON au.parentId = c.Id
+  
+  )
+  --select ID from cte;
+  , RESULTS AS (
+ SELECT * , ROW_NUMBER() OVER (        
+                         ";
+            var queryOrderAfter = @"  )AS rn_reversed FROM 
+(select distinct tb.*,au.Name as adminParentName 
+from ( select p.Name,p.Surname,adr.fullAddress,u.Email,u.Id as userId,u.userType_eV_ID,ev.name as userType,
+                             ur.Id as userRoleId ,ur.RoleId,r.Id ,r.Name as roleName,p.PinNumber ,'' as voen,au.Name as adminUnitName,au.ParentID
+                             from dbo.tblUser u ,tblPerson p,tblUserRole ur,dbo.tblAddress adr,dbo.tblEnumValue ev,dbo.tblRole r,
+							 tblPRM_AdminUnit au
+                             where u.Id=p.UserId and u.Id=ur.UserId and u.Id=adr.user_Id
+                             and ur.RoleId=r.Id
+                             and u.userType_eV_ID=ev.Id
+                             and r.Id in (11,15) and u.userType_eV_ID=26
+							 and u.Status=1 and p.Status=1 and ur.Status=1 and adr.Status=1
+							 and ev.Status=1 and r.Status=1 and au.Id=adr.adminUnit_Id and au.Status=1  and  au.Id 
+			                  in (
+							select Id from cte
+							 		)
+							 union 
+							 select fo.Name,fo.description as Surname,adr.fullAddress,u.Email,u.Id as userId,u.userType_eV_ID,ev.name as userType,
+                             ur.Id as userRoleId ,ur.RoleId,r.Id ,r.Name,'' as PinNumber , fo.voen,au.Name as adminUnitName,au.ParentID
+                             from dbo.tblUser u ,[dbo].[tblForeign_Organization] fo,
+							 tblUserRole ur,dbo.tblAddress adr,dbo.tblEnumValue ev,dbo.tblRole r,tblPRM_AdminUnit au
+                             where u.Id=fo.UserId and u.Id=ur.UserId and u.Id=adr.user_Id
+                             and ur.RoleId=r.Id
+                             and u.userType_eV_ID=ev.Id
+                               and r.Id in (11,15) and u.userType_eV_ID=50
+							 and u.Status=1 and fo.Status=1 and ur.Status=1 and adr.Status=1
+							 and ev.Status=1 and r.Status=1 and au.Id=adr.adminUnit_Id and au.Status=1  and  au.Id 
+			   in (
+							select Id from cte
+							 		)
+							 )as tb
+							left join tblOffer_Production op on op.user_Id=tb.userId and op.Status=1
+                             and ((tb.RoleId  = 11 AND op.state_eV_Id=2) OR (tb.RoleId=15 ))
+							  left join tblPRM_AdminUnit au on au.Id=tb.ParentID and au.Status=1
+							 ) as tb where (tb.PinNumber!='' or tb.voen!='') 
+ ";
+            var query1 = @")  SELECT *
+        , CAST(rn + rn_reversed - 1 AS INT) AS total_rows
+        , CAST(CASE (rn + rn_reversed - 1) % @page_size
+            WHEN 0 THEN (rn + rn_reversed - 1) / @page_size
+            ELSE ((rn + rn_reversed - 1) / @page_size) + 1 
+            END AS INT) AS total_pages
+    FROM RESULTS a
+    WHERE a.rn BETWEEN 1 + ((@page_num - 1) * @page_size) AND @page_num * @page_size
+    ORDER BY rn ASC ";
+            var queryRole = @" and RoleId=@RoleId";
+            var queryName = @"  and Name like '%'+@name+'%' or Surname like '%'+@name+'%' or userType like '%'+@name+'%' ";
+            var queryadminName = @" and adminUnitName=@adminUnitName";
+            var queryOrder1 = @"ORDER BY ";
+            var queryOrder2 = @") AS rn
+, ROW_NUMBER() OVER (ORDER BY ";
+            var queryAcsName = @"   tb.Name asc,  tb.Surname asc, tb.userType asc ";
+            var queryASCAdminName = @" ,tb.adminUnitName asc ";
+            var queryDescName = @"   tb.Name desc,  tb.Surname desc, tb.userType desc ";
+            var queryDescAdminName = @" ,tb.adminUnitName desc ";
+            squery.Append(squeryunion.ToString());
+            squery.Append(query);
+            squeryOrder.Append(queryOrder1);
+            squeryOrder2.Append(queryOrder2);
+            if (ops.nameSort == "name asc")
+            {
+                squeryOrder.Append(queryAcsName);
+                squeryOrder2.Append(queryAcsName);
+            }
+            else if (ops.nameSort == "name desc")
+            {
+                squeryOrder.Append(queryDescName);
+                squeryOrder2.Append(queryDescName);
+            }
+            else if (ops.nameSort.Count() == 0)
+            {
+                squeryOrder.Append(queryAcsName);
+                squeryOrder2.Append(queryDescName);
+            }
+            if (ops.adminNameSort == "adminUnitName asc")
+            {
+                squeryOrder.Append(queryASCAdminName);
+                squeryOrder2.Append(queryASCAdminName);
+               
+            }
+            else if (ops.adminNameSort == "adminUnitName desc")
+            {
+                squeryOrder.Append(queryDescAdminName);
+                squeryOrder2.Append(queryDescAdminName);
+            }
+            else if (ops.adminNameSort.Count() == 0)
+            {
+                squeryOrder.Append(queryASCAdminName);
+                squeryOrder2.Append(queryASCAdminName);
+               
+            }
+            squeryOrder.Append(squeryOrder2.ToString());
+            squery.Append(squeryOrder.ToString());
+            squery.Append(queryOrderAfter);
+            if (ops.roleID != 0)
+            {
+                squery.Append(queryRole);
+            }
+
+            if (!String.IsNullOrEmpty(ops.name))
+            {
+                squery.Append(queryName);
+            }
+            if (!String.IsNullOrEmpty(ops.adminUnitName))
+            {
+                squery.Append(queryadminName);
+            }
+
+            squery.Append(query1);
+            using (var connection = new SqlConnection(DBUtil.ConnectionString))
+            {
+                connection.Open();
+
+                using (var command = new SqlCommand(squery.ToString(), connection))
+                {
+                    command.Parameters.AddWithValue("@RoleId", ops.roleID);
+                    command.Parameters.AddWithValue("@page_num", ops.page);
+                    command.Parameters.AddWithValue("@page_size", ops.pageSize);
+                    command.Parameters.AddWithValue("@name", ops.name.GetStringOrEmptyData());
+                    command.Parameters.AddWithValue("@adminUnitName", ops.adminUnitName.GetStringOrEmptyData());
+                    command.Parameters.AddWithValue("@adminUnitID", ops.adminUnitID);
+
+
+
+                    var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        result.Add(new UserInfo()
+                        {
+                            name = reader.GetStringOrEmpty(0),
+                            surname = reader.GetStringOrEmpty(1),
+                            fullAddress = reader.GetStringOrEmpty(2),
+                            email = reader.GetStringOrEmpty(3),
+                            userID = reader.GetInt64OrDefaultValue(4),
+                            userTypeID = reader.GetInt64OrDefaultValue(5),
+                            userType = reader.GetStringOrEmpty(6),
+                            userRoleID = reader.GetInt64OrDefaultValue(7),
+                            roleID = reader.GetInt64OrDefaultValue(8),
+
+                            pinNumber = reader.GetStringOrEmpty(11),
+                            voen = reader.GetStringOrEmpty(12),
+                            adminUnitName = reader.GetStringOrEmpty(13),
+                            parentAdminUnitName = reader.GetStringOrEmpty(15),
+
+                        });
+                    }
+                }
+                connection.Close();
+            }
+
+            return result;
+        }
+        public List<UserInfo> GetPotensialUserList_OP12(PotensialUserForAdminUnitIdList1 ops)
         {
             var result = new List<UserInfo>();
             StringBuilder squery = new StringBuilder();
