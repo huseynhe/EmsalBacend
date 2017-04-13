@@ -267,28 +267,28 @@ namespace Emsal.BLL
             {
                 itemList = sqloperationLogicAccounting.GetUserDetailInfoForOffers_OP(ops);
 
-                foreach (var item in itemList)
-                {
+                //foreach (var item in itemList)
+                //{
 
 
-                    if (ops.contractStatus == true && item.contractID > 0)
-                    {
+                //    if (ops.contractStatus == true && item.contractID > 0)
+                //    {
 
 
-                        tblContract contract = operationLogic.GetContractById(item.contractID);
-                        item.contractList = contract;
+                //        tblContract contract = operationLogic.GetContractById(item.contractID);
+                //        item.contractList = contract;
 
 
-                    }
-                    else if (ops.contractStatus == false || item.contractID == 0)
-                    {
+                //    }
+                //    else if (ops.contractStatus == false || item.contractID == 0)
+                //    {
 
-                        item.contractList = null;
+                //        item.contractList = null;
 
-                    }
-                    objlist.Add(item);
-                }
-                itemList = objlist;
+                //    }
+                //    objlist.Add(item);
+                //}
+                //itemList = objlist;
 
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
 

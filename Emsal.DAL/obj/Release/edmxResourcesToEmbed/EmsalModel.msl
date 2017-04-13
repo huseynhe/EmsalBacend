@@ -316,38 +316,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tblOffer_Production">
-      <EntityTypeMapping TypeName="EmsalDBModel.tblOffer_Production">
-        <MappingFragment StoreEntitySet="tblOffer_Production">
-          <ScalarProperty Name="isNew" ColumnName="isNew" />
-          <ScalarProperty Name="contractId" ColumnName="contractId" />
-          <ScalarProperty Name="productOrigin" ColumnName="productOrigin" />
-          <ScalarProperty Name="monitoring_eV_Id" ColumnName="monitoring_eV_Id" />
-          <ScalarProperty Name="state_eV_Id" ColumnName="state_eV_Id" />
-          <ScalarProperty Name="user_Id" ColumnName="user_Id" />
-          <ScalarProperty Name="productAddress_Id" ColumnName="productAddress_Id" />
-          <ScalarProperty Name="product_Id" ColumnName="product_Id" />
-          <ScalarProperty Name="potentialProduct_Id" ColumnName="potentialProduct_Id" />
-          <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
-          <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
-          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
-          <ScalarProperty Name="createdUser" ColumnName="createdUser" />
-          <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="isSelected" ColumnName="isSelected" />
-          <ScalarProperty Name="endDate" ColumnName="endDate" />
-          <ScalarProperty Name="startDate" ColumnName="startDate" />
-          <ScalarProperty Name="quantity_type_eV_Id" ColumnName="quantity_type_eV_Id" />
-          <ScalarProperty Name="quantity" ColumnName="quantity" />
-          <ScalarProperty Name="total_price" ColumnName="total_price" />
-          <ScalarProperty Name="unit_price" ColumnName="unit_price" />
-          <ScalarProperty Name="description" ColumnName="description" />
-          <ScalarProperty Name="title" ColumnName="title" />
-          <ScalarProperty Name="grup_Id" ColumnName="grup_Id" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tblOrganizations">
       <EntityTypeMapping TypeName="EmsalDBModel.tblOrganization">
         <MappingFragment StoreEntitySet="tblOrganization">
@@ -765,6 +733,7 @@
     <EntitySetMapping Name="tblUsers">
       <EntityTypeMapping TypeName="EmsalDBModel.tblUser">
         <MappingFragment StoreEntitySet="tblUser">
+          <ScalarProperty Name="note" ColumnName="note" />
           <ScalarProperty Name="TaxexType" ColumnName="TaxexType" />
           <ScalarProperty Name="KTN_ID" ColumnName="KTN_ID" />
           <ScalarProperty Name="ASC_ID" ColumnName="ASC_ID" />
@@ -854,6 +823,39 @@
           <ScalarProperty Name="Production_Id" ColumnName="Production_Id" />
           <ScalarProperty Name="Production_type_eV_Id" ColumnName="Production_type_eV_Id" />
           <ScalarProperty Name="type_eV_Id" ColumnName="type_eV_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblOffer_Production">
+      <EntityTypeMapping TypeName="EmsalDBModel.tblOffer_Production">
+        <MappingFragment StoreEntitySet="tblOffer_Production">
+          <ScalarProperty Name="production_type" ColumnName="production_type" />
+          <ScalarProperty Name="isNew" ColumnName="isNew" />
+          <ScalarProperty Name="contractId" ColumnName="contractId" />
+          <ScalarProperty Name="productOrigin" ColumnName="productOrigin" />
+          <ScalarProperty Name="monitoring_eV_Id" ColumnName="monitoring_eV_Id" />
+          <ScalarProperty Name="state_eV_Id" ColumnName="state_eV_Id" />
+          <ScalarProperty Name="user_Id" ColumnName="user_Id" />
+          <ScalarProperty Name="productAddress_Id" ColumnName="productAddress_Id" />
+          <ScalarProperty Name="product_Id" ColumnName="product_Id" />
+          <ScalarProperty Name="potentialProduct_Id" ColumnName="potentialProduct_Id" />
+          <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+          <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+          <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+          <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="isSelected" ColumnName="isSelected" />
+          <ScalarProperty Name="endDate" ColumnName="endDate" />
+          <ScalarProperty Name="startDate" ColumnName="startDate" />
+          <ScalarProperty Name="quantity_type_eV_Id" ColumnName="quantity_type_eV_Id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="total_price" ColumnName="total_price" />
+          <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="grup_Id" ColumnName="grup_Id" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

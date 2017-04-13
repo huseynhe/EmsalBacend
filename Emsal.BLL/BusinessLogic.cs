@@ -1708,6 +1708,23 @@ namespace Emsal.BLL
 
             }
         }
+        public BaseOutput UpdateOffer_ProductionForUserID(BaseInput baseinput, tblOffer_Production item, out List<tblOffer_Production> itemList)
+        {
+            BaseOutput baseOutput;
+            itemList = null;
+            try
+            {
+                itemList = operationLogic.UpdateOffer_ProductionForUserID(item);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+            }
+            catch (Exception ex)
+            {
+
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
         #endregion
         //burda qalmisam
         #region tblPotential_Production

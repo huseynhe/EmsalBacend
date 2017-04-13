@@ -1037,6 +1037,47 @@ namespace Emsal.BLL
             }
 
         }
+        public BaseOutput GetOrganisationTypeUsers_OP(BaseInput baseinput, UserDetailSearch ops, out List<UserDetails> itemList)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                itemList = sqloperationLogic.GetOrganisationTypeUsers_OP(ops);
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+
+        }
+        public BaseOutput GetOrganisationTypeUsers_OPC(BaseInput baseinput, UserDetailSearch ops, out Int64 count)
+        {
+            BaseOutput baseOutput;
+            count = 0;
+
+            try
+            {
+                count = sqloperationLogic.GetOrganisationTypeUsers_OPC(ops);
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                count = 0;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
 
         public BaseOutput GetRolesNotOwnedByUser(BaseInput baseinput, long userId, out List<tblRole> itemList)
         {
@@ -2339,6 +2380,63 @@ namespace Emsal.BLL
         #endregion
 
         #region Yeni Hesabatlar
+        public BaseOutput GetOfferProductionDetailistForUser_OP(BaseInput baseinput, DemandProductionDetailistForUser ops, out List<ProductionDetail> itemList)
+        {
+            BaseOutput baseOutput;
+            List<ProductionDetail> objlist = new List<ProductionDetail>();
+            try
+            {
+                itemList = sqloperationLogic.GetOfferProductionDetailistForUser_OP(ops);
+
+                foreach (var item in itemList)
+                {
+                    tblPerson person = operationLogic.GetPersonByUserId(item.userId);
+                    item.person = person;
+                    List<tblProduction_Document> productionDocumentList = operationLogic.GetProductionDocumentsByDemand_Production_Id(
+                new tblProduction_Document
+                {
+                    Demand_Production_Id = item.productionID
+                });
+
+                    item.productionDocumentList = productionDocumentList;
+                    item.productionCalendarList = sqloperationLogic.GetProductionCalendarOfferId(item.productionID);
+                    objlist.Add(item);
+                }
+                itemList = objlist;
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+
+        }
+        public BaseOutput GetOfferProductionDetailistForUser_OPC(BaseInput baseinput, DemandProductionDetailistForUser ops, out Int64 count)
+        {
+            BaseOutput baseOutput;
+            count = 0;
+            try
+            {
+                count = sqloperationLogic.GetOfferProductionDetailistForUser_OPC(ops);
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                count = 0;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
 
         public BaseOutput GetOfferGroupedProductionDetailistForAccounting(BaseInput baseinput, out  List<OfferProductionDetail> itemList)
         {
@@ -2693,13 +2791,13 @@ namespace Emsal.BLL
 
             }
         }
-        public BaseOutput GetUsersByUserType_OP(BaseInput baseinput, Int64 usertype_eV_Id, int page, int page_size, out List<UserDetails> itemList)
+        public BaseOutput GetUsersByUserType_OP(BaseInput baseinput, UserDetailSearch ops, out List<UserDetails> itemList)
         {
             BaseOutput baseOutput;
             List<OfferDetails> objlist = new List<OfferDetails>();
             try
             {
-                itemList = sqloperationLogic.GetUsersByUserType_OP(usertype_eV_Id, page, page_size);
+                itemList = sqloperationLogic.GetUsersByUserType_OP(ops);
 
                 
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
@@ -2714,14 +2812,14 @@ namespace Emsal.BLL
 
             }
         }
-        public BaseOutput GetUsersByUserType_OPC(BaseInput baseinput, Int64 usertype_EvId, out Int64 count)
+        public BaseOutput GetUsersByUserType_OPC(BaseInput baseinput, UserDetailSearch ops, out Int64 count)
         {
             BaseOutput baseOutput;
             count = 0;
 
             try
             {
-                count = sqloperationLogic.GetUsersByUserType_OPC(usertype_EvId);
+                count = sqloperationLogic.GetUsersByUserType_OPC(ops);
 
 
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
@@ -2735,6 +2833,48 @@ namespace Emsal.BLL
                 return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
 
             }
+        }
+        public BaseOutput GetOfferGroupedProductionDetailistForAccountingByProductId_OP(BaseInput baseinput, OfferProductionDetailSearch1 ops, out  List<OfferProductionDetail> itemList)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                itemList = sqloperationLogic.GetOfferGroupedProductionDetailistForAccountingByProductId_OP(ops);
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+
+        }
+        public BaseOutput GetOfferGroupedProductionDetailistForAccountingByProductId_OPC(BaseInput baseinput, OfferProductionDetailSearch1 ops, out  Int64 count)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                count = sqloperationLogic.GetOfferGroupedProductionDetailistForAccountingByProductId_OPC(ops);
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                count = 0;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+
         }
         
     }

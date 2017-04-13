@@ -394,6 +394,7 @@
     <Property Name="productOrigin" Type="bigint" />
     <Property Name="contractId" Type="bigint" />
     <Property Name="isNew" Type="bigint" />
+    <Property Name="production_type" Type="bigint" />
   </EntityType>
   <EntityType Name="tblOrganization">
     <Key>
@@ -834,6 +835,7 @@
     <Property Name="ASC_ID" Type="bigint" />
     <Property Name="KTN_ID" Type="bigint" />
     <Property Name="TaxexType" Type="smallint" />
+    <Property Name="note" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="tblUserRole">
     <Key>

@@ -2208,7 +2208,30 @@ namespace Emsal.DAL
                 throw ex;
             }
         }
+        public List<tblOffer_Production> GetOffer_ProductionsByProduction_type(Byte productionType)
+        {
+            /*from row in _db.Movies 
+             orderby row.Category descending, row.Name
+             select row;*/
+            try
+            {
+                using (var context = new EmsalDBEntities())
+                {
+                    var offerProductions = (from p in context.tblOffer_Production
+                                           
+                                            where p.production_type == productionType && p.Status == 1 
+                                            //orderby p.
+                                            select p);
 
+                    return offerProductions.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
         public List<tblOffer_Production> GetOffAirOffer_ProductionsByUserId(tblOffer_Production Offer)
         {
             try
@@ -2477,6 +2500,58 @@ namespace Emsal.DAL
 
                 throw ex;
             }
+        }
+        public List<tblOffer_Production> UpdateOffer_ProductionForUserID(tblOffer_Production item)
+        {
+
+            try
+            {
+                List<tblOffer_Production> oldItemListList = new List<tblOffer_Production>();
+                List<tblOffer_Production> newItemListList = new List<tblOffer_Production>();
+
+                tblOffer_Production oldItem;
+                using (var context = new EmsalDBEntities())
+                {
+
+                    oldItemListList = (from p in context.tblOffer_Production
+                                       where p.user_Id == item.user_Id
+                                                     && p.isSelected == true && p.Status == 1
+                                       select p).ToList();
+
+                }
+                foreach (tblOffer_Production obj in oldItemListList)
+                {
+                    if (obj != null)
+                    {
+                        using (var context = new EmsalDBEntities())
+                        {
+                            obj.isSelected = false;
+                            obj.grup_Id = item.grup_Id;
+                            obj.state_eV_Id = item.state_eV_Id;
+                            obj.monitoring_eV_Id = item.monitoring_eV_Id;
+                            obj.isNew = item.isNew;
+
+                            context.tblOffer_Production.Attach(obj);
+                            context.Entry(obj).State = System.Data.Entity.EntityState.Modified;
+                            context.SaveChanges();
+                            newItemListList.Add(obj);
+
+
+                        }
+                    }
+
+
+                }
+                return newItemListList;
+
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
         }
         #endregion
         #region tblPotential_Production

@@ -45,7 +45,6 @@ namespace Emsal.DAL
         public DbSet<tblEnumValue> tblEnumValues { get; set; }
         public DbSet<tblExpertise> tblExpertises { get; set; }
         public DbSet<tblForeign_Organization> tblForeign_Organization { get; set; }
-        public DbSet<tblOffer_Production> tblOffer_Production { get; set; }
         public DbSet<tblOrganization> tblOrganizations { get; set; }
         public DbSet<tblParty> tblParties { get; set; }
         public DbSet<tblPerson> tblPersons { get; set; }
@@ -72,7 +71,8 @@ namespace Emsal.DAL
         public DbSet<tblUserRole> tblUserRoles { get; set; }
         public DbSet<tblContractDetailTemp> tblContractDetailTemps { get; set; }
         public DbSet<tblProductionCalendar> tblProductionCalendars { get; set; }
+        public DbSet<tblOffer_Production> tblOffer_Production { get; set; }
     
-        
+       
     }
 }

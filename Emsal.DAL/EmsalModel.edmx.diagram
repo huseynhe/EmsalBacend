@@ -22,7 +22,6 @@
         <EntityTypeShape EntityType="EmsalDBModel.tblEnumValue" Width="1.5" PointX="2.6114671335609012" PointY="29.702240227582976" />
         <EntityTypeShape EntityType="EmsalDBModel.tblExpertise" Width="1.5" PointX="7.5605136228541436" PointY="10.239974727034557" />
         <EntityTypeShape EntityType="EmsalDBModel.tblForeign_Organization" Width="1.5" PointX="11.75" PointY="2" />
-        <EntityTypeShape EntityType="EmsalDBModel.tblOffer_Production" Width="3.5" PointX="6" PointY="0.5" />
         <EntityTypeShape EntityType="EmsalDBModel.tblOrganization" Width="1.5" PointX="11.672510241937129" PointY="27.932471288336661" />
         <EntityTypeShape EntityType="EmsalDBModel.tblParty" Width="1.5" PointX="7.8105688056957767" PointY="6.5087193578987934" />
         <EntityTypeShape EntityType="EmsalDBModel.tblPerson" Width="1.5" PointX="8.27496425075222" PointY="11.719117840621209" />
@@ -45,10 +44,11 @@
         <EntityTypeShape EntityType="EmsalDBModel.tblPropertyType" Width="1.5" PointX="11.213178511342584" PointY="12.652724048426713" />
         <EntityTypeShape EntityType="EmsalDBModel.tblRole" Width="1.5" PointX="1.8952268631640945" PointY="27.768052084263438" />
         <EntityTypeShape EntityType="EmsalDBModel.tblTitle" Width="1.5" PointX="7.1024776618473595" PointY="6.433828610197561" />
-        <EntityTypeShape EntityType="EmsalDBModel.tblUser" Width="1.5" PointX="11.602052343823971" PointY="14.03345667479255" />
-        <EntityTypeShape EntityType="EmsalDBModel.tblUserRole" Width="1.5" PointX="3.1040502819717162" PointY="2.0642455825881312" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblUser" Width="1.5" PointX="11.602052343823971" PointY="14.03345667479255" IsExpanded="false" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblUserRole" Width="1.5" PointX="0.5" PointY="1.375" />
         <EntityTypeShape EntityType="EmsalDBModel.tblContractDetailTemp" Width="1.5" PointX="6.3106638669551653" PointY="11.370648612906527" />
         <EntityTypeShape EntityType="EmsalDBModel.tblProductionCalendar" Width="1.5" PointX="2.9881876422968636" PointY="16.766656272470325" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblOffer_Production" Width="1.5" PointX="9.4574550937197426" PointY="5.9910184917929667" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

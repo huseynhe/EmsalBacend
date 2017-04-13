@@ -36,7 +36,6 @@ namespace Emsal.DAL.CustomObjects
         public Int64 birtday { get; set; }
         public Int64 state_Ev_ID { get; set; }
         public Int64 ID { get; set; }
-     
         public string profilPicture { get; set; }
         public Int64 adress_Id { get; set; }
         public string potentialProduct { get; set; }
@@ -46,9 +45,8 @@ namespace Emsal.DAL.CustomObjects
         public string parantName { get; set; }
         public decimal productUnitPrice { get; set; }
         public Int64 month_Ev_Id { get; set; }
-
+        public string note_ { get; set; }
         public Int64 year { get; set; }
-
         public Int64 day { get; set; }
         public Int64 createdDate { get; set; }
         public Int64 updatedDate { get; set; }

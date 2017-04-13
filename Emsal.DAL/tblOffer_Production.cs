@@ -40,5 +40,6 @@ namespace Emsal.DAL
         public Nullable<long> productOrigin { get; set; }
         public Nullable<long> contractId { get; set; }
         public Nullable<long> isNew { get; set; }
+        public Nullable<long> production_type { get; set; }
     }
 }

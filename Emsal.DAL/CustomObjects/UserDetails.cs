@@ -30,5 +30,6 @@ namespace Emsal.DAL.CustomObjects
         public string surName { get; set; }
         public string fatherName { get; set; }
         public string fullAddress { get; set; }
+        public string note { get; set; }
     }
 }

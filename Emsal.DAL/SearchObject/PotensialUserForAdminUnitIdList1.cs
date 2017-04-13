@@ -32,9 +32,9 @@ namespace Emsal.DAL.SearchObject
         [DataMember(IsRequired = true)]
         public Int64 productID { get; set; }
 
-        [DataMember(IsRequired = true)]
+        [DataMember(EmitDefaultValue = false, IsRequired = false)]
         public string nameSort { get; set; }
-        [DataMember(IsRequired = true)]
+        [DataMember(EmitDefaultValue = false, IsRequired = false)]
         public string adminNameSort { get; set; }
     }
 }

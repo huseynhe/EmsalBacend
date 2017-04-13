@@ -18,7 +18,6 @@
     <EntitySet Name="tblEnumValues" EntityType="EmsalDBModel.tblEnumValue" />
     <EntitySet Name="tblExpertises" EntityType="EmsalDBModel.tblExpertise" />
     <EntitySet Name="tblForeign_Organization" EntityType="EmsalDBModel.tblForeign_Organization" />
-    <EntitySet Name="tblOffer_Production" EntityType="EmsalDBModel.tblOffer_Production" />
     <EntitySet Name="tblOrganizations" EntityType="EmsalDBModel.tblOrganization" />
     <EntitySet Name="tblParties" EntityType="EmsalDBModel.tblParty" />
     <EntitySet Name="tblPersons" EntityType="EmsalDBModel.tblPerson" />
@@ -50,6 +49,7 @@
       <Parameter Name="Name" Mode="In" Type="String" />
     </FunctionImport>
     <EntitySet Name="tblProductionCalendars" EntityType="EmsalDBModel.tblProductionCalendar" />
+    <EntitySet Name="tblOffer_Production" EntityType="EmsalDBModel.tblOffer_Production" />
   </EntityContainer>
   <EntityType Name="C__MigrationHistory">
     <Key>
@@ -349,37 +349,6 @@
     <Property Type="Int64" Name="accountNumber" />
     <Property Type="String" Name="bankName" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="Int64" Name="legality_eV_Id" />
-  </EntityType>
-  <EntityType Name="tblOffer_Production">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="grup_Id" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="title" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="description" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="Decimal" Name="unit_price" Precision="18" Scale="3" />
-    <Property Type="Decimal" Name="total_price" Precision="18" Scale="3" />
-    <Property Type="Decimal" Name="quantity" Precision="18" Scale="3" />
-    <Property Type="Int64" Name="quantity_type_eV_Id" />
-    <Property Type="Int64" Name="startDate" />
-    <Property Type="Int64" Name="endDate" />
-    <Property Type="Boolean" Name="isSelected" />
-    <Property Type="Int64" Name="Status" />
-    <Property Type="Int64" Name="LastUpdatedStatus" />
-    <Property Type="String" Name="createdUser" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="Int64" Name="createdDate" />
-    <Property Type="String" Name="updatedUser" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="Int64" Name="updatedDate" />
-    <Property Type="Int64" Name="potentialProduct_Id" />
-    <Property Type="Int64" Name="product_Id" />
-    <Property Type="Int64" Name="productAddress_Id" />
-    <Property Type="Int64" Name="user_Id" />
-    <Property Type="Int64" Name="state_eV_Id" />
-    <Property Type="Int64" Name="monitoring_eV_Id" />
-    <Property Type="Int64" Name="productOrigin" />
-    <Property Type="Int64" Name="contractId" />
-    <Property Type="Int64" Name="isNew" />
   </EntityType>
   <EntityType Name="tblOrganization">
     <Key>
@@ -794,6 +763,7 @@
     <Property Type="Int64" Name="ASC_ID" />
     <Property Type="Int64" Name="KTN_ID" />
     <Property Type="Int16" Name="TaxexType" />
+    <Property Type="String" Name="note" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="tblUserRole">
     <Key>
@@ -860,5 +830,37 @@
     <Property Type="Int64" Name="year" />
     <Property Type="Int64" Name="partOfyear" />
     <Property Type="DateTime" Name="date_" Precision="0" />
+  </EntityType>
+  <EntityType Name="tblOffer_Production">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="grup_Id" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="title" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="description" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="unit_price" Precision="18" Scale="3" />
+    <Property Type="Decimal" Name="total_price" Precision="18" Scale="3" />
+    <Property Type="Decimal" Name="quantity" Precision="18" Scale="3" />
+    <Property Type="Int64" Name="quantity_type_eV_Id" />
+    <Property Type="Int64" Name="startDate" />
+    <Property Type="Int64" Name="endDate" />
+    <Property Type="Boolean" Name="isSelected" />
+    <Property Type="Int64" Name="Status" />
+    <Property Type="Int64" Name="LastUpdatedStatus" />
+    <Property Type="String" Name="createdUser" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="createdDate" />
+    <Property Type="String" Name="updatedUser" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="updatedDate" />
+    <Property Type="Int64" Name="potentialProduct_Id" />
+    <Property Type="Int64" Name="product_Id" />
+    <Property Type="Int64" Name="productAddress_Id" />
+    <Property Type="Int64" Name="user_Id" />
+    <Property Type="Int64" Name="state_eV_Id" />
+    <Property Type="Int64" Name="monitoring_eV_Id" />
+    <Property Type="Int64" Name="productOrigin" />
+    <Property Type="Int64" Name="contractId" />
+    <Property Type="Int64" Name="isNew" />
+    <Property Type="Int64" Name="production_type" />
   </EntityType>
 </Schema>

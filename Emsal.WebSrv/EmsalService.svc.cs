@@ -480,7 +480,10 @@ namespace Emsal.WebSrv
         #endregion
 
         #region WS_Offer_Production
-
+        public BaseOutput WS_UpdateOffer_ProductionForUserID(BaseInput baseinput, tblOffer_Production item, out List<tblOffer_Production> itemList)
+        {
+            return businessLogic.UpdateOffer_ProductionForUserID(baseinput, item, out itemList);
+        }
         public BaseOutput WS_AddOffer_Production(BaseInput baseinput, tblOffer_Production offer_Production, out tblOffer_Production Offer_ProductionOut)
         {
             return businessLogic.AddOffer_Production(baseinput, offer_Production, out Offer_ProductionOut);
@@ -873,19 +876,32 @@ namespace Emsal.WebSrv
         {
             return businessLogic.GetOrganisationTypeUsers(baseinput, govRoleEnum, userType, out itemList);
         }
-        public BaseOutput WS_GetUsersByUserType_OP(BaseInput baseinput, long userTypeID,int page,int page_size, out List<UserDetails> itemList)
+        public BaseOutput WS_GetOrganisationTypeUsers_OP(BaseInput baseinput, UserDetailSearch ops, out List<UserDetails> itemList)
+        {
+            return businessLogic.GetOrganisationTypeUsers_OP(baseinput,ops, out itemList);
+
+        }
+        public BaseOutput WS_GetOrganisationTypeUsers_OPC(BaseInput baseinput, UserDetailSearch ops, out Int64 count)
+        {
+          
+                return   businessLogic.GetOrganisationTypeUsers_OPC(baseinput, ops,out count);
+
+
+               
+        }
+        public BaseOutput WS_GetUsersByUserType_OP(BaseInput baseinput, UserDetailSearch ops, out List<UserDetails> itemList)
         {
             //return businessLogic.GetUsersByUserType_OP(baseinput, userTypeID, page, page_size, out itemList);
-            return businessLogic.GetUsersByUserType_OP(baseinput, userTypeID, page, page_size, out itemList);
+            return businessLogic.GetUsersByUserType_OP(baseinput,ops, out itemList);
         }
         public BaseOutput WS_GetUsersByUserType(BaseInput baseinput, long userTypeID, out List<tblUser> itemList)
         {
             return businessLogic.GetUsersByUserType(baseinput, userTypeID, out itemList);
         }
-        public BaseOutput WS_GetUsersByUserType_OPC(BaseInput baseinput, Int64 userTypeID, out Int64 count)
+        public BaseOutput WS_GetUsersByUserType_OPC(BaseInput baseinput, UserDetailSearch ops, out Int64 count)
         {
             //return businessLogic.GetUsersByUserType_OP(baseinput, userTypeID, page, page_size, out itemList);
-            return businessLogic.GetUsersByUserType_OPC(baseinput, userTypeID, out count);
+            return businessLogic.GetUsersByUserType_OPC(baseinput, ops, out count);
         }
 
 
@@ -2114,7 +2130,7 @@ namespace Emsal.WebSrv
 
         }
 
-        #region Optimisation
+        #region Optimisation 
         public BaseOutput WS_GetUserDetailInfoForOffers_OP(BaseInput baseinput, GetDemandProductionDetailistForEValueIdSearch1 ops, out List<PersonDetail> itemList)
         {
             return businessLogic.GetUserDetailInfoForOffers_OP(baseinput, ops, out itemList);
@@ -2367,7 +2383,17 @@ namespace Emsal.WebSrv
         {
             return businessLogic.GetOfferGroupedProductionDetailistForAccountingByRoleId(baseinput,RoleId, out itemList);
         }
+        public BaseOutput WS_GetOfferProductionDetailistForUser_OP(BaseInput baseinput, DemandProductionDetailistForUser ops, out List<ProductionDetail> itemList)
+        {
+            return businessLogic.GetOfferProductionDetailistForUser_OP(baseinput, ops, out itemList);
 
+
+        }
+        public BaseOutput WS_GetOfferProductionDetailistForUser_OPC(BaseInput baseinput, DemandProductionDetailistForUser ops, out Int64 count)
+        {
+           return businessLogic.GetOfferProductionDetailistForUser_OPC(baseinput,ops,out count);
+
+        }
 
 
         public BaseOutput WS_GetOfferGroupedProductionDetailistForAccountingBySearch(BaseInput baseinput, OfferProductionDetailSearch ops, out List<OfferProductionDetail> itemList)
@@ -2480,8 +2506,15 @@ namespace Emsal.WebSrv
             return businessLogic.GetTotalOffer1_OPC(baseinput, ops
                 , out count);
         }
-     
-       
+        public BaseOutput WS_GetOfferGroupedProductionDetailistForAccountingByProductId_OP(BaseInput baseinput, OfferProductionDetailSearch1 ops, out  List<OfferProductionDetail> itemList)
+        {
+
+            return businessLogic.GetOfferGroupedProductionDetailistForAccountingByProductId_OP(baseinput, ops, out itemList);
+        }
+        public BaseOutput WS_GetOfferGroupedProductionDetailistForAccountingByProductId_OPC(BaseInput baseinput, OfferProductionDetailSearch1 ops, out  Int64 count)
+        {
+           return businessLogic.GetOfferGroupedProductionDetailistForAccountingByProductId_OPC(baseinput,ops,out count);
+        }
       
     }
 }
