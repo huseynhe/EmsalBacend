@@ -889,6 +889,14 @@ namespace Emsal.WebSrv
 
                
         }
+        public BaseOutput WS_GetGovernmentOrganizationTypeUsers_OPC(BaseInput baseinput, UserDetailSearch ops, out Int64 count)
+        {
+
+            return businessLogic.GetGovernmentOrganizationTypeUsers_OPC(baseinput, ops, out count);
+
+
+
+        }
         public BaseOutput WS_GetUsersByUserType_OP(BaseInput baseinput, UserDetailSearch ops, out List<UserDetails> itemList)
         {
             //return businessLogic.GetUsersByUserType_OP(baseinput, userTypeID, page, page_size, out itemList);
@@ -902,6 +910,11 @@ namespace Emsal.WebSrv
         {
             //return businessLogic.GetUsersByUserType_OP(baseinput, userTypeID, page, page_size, out itemList);
             return businessLogic.GetUsersByUserType_OPC(baseinput, ops, out count);
+        }
+        public BaseOutput WS_GetGovernmentOrganizationTypeUsers_OP(BaseInput baseinput, UserDetailSearch ops, out List<UserDetails> itemList)
+        {
+            return businessLogic.GetGovernmentOrganizationTypeUsers_OP(baseinput, ops, out itemList);
+
         }
 
 

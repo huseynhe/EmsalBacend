@@ -6692,7 +6692,7 @@ and  product_Id Like '%' + @product_Id + '%'
                        left join [dbo].[tblProductCatalog] pc  on op.product_Id=pc.Id    and pc.Status=1
                        left join [dbo].[tblProductAddress] adr on op.productAddress_Id=adr.Id   and adr.Status=1
                        left join [dbo].[tblUser] us on op.[user_Id]=us.Id  and us.Status=1
-                       left join [dbo].[tblProductionControl] prc on op.Id=prc.Demand_Production_Id  and prc.Status=1   
+                       left join [dbo].[tblProductionControl] prc on op.Id=prc.Offer_Production_Id  and prc.Status=1   
                         left join [dbo].[tblEnumValue] ev on op.state_eV_Id=ev.Id  and ev.Status=1
                       left join [dbo].[tblEnumCategory] ec on ev.enumCategory_enumCategoryId=ec.Id and ec.Status=1   
                       left join tblUserRole ur on us.Id=ur.UserId and ur.Status=1
@@ -6794,7 +6794,7 @@ isSelected=@isSelected
                        left join [dbo].[tblProductCatalog] pc  on op.product_Id=pc.Id    and pc.Status=1
                        left join [dbo].[tblProductAddress] adr on op.productAddress_Id=adr.Id   and adr.Status=1
                        left join [dbo].[tblUser] us on op.[user_Id]=us.Id  and us.Status=1
-                       left join [dbo].[tblProductionControl] prc on op.Id=prc.Demand_Production_Id  and prc.Status=1   
+                       left join [dbo].[tblProductionControl] prc on op.Id=prc.Offer_Production_Id  and prc.Status=1   
                         left join [dbo].[tblEnumValue] ev on op.state_eV_Id=ev.Id  and ev.Status=1
                       left join [dbo].[tblEnumCategory] ec on ev.enumCategory_enumCategoryId=ec.Id and ec.Status=1  
   left join tblUserRole ur on us.Id=ur.UserId and ur.Status=1 
@@ -6817,8 +6817,7 @@ and op.Status=1
             var querySelected = @" and isSelected=@isSelected";
             var queryUserID = @"  and user_Id=@userID";
             var queryPRoduct = @"  and product_Id=@product_Id";
-            var queryUserType = @" and userType_eV_ID=@userType_eV_ID";
-
+         
             if (ops.productID != 0)
             {
                 squery.Append(queryPRoduct);
@@ -6827,10 +6826,7 @@ and op.Status=1
             {
                 squery.Append(queryUserID);
             }
-            if (ops.userType_eV_ID!=0)
-            {
-                squery.Append(queryUserType);
-            }
+          
            
             using (var connection = new SqlConnection(DBUtil.ConnectionString))
             {
@@ -6841,7 +6837,7 @@ and op.Status=1
                     command.Parameters.AddWithValue("@userID", ops.userID);
                     command.Parameters.AddWithValue("@product_Id", ops.productID);
                     command.Parameters.AddWithValue("@isSelected", ops.isSelected);
-                    command.Parameters.AddWithValue("@userType_eV_ID", ops.userType_eV_ID);
+                 
 
 
                     var reader = command.ExecuteReader();
@@ -8465,32 +8461,67 @@ where tb.userType_eV_ID=@userType_eV_ID
 
             return count;
         }
-        public List<UserDetails> GetGovernmentTypeUsers_OP(UserDetailSearch ops)
+        public List<UserDetails> GetGovernmentOrganizationTypeUsers_OP(UserDetailSearch ops)
         {
             var result = new List<UserDetails>();
             StringBuilder squery = new StringBuilder();
-            var query = @" select tb.* from(
-
+            var query = @" select tb.* from(select u.*,au.ParentRegionID,fo.name as organizationName,
+person.Name ,person.Surname,person.FatherName,adr.fullAddress,ur.RoleId  from tblUser u
+left join tblAddress adr on adr.user_Id=u.Id and adr.Status=1
+left join tblPRM_AdminUnit au on adr.adminUnit_Id=au.Id and au.Status=1
+left join tblForeign_Organization fo on fo.userId=u.Id and fo.Status=1
+left join tblPerson person on person.UserId=u.Id and person.Status=1
+join tblUserRole ur on ur.UserId=u.Id and ur.Status=1
+where u.Status=1 and u.userType_eV_ID=26
+union all
 select u.*,au.ParentRegionID,fo.name as organizationName,
-person.Name ,person.Surname,person.FatherName,adr.fullAddress,ur.RoleId,au.ParentID  from tblUser u
+person.Name ,person.Surname,person.FatherName,adr.fullAddress,ur.RoleId  from tblUser u
+left join tblAddress adr on adr.user_Id=u.Id and adr.Status=1
+left join tblPRM_AdminUnit au on adr.adminUnit_Id=au.Id and au.Status=1
+left join tblForeign_Organization fo on fo.userId=u.Id and fo.Status=1
+left join tblPerson person on person.Id=fo.manager_Id and person.Status=1
+join tblUserRole ur on ur.UserId=u.Id and ur.Status=1
+where u.Status=1 and u.userType_eV_ID=50
+) as tb
+ where Status=1 and RoleId in (11,24,15)
+  ";
+            var queryEnd = @" order by Username,organizationName
+OFFSET ( @PageNo - 1 ) * @RecordsPerPage ROWS
+FETCH NEXT @RecordsPerPage ROWS ONLY";
+            var queryOrgani = @" select tb.* from(
+select u.*,au.ParentRegionID,fo.name as organizationName,
+person.Name ,person.Surname,person.FatherName,adr.fullAddress,ur.RoleId,fo.parent_Id   from tblUser u
 left join tblAddress adr on adr.user_Id=u.Id and adr.Status=1
 left join tblPRM_AdminUnit au on adr.adminUnit_Id=au.Id and au.Status=1
 left join tblForeign_Organization fo on fo.userId=u.Id and fo.Status=1
  left join tblPerson person on person.Id=fo.manager_Id and person.Status=1
  join tblUserRole ur on ur.UserId=u.Id and ur.Status=1
-where u.Status=1 --and u.userType_eV_ID=50
+where u.Status=1 
 ) as tb 
-where tb.RoleId=12 
-  ";
-            var queryEnd = @" order by Username,organizationName
-OFFSET ( @PageNo - 1 ) * @RecordsPerPage ROWS
-FETCH NEXT @RecordsPerPage ROWS ONLY";
+where tb.RoleId=12  ";
             var queryName = @" and ((Name like '%'+@name+'%') 
 			 or (Surname like '%'+@name+'%') or( FatherName like '%'+@name+'%') )";
             var queryAddress = @" and (fullAddress like '%'+@address+'%')";
             var queryUsername = @" and (Username like '%'+@username+'%')";
             var queryEmail = @" and (Email like '%'+@email+'%')";
-            squery.Append(query);
+            var queryPrent = @" and parent_Id=0";
+            var queryUseryt = @" and userType_eV_ID=@userType ";
+            if (ops.governmentOrg==true)
+            {
+                squery.Append(queryOrgani);
+                if (ops.parentID==true)
+                {
+                    squery.Append(queryPrent);
+                }
+            }
+            else
+            {
+                squery.Append(query);
+            }
+            if (ops.usertype_Ev_Id!=0)
+            {
+                 squery.Append(queryUseryt);
+            }
             if (!String.IsNullOrEmpty(ops.name))
             {
                 squery.Append(queryName);
@@ -8507,6 +8538,7 @@ FETCH NEXT @RecordsPerPage ROWS ONLY";
             {
                 squery.Append(queryAddress);
             }
+          
             squery.Append(queryEnd);
             using (var connection = new SqlConnection(DBUtil.ConnectionString))
             {
@@ -8518,7 +8550,7 @@ FETCH NEXT @RecordsPerPage ROWS ONLY";
                     command.Parameters.AddWithValue("@address", ops.fullAddress.GetStringOrEmptyData());
                     command.Parameters.AddWithValue("@email", ops.email.GetStringOrEmptyData());
                     command.Parameters.AddWithValue("@username", ops.username.GetStringOrEmptyData());
-                    command.Parameters.AddWithValue("@govRoleEnum", ops.roleID);
+                  
                     command.Parameters.AddWithValue("@userType", ops.usertype_Ev_Id);
                     command.Parameters.AddWithValue("@PageNo", ops.page);
                     command.Parameters.AddWithValue("@RecordsPerPage", ops.pageSize);
@@ -8554,6 +8586,106 @@ FETCH NEXT @RecordsPerPage ROWS ONLY";
             }
 
             return result;
+        }
+        public Int64 GetGovernmentOrganizationTypeUsers_OPC(UserDetailSearch ops)
+        {
+            Int64 count = 0;
+            StringBuilder squery = new StringBuilder();
+            var query = @" select COUNT(*) as Count from(select u.*,au.ParentRegionID,fo.name as organizationName,
+person.Name ,person.Surname,person.FatherName,adr.fullAddress ,ur.RoleId from tblUser u
+left join tblAddress adr on adr.user_Id=u.Id and adr.Status=1
+left join tblPRM_AdminUnit au on adr.adminUnit_Id=au.Id and au.Status=1
+left join tblForeign_Organization fo on fo.userId=u.Id and fo.Status=1
+ left join tblPerson person on person.UserId=u.Id and person.Status=1
+join tblUserRole ur on ur.UserId=u.Id and ur.Status=1
+where u.Status=1 and u.userType_eV_ID=26
+union all
+select u.*,au.ParentRegionID,fo.name as organizationName,
+person.Name ,person.Surname,person.FatherName,adr.fullAddress,ur.RoleId   from tblUser u
+left join tblAddress adr on adr.user_Id=u.Id and adr.Status=1
+left join tblPRM_AdminUnit au on adr.adminUnit_Id=au.Id and au.Status=1
+left join tblForeign_Organization fo on fo.userId=u.Id and fo.Status=1
+ left join tblPerson person on person.Id=fo.manager_Id and person.Status=1
+join tblUserRole ur on ur.UserId=u.Id and ur.Status=1
+where u.Status=1 and u.userType_eV_ID=50
+) as tb
+ where Status=1 and RoleId in (11,24,15)
+";
+            var queryOrgani = @" select COUNT(*)as Count  from(
+select u.*,au.ParentRegionID,fo.name as organizationName,
+person.Name ,person.Surname,person.FatherName,adr.fullAddress,ur.RoleId,fo.parent_Id from tblUser u
+left join tblAddress adr on adr.user_Id=u.Id and adr.Status=1
+left join tblPRM_AdminUnit au on adr.adminUnit_Id=au.Id and au.Status=1
+left join tblForeign_Organization fo on fo.userId=u.Id and fo.Status=1
+ left join tblPerson person on person.Id=fo.manager_Id and person.Status=1
+ join tblUserRole ur on ur.UserId=u.Id and ur.Status=1
+where u.Status=1 
+) as tb 
+where tb.RoleId=12 ";
+            var queryName = @" and ((Name like '%'+@name+'%') 
+			 or (Surname like '%'+@name+'%') or( FatherName like '%'+@name+'%') )";
+            var queryAddress = @" and (fullAddress like '%'+@address+'%')";
+            var queryUsername = @" and (Username like '%'+@username+'%')";
+            var queryEmail = @" and (Email like '%'+@email+'%')";
+            var queryPrent = @" and parent_Id=0";
+            var queryUseryt = @" and userType_eV_ID=@userType ";
+            if (ops.governmentOrg == true)
+            {
+                squery.Append(queryOrgani);
+                if (ops.parentID == true)
+                {
+                    squery.Append(queryPrent);
+                }
+            }
+            else
+            {
+                squery.Append(query);
+            }
+            if (ops.usertype_Ev_Id!=0)
+            {
+                squery.Append(queryUseryt);
+            }
+            if (!String.IsNullOrEmpty(ops.name))
+            {
+                squery.Append(queryName);
+            }
+            if (!String.IsNullOrEmpty(ops.username))
+            {
+                squery.Append(queryUsername);
+            }
+            if (!String.IsNullOrEmpty(ops.email))
+            {
+                squery.Append(queryEmail);
+            }
+            if (!String.IsNullOrEmpty(ops.fullAddress))
+            {
+                squery.Append(queryAddress);
+            }
+            using (var connection = new SqlConnection(DBUtil.ConnectionString))
+            {
+                connection.Open();
+
+                using (var command = new SqlCommand(squery.ToString(), connection))
+                {
+                    command.Parameters.AddWithValue("@roleID", ops.roleID);
+                    command.Parameters.AddWithValue("@userType", ops.usertype_Ev_Id);
+                    command.Parameters.AddWithValue("@name", ops.name.GetStringOrEmptyData());
+                    command.Parameters.AddWithValue("@address", ops.fullAddress.GetStringOrEmptyData());
+                    command.Parameters.AddWithValue("@email", ops.email.GetStringOrEmptyData());
+                    command.Parameters.AddWithValue("@username", ops.username.GetStringOrEmptyData());
+                  
+                    var reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        count = Convert.ToInt32(reader["Count"]);
+                    }
+
+                }
+                connection.Close();
+            }
+
+            return count;
         }
     } 
 

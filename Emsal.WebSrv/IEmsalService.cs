@@ -433,6 +433,10 @@ namespace Emsal.WebSrv
         BaseOutput WS_GetOrganisationTypeUsers_OP(BaseInput baseinput,UserDetailSearch ops, out List<UserDetails> itemList);
         [OperationContract]
         BaseOutput WS_GetOrganisationTypeUsers_OPC(BaseInput baseinput, UserDetailSearch ops, out Int64 count);
+        [OperationContract]
+        BaseOutput WS_GetGovernmentOrganizationTypeUsers_OP(BaseInput baseinput, UserDetailSearch ops, out List<UserDetails> itemList);
+        [OperationContract]
+        BaseOutput WS_GetGovernmentOrganizationTypeUsers_OPC(BaseInput baseinput, UserDetailSearch ops, out Int64 count);
       
         [OperationContract]
         BaseOutput WS_GetUsersByUserType_OP(BaseInput baseinput,UserDetailSearch ops, out List<UserDetails> itemList);

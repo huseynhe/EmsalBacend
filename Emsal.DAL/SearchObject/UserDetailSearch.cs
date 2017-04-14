@@ -33,6 +33,8 @@ namespace Emsal.DAL.SearchObject
         public string organizationName { get; set; }
         [DataMember(IsRequired = true)]
         public bool parentID { get; set; }
+        [DataMember(IsRequired = true)]
+        public bool governmentOrg { get; set; }
 
     }
 }

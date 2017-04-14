@@ -798,7 +798,7 @@ namespace Emsal.BLL
                 foreach (var item in itemList)
                 {
                     List<ProductCatalogDetail> list = new List<ProductCatalogDetail>();
-                    GetProducListByUserID(baseinput, item.userID,0, out list);
+                    GetProducListByUserID(baseinput, item.userID, 0, out list);
                     item.productCatalogDetailList = list;
                     item.potentialProductionList = operationLogic.GetPotential_ProductionsByUserID(item.userID);
                 }
@@ -828,7 +828,7 @@ namespace Emsal.BLL
                 foreach (var item in itemList)
                 {
                     List<ProductCatalogDetail> list = new List<ProductCatalogDetail>();
-                    GetProducListByUserID(baseinput, item.userID,0, out list);
+                    GetProducListByUserID(baseinput, item.userID, 0, out list);
                     item.productCatalogDetailList = list;
                     List<tblPotential_Production> listpr = new List<tblPotential_Production>();
                     GetPotential_ProductionsByUserID(baseinput, item.userID, out listpr);
@@ -929,7 +929,7 @@ namespace Emsal.BLL
 
         }
 
-        
+
         public BaseOutput GetProductPriceListNotPrice(BaseInput baseinput, Int64 year, Int64 partOfYear, out List<ProductPriceDetail> itemList)
         {
             BaseOutput baseOutput;
@@ -950,13 +950,13 @@ namespace Emsal.BLL
 
         }
 
-        public BaseOutput GetDemandProductionAmountOfEachProduct(BaseInput baseinput,Int64 startDate,Int64 endDate, out List<DemandOfferDetail> itemList)
+        public BaseOutput GetDemandProductionAmountOfEachProduct(BaseInput baseinput, Int64 startDate, Int64 endDate, out List<DemandOfferDetail> itemList)
         {
             BaseOutput baseOutput;
             List<DemandOfferDetail> objlist = new List<DemandOfferDetail>();
             try
             {
-                itemList = sqloperationLogic.GetDemandProductionAmountOfEachProduct(startDate,endDate);
+                itemList = sqloperationLogic.GetDemandProductionAmountOfEachProduct(startDate, endDate);
 
 
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
@@ -1078,7 +1078,28 @@ namespace Emsal.BLL
 
             }
         }
+        public BaseOutput GetGovernmentOrganizationTypeUsers_OPC(BaseInput baseinput, UserDetailSearch ops, out Int64 count)
+        {
+            BaseOutput baseOutput;
+            count = 0;
 
+            try
+            {
+                count = sqloperationLogic.GetGovernmentOrganizationTypeUsers_OPC(ops);
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                count = 0;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
         public BaseOutput GetRolesNotOwnedByUser(BaseInput baseinput, long userId, out List<tblRole> itemList)
         {
             BaseOutput baseOutput;
@@ -1118,7 +1139,25 @@ namespace Emsal.BLL
             }
 
         }
+        public BaseOutput GetGovernmentOrganizationTypeUsers_OP(BaseInput baseinput, UserDetailSearch ops, out List<UserDetails> itemList)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                itemList = sqloperationLogic.GetGovernmentOrganizationTypeUsers_OP(ops);
 
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+
+        }
         #endregion
 
 
@@ -1357,7 +1396,7 @@ namespace Emsal.BLL
 
         }
 
-        public BaseOutput GetProducListByUserID(BaseInput baseinput, Int64 userID,Int64 productId , out List<ProductCatalogDetail> pCatalogDetailList)
+        public BaseOutput GetProducListByUserID(BaseInput baseinput, Int64 userID, Int64 productId, out List<ProductCatalogDetail> pCatalogDetailList)
         {
 
             pCatalogDetailList = new List<ProductCatalogDetail>();
@@ -1366,7 +1405,7 @@ namespace Emsal.BLL
             try
             {
 
-                List<tblProductCatalog> pCatalogList = sqloperationLogic.GetProducListByUserID(userID,productId);
+                List<tblProductCatalog> pCatalogList = sqloperationLogic.GetProducListByUserID(userID, productId);
 
 
                 foreach (var item in pCatalogList)
@@ -1377,7 +1416,7 @@ namespace Emsal.BLL
                     try
                     {
                         pCatalogDetail.productName = sqloperationLogic.GetProducParentProductByProductID(item.Id).ProductName;
-                    
+
                     }
                     catch (Exception)
                     {
@@ -1596,7 +1635,7 @@ namespace Emsal.BLL
 
         #region Optimastion
 
-      
+
         public BaseOutput GetDemandProductionDetailistForEValueId_OP(BaseInput baseinput, GetDemandProductionDetailistForEValueIdSearch ops, out List<ProductionDetail> itemList)
         {
             BaseOutput baseOutput;
@@ -1618,14 +1657,14 @@ namespace Emsal.BLL
 
                     item.productionDocumentList = productionDocumentList;
                     item.productionCalendarList = sqloperationLogic.GetProductionCalendarDemandId1(item.productionID, ops.startDate, ops.endate);
-                    
+
                     //else
                     //{
                     //    objlist = null;    
                     //}
                     objlist.Add(item);
                 }
-                
+
                 itemList = objlist;
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
 
@@ -1700,7 +1739,7 @@ namespace Emsal.BLL
 
         //    }
         //}
-        public BaseOutput GetAnnouncementDetailsByProductId_OP(BaseInput baseinput,int productID, int page, int pageSize, out List<AnnouncementDetail> itemList)
+        public BaseOutput GetAnnouncementDetailsByProductId_OP(BaseInput baseinput, int productID, int page, int pageSize, out List<AnnouncementDetail> itemList)
         {
             BaseOutput baseOutput;
             itemList = new List<AnnouncementDetail>();
@@ -1756,7 +1795,7 @@ namespace Emsal.BLL
                     item.personcomList = comlist;
                     item.productDocumentList = operationLogic.GetProductDocumentsByProductCatalogId((long)item.productId);
                     item.productionDocumentList = productionDocumentList;
-                    item.productionCalendarList = sqloperationLogic.GetProductionCalendarOfferId1(item.productionID,ops.startDate,ops.endDate);
+                    item.productionCalendarList = sqloperationLogic.GetProductionCalendarOfferId1(item.productionID, ops.startDate, ops.endDate);
                     objlist.Add(item);
                 }
 
@@ -2093,15 +2132,15 @@ namespace Emsal.BLL
         public BaseOutput GetPotensialUserList_OPC(BaseInput baseinput, PotensialUserForAdminUnitIdList1 ops, out Int64 count)
         {
             BaseOutput baseOutput;
-            count = 0; 
+            count = 0;
             try
             {
-               
 
-               
+
+
                 count = sqloperationLogic.GetPotensialUserList_OPC(ops);
 
-              
+
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
 
 
@@ -2122,7 +2161,7 @@ namespace Emsal.BLL
                 foreach (var item in itemList)
                 {
                     List<ProductCatalogDetail> list = new List<ProductCatalogDetail>();
-                    GetProducListByUserID(baseinput, item.userID,ops.productID, out list);
+                    GetProducListByUserID(baseinput, item.userID, ops.productID, out list);
                     item.productCatalogDetailList = list;
                     List<tblPotential_Production> listpr = new List<tblPotential_Production>();
                     GetPotential_ProductionsByUserID(baseinput, item.userID, out listpr);
@@ -2163,7 +2202,7 @@ namespace Emsal.BLL
 
             }
         }
-        public BaseOutput GetAnnouncementDetailsByProductIdOPC(BaseInput baseinput, int  ops, out Int64 count)
+        public BaseOutput GetAnnouncementDetailsByProductIdOPC(BaseInput baseinput, int ops, out Int64 count)
         {
             BaseOutput baseOutput;
             count = 0;
@@ -2201,37 +2240,37 @@ namespace Emsal.BLL
 
 
                     foreach (var item in objlist1)
-                {
-                    item.foreignOrganization = operationLogic.GetForeign_OrganizationByUserId(item.userId);
+                    {
+                        item.foreignOrganization = operationLogic.GetForeign_OrganizationByUserId(item.userId);
 
-                   item.productionCalendarList = sqloperationLogic.GetProductionCalendarDemandId1(item.productionID,ops.startDate,ops.endate);
-                    objlist.Add(item);
-                }
-               objlist1=objlist;
+                        item.productionCalendarList = sqloperationLogic.GetProductionCalendarDemandId1(item.productionID, ops.startDate, ops.endate);
+                        objlist.Add(item);
+                    }
+                    objlist1 = objlist;
                 }
                 else if (objlist1.Count() == 0)
                 {
-                   // List<ProductionDetail> objlist12 = new List<ProductionDetail>();
-                  //  year = year - 1;
+                    // List<ProductionDetail> objlist12 = new List<ProductionDetail>();
+                    //  year = year - 1;
                     //partOfYear = 4;
                     for (int i = 1; i < year; i++)
                     {
-                        if (objlist1.Count()==0)
+                        if (objlist1.Count() == 0)
                         {
                             year = year - 1;
-                            objlist1 = sqloperationLogic.GetDemandProductDetailInfoForAccounting_OP(ops,year , 4);
+                            objlist1 = sqloperationLogic.GetDemandProductDetailInfoForAccounting_OP(ops, year, 4);
                         }
-                        else 
+                        else
                         {
-                           // year = year - i;
+                            // year = year - i;
                             objlist2 = sqloperationLogic.GetDemandProductDetailInfoForAccounting_OP(ops, year, 4);
                             objlist1 = objlist2;
                             break;
-                           
+
                         }
-                         
+
                     }
-                   
+
                     foreach (var item in objlist1)
                     {
                         item.foreignOrganization = operationLogic.GetForeign_OrganizationByUserId(item.userId);
@@ -2240,7 +2279,7 @@ namespace Emsal.BLL
                         objlist.Add(item);
                     }
                     objlist1 = objlist;
-                   // itemList = objlist1;
+                    // itemList = objlist1;
                 }
                 itemList = objlist1;
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
@@ -2503,7 +2542,7 @@ namespace Emsal.BLL
             }
 
         }
-        public BaseOutput GetOfferGroupedProductionDetailistForAccountingByRoleId(BaseInput baseinput,Int64 RoleId, out  List<OfferProductionDetail> itemList)
+        public BaseOutput GetOfferGroupedProductionDetailistForAccountingByRoleId(BaseInput baseinput, Int64 RoleId, out  List<OfferProductionDetail> itemList)
         {
             BaseOutput baseOutput;
             try
@@ -2545,8 +2584,8 @@ namespace Emsal.BLL
             }
         }
 
-  
-        public BaseOutput GetDemandByForganistion_OPC(BaseInput baseinput,DemandForegnOrganization1 ops, out Int64 count)
+
+        public BaseOutput GetDemandByForganistion_OPC(BaseInput baseinput, DemandForegnOrganization1 ops, out Int64 count)
         {
             BaseOutput baseOutput;
             count = 0;
@@ -2600,7 +2639,7 @@ namespace Emsal.BLL
                 itemList = sqloperationLogic.GetDemand_ProductionsByStateAndUserID1(userID, state_Ev_Id);
                 foreach (var item in itemList)
                 {
-                    item.demandList = operationLogic.GetDemand_ProductionsByStateAndUserIDDila(userID,state_Ev_Id);
+                    item.demandList = operationLogic.GetDemand_ProductionsByStateAndUserIDDila(userID, state_Ev_Id);
                     item.calendarList = sqloperationLogic.GetProductionCalendarDemandId(item.productionID);
                     //objlist.Add(item);
 
@@ -2620,7 +2659,7 @@ namespace Emsal.BLL
             }
 
         }
-     
+
         public BaseOutput GetPRM_AdminUnitRegionList(BaseInput baseinput, out List<AdminUnitRegion> itemList)
         {
             BaseOutput baseOutput;
@@ -2660,9 +2699,9 @@ namespace Emsal.BLL
                 foreach (var item in itemList)
                 {
                     item.announcement = operationLogic.GetAnnouncementById1(item.productId);
-                      item.productCatalogDocumentList = operationLogic.GetProductDocumentsByProductCatalogId((long)item.announcement.product_id);
+                    item.productCatalogDocumentList = operationLogic.GetProductDocumentsByProductCatalogId((long)item.announcement.product_id);
                 }
-               
+
 
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
 
@@ -2799,7 +2838,7 @@ namespace Emsal.BLL
             {
                 itemList = sqloperationLogic.GetUsersByUserType_OP(ops);
 
-                
+
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
 
 
@@ -2876,7 +2915,7 @@ namespace Emsal.BLL
             }
 
         }
-        
+
     }
 }
 
