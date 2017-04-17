@@ -33,7 +33,6 @@
         <EntityTypeShape EntityType="EmsalDBModel.tblPRM_Thoroughfare" Width="1.5" PointX="9.5293266556827945" PointY="17.562389933300388" />
         <EntityTypeShape EntityType="EmsalDBModel.tblProduct_Document" Width="1.5" PointX="13.125" PointY="8.125" />
         <EntityTypeShape EntityType="EmsalDBModel.tblProductAddress" Width="1.5" PointX="3.2428601976683646" PointY="25.702356007742861" />
-        <EntityTypeShape EntityType="EmsalDBModel.tblProductCatalog" Width="2.75" PointX="5.875" PointY="4.25" />
         <EntityTypeShape EntityType="EmsalDBModel.tblProductCatalogControl" Width="2.875" PointX="2.5" PointY="26.375" />
         <EntityTypeShape EntityType="EmsalDBModel.tblProduction_Calendar" Width="1.5" PointX="7.9278614818713908" PointY="26.919800696391519" />
         <EntityTypeShape EntityType="EmsalDBModel.tblProduction_Document" Width="2.75" PointX="8.875" PointY="23.375" />
@@ -49,6 +48,7 @@
         <EntityTypeShape EntityType="EmsalDBModel.tblContractDetailTemp" Width="1.5" PointX="6.3106638669551653" PointY="11.370648612906527" />
         <EntityTypeShape EntityType="EmsalDBModel.tblProductionCalendar" Width="1.5" PointX="2.9881876422968636" PointY="16.766656272470325" />
         <EntityTypeShape EntityType="EmsalDBModel.tblOffer_Production" Width="1.5" PointX="9.4574550937197426" PointY="5.9910184917929667" />
+        <EntityTypeShape EntityType="EmsalDBModel.tblProductCatalog" Width="1.5" PointX="7.2704512305885789" PointY="16.185896344569464" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

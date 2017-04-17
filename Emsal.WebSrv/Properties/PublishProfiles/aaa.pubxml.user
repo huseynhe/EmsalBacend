@@ -8,19 +8,20 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <LastUsedBuildConfiguration>Release</LastUsedBuildConfiguration>
     <LastUsedPlatform>Any CPU</LastUsedPlatform>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Users\emsal\Desktop\aaa1</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Emsal.BLL.dll">
-      <publishTime>04/13/2017 17:39:49</publishTime>
+      <publishTime>04/17/2017 17:08:02</publishTime>
     </File>
     <File Include="bin/Emsal.DAL.dll">
-      <publishTime>04/13/2017 17:39:48</publishTime>
+      <publishTime>04/17/2017 17:08:01</publishTime>
     </File>
     <File Include="bin/Emsal.Utility.dll">
       <publishTime>04/13/2017 09:42:11</publishTime>
     </File>
     <File Include="bin/Emsal.WebSrv.dll">
-      <publishTime>04/13/2017 17:39:49</publishTime>
+      <publishTime>04/17/2017 17:08:02</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>01/12/2017 11:41:03</publishTime>
@@ -50,7 +51,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/12/2017 11:41:02</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/13/2017 17:39:49</publishTime>
+      <publishTime>04/17/2017 10:08:39</publishTime>
     </File>
   </ItemGroup>
 </Project>

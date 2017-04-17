@@ -624,6 +624,7 @@
           <Property Name="updatedUser" Type="nvarchar(max)" />
           <Property Name="updatedDate" Type="bigint" />
           <Property Name="productCode" Type="nvarchar(max)" />
+          <Property Name="edvStatus" Type="bigint" />
         </EntityType>
         <EntityType Name="tblProductCatalogControl">
           <Key>
@@ -912,7 +913,6 @@
           <EntitySet Name="tblPRM_Thoroughfare" EntityType="EmsalDBModel.tblPRM_Thoroughfare" />
           <EntitySet Name="tblProduct_Document" EntityType="EmsalDBModel.tblProduct_Document" />
           <EntitySet Name="tblProductAddresses" EntityType="EmsalDBModel.tblProductAddress" />
-          <EntitySet Name="tblProductCatalogs" EntityType="EmsalDBModel.tblProductCatalog" />
           <EntitySet Name="tblProductCatalogControls" EntityType="EmsalDBModel.tblProductCatalogControl" />
           <EntitySet Name="tblProduction_Calendar" EntityType="EmsalDBModel.tblProduction_Calendar" />
           <EntitySet Name="tblProduction_Document" EntityType="EmsalDBModel.tblProduction_Document" />
@@ -933,6 +933,7 @@
           </FunctionImport>
           <EntitySet Name="tblProductionCalendars" EntityType="EmsalDBModel.tblProductionCalendar" />
           <EntitySet Name="tblOffer_Production" EntityType="EmsalDBModel.tblOffer_Production" />
+          <EntitySet Name="tblProductCatalogs" EntityType="EmsalDBModel.tblProductCatalog" />
         </EntityContainer>
         <EntityType Name="C__MigrationHistory">
           <Key>
@@ -1438,25 +1439,6 @@
           <Property Type="String" Name="fullForeignOrganization" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="Int64" Name="forgId" />
         </EntityType>
-        <EntityType Name="tblProductCatalog">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int64" Name="ProductCatalogParentID" />
-          <Property Type="String" Name="ProductName" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="ProductDescription" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="Int64" Name="canBeOrder" />
-          <Property Type="Int64" Name="CatalogLevel" />
-          <Property Type="Int64" Name="measurementUnit_enumValueId" />
-          <Property Type="Int64" Name="Status" />
-          <Property Type="Int64" Name="LastUpdatedStatus" />
-          <Property Type="String" Name="createdUser" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="Int64" Name="createdDate" />
-          <Property Type="String" Name="updatedUser" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="Int64" Name="updatedDate" />
-          <Property Type="String" Name="productCode" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="tblProductCatalogControl">
           <Key>
             <PropertyRef Name="Id" />
@@ -1745,6 +1727,26 @@
           <Property Type="Int64" Name="contractId" />
           <Property Type="Int64" Name="isNew" />
           <Property Type="Int64" Name="production_type" />
+        </EntityType>
+        <EntityType Name="tblProductCatalog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="ProductCatalogParentID" />
+          <Property Type="String" Name="ProductName" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductDescription" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="canBeOrder" />
+          <Property Type="Int64" Name="CatalogLevel" />
+          <Property Type="Int64" Name="measurementUnit_enumValueId" />
+          <Property Type="Int64" Name="Status" />
+          <Property Type="Int64" Name="LastUpdatedStatus" />
+          <Property Type="String" Name="createdUser" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="createdDate" />
+          <Property Type="String" Name="updatedUser" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="updatedDate" />
+          <Property Type="String" Name="productCode" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="edvStatus" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -2283,26 +2285,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblProductCatalogs">
-            <EntityTypeMapping TypeName="EmsalDBModel.tblProductCatalog">
-              <MappingFragment StoreEntitySet="tblProductCatalog">
-                <ScalarProperty Name="productCode" ColumnName="productCode" />
-                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
-                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
-                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
-                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
-                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="measurementUnit_enumValueId" ColumnName="measurementUnit_enumValueId" />
-                <ScalarProperty Name="CatalogLevel" ColumnName="CatalogLevel" />
-                <ScalarProperty Name="canBeOrder" ColumnName="canBeOrder" />
-                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="ProductCatalogParentID" ColumnName="ProductCatalogParentID" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tblProductCatalogControls">
             <EntityTypeMapping TypeName="EmsalDBModel.tblProductCatalogControl">
               <MappingFragment StoreEntitySet="tblProductCatalogControl">
@@ -2607,6 +2589,27 @@
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="grup_Id" ColumnName="grup_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProductCatalogs">
+            <EntityTypeMapping TypeName="EmsalDBModel.tblProductCatalog">
+              <MappingFragment StoreEntitySet="tblProductCatalog">
+                <ScalarProperty Name="edvStatus" ColumnName="edvStatus" />
+                <ScalarProperty Name="productCode" ColumnName="productCode" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+                <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="measurementUnit_enumValueId" ColumnName="measurementUnit_enumValueId" />
+                <ScalarProperty Name="CatalogLevel" ColumnName="CatalogLevel" />
+                <ScalarProperty Name="canBeOrder" ColumnName="canBeOrder" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductCatalogParentID" ColumnName="ProductCatalogParentID" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

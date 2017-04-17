@@ -532,26 +532,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tblProductCatalogs">
-      <EntityTypeMapping TypeName="EmsalDBModel.tblProductCatalog">
-        <MappingFragment StoreEntitySet="tblProductCatalog">
-          <ScalarProperty Name="productCode" ColumnName="productCode" />
-          <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
-          <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
-          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
-          <ScalarProperty Name="createdUser" ColumnName="createdUser" />
-          <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="measurementUnit_enumValueId" ColumnName="measurementUnit_enumValueId" />
-          <ScalarProperty Name="CatalogLevel" ColumnName="CatalogLevel" />
-          <ScalarProperty Name="canBeOrder" ColumnName="canBeOrder" />
-          <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
-          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-          <ScalarProperty Name="ProductCatalogParentID" ColumnName="ProductCatalogParentID" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tblProductCatalogControls">
       <EntityTypeMapping TypeName="EmsalDBModel.tblProductCatalogControl">
         <MappingFragment StoreEntitySet="tblProductCatalogControl">
@@ -856,6 +836,27 @@
           <ScalarProperty Name="description" ColumnName="description" />
           <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="grup_Id" ColumnName="grup_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblProductCatalogs">
+      <EntityTypeMapping TypeName="EmsalDBModel.tblProductCatalog">
+        <MappingFragment StoreEntitySet="tblProductCatalog">
+          <ScalarProperty Name="edvStatus" ColumnName="edvStatus" />
+          <ScalarProperty Name="productCode" ColumnName="productCode" />
+          <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+          <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+          <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+          <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="measurementUnit_enumValueId" ColumnName="measurementUnit_enumValueId" />
+          <ScalarProperty Name="CatalogLevel" ColumnName="CatalogLevel" />
+          <ScalarProperty Name="canBeOrder" ColumnName="canBeOrder" />
+          <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductCatalogParentID" ColumnName="ProductCatalogParentID" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

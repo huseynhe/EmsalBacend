@@ -56,7 +56,6 @@ namespace Emsal.DAL
         public DbSet<tblPRM_Thoroughfare> tblPRM_Thoroughfare { get; set; }
         public DbSet<tblProduct_Document> tblProduct_Document { get; set; }
         public DbSet<tblProductAddress> tblProductAddresses { get; set; }
-        public DbSet<tblProductCatalog> tblProductCatalogs { get; set; }
         public DbSet<tblProductCatalogControl> tblProductCatalogControls { get; set; }
         public DbSet<tblProduction_Calendar> tblProduction_Calendar { get; set; }
         public DbSet<tblProduction_Document> tblProduction_Document { get; set; }
@@ -72,6 +71,7 @@ namespace Emsal.DAL
         public DbSet<tblContractDetailTemp> tblContractDetailTemps { get; set; }
         public DbSet<tblProductionCalendar> tblProductionCalendars { get; set; }
         public DbSet<tblOffer_Production> tblOffer_Production { get; set; }
+        public DbSet<tblProductCatalog> tblProductCatalogs { get; set; }
     
        
     }

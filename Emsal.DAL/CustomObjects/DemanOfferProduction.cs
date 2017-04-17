@@ -12,7 +12,7 @@ namespace Emsal.DAL.CustomObjects
         public Int64 productionID { get; set; }
       //  public decimal totalquantity { get; set; }
         public decimal quantity { get; set; }
-       // public decimal quantityDemand { get; set; }
+        public decimal conUnitprice { get; set; }
         public decimal unit_price { get; set; }
         public string roleName { get; set; }
         public string roledesc { get; set; }
@@ -30,7 +30,7 @@ namespace Emsal.DAL.CustomObjects
         public string productParentName { get; set; }
         public decimal totalQuantityPrice { get; set; }
         public Int64  roleId { get; set; }
-       // public Int64 priceCount { get; set; }
+        public Int64 edvStatus { get; set; }
         public string enumValueName { get; set; }
         public List<tblCommunication> comList { get; set; }
         public string fatherName { get; set; }

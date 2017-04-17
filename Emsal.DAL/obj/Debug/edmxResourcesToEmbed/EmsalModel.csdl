@@ -29,7 +29,6 @@
     <EntitySet Name="tblPRM_Thoroughfare" EntityType="EmsalDBModel.tblPRM_Thoroughfare" />
     <EntitySet Name="tblProduct_Document" EntityType="EmsalDBModel.tblProduct_Document" />
     <EntitySet Name="tblProductAddresses" EntityType="EmsalDBModel.tblProductAddress" />
-    <EntitySet Name="tblProductCatalogs" EntityType="EmsalDBModel.tblProductCatalog" />
     <EntitySet Name="tblProductCatalogControls" EntityType="EmsalDBModel.tblProductCatalogControl" />
     <EntitySet Name="tblProduction_Calendar" EntityType="EmsalDBModel.tblProduction_Calendar" />
     <EntitySet Name="tblProduction_Document" EntityType="EmsalDBModel.tblProduction_Document" />
@@ -50,6 +49,7 @@
     </FunctionImport>
     <EntitySet Name="tblProductionCalendars" EntityType="EmsalDBModel.tblProductionCalendar" />
     <EntitySet Name="tblOffer_Production" EntityType="EmsalDBModel.tblOffer_Production" />
+    <EntitySet Name="tblProductCatalogs" EntityType="EmsalDBModel.tblProductCatalog" />
   </EntityContainer>
   <EntityType Name="C__MigrationHistory">
     <Key>
@@ -555,25 +555,6 @@
     <Property Type="String" Name="fullForeignOrganization" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="Int64" Name="forgId" />
   </EntityType>
-  <EntityType Name="tblProductCatalog">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="Int64" Name="ProductCatalogParentID" />
-    <Property Type="String" Name="ProductName" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="ProductDescription" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="Int64" Name="canBeOrder" />
-    <Property Type="Int64" Name="CatalogLevel" />
-    <Property Type="Int64" Name="measurementUnit_enumValueId" />
-    <Property Type="Int64" Name="Status" />
-    <Property Type="Int64" Name="LastUpdatedStatus" />
-    <Property Type="String" Name="createdUser" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="Int64" Name="createdDate" />
-    <Property Type="String" Name="updatedUser" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="Int64" Name="updatedDate" />
-    <Property Type="String" Name="productCode" MaxLength="Max" FixedLength="false" Unicode="true" />
-  </EntityType>
   <EntityType Name="tblProductCatalogControl">
     <Key>
       <PropertyRef Name="Id" />
@@ -862,5 +843,25 @@
     <Property Type="Int64" Name="contractId" />
     <Property Type="Int64" Name="isNew" />
     <Property Type="Int64" Name="production_type" />
+  </EntityType>
+  <EntityType Name="tblProductCatalog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="ProductCatalogParentID" />
+    <Property Type="String" Name="ProductName" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ProductDescription" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="canBeOrder" />
+    <Property Type="Int64" Name="CatalogLevel" />
+    <Property Type="Int64" Name="measurementUnit_enumValueId" />
+    <Property Type="Int64" Name="Status" />
+    <Property Type="Int64" Name="LastUpdatedStatus" />
+    <Property Type="String" Name="createdUser" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="createdDate" />
+    <Property Type="String" Name="updatedUser" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="updatedDate" />
+    <Property Type="String" Name="productCode" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="edvStatus" />
   </EntityType>
 </Schema>

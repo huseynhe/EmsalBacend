@@ -619,6 +619,7 @@
     <Property Name="updatedUser" Type="nvarchar(max)" />
     <Property Name="updatedDate" Type="bigint" />
     <Property Name="productCode" Type="nvarchar(max)" />
+    <Property Name="edvStatus" Type="bigint" />
   </EntityType>
   <EntityType Name="tblProductCatalogControl">
     <Key>

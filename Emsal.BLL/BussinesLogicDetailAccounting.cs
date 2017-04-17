@@ -393,6 +393,7 @@ namespace Emsal.BLL
                     {
                         citem.comList = operationLogic.GetCommunicationByPersonId(citem.personID);
                         citem.contractTempList = operationLogic.GettblContractDetailTempByOfferId(citem.productionID);
+                        citem.conUnitprice = sqloperationLogicAccounting.GetProductPriceByOfferID(citem.productionID, citem.productId);
                     
                      
                     }
@@ -476,6 +477,7 @@ namespace Emsal.BLL
                 {
                     item.comList = operationLogic.GetCommunicationByPersonId(item.personID);
                     item.contractTempList = operationLogic.GettblContractDetailTempByOfferId(item.productionID);
+                    item.conUnitprice = sqloperationLogicAccounting.GetProductPriceByOfferID(item.productionID, productID);
                 
 
                 }

@@ -28,5 +28,6 @@ namespace Emsal.DAL
         public string updatedUser { get; set; }
         public Nullable<long> updatedDate { get; set; }
         public string productCode { get; set; }
+        public Nullable<long> edvStatus { get; set; }
     }
 }

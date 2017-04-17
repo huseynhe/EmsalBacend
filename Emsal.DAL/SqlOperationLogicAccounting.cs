@@ -1861,12 +1861,12 @@ ev.name
             var query = @"  select distinct * from(select distinct table1.Id,table1.product_Id,table1.ProductName,table1.quantity,table1.total_price,table1.personName,table1.Surname,
 table1.FatherName,table1.organisationName,table1.PinNumber,table1.voen,table1.userType_eV_ID
 ,pc.ProductName as parentName,ev.name as kategoryName--,price.unit_price
-,table1.roleDesc,table1.TaxexType, table1.contractID,table1.price/table1.count as unitPriceCalndar,table1.RoleId
+,table1.roleDesc,table1.TaxexType, table1.contractID,table1.price/table1.count as unitPriceCalndar,table1.RoleId,table1.edvStatus
  from (
 select op.Id,op.product_Id,pc.ProductCatalogParentID,pc.ProductName
 ,op.quantity,op.total_price
 ,r.Name as roleName,r.Description as roleDesc,ur.RoleId,u.userType_eV_ID,
-person.id as personID,
+person.Id as personID,
 person.Name as personName, person.Surname,
 ' ' as voen,' ' as organisationName,
 prc.EnumValueId ,
@@ -1876,7 +1876,7 @@ cntr.ContractStartDate,person.PinNumber,person.FatherName, op.contractId as cont
 	WHEN 0 THEN N'Sadələşmiş vergi ödəyicisi'
     WHEN 4 THEN N'6-8 % sadələşmiş vergi ödəyicisi'
     ELSE N'Məlumat Mövcud deyil'
-	end ) as TaxexType,SUM(pcal.price) as price,COUNT(pcal.price) as count
+	end ) as TaxexType,SUM(pcal.price) as price,COUNT(pcal.price) as count,pc.edvStatus
 from tblOffer_Production op
  join tblProductCatalog pc on op.product_Id=pc.Id and pc.Status=1
  join tblUserRole ur on op.user_Id=ur.UserId and ur.Status=1
@@ -1890,7 +1890,7 @@ left join tblContract cntr on op.user_Id=cntr.SupplierUserID and cntr.Status=1
 where op.Status=1 and u.userType_eV_ID=26 and op.state_eV_Id=2
 group by op.Id,op.product_Id,pc.ProductCatalogParentID,pc.ProductName,op.quantity,op.total_price,r.Name,
 r.Description,ur.RoleId,u.userType_eV_ID,person.Id,person.Name,person.Surname,prc.EnumValueId,ContractStartDate,person.PinNumber,
-person.FatherName,op.contractId,u.TaxexType
+person.FatherName,op.contractId,u.TaxexType,pc.edvStatus
 ) as table1
  join tblProductCatalog pc on table1.ProductCatalogParentID=pc.Id and pc.Status=1
  join tblEnumValue ev on table1.EnumValueId=ev.Id and ev.Status=1
@@ -1902,14 +1902,14 @@ person.FatherName,op.contractId,u.TaxexType
 table1.FatherName,table1.organisationName,table1.PinNumber,table1.voen,table1.userType_eV_ID,pc.ProductName as parentName
 ,ev.name as kategoryName,--price.unit_price,
 table1.roleDesc
-,table1.TaxexType, table1.contractID,table1.price/table1.count as unitPriceCalndar,table1.RoleId
+,table1.TaxexType, table1.contractID,table1.price/table1.count as unitPriceCalndar,table1.RoleId,table1.edvStatus
  -- , com.communication as phoneNumber
   from (
 select op.Id,op.product_Id,pc.ProductCatalogParentID,pc.ProductName
 ,op.quantity,op.total_price,
 r.Name as roleName,r.Description as roleDesc,ur.RoleId,u.userType_eV_ID,
 
-person.id as personID,
+person.Id as personID,
 person.Name as personName, person.Surname,
 fo.voen,fo.name as organisationName,
 prc.EnumValueId  ,
@@ -1919,7 +1919,7 @@ cntr.ContractStartDate,person.PinNumber,person.FatherName, op.contractId as cont
 	WHEN 0 THEN N'Sadələşmiş vergi ödəyicisi'
     WHEN 4 THEN N'6-8 % sadələşmiş vergi ödəyicisi'
     ELSE N'Məlumat Mövcud deyil'
-	end ) as TaxexType,SUM(pcal.price) as price,COUNT(pcal.price) as count
+	end ) as TaxexType,SUM(pcal.price) as price,COUNT(pcal.price) as count,pc.edvStatus
 from tblOffer_Production op
  join tblProductCatalog pc on op.product_Id=pc.Id and pc.Status=1
  join tblUserRole ur on op.user_Id=ur.UserId and ur.Status=1
@@ -1935,7 +1935,7 @@ left join tblContract cntr on op.user_Id=cntr.SupplierUserID and cntr.Status=1
 where op.Status=1 and u.userType_eV_ID=50 and op.state_eV_Id=2
 group by op.Id,op.product_Id,pc.ProductCatalogParentID,pc.ProductName,op.quantity,op.total_price,r.Name,
 r.Description,ur.RoleId,u.userType_eV_ID,person.Id,person.Name,person.Surname,prc.EnumValueId,ContractStartDate,fo.voen,fo.name,person.PinNumber,
-person.FatherName,op.contractId,u.TaxexType
+person.FatherName,op.contractId,u.TaxexType,pc.edvStatus
 ) as table1
  join tblProductCatalog pc on table1.ProductCatalogParentID=pc.Id and pc.Status=1
  join tblEnumValue ev on table1.EnumValueId=ev.Id and ev.Status=1
@@ -1946,12 +1946,13 @@ person.FatherName,op.contractId,u.TaxexType
 "; var query1Calen = @"select distinct * from(select distinct table1.Id,table1.product_Id,table1.ProductName,table1.quantity,table1.total_price,table1.personName,table1.Surname,
 table1.FatherName,table1.organisationName,table1.PinNumber,table1.voen,table1.userType_eV_ID
 ,pc.ProductName as parentName,ev.name as kategoryName--,price.unit_price
-,table1.roleDesc,table1.TaxexType, table1.contractID,table1.price/table1.count as unitPriceCalndar,table1.RoleId,table1.months_eV_Id
+,table1.roleDesc,table1.TaxexType, table1.contractID,table1.price/table1.count as unitPriceCalndar,table1.RoleId,
+table1.edvStatus,table1.months_eV_Id
  from (
 select op.Id,op.product_Id,pc.ProductCatalogParentID,pc.ProductName
 ,pcal.quantity,pcal.quantity*pcal.price as total_price
 ,r.Name as roleName,r.Description as roleDesc,ur.RoleId,u.userType_eV_ID,
-person.id as personID,
+person.Id as personID,
 person.Name as personName, person.Surname,
 ' ' as voen,' ' as organisationName,
 prc.EnumValueId ,
@@ -1961,7 +1962,7 @@ cntr.ContractStartDate,person.PinNumber,person.FatherName, op.contractId as cont
 	WHEN 0 THEN N'Sadələşmiş vergi ödəyicisi'
     WHEN 4 THEN N'6-8 % sadələşmiş vergi ödəyicisi'
     ELSE N'Məlumat Mövcud deyil'
-	end ) as TaxexType,SUM(pcal.price) as price,COUNT(pcal.price) as count,pcal.months_eV_Id
+	end ) as TaxexType,SUM(pcal.price) as price,COUNT(pcal.price) as count,pcal.months_eV_Id,pc.edvStatus
 from tblOffer_Production op
  join tblProductCatalog pc on op.product_Id=pc.Id and pc.Status=1
  join tblUserRole ur on op.user_Id=ur.UserId and ur.Status=1
@@ -1975,7 +1976,7 @@ left join tblContract cntr on op.user_Id=cntr.SupplierUserID and cntr.Status=1
 where op.Status=1 and u.userType_eV_ID=26 and op.state_eV_Id=2
 group by op.Id,op.product_Id,pc.ProductCatalogParentID,pc.ProductName,pcal.quantity,op.total_price,r.Name,
 r.Description,ur.RoleId,u.userType_eV_ID,person.Id,person.Name,person.Surname,prc.EnumValueId,ContractStartDate,person.PinNumber,
-person.FatherName,op.contractId,u.TaxexType,pcal.months_eV_Id,pcal.price
+person.FatherName,op.contractId,u.TaxexType,pcal.months_eV_Id,pcal.price,pc.edvStatus
 ) as table1
  join tblProductCatalog pc on table1.ProductCatalogParentID=pc.Id and pc.Status=1
  join tblEnumValue ev on table1.EnumValueId=ev.Id and ev.Status=1
@@ -1986,14 +1987,14 @@ person.FatherName,op.contractId,u.TaxexType,pcal.months_eV_Id,pcal.price
 table1.FatherName,table1.organisationName,table1.PinNumber,table1.voen,table1.userType_eV_ID,pc.ProductName as parentName
 ,ev.name as kategoryName,--price.unit_price,
 table1.roleDesc
-,table1.TaxexType, table1.contractID,table1.price/table1.count as unitPriceCalndar,table1.RoleId,table1.months_eV_Id
+,table1.TaxexType, table1.contractID,table1.price/table1.count as unitPriceCalndar,table1.RoleId,table1.edvStatus,table1.months_eV_Id
  -- , com.communication as phoneNumber
   from (
 select op.Id,op.product_Id,pc.ProductCatalogParentID,pc.ProductName
 ,pcal.quantity,pcal.quantity*pcal.price as total_price,
 r.Name as roleName,r.Description as roleDesc,ur.RoleId,u.userType_eV_ID,
 
-person.id as personID,
+person.Id as personID,
 person.Name as personName, person.Surname,
 fo.voen,fo.name as organisationName,
 prc.EnumValueId  ,
@@ -2003,7 +2004,7 @@ cntr.ContractStartDate,person.PinNumber,person.FatherName, op.contractId as cont
 	WHEN 0 THEN N'Sadələşmiş vergi ödəyicisi'
     WHEN 4 THEN N'6-8 % sadələşmiş vergi ödəyicisi'
     ELSE N'Məlumat Mövcud deyil'
-	end ) as TaxexType,SUM(pcal.price) as price,COUNT(pcal.price) as count,pcal.months_eV_Id
+	end ) as TaxexType,SUM(pcal.price) as price,COUNT(pcal.price) as count,pcal.months_eV_Id,pc.edvStatus
 from tblOffer_Production op
  join tblProductCatalog pc on op.product_Id=pc.Id and pc.Status=1
  join tblUserRole ur on op.user_Id=ur.UserId and ur.Status=1
@@ -2019,7 +2020,7 @@ left join tblContract cntr on op.user_Id=cntr.SupplierUserID and cntr.Status=1
 where op.Status=1 and u.userType_eV_ID=50 and op.state_eV_Id=2
 group by op.Id,op.product_Id,pc.ProductCatalogParentID,pc.ProductName,pcal.quantity,op.total_price,r.Name,
 r.Description,ur.RoleId,u.userType_eV_ID,person.Id,person.Name,person.Surname,prc.EnumValueId,ContractStartDate,fo.voen,fo.name,person.PinNumber,
-person.FatherName,op.contractId,u.TaxexType,pcal.months_eV_Id,pcal.price
+person.FatherName,op.contractId,u.TaxexType,pcal.months_eV_Id,pcal.price,pc.edvStatus
 ) as table1
  join tblProductCatalog pc on table1.ProductCatalogParentID=pc.Id and pc.Status=1
  join tblEnumValue ev on table1.EnumValueId=ev.Id and ev.Status=1
@@ -2109,6 +2110,7 @@ FETCH NEXT @RecordsPerPage ROWS ONLY";
                             taxesType = reader.GetStringOrEmpty(15),
                             contractID = reader.GetInt64OrDefaultValue(16),
                             unit_price = reader.GetDecimalOrDefaultValue(17),
+                            edvStatus=reader.GetInt64OrDefaultValue(19),
 
 
                         });
@@ -2128,82 +2130,195 @@ FETCH NEXT @RecordsPerPage ROWS ONLY";
             StringBuilder squery1 = new StringBuilder();
 
             //var query1 = @"";
-            var query = @"select COUNT(*) as count from( select distinct * from(select  table1.*,pc.ProductName as parentName,ev.name as kategoryName,price.unit_price
+            var query = @"select COUNT(*) as count from( select distinct table1.Id,table1.product_Id,table1.ProductName,table1.quantity,table1.total_price,table1.personName,table1.Surname,
+table1.FatherName,table1.organisationName,table1.PinNumber,table1.voen,table1.userType_eV_ID
+,pc.ProductName as parentName,ev.name as kategoryName--,price.unit_price
+,table1.roleDesc,table1.TaxexType, table1.contractID,table1.price/table1.count as unitPriceCalndar,table1.RoleId,table1.edvStatus
  from (
 select op.Id,op.product_Id,pc.ProductCatalogParentID,pc.ProductName
-,op.quantity,op.total_price,r.Name as roleName,r.Description as roleDesc,ur.RoleId,ev.name as usertype,u.userType_eV_ID,
-person.id as personID,
+,op.quantity,op.total_price
+,r.Name as roleName,r.Description as roleDesc,ur.RoleId,u.userType_eV_ID,
+person.Id as personID,
 person.Name as personName, person.Surname,
 ' ' as voen,' ' as organisationName,
 prc.EnumValueId ,
-cntr.ContractStartDate,person.PinNumber,person.FatherName
+cntr.ContractStartDate,person.PinNumber,person.FatherName, op.contractId as contractID,
+ (select CASE u.TaxexType
+     WHEN 1 THEN N'ƏDV ödəyicisi'
+	WHEN 0 THEN N'Sadələşmiş vergi ödəyicisi'
+    WHEN 4 THEN N'6-8 % sadələşmiş vergi ödəyicisi'
+    ELSE N'Məlumat Mövcud deyil'
+	end ) as TaxexType,SUM(pcal.price) as price,COUNT(pcal.price) as count,pc.edvStatus
 from tblOffer_Production op
  join tblProductCatalog pc on op.product_Id=pc.Id and pc.Status=1
  join tblUserRole ur on op.user_Id=ur.UserId and ur.Status=1
  join tblRole r on r.Id=ur.RoleId and r.Status=1
  join tblUser u on u.Id=op.user_Id and u.Status=1
- join tblEnumValue ev on u.userType_eV_ID=ev.Id  and ev.Status=1
+ join tblProductionCalendar pcal on pcal.offer_Id=op.Id and pcal.Status=1
  left join tblPerson person on person.UserId=op.user_Id and person.Status=1
 left join tblContract cntr on op.user_Id=cntr.SupplierUserID and cntr.Status=1
  join tblProductCatalogControl prc on prc.ProductId=op.product_Id and prc.Status=1
  -- left join tblCommunication com on com.PersonId=person.ID and com.Status=1 and com.comType=10120
 where op.Status=1 and u.userType_eV_ID=26 and op.state_eV_Id=2
+group by op.Id,op.product_Id,pc.ProductCatalogParentID,pc.ProductName,op.quantity,op.total_price,r.Name,
+r.Description,ur.RoleId,u.userType_eV_ID,person.Id,person.Name,person.Surname,prc.EnumValueId,ContractStartDate,person.PinNumber,
+person.FatherName,op.contractId,u.TaxexType,pc.edvStatus
 ) as table1
  join tblProductCatalog pc on table1.ProductCatalogParentID=pc.Id and pc.Status=1
  join tblEnumValue ev on table1.EnumValueId=ev.Id and ev.Status=1
- join tblProductionCalendar pcalen on pcalen.offer_Id=table1.Id and pcalen.Status=1
-  join tblProductPrice price on price.productId=table1.product_Id and price.Status=1
-   join tblProductionCalendar pcal on pcal.offer_Id=table1.Id and pcal.Status=1
-  where ev.enumCategory_enumCategoryId=5 
+--join tblProductionCalendar pcal on pcal.offer_Id=table1.Id and pcal.Status=1 
+  where ev.enumCategory_enumCategoryId=5
 ";
             var query2 = @" union all
- select table1.*,pc.ProductName as parentName,ev.name as kategoryName,price.unit_price-- ,com.communication as phoneNumber
+ select distinct table1.Id,table1.product_Id,table1.ProductName,table1.quantity,table1.total_price,table1.personName,table1.Surname,
+table1.FatherName,table1.organisationName,table1.PinNumber,table1.voen,table1.userType_eV_ID,pc.ProductName as parentName
+,ev.name as kategoryName,--price.unit_price,
+table1.roleDesc
+,table1.TaxexType, table1.contractID,table1.price/table1.count as unitPriceCalndar,table1.RoleId,table1.edvStatus
+ -- , com.communication as phoneNumber
   from (
 select op.Id,op.product_Id,pc.ProductCatalogParentID,pc.ProductName
-,op.quantity,op.total_price,r.Name as roleName,r.Description as roleDesc,ur.RoleId,ev.name as usertype,u.userType_eV_ID,
+,op.quantity,op.total_price,
+r.Name as roleName,r.Description as roleDesc,ur.RoleId,u.userType_eV_ID,
 
-person.id as personID,
+person.Id as personID,
 person.Name as personName, person.Surname,
 fo.voen,fo.name as organisationName,
 prc.EnumValueId  ,
-cntr.ContractStartDate,person.PinNumber,person.FatherName
+cntr.ContractStartDate,person.PinNumber,person.FatherName, op.contractId as contractID,
+(select CASE u.TaxexType
+     WHEN 1 THEN N'ƏDV ödəyicisi'
+	WHEN 0 THEN N'Sadələşmiş vergi ödəyicisi'
+    WHEN 4 THEN N'6-8 % sadələşmiş vergi ödəyicisi'
+    ELSE N'Məlumat Mövcud deyil'
+	end ) as TaxexType,SUM(pcal.price) as price,COUNT(pcal.price) as count,pc.edvStatus
 from tblOffer_Production op
  join tblProductCatalog pc on op.product_Id=pc.Id and pc.Status=1
  join tblUserRole ur on op.user_Id=ur.UserId and ur.Status=1
  join tblRole r on r.Id=ur.RoleId and r.Status=1
  join tblUser u on u.Id=op.user_Id and u.Status=1
- join tblEnumValue ev on u.userType_eV_ID=ev.Id  and ev.Status=1
+
 left join tblForeign_Organization fo on fo.userId=op.user_Id and fo.Status=1
 left join tblPerson person on person.Id=fo.manager_Id and person.Status=1
 left join tblContract cntr on op.user_Id=cntr.SupplierUserID and cntr.Status=1
  join tblProductCatalogControl prc on prc.ProductId=op.product_Id and prc.Status=1
- left join tblCommunication com on com.PersonId=person.id and com.Status=1 and com.comType=10120
+ join tblProductionCalendar pcal on pcal.offer_Id=op.Id and pcal.Status=1
+-- left join tblCommunication com on com.PersonId=person.id and com.Status=1 and com.comType=10120
 where op.Status=1 and u.userType_eV_ID=50 and op.state_eV_Id=2
+group by op.Id,op.product_Id,pc.ProductCatalogParentID,pc.ProductName,op.quantity,op.total_price,r.Name,
+r.Description,ur.RoleId,u.userType_eV_ID,person.Id,person.Name,person.Surname,prc.EnumValueId,ContractStartDate,fo.voen,fo.name,person.PinNumber,
+person.FatherName,op.contractId,u.TaxexType,pc.edvStatus
 ) as table1
  join tblProductCatalog pc on table1.ProductCatalogParentID=pc.Id and pc.Status=1
  join tblEnumValue ev on table1.EnumValueId=ev.Id and ev.Status=1
- join tblProductionCalendar pcalen on pcalen.offer_Id=table1.Id and pcalen.Status=1
-   join tblProductPrice price on price.productId=table1.product_Id and price.Status=1
-  join tblProductionCalendar pcal on pcal.offer_Id=table1.Id and pcal.Status=1
- where ev.enumCategory_enumCategoryId=5 ";
-            var queryProduct = @" ) as table2 
-where table2.product_Id= @productID
- ";
+--join tblProductionCalendar pcal on pcal.offer_Id=table1.Id and pcal.Status=1 
+ where ev.enumCategory_enumCategoryId=5  )as tb
+where product_Id= @productID ";
+            var query1Calen = @"select COUNT(*) as Count from(select distinct table1.Id,table1.product_Id,table1.ProductName,table1.quantity,table1.total_price,table1.personName,table1.Surname,
+table1.FatherName,table1.organisationName,table1.PinNumber,table1.voen,table1.userType_eV_ID
+,pc.ProductName as parentName,ev.name as kategoryName--,price.unit_price
+,table1.roleDesc,table1.TaxexType, table1.contractID,table1.price/table1.count as unitPriceCalndar,table1.RoleId,
+table1.edvStatus,table1.months_eV_Id
+ from (
+select op.Id,op.product_Id,pc.ProductCatalogParentID,pc.ProductName
+,pcal.quantity,pcal.quantity*pcal.price as total_price
+,r.Name as roleName,r.Description as roleDesc,ur.RoleId,u.userType_eV_ID,
+person.Id as personID,
+person.Name as personName, person.Surname,
+' ' as voen,' ' as organisationName,
+prc.EnumValueId ,
+cntr.ContractStartDate,person.PinNumber,person.FatherName, op.contractId as contractID,
+ (select CASE u.TaxexType
+     WHEN 1 THEN N'ƏDV ödəyicisi'
+	WHEN 0 THEN N'Sadələşmiş vergi ödəyicisi'
+    WHEN 4 THEN N'6-8 % sadələşmiş vergi ödəyicisi'
+    ELSE N'Məlumat Mövcud deyil'
+	end ) as TaxexType,SUM(pcal.price) as price,COUNT(pcal.price) as count,pcal.months_eV_Id,pc.edvStatus
+from tblOffer_Production op
+ join tblProductCatalog pc on op.product_Id=pc.Id and pc.Status=1
+ join tblUserRole ur on op.user_Id=ur.UserId and ur.Status=1
+ join tblRole r on r.Id=ur.RoleId and r.Status=1
+ join tblUser u on u.Id=op.user_Id and u.Status=1
+ join tblProductionCalendar pcal on pcal.offer_Id=op.Id and pcal.Status=1
+ left join tblPerson person on person.UserId=op.user_Id and person.Status=1
+left join tblContract cntr on op.user_Id=cntr.SupplierUserID and cntr.Status=1
+ join tblProductCatalogControl prc on prc.ProductId=op.product_Id and prc.Status=1
+ -- left join tblCommunication com on com.PersonId=person.ID and com.Status=1 and com.comType=10120
+where op.Status=1 and u.userType_eV_ID=26 and op.state_eV_Id=2
+group by op.Id,op.product_Id,pc.ProductCatalogParentID,pc.ProductName,pcal.quantity,op.total_price,r.Name,
+r.Description,ur.RoleId,u.userType_eV_ID,person.Id,person.Name,person.Surname,prc.EnumValueId,ContractStartDate,person.PinNumber,
+person.FatherName,op.contractId,u.TaxexType,pcal.months_eV_Id,pcal.price,pc.edvStatus
+) as table1
+ join tblProductCatalog pc on table1.ProductCatalogParentID=pc.Id and pc.Status=1
+ join tblEnumValue ev on table1.EnumValueId=ev.Id and ev.Status=1
+--join tblProductionCalendar pcal on pcal.offer_Id=table1.Id and pcal.Status=1 
+  where ev.enumCategory_enumCategoryId=5";
+            var query2Calen = @" union all
+ select distinct table1.Id,table1.product_Id,table1.ProductName,table1.quantity,table1.total_price,table1.personName,table1.Surname,
+table1.FatherName,table1.organisationName,table1.PinNumber,table1.voen,table1.userType_eV_ID,pc.ProductName as parentName
+,ev.name as kategoryName,--price.unit_price,
+table1.roleDesc
+,table1.TaxexType, table1.contractID,table1.price/table1.count as unitPriceCalndar,table1.RoleId,table1.edvStatus,table1.months_eV_Id
+ -- , com.communication as phoneNumber
+  from (
+select op.Id,op.product_Id,pc.ProductCatalogParentID,pc.ProductName
+,pcal.quantity,pcal.quantity*pcal.price as total_price,
+r.Name as roleName,r.Description as roleDesc,ur.RoleId,u.userType_eV_ID,
+
+person.Id as personID,
+person.Name as personName, person.Surname,
+fo.voen,fo.name as organisationName,
+prc.EnumValueId  ,
+cntr.ContractStartDate,person.PinNumber,person.FatherName, op.contractId as contractID,
+(select CASE u.TaxexType
+     WHEN 1 THEN N'ƏDV ödəyicisi'
+	WHEN 0 THEN N'Sadələşmiş vergi ödəyicisi'
+    WHEN 4 THEN N'6-8 % sadələşmiş vergi ödəyicisi'
+    ELSE N'Məlumat Mövcud deyil'
+	end ) as TaxexType,SUM(pcal.price) as price,COUNT(pcal.price) as count,pcal.months_eV_Id,pc.edvStatus
+from tblOffer_Production op
+ join tblProductCatalog pc on op.product_Id=pc.Id and pc.Status=1
+ join tblUserRole ur on op.user_Id=ur.UserId and ur.Status=1
+ join tblRole r on r.Id=ur.RoleId and r.Status=1
+ join tblUser u on u.Id=op.user_Id and u.Status=1
+
+left join tblForeign_Organization fo on fo.userId=op.user_Id and fo.Status=1
+left join tblPerson person on person.Id=fo.manager_Id and person.Status=1
+left join tblContract cntr on op.user_Id=cntr.SupplierUserID and cntr.Status=1
+ join tblProductCatalogControl prc on prc.ProductId=op.product_Id and prc.Status=1
+ join tblProductionCalendar pcal on pcal.offer_Id=op.Id and pcal.Status=1
+-- left join tblCommunication com on com.PersonId=person.id and com.Status=1 and com.comType=10120
+where op.Status=1 and u.userType_eV_ID=50 and op.state_eV_Id=2
+group by op.Id,op.product_Id,pc.ProductCatalogParentID,pc.ProductName,pcal.quantity,op.total_price,r.Name,
+r.Description,ur.RoleId,u.userType_eV_ID,person.Id,person.Name,person.Surname,prc.EnumValueId,ContractStartDate,fo.voen,fo.name,person.PinNumber,
+person.FatherName,op.contractId,u.TaxexType,pcal.months_eV_Id,pcal.price,pc.edvStatus
+) as table1
+ join tblProductCatalog pc on table1.ProductCatalogParentID=pc.Id and pc.Status=1
+ join tblEnumValue ev on table1.EnumValueId=ev.Id and ev.Status=1
+--join tblProductionCalendar pcal on pcal.offer_Id=table1.Id and pcal.Status=1 
+ where ev.enumCategory_enumCategoryId=5) as tb where product_Id= @productID ";
             var queryRole = @" and RoleId=@RoleId";
             var queryPin = @" and PinNumber like '%'+@PinNumber+'%'";
             var queryVoen = @" and voen like '%'+@voen+'%'";
-            var queryMOnth = @" and pcal.months_eV_Id=@months_eV_Id";
-            var queryTb = @"  )as tb";
+            var queryMOnth = @" and months_eV_Id=@months_eV_Id";
 
-            squery.Append(query);
-            squery1.Append(query2);
             if (ops.monthID != 0)
             {
-                squery.Append(queryMOnth);
-                squery1.Append(queryMOnth);
+                squery.Append(query1Calen);
+                squery.Append(query2Calen);
+               
             }
-            squery.Append(squery1.ToString());
-            squery.Append(queryProduct);
+            else
+            {
+                squery.Append(query);
+                squery.Append(query2);
+            }
+
+
+            if (ops.monthID!=0)
+            {
+                squery.Append(queryMOnth);
+            }
             if (ops.roleID != 0)
             {
                 squery.Append(queryRole);
@@ -2216,7 +2331,7 @@ where table2.product_Id= @productID
             {
                 squery.Append(queryVoen);
             }
-            squery.Append(queryTb);
+         //   squery.Append(queryTb);
             using (var connection = new SqlConnection(DBUtil.ConnectionString))
             {
                 connection.Open();
@@ -3118,7 +3233,40 @@ FETCH NEXT @RecordsPerPage ROWS ONLY
 
             return result;
         }
+        public decimal GetProductPriceByOfferID(Int64 offerID,Int64 productID)
+        {
+            decimal count = 0;
 
+            var query1 = @" select ISNULL(price.unit_price,0) as unitPrice,op.Id,dbo.f_getRub_by_BigIntDate(ContractDate)as date1,dbo.f_getYear_by_BigIntDate(ContractDate)as rub1,
+op.product_Id from tblProductPrice price
+left join tblOffer_Production op on op.product_Id=price.productId AND op.Status=1
+ join tblContractDetailTemp con on op.Id=con.offerID and con.Status=1
+where price.Status=1 and dbo.f_getRub_by_BigIntDate(ContractDate)>=partOfYear and dbo.f_getYear_by_BigIntDate(ContractDate)>=year
+and op.Id=@offerID and op.product_Id=@productID
+ order by year desc,partOfYear desc";
+            using (var connection = new SqlConnection(DBUtil.ConnectionString))
+            {
+                connection.Open();
+
+                using (var command = new SqlCommand(query1, connection))
+                {
+
+                    command.Parameters.AddWithValue("@offerID", offerID);
+                    command.Parameters.AddWithValue("@productID", productID);
+                   
+                    var reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        count = Convert.ToDecimal(reader["unitPrice"]);
+                    }
+
+                }
+                connection.Close();
+            }
+
+            return count;
+        }
     }
 }
 
