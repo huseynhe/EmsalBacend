@@ -54,3 +54,17 @@ C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.DAL\bin\Release\NLog.xml
 C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.DAL\obj\Release\Emsal.DAL.csprojResolveAssemblyReference.cache
 C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.DAL\obj\Release\Emsal.DAL.dll
 C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.DAL\obj\Release\Emsal.DAL.pdb
+C:\Users\emsal\Desktop\backendSon\EmsalBacend\EmsalBacend\Emsal.DAL\bin\Release\Emsal.DAL.dll.config
+C:\Users\emsal\Desktop\backendSon\EmsalBacend\EmsalBacend\Emsal.DAL\bin\Release\Emsal.DAL.dll
+C:\Users\emsal\Desktop\backendSon\EmsalBacend\EmsalBacend\Emsal.DAL\bin\Release\Emsal.DAL.pdb
+C:\Users\emsal\Desktop\backendSon\EmsalBacend\EmsalBacend\Emsal.DAL\bin\Release\Emsal.Utility.dll
+C:\Users\emsal\Desktop\backendSon\EmsalBacend\EmsalBacend\Emsal.DAL\bin\Release\EntityFramework.dll
+C:\Users\emsal\Desktop\backendSon\EmsalBacend\EmsalBacend\Emsal.DAL\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\emsal\Desktop\backendSon\EmsalBacend\EmsalBacend\Emsal.DAL\bin\Release\NLog.dll
+C:\Users\emsal\Desktop\backendSon\EmsalBacend\EmsalBacend\Emsal.DAL\bin\Release\Emsal.Utility.pdb
+C:\Users\emsal\Desktop\backendSon\EmsalBacend\EmsalBacend\Emsal.DAL\bin\Release\EntityFramework.xml
+C:\Users\emsal\Desktop\backendSon\EmsalBacend\EmsalBacend\Emsal.DAL\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\emsal\Desktop\backendSon\EmsalBacend\EmsalBacend\Emsal.DAL\bin\Release\NLog.xml
+C:\Users\emsal\Desktop\backendSon\EmsalBacend\EmsalBacend\Emsal.DAL\obj\Release\Emsal.DAL.csprojResolveAssemblyReference.cache
+C:\Users\emsal\Desktop\backendSon\EmsalBacend\EmsalBacend\Emsal.DAL\obj\Release\Emsal.DAL.dll
+C:\Users\emsal\Desktop\backendSon\EmsalBacend\EmsalBacend\Emsal.DAL\obj\Release\Emsal.DAL.pdb

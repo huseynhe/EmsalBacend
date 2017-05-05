@@ -76,6 +76,7 @@
     <Compile Include="CustomObjects\PersonInformation.cs" />
     <Compile Include="CustomObjects\PotentialClientDetail.cs" />
     <Compile Include="CustomObjects\PotesialProducts.cs" />
+    <Compile Include="CustomObjects\Price.cs" />
     <Compile Include="CustomObjects\ProductCatalogDetail.cs" />
     <Compile Include="CustomObjects\ProductionDetail.cs" />
     <Compile Include="CustomObjects\ProductionInfo.cs" />
@@ -126,6 +127,7 @@
     <Compile Include="SearchObject\OfferProductionDetailSearch1.cs" />
     <Compile Include="SearchObject\PotensialUserForAdminUnitIdList.cs" />
     <Compile Include="SearchObject\PotensialUserForAdminUnitIdList1.cs" />
+    <Compile Include="SearchObject\PriceOfEachProductSearch.cs" />
     <Compile Include="SearchObject\UserDetailSearch.cs" />
     <Compile Include="SqlOperationLogic.cs" />
     <Compile Include="SqlOperationLogicAccounting.cs" />

@@ -30,9 +30,9 @@ namespace Emsal.BLL
                     {
                         //tblPerson person = operationLogic.GetPersonByUserId(item.managerId);
                         //item.person = person;
-                       // List<PersonInformation> person1 = new List<PersonInformation>();
-                     PersonInformation person1 = sqloperationLogic.GetPersonInformationuserIDNew(item.userId);
-                       // person1 = sqloperationLogic.GetPersonInformationuserIDNew(item.userId);
+                        // List<PersonInformation> person1 = new List<PersonInformation>();
+                        PersonInformation person1 = sqloperationLogic.GetPersonInformationuserIDNew(item.userId);
+                        // person1 = sqloperationLogic.GetPersonInformationuserIDNew(item.userId);
                         item.personInformation = person1;
                     }
                     else
@@ -242,7 +242,7 @@ namespace Emsal.BLL
             try
             {
                 count = sqloperationLogicAccounting.GetOfferProductionDetailistForEValueId_OPC1(ops);
-              
+
 
 
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
@@ -388,14 +388,14 @@ namespace Emsal.BLL
                 foreach (var item in itemList)
                 {
                     item.offerProductsList = sqloperationLogicAccounting.GetTotalOffersbyProductID(item.productId, ops);
-              
+                    item.priceList = sqloperationLogicAccounting.GetUnitPriceByProdcutID(item.productId);
                     foreach (var citem in item.offerProductsList)
                     {
                         citem.comList = operationLogic.GetCommunicationByPersonId(citem.personID);
                         citem.contractTempList = operationLogic.GettblContractDetailTempByOfferId(citem.productionID);
                         citem.conUnitprice = sqloperationLogicAccounting.GetProductPriceByOfferID(citem.productionID, citem.productId);
-                    
-                     
+
+
                     }
                 }
 
@@ -428,6 +428,7 @@ namespace Emsal.BLL
                     foreach (var item in itemList)
                     {
                         List<OfferProducts> oproduct = sqloperationLogicAccounting.GetTotalOffer(item.productId, ops.monthID);
+                        item.priceList = sqloperationLogicAccounting.GetUnitPriceByProdcutID(item.productId);
 
                         foreach (var item1 in oproduct)
                         {
@@ -435,19 +436,19 @@ namespace Emsal.BLL
 
                             item.totalOfferQuantity = item1.totalQuantity;
                             item.totalOfferPrice = item1.totalPrice;
-                         
-                        }      
 
-                       
+                        }
+
+
 
                     }
                 }
                 catch (Exception ex)
                 {
-                    
-                    
+
+
                 }
-              
+
 
 
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
@@ -466,19 +467,19 @@ namespace Emsal.BLL
         {
             BaseOutput baseOutput;
             itemList = new List<DemanOfferProduction>();
-        
+
 
             try
             {
 
-            
+
                 itemList = sqloperationLogicAccounting.GetTotalOffersbyProductID(productID, ops);
                 foreach (var item in itemList)
                 {
                     item.comList = operationLogic.GetCommunicationByPersonId(item.personID);
                     item.contractTempList = operationLogic.GettblContractDetailTempByOfferId(item.productionID);
                     item.conUnitprice = sqloperationLogicAccounting.GetProductPriceByOfferID(item.productionID, productID);
-                
+
 
                 }
 
@@ -613,7 +614,7 @@ namespace Emsal.BLL
         {
             BaseOutput baseOutput;
             itemList = new List<ProductionDetail>();
-            decimal unitprice = 0;
+            Price price = new Price();
 
             try
             {
@@ -621,10 +622,16 @@ namespace Emsal.BLL
 
                 foreach (var item in itemList)
                 {
-                   
-                   item.personcomList = operationLogic.GetCommunicationByPersonId(item.personID);;
-                   // item.unitPrice = sqloperationLogicAccounting.GetOfferPriceCount(item.productionID, item.productId);
-                   // 
+
+                    item.personcomList = operationLogic.GetCommunicationByPersonId(item.personID);
+                  //  price = sqloperationLogicAccounting.GetOfferUnitPriceByProdcutID(item.productId);
+                  //  if (price)
+                  //  {
+                        
+                  //  }
+                  item.priceList = sqloperationLogicAccounting.GetOfferUnitPriceByProdcutID(item.productId);
+                    // item.unitPrice = sqloperationLogicAccounting.GetOfferPriceCount(item.productionID, item.productId);
+                    // 
                 }
 
 
@@ -645,19 +652,19 @@ namespace Emsal.BLL
         {
             BaseOutput baseOutput;
             itemList = new List<OfferPerson>();
-          
+
 
             try
             {
 
-               
+
                 itemList = sqloperationLogicAccounting.GetOfferPersonByProductID(productID);
                 foreach (var item in itemList)
                 {
                     item.comList = operationLogic.GetCommunicationByPersonId(item.personID);
-                  
+
                     item.unit_price = sqloperationLogicAccounting.GetOfferPriceCount(item.productionID, productID);
-                 
+
 
                 }
 

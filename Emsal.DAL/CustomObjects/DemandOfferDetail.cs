@@ -24,5 +24,6 @@ namespace Emsal.DAL.CustomObjects
         public string type { get; set; }
         public Int64 userId { get; set; }
         public Int64 enumKategoryID { get; set; }
+        public Price price { get; set; }
     }
 }

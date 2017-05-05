@@ -11,8 +11,10 @@ namespace Emsal.DAL.SearchObject
     {
         [DataMember(IsRequired = true)]
         public string productName { get; set; }
+        
         [DataMember(IsRequired = true)]
         public Int64 userID { get; set; }
+       
         [DataMember(IsRequired = true)]
         public int page_num { get; set; }
         [DataMember(IsRequired = true)]

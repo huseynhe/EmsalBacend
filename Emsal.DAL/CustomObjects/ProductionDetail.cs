@@ -12,7 +12,7 @@ namespace Emsal.DAL.CustomObjects
 
         public Int64 productionID { get; set; }
         public Int64 stateID { get; set; }
-       
+        public Price priceList { get; set; }
         public decimal unitPrice { get; set; }
         public decimal quantity { get; set; }
         public string description { get; set; }

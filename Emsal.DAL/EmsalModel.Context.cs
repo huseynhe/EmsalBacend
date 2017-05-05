@@ -73,6 +73,6 @@ namespace Emsal.DAL
         public DbSet<tblOffer_Production> tblOffer_Production { get; set; }
         public DbSet<tblProductCatalog> tblProductCatalogs { get; set; }
     
-       
+      
     }
 }

@@ -358,9 +358,13 @@ namespace Emsal.WebSrv
         BaseOutput WS_UpdateDemand_ProductionForStartAndEndDate(BaseInput baseinput, tblDemand_Production item, out List<tblDemand_Production> itemList);
 
         [OperationContract]
-        BaseOutput WS_GetDemand_ProductionsByStateAndUserID_OP(BaseInput baseinput, tblDemand_Production item,int page,int page_size, out List<DemandDetails> itemList);
+        BaseOutput WS_GetDemand_ProductionsByStateAndUserID_OP(BaseInput baseinput, DemandProductsForAccountingSearch ops, out List<DemandDetails> itemList);
         [OperationContract]
-        BaseOutput WS_GetDemand_ProductionsByStateAndUserID_OPC(BaseInput baseinput, tblDemand_Production item, out Int64 count);
+        BaseOutput WS_GetOffer_ProductionsByStateAndUserID_OP(BaseInput baseinput, DemandProductsForAccountingSearch ops, out List<DemandDetails> itemList);
+        [OperationContract]
+        BaseOutput WS_GetDemand_ProductionsByStateAndUserID_OPC(BaseInput baseinput, DemandProductsForAccountingSearch ops, out Int64 count);
+        [OperationContract]
+        BaseOutput WS_GetOffer_ProductionsByStateAndUserID_OPC(BaseInput baseinput, DemandProductsForAccountingSearch ops, out Int64 count);
        
         [OperationContract]
         BaseOutput WS_GetDemand_ProductionsByStateAndUserID(BaseInput baseinput, tblDemand_Production item, out List<tblDemand_Production> itemList);
@@ -733,7 +737,7 @@ namespace Emsal.WebSrv
 
         #region Sql Operation
         [OperationContract]
-        BaseOutput WS_GetDemandProductionAmountOfEachProduct(BaseInput baseinput,Int64 startDate,Int64 endDate, out List<DemandOfferDetail> itemList);
+        BaseOutput WS_GetDemandProductionAmountOfEachProduct(BaseInput baseinput,PriceOfEachProductSearch ops, out List<DemandOfferDetail> itemList);
 
 
         [OperationContract]

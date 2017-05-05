@@ -689,13 +689,23 @@ namespace Emsal.WebSrv
         {
             return businessLogic.GetDemand_ProductionsByStateAndUserID(baseinput, item, out itemList);
         }
-        public BaseOutput WS_GetDemand_ProductionsByStateAndUserID_OP(BaseInput baseinput, tblDemand_Production item,int page,int page_size, out List<DemandDetails> itemList)
+        public BaseOutput WS_GetDemand_ProductionsByStateAndUserID_OP(BaseInput baseinput,DemandProductsForAccountingSearch ops, out List<DemandDetails> itemList)
         {
-            return businessLogic.GetDemand_ProductionsByStateAndUserID_OP(baseinput, item,page,page_size, out itemList);
+            return businessLogic.GetDemand_ProductionsByStateAndUserID_OP(baseinput, ops, out itemList);
         }
-        public BaseOutput WS_GetDemand_ProductionsByStateAndUserID_OPC(BaseInput baseinput, tblDemand_Production item, out Int64 count)
+        public BaseOutput WS_GetOffer_ProductionsByStateAndUserID_OP(BaseInput baseinput, DemandProductsForAccountingSearch ops, out List<DemandDetails> itemList)
         {
-            return businessLogic.GetDemand_ProductionsByStateAndUserID_OPC(baseinput, item, out count);
+            return businessLogic.GetOffer_ProductionsByStateAndUserID_OP(baseinput, ops, out itemList);
+        }
+        public BaseOutput WS_GetDemand_ProductionsByStateAndUserID_OPC(BaseInput baseinput, DemandProductsForAccountingSearch ops,
+         out Int64 count)
+        {
+            return businessLogic.GetDemand_ProductionsByStateAndUserID_OPC(baseinput, ops, out count);
+        }
+        public BaseOutput WS_GetOffer_ProductionsByStateAndUserID_OPC(BaseInput baseinput, DemandProductsForAccountingSearch ops,
+         out Int64 count)
+        {
+            return businessLogic.GetOffer_ProductionsByStateAndUserID_OPC(baseinput, ops, out count);
         }
         public BaseOutput WS_GetDemandProductionForUserId(BaseInput baseinput, Int64 userId, out List<tblDemand_Production> itemList)
         {
@@ -1507,9 +1517,9 @@ namespace Emsal.WebSrv
         #endregion
 
         #region Sql OperationGetDemandProductsForAccounting
-        public BaseOutput WS_GetDemandProductionAmountOfEachProduct(BaseInput baseinput,Int64 startDate,Int64 endDate, out List<DemandOfferDetail> itemList)
+        public BaseOutput WS_GetDemandProductionAmountOfEachProduct(BaseInput baseinput,PriceOfEachProductSearch ops, out List<DemandOfferDetail> itemList)
         {
-            return businessLogic.GetDemandProductionAmountOfEachProduct(baseinput,startDate,endDate, out itemList);
+            return businessLogic.GetDemandProductionAmountOfEachProduct(baseinput,ops, out itemList);
 
         }
 

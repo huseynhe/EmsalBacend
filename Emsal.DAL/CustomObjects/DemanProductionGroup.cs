@@ -21,6 +21,7 @@ namespace Emsal.DAL.CustomObjects
         public decimal totalQuantityPrice { get; set; }
         public List<DemanOfferProduction> offerProductsList { get; set; }
         public List<OfferProducts> offerProducts { get; set; }
+        public Price priceList { get; set; }
         public string documentUrl { get; set; }
         public string documentName { get; set; }
         public decimal totalOfferQuantity { get; set; }

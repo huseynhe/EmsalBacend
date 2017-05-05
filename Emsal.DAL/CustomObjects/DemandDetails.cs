@@ -11,6 +11,7 @@ namespace Emsal.DAL.CustomObjects
         public string grup_Id { get; set; }
         public string title { get; set; }
         public string description { get; set; }
+        public string enumValueName { get; set; }
         public Nullable<decimal> unit_price { get; set; }
         public Nullable<decimal> total_price { get; set; }
         public Nullable<decimal> quantity { get; set; }
@@ -34,6 +35,13 @@ namespace Emsal.DAL.CustomObjects
         public Nullable<long> isNew { get; set; }
         public string productName { get; set; }
         public string parentName { get; set; }
+        public string documentUrl { get; set; }
+        public string documentName { get; set; }
         public List<ProductionCalendarDetail> productionCalendarList { get; set; }
+        public Nullable<long> potentialProduct_Id { get; set; }
+        public Nullable<long> productOrigin { get; set; }
+        public Nullable<long> contractId { get; set; }
+        public Nullable<long> productAddress_Id { get; set; }
+        public Nullable<long> production_type { get; set; }
     }
 }

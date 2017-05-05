@@ -950,13 +950,17 @@ namespace Emsal.BLL
 
         }
 
-        public BaseOutput GetDemandProductionAmountOfEachProduct(BaseInput baseinput, Int64 startDate, Int64 endDate, out List<DemandOfferDetail> itemList)
+        public BaseOutput GetDemandProductionAmountOfEachProduct(BaseInput baseinput, PriceOfEachProductSearch ops, out List<DemandOfferDetail> itemList)
         {
             BaseOutput baseOutput;
             List<DemandOfferDetail> objlist = new List<DemandOfferDetail>();
             try
             {
-                itemList = sqloperationLogic.GetDemandProductionAmountOfEachProduct(startDate, endDate);
+                itemList = sqloperationLogic.GetDemandProductionAmountOfEachProduct(ops);
+                foreach (var item in itemList)
+                {
+                    item.price = sqloperationLogic.GetDemandProductionAmountOfEachUnitPrice(ops.year, ops.partOfYear, item.productID);
+                }
 
 
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
@@ -2730,13 +2734,13 @@ namespace Emsal.BLL
             }
 
         }
-        public BaseOutput GetDemand_ProductionsByStateAndUserID_OP(BaseInput baseinput, tblDemand_Production item, int page, int page_size, out List<DemandDetails> itemList)
+        public BaseOutput GetDemand_ProductionsByStateAndUserID_OP(BaseInput baseinput,DemandProductsForAccountingSearch ops, out List<DemandDetails> itemList)
         {
             BaseOutput baseOutput;
             List<DemandDetails> objlist = new List<DemandDetails>();
             try
             {
-                itemList = sqloperationLogic.GetDemand_ProductionsByStateAndUserID_OP(item, page, page_size);
+                itemList = sqloperationLogic.GetDemand_ProductionsByStateAndUserID_OP(ops);
 
                 foreach (var item1 in itemList)
                 {
@@ -2758,14 +2762,64 @@ namespace Emsal.BLL
             }
 
         }
-        public BaseOutput GetDemand_ProductionsByStateAndUserID_OPC(BaseInput baseinput, tblDemand_Production item, out Int64 count)
+        public BaseOutput GetOffer_ProductionsByStateAndUserID_OP(BaseInput baseinput,DemandProductsForAccountingSearch ops, out List<DemandDetails> itemList)
+        {
+            BaseOutput baseOutput;
+            List<DemandDetails> objlist = new List<DemandDetails>();
+            try
+            {
+                itemList = sqloperationLogic.GetOffer_ProductionsByStateAndUserID_OP(ops);
+
+                foreach (var item1 in itemList)
+                {
+
+                    item1.productionCalendarList = sqloperationLogic.GetProductionCalendarOfferId(item1.Id);
+                    objlist.Add(item1);
+                }
+                itemList = objlist;
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+
+        }
+        public BaseOutput GetDemand_ProductionsByStateAndUserID_OPC(BaseInput baseinput,DemandProductsForAccountingSearch ops,  out Int64 count)
         {
             BaseOutput baseOutput;
             count = 0;
 
             try
             {
-                count = sqloperationLogic.GetDemand_ProductionsByStateAndUserID_OPC(item);
+                count = sqloperationLogic.GetDemand_ProductionsByStateAndUserID_OPC(ops);
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                count = 0;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput GetOffer_ProductionsByStateAndUserID_OPC(BaseInput baseinput, DemandProductsForAccountingSearch ops, out Int64 count)
+        {
+            BaseOutput baseOutput;
+            count = 0;
+
+            try
+            {
+                count = sqloperationLogic.GetOffer_ProductionsByStateAndUserID_OPC(ops);
 
 
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
