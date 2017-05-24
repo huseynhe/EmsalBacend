@@ -753,7 +753,7 @@ left join tblEnumValue ev on table1.EnumValueId=ev.Id and ev.Status=1
 							 		)
            
 
-            ) as tb where tb.EnumCategoryId=5 and userType_eV_ID in (26,50) and RoleId in (15,11) ";
+            ) as tb where tb.EnumCategoryId=5  ";
             var query3 = @"  )  SELECT *
         , CAST(rn + rn_reversed - 1 AS INT) AS total_rows
         , CAST(CASE (rn + rn_reversed - 1) % @page_size
@@ -929,7 +929,7 @@ left join tblEnumValue ev on table1.EnumValueId=ev.Id and ev.Status=1
            
 
             ) as tb
-  where tb.EnumCategoryId=5 and userType_eV_ID in (26,50) and RoleId in (15,11)  ";
+  where tb.EnumCategoryId=5  ";
 
 
             var queryadminID = @"  WHERE Id=@addressID ";

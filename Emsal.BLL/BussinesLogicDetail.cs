@@ -2615,13 +2615,15 @@ namespace Emsal.BLL
             BaseOutput baseOutput;
             try
             {
+               
+               
                 itemList = sqloperationLogic.GetDemandByForganistion_OP(ops);
                 foreach (var item in itemList)
                 {
                     List<tblCommunication> comlist = operationLogic.GetCommunicationByPersonId(item.personID);
                     item.comList = comlist;
                 }
-
+               
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
 
 

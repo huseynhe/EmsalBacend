@@ -24,3 +24,10 @@ C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.Utility\bin\Release\NLog.xm
 C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.Utility\obj\Release\Emsal.Utility.csprojResolveAssemblyReference.cache
 C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.Utility\obj\Release\Emsal.Utility.dll
 C:\Users\emsal\Desktop\EmsalBacend\EmsalBacend\Emsal.Utility\obj\Release\Emsal.Utility.pdb
+C:\Users\emsal\Desktop\backendSon\EmsalBacend\EmsalBacend\Emsal.Utility\bin\Release\Emsal.Utility.dll
+C:\Users\emsal\Desktop\backendSon\EmsalBacend\EmsalBacend\Emsal.Utility\bin\Release\Emsal.Utility.pdb
+C:\Users\emsal\Desktop\backendSon\EmsalBacend\EmsalBacend\Emsal.Utility\bin\Release\NLog.dll
+C:\Users\emsal\Desktop\backendSon\EmsalBacend\EmsalBacend\Emsal.Utility\bin\Release\NLog.xml
+C:\Users\emsal\Desktop\backendSon\EmsalBacend\EmsalBacend\Emsal.Utility\obj\Release\Emsal.Utility.csprojResolveAssemblyReference.cache
+C:\Users\emsal\Desktop\backendSon\EmsalBacend\EmsalBacend\Emsal.Utility\obj\Release\Emsal.Utility.dll
+C:\Users\emsal\Desktop\backendSon\EmsalBacend\EmsalBacend\Emsal.Utility\obj\Release\Emsal.Utility.pdb

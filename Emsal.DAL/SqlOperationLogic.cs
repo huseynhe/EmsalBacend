@@ -4588,7 +4588,7 @@ where tb.EnumCategoryId=5";
         FROM
 		 (
 
-  select distinct table1.*,pc.ProductName as productParentName,ev.name as kategoryName,adr.fullAddress as personAddress,adr.addressDesc as personAdrDesc
+ select distinct table1.*,pc.ProductName as productParentName,ev.name as kategoryName,adr.fullAddress as personAddress,adr.addressDesc as personAdrDesc
 ,ev1.name as userType from (select  op.Id ,op.unit_price,op.quantity,
  op.description,op.product_Id, pc.ProductName,pc.ProductCatalogParentID
 ,
@@ -4606,23 +4606,52 @@ left join tblUserRole ur on op.user_Id=ur.UserId  and ur.Status=1
  join tblUser u on op.user_Id=u.Id and u.Status=1
  left join tblPotential_Production pp on pp.Id=op.potentialProduct_Id and pp.Status=1
  
-where op.Status=1 and op.state_eV_Id=@state_eV_Id
+where op.Status=1 and op.state_eV_Id=@state_eV_Id and u.userType_eV_ID=26 and prc.EnumCategoryId=5
 )as table1
 left join tblProductCatalog pc on table1.ProductCatalogParentID=pc.Id and pc.Status=1
 left join tblEnumValue ev on table1.EnumValueId=ev.Id and ev.Status=1 
  left  join tblProductAddress padr on table1.productAddress_Id=padr.Id and padr.Status=1
  left join tblAddress adr on adr.Id=table1.address_Id and adr.Status=1
  left join tblEnumValue ev1 on ev1.Id=table1.userType_eV_ID and ev1.Status=1
-			   join tblPRM_AdminUnit au on padr.adminUnit_Id =au.Id 
-	   
-		   	   and  au.Id 
+			   join tblPRM_AdminUnit au on padr.adminUnit_Id =au.Id   and au.Status=1
+  and  au.Id 
 			   in (
-							select Id from cte
-							 		)
-           
-		   	 
+						select Id from cte
+						 		)
+	   
+	union
+	 select distinct table1.*,pc.ProductName as productParentName,ev.name as kategoryName,adr.fullAddress as personAddress,adr.addressDesc as personAdrDesc
+,ev1.name as userType from (select  op.Id ,op.unit_price,op.quantity,
+ op.description,op.product_Id, pc.ProductName,pc.ProductCatalogParentID
+,
+person.Name as personName,person.Surname,person.FatherName,person.gender,person.birtday,person.profilePicture, person.PinNumber,fo.name as organizationName,fo.voen
+,pa.fullAddress,pa.addressDesc, prc.EnumValueId,prc.EnumCategoryId,ur.RoleId,u.userType_eV_ID,op.productAddress_Id,u.Email,person.Id as personId,
+pp.quantity as potentialQuantity,person.address_Id,person.UserId
+ from tblOffer_Production op
+ join tblProductCatalog pc on op.product_Id=pc.Id and pc.Status=1  --and pc.Id in (select Id from cte)
 
-            ) as tb where tb.EnumCategoryId=5 and userType_eV_ID in (26,50) and RoleId in (15,11)
+left join tblPerson person on person.UserId=op.user_Id and op.Status=1
+left join tblForeign_Organization fo on op.user_Id=fo.userId and fo.Status=1
+left join tblProductAddress pa on pa.Id=op.productAddress_Id and pa.Status=1
+left join tblProductCatalogControl prc on prc.ProductId=op.product_Id and prc.Status=1
+left join tblUserRole ur on op.user_Id=ur.UserId  and ur.Status=1
+ join tblUser u on op.user_Id=u.Id and u.Status=1
+ left join tblPotential_Production pp on pp.Id=op.potentialProduct_Id and pp.Status=1
+ 
+where op.Status=1 and op.state_eV_Id=@state_eV_Id and u.userType_eV_ID=50 and prc.EnumCategoryId=5
+)as table1
+left join tblProductCatalog pc on table1.ProductCatalogParentID=pc.Id and pc.Status=1
+left join tblEnumValue ev on table1.EnumValueId=ev.Id and ev.Status=1 
+ left  join tblProductAddress padr on table1.productAddress_Id=padr.Id and padr.Status=1
+ left join tblAddress adr on adr.Id=table1.address_Id and adr.Status=1
+ left join tblEnumValue ev1 on ev1.Id=table1.userType_eV_ID and ev1.Status=1
+			   join tblPRM_AdminUnit au on padr.adminUnit_Id =au.Id   and au.Status=1
+  and  au.Id 
+			   in (
+						select Id from cte
+						 		)
+			      ) as tb where tb.EnumCategoryId=5 and RoleId in (11,15)
+		
 
 ";
             var query3 = @"
@@ -4675,10 +4704,7 @@ left join tblEnumValue ev on table1.EnumValueId=ev.Id and ev.Status=1
             {
                 squery.Append(queryProductId);
             }
-            //if (ops.state_eV_Id != 0)
-            //{
-            //    squery.Append(queryState);
-            //}
+         
             if (ops.roleID != 0)
             {
                 squery.Append(queryRoleId);
@@ -7658,7 +7684,7 @@ select COUNT(*) as Count from(
                 }
                 connection.Close();
             }
-
+            
             return count;
         }
         public List<OrganizationDetail> GetDemandByForganistion_OP(DemandForegnOrganization1 ops)
@@ -7833,6 +7859,7 @@ END
 
 
                     var reader = command.ExecuteReader();
+                    //command.CommandTimeout = 1;
                     while (reader.Read())
                     {
                         result.Add(new OrganizationDetail()

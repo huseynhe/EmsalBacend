@@ -2426,10 +2426,13 @@ namespace Emsal.WebSrv
 
         public BaseOutput WS_GetDemandByForganistion_OPC(BaseInput baseinput, DemandForegnOrganization1 ops, out Int64 count)
         {
+            
+            
             return businessLogic.GetDemandByForganistion_OPC(baseinput, ops, out count);
         }
         public BaseOutput WS_GetDemandByForganistion_OP(BaseInput baseinput, DemandForegnOrganization1 ops, out  List<OrganizationDetail> itemList)
         {
+          // System.Threading.Thread.Sleep(6000);
             return businessLogic.GetDemandByForganistion_OP(baseinput, ops, out itemList);
         }
         public BaseOutput WS_GetTotalDemandOffers(BaseInput baseinput,DemandOfferProductsSearch ops, out List<DemanProductionGroup> itemList)

@@ -1260,8 +1260,9 @@ namespace Emsal.WebSrv
         BaseOutput WS_GetOfferGroupedProductionDetailistForAccountingByRoleId(BaseInput baseinput,Int64 RoleId, out  List<OfferProductionDetail> itemList);
         [OperationContract]
         BaseOutput WS_GetOfferGroupedProductionDetailistForAccountingBySearch(BaseInput baseinput, OfferProductionDetailSearch ops, out  List<OfferProductionDetail> itemList);
-
+        
         [OperationContract]
+        
         BaseOutput WS_GetDemandByForganistion_OPC(BaseInput baseinput, DemandForegnOrganization1 ops, out Int64 count);
         [OperationContract]
         BaseOutput WS_GetDemandByForganistion_OP(BaseInput baseinput, DemandForegnOrganization1 ops, out  List<OrganizationDetail> itemList);
