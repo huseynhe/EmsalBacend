@@ -81,7 +81,13 @@ namespace Emsal.WebSrv
 
             return businessLogic.GetEnumCategorysForProduct(baseinput, out itemList);
         }
+        public BaseOutput WS_GetEnumCategorysForProductOnlyType(BaseInput baseinput, out List<tblEnumCategory> itemList)
+        {
 
+            BusinessLogic businessLogic = new BusinessLogic();
+
+            return businessLogic.GetEnumCategorysForProductOnlyType(baseinput, out itemList);
+        }
         public BaseOutput WS_AddEnumValue(BaseInput baseinput, tblEnumValue enumValue, out tblEnumValue enumValueOut)
         {
             BusinessLogic businessLogic = new BusinessLogic();
@@ -131,7 +137,12 @@ namespace Emsal.WebSrv
 
             return businessLogic.GetEnumValuesForProduct(baseinput, out itemList);
         }
+        public BaseOutput WS_GetEnumValuesForProductOnlyType(BaseInput baseinput, out List<tblEnumValue> itemList)
+        {
+            BusinessLogic businessLogic = new BusinessLogic();
 
+            return businessLogic.GetEnumValuesForProductOnlyType(baseinput, out itemList);
+        }
         public BaseOutput WS_GetEnumValueByName(BaseInput baseinput, string name, out tblEnumValue item)
         {
             BusinessLogic businessLogic = new BusinessLogic();
@@ -392,6 +403,11 @@ namespace Emsal.WebSrv
         {
             BusinessLogic businessLogic = new BusinessLogic();
             return businessLogic.GetProductCatalogsByParentId(baseinput, parentID, out pCatalogList);
+        }
+        public BaseOutput WS_GetProductCatalogsByParentIdOnlyActive(BaseInput baseinput, int parentID, out List<tblProductCatalog> pCatalogList)
+        {
+            BusinessLogic businessLogic = new BusinessLogic();
+            return businessLogic.GetProductCatalogsByParentIdOnlyActive(baseinput, parentID, out pCatalogList);
         }
         public BaseOutput WS_GetProductCatalogDetailsByParentId(BaseInput baseinput, int parentID, out List<ProductCatalogDetail> pCatalogDetailList)
         {
@@ -1537,9 +1553,9 @@ namespace Emsal.WebSrv
         //    return businessLogic.GetDemandOfferProductionTotal(baseinput, addressID, out itemList);
 
         //}
-        public BaseOutput WS_GetDemandOfferProductionTotal(BaseInput baseinput, Int64 addressID,Int64 startDate,Int64 endDate, out List<DemandOfferDetail> itemList)
+        public BaseOutput WS_GetDemandOfferProductionTotal(BaseInput baseinput, Int64 addressID, Int64 startDate, Int64 endDate, Int64 yearEvId, out List<DemandOfferDetail> itemList)
         {
-            return businessLogic.GetDemandOfferProductionTotal(baseinput, addressID,startDate,endDate, out itemList);
+            return businessLogic.GetDemandOfferProductionTotal(baseinput, addressID,startDate,endDate,yearEvId, out itemList);
 
         }
         public BaseOutput WS_GetDemandProductsForAccounting(BaseInput baseinput, Int64 state_eV_Id, out List<ProductionDetail> itemList)
@@ -1725,7 +1741,7 @@ namespace Emsal.WebSrv
         {
             return businessLogic.GetProductPriceByYearId(baseinput, yearId, out item);
         }
-        public BaseOutput WS_GetProductPriceByYearIdAndProductId(BaseInput baseinput, Int64 productID, Int64 year, out ProductPriceDetail item)
+        public BaseOutput WS_GetProductPriceByYearIdAndProductId(BaseInput baseinput, Int64 productID, Int64 year, out List<ProductPriceDetail> item)
         {
             return businessLogic.GetProductPriceByYearIdAndProductId(baseinput, productID, year, out item);
         }
@@ -2132,11 +2148,16 @@ namespace Emsal.WebSrv
             return businessLogic.GetPersonInformationByPinNumber(baseinput, PinNumber, out itemList);
         }
 
-        public BaseOutput GetProductCatalogsWithParent(BaseInput baseinput, out List<ProductCatalogDetail> pCatalogDetailList)
+        public BaseOutput WS_GetProductCatalogsWithParent(BaseInput baseinput, out List<ProductCatalogDetail> pCatalogDetailList)
         {
             return businessLogic.GetProductCatalogsWithParent(baseinput, out pCatalogDetailList);
         }
+        public BaseOutput WS_GetProductCatalogsWithParentOnlyActive(BaseInput baseinput, out List<ProductCatalogDetail> pCatalogDetailList)
+        {
 
+            return businessLogic.GetProductCatalogsWithParentOnlyActive(baseinput, out pCatalogDetailList);
+
+        }
         public tblProductionCalendar[] WS_GetProductionCalendar1(BaseInput baseInput)
         {
             return businessLogic.GetProductionCalendar1(baseInput);
@@ -2402,9 +2423,9 @@ namespace Emsal.WebSrv
             return businessLogic.GetOfferGroupedProductionDetailistForAccountingByProductId(baseinput, productID, out itemList);
 
         }
-        public BaseOutput WS_GetOfferGroupedProductionDetailistForAccountingByRoleId(BaseInput baseinput,Int64 RoleId, out  List<OfferProductionDetail> itemList)
+        public BaseOutput WS_GetOfferGroupedProductionDetailistForAccountingByRoleId(BaseInput baseinput,Int64 RoleId,Int64 yearEvId, out  List<OfferProductionDetail> itemList)
         {
-            return businessLogic.GetOfferGroupedProductionDetailistForAccountingByRoleId(baseinput,RoleId, out itemList);
+            return businessLogic.GetOfferGroupedProductionDetailistForAccountingByRoleId(baseinput,RoleId,yearEvId, out itemList);
         }
         public BaseOutput WS_GetOfferProductionDetailistForUser_OP(BaseInput baseinput, DemandProductionDetailistForUser ops, out List<ProductionDetail> itemList)
         {
@@ -2497,6 +2518,10 @@ namespace Emsal.WebSrv
         {
             return businessLogic.GetGovermentOrganisatinByAdminID(baseinput, adminIdList, out itemList);
         }
+        public BaseOutput WS_GetDemandGovermentOrganisatinByAdminID(BaseInput baseinput, string adminIdList, out List<ForeignOrganization> itemList)
+        {
+            return businessLogic.GetDemandGovermentOrganisatinByAdminID(baseinput, adminIdList, out itemList);
+        }
         public BaseOutput WS_GetPRM_AdminUnitByAdminID(BaseInput baseinput, Int64 adminId, out List<AdminUnitRegion> itemList)
         {
             return businessLogic.GetPRM_AdminUnitByAdminID(baseinput, adminId, out itemList);
@@ -2519,9 +2544,13 @@ namespace Emsal.WebSrv
         }
 
 
-        public BaseOutput WS_GetProductCatalogsOfferWitoutTypeOfEV(BaseInput baseinput,Int64 userID,  out List<tblProductCatalog> itemList)
+        public BaseOutput WS_GetProductCatalogsOfferWitoutTypeOfEV(BaseInput baseinput,Int64 userID,Int64 yearEvId,  out List<tblProductCatalog> itemList)
         {
-            return businessLogic.GetProductCatalogsOfferWitoutTypeOfEV(baseinput,userID,  out itemList);
+            return businessLogic.GetProductCatalogsOfferWitoutTypeOfEV(baseinput,userID, yearEvId, out itemList);
+        }
+        public BaseOutput WS_GetProductCatalogsDemandWitoutTypeOfEV(BaseInput baseinput, Int64 userID, Int64 yearEvId, out List<tblProductCatalog> itemList)
+        {
+            return businessLogic.GetProductCatalogsDemandWitoutTypeOfEV(baseinput, userID, yearEvId, out itemList);
         }
         public BaseOutput WS_GetTotalOffer1(BaseInput baseinput, OfferProductionDetailSearch ops, out List<ProductionDetail> itemList)
         {
@@ -2541,6 +2570,268 @@ namespace Emsal.WebSrv
         {
            return businessLogic.GetOfferGroupedProductionDetailistForAccountingByProductId_OPC(baseinput,ops,out count);
         }
-      
+        #region tblBudjet
+        public BaseOutput WS_GetBudjeByYearIdandOrgId(BaseInput baseinput, Int64 year_ev_id, Int64 organizationID, out List<tblBudjet> itemList)
+        {
+            return businessLogic.GetBudjeByYearIdandOrgId(baseinput, year_ev_id, organizationID, out itemList);
+        }
+        public BaseOutput WS_AddBudjet(BaseInput baseinput, tblBudjet item, out tblBudjet BudjetOut)
+        {
+            return businessLogic.AddBudjet(baseinput, item, out BudjetOut);
+
+        }
+
+        public BaseOutput WS_DeleteBudjet(BaseInput baseinput, tblBudjet Budjet)
+        {
+            return businessLogic.DeleteBudjet(baseinput, Budjet);
+        }
+
+        public BaseOutput WS_GetBudjet(BaseInput baseInput, out List<tblBudjet> BudjetOut)
+        {
+            return businessLogic.GetBudjet(baseInput, out BudjetOut);
+        }
+        public BaseOutput WS_UpdateBudjet(BaseInput baseInput, tblBudjet budjet, out tblBudjet budjetOut)
+        {
+            return businessLogic.UpdateBudjet(baseInput,budjet, out budjetOut);
+        }
+        public BaseOutput WS_GetBudjetById(BaseInput baseInput, Int64 Id, out tblBudjet budjetOut)
+        {
+            return businessLogic.GetBudjetById(baseInput, Id, out budjetOut);
+        }
+        public BaseOutput WS_GetBudjeByOrgId(BaseInput baseInput, Int64 org_Id, out  List<tblBudjet> budjetOut)
+        {
+            return businessLogic.GetBudjeByOrgId(baseInput, org_Id, out budjetOut);
+        }
+
+        #endregion
+        public BaseOutput WS_GetDemandTotalPriceByYearEvId(BaseInput baseinput, Int64 orgId, Int64 yearEvID, out decimal count)
+        {
+            return businessLogic.GetDemandTotalPriceByYearEvId(baseinput, orgId, yearEvID, out count);
+
+        }
+        public BaseOutput WS_GetDemandTotalPriceByProductID(BaseInput baseinput, Int64 productId, Int64 partOfYear, out decimal count)
+        {
+            return businessLogic.GetDemandTotalPriceByProductID(baseinput, productId, partOfYear, out count);
+        }
+        public BaseOutput WS_GetDemandTotalPriceByYearEvId1(BaseInput baseinput, Int64 orgId, Int64 yearEvID, out List<Price> itemList)
+        {
+            return businessLogic.GetDemandTotalPriceByYearEvId1(baseinput, orgId, yearEvID, out itemList);
+        }
+        public BaseOutput WS_GetDemandCalPriceByYearEvId(BaseInput baseinput, Int64 orgId, Int64 yearEvID, out List<DemandPrice> itemList)
+        {
+            return businessLogic.GetDemandCalPriceByYearEvId(baseinput, orgId, yearEvID, out itemList);
+        }
+        public BaseOutput WS_GetOrganizationDetailist(BaseInput baseinput, DemandOfferProductsSearch ops, out List<OrganizationList> itemList)
+        {
+            return businessLogic.GetOrganizationDetailist(baseinput,ops, out itemList);
+        }
+        public BaseOutput WS_GetOrganizationDetailist_OPC(BaseInput baseinput, DemandOfferProductsSearch ops, out Int64 count)
+        {
+            return businessLogic.GetOrganizationDetailist_OPC(baseinput, ops, out count);
+        }
+        #region tblEvaluations
+
+        public BaseOutput WS_AddEvaluation(BaseInput baseinput, tblEvaluation item, out tblEvaluation EvaluationOut)
+        {
+
+            return businessLogic.AddEvaluation(baseinput, item, out EvaluationOut);
+        }
+
+        public BaseOutput WS_DeleteEvaluation(BaseInput baseinput, tblEvaluation item)
+        {
+            return businessLogic.DeleteEvaluation(baseinput, item);
+        }
+
+        public BaseOutput WS_GetEvaluation(BaseInput baseInput, out List<tblEvaluation> itemOut)
+        {
+            return businessLogic.GetEvaluation(baseInput, out itemOut);
+        }
+        public BaseOutput WS_UpdateEvaluation(BaseInput baseinput, tblEvaluation item, out tblEvaluation itemOut)
+        {
+            return businessLogic.UpdateEvaluation(baseinput, item, out itemOut);
+        }
+        public BaseOutput WS_GetEvaluationById(BaseInput baseinput, Int64 Id, out tblEvaluation itemOut)
+        {
+            return businessLogic.GetEvaluationById(baseinput, Id, out itemOut);
+        }
+
+        public BaseOutput WS_GetEvaluationByParentId(BaseInput baseinput, Int64 parentID, out List<tblEvaluation> itemOut)
+        {
+            return businessLogic.GetEvaluationByParentId(baseinput, parentID, out itemOut);
+        }
+        public BaseOutput WS_GetEvaluationByParentId_OP(BaseInput baseinput, Int64 parentID,int page,int pageSize, out List<tblEvaluation> itemOut)
+        {
+            return businessLogic.GetEvaluationByParentId_OP(baseinput, parentID,page,pageSize, out itemOut);
+        }
+        public BaseOutput WS_GetEvaluationByParentId_OPC(BaseInput baseinput, Int64 parentID, out Int64 count)
+        {
+            return businessLogic.GetEvaluationByParentId_OPC(baseinput, parentID, out count);
+        }
+        public BaseOutput WS_GetEvaluation_OPC(BaseInput baseinput, EvaluationObjects ops, out Int64 count)
+        {
+            return businessLogic.GetEvaluation_OPC(baseinput, ops, out count);
+        }
+        public BaseOutput WS_GetEvaluation_OP(BaseInput baseinput, EvaluationObjects ops, out List<EvaluationDetails> itemList)
+        {
+            return businessLogic.GetEvaluation_OP(baseinput, ops, out itemList);
+        }
+        ///GetBudjeByYearIdandOrgId
+        #endregion
+        #region tblEvaluationAttachments
+
+        public BaseOutput WS_GetEvaluationAttachmentByUserIDandGroupId(BaseInput baseinput, Int64 userID, string groupID, out List<tblEvaluationAttachment> item)
+        {
+            return businessLogic.GetEvaluationAttachmentByUserIDandGroupId(baseinput, userID, groupID, out item);
+        }
+        public BaseOutput WS_AddEvaluationAttachment(BaseInput baseinput, tblEvaluationAttachment item, out tblEvaluationAttachment EvaluationOut)
+        {
+
+            return businessLogic.AddEvaluationAttachment(baseinput, item, out EvaluationOut);
+        }
+        public BaseOutput WS_GetEvaluationAttachment_OPC(BaseInput baseinput, EvaluationObjects ops, out Int64 count)
+        {
+            return businessLogic.GetEvaluationAttachment_OPC(baseinput, ops, out count);
+        }
+        public BaseOutput WS_GetEvaluationAttachment_OP(BaseInput baseinput, EvaluationObjects ops, out List<EvaluationAttachmentDetails> itemList)
+        {
+            return businessLogic.GetEvaluationAttachment_OP(baseinput, ops, out itemList);
+        }
+        public BaseOutput WS_DeleteEvaluationAttachment(BaseInput baseinput, tblEvaluationAttachment item)
+        {
+            return businessLogic.DeleteEvaluationAttachment(baseinput, item);
+        }
+
+        public BaseOutput WS_GetEvaluationAttachment(BaseInput baseInput, out List<tblEvaluationAttachment> itemOut)
+        {
+            return businessLogic.GetEvaluationAttachment(baseInput, out itemOut);
+        }
+        
+        public BaseOutput WS_UpdateEvaluationAttachment(BaseInput baseinput, tblEvaluationAttachment item, out tblEvaluationAttachment itemOut)
+        {
+            return businessLogic.UpdateEvaluationAttachment(baseinput, item, out itemOut);
+        }
+        public BaseOutput WS_GetEvaluationAttachmentById(BaseInput baseinput, Int64 Id, out tblEvaluationAttachment itemOut)
+        {
+            return businessLogic.GetEvaluationAttachmentById(baseinput, Id, out itemOut);
+        }
+
+        public BaseOutput WS_GetEvaluationAttachmentByEvaluationId(BaseInput baseinput, Int64 EvaluationId, out List<tblEvaluationAttachment> itemOut)
+        {
+            return businessLogic.GetEvaluationAttachmentByEvaluationId(baseinput, EvaluationId, out itemOut);
+        }
+        public BaseOutput WS_GetEvaluationAttachmentByEvaluationId_OP(BaseInput baseinput, Int64 EvaluationId,int page,int pageSize, out List<tblEvaluationAttachment> itemOut)
+        {
+            return businessLogic.GetEvaluationAttachmentByEvaluationId_OP(baseinput, EvaluationId,page,pageSize, out itemOut);
+        }
+        public BaseOutput WS_GetEvaluationAttachmentByEvaluationId_OPC(BaseInput baseinput, Int64 EvaluationId, out Int64 itemOut)
+        {
+            return businessLogic.GetEvaluationAttachmentByEvaluationId_OPC(baseinput, EvaluationId, out itemOut);
+        }
+        ///GetBudjeByYearIdandOrgId
+        #endregion 
+        #region tblEvaluationResults
+        public BaseOutput WS_GetEvaluationResultByUserIDandGroupId(BaseInput baseinput, Int64 userID, string groupID, out List<tblEvaluationResult> item)
+        {
+
+            return businessLogic.GetEvaluationResultByUserIDandGroupId(baseinput, userID, groupID, out item);
+        }
+        public BaseOutput WS_AddEvaluationResult(BaseInput baseinput, tblEvaluationResult item, out tblEvaluationResult EvaluationOut)
+        {
+
+            return businessLogic.AddEvaluationResult(baseinput, item, out EvaluationOut);
+
+        }
+
+        public BaseOutput WS_DeleteEvaluationResult(BaseInput baseinput, tblEvaluationResult item)
+        {
+            return businessLogic.DeleteEvaluationResult(baseinput, item);
+        }
+
+        public BaseOutput WS_GetEvaluationResult(BaseInput baseInput, out List<tblEvaluationResult> contractOut)
+        {
+            return businessLogic.GetEvaluationResult(baseInput, out contractOut);
+        }
+        public BaseOutput WS_UpdateEvaluationResult(BaseInput baseinput, tblEvaluationResult contract, out tblEvaluationResult contractOut)
+        {
+            return businessLogic.UpdateEvaluationResult(baseinput, contract, out contractOut);
+        }
+        public BaseOutput WS_GetEvaluationResultById(BaseInput baseinput, Int64 Id, out tblEvaluationResult contract)
+        {
+            return businessLogic.GetEvaluationResultById(baseinput, Id, out contract);
+        }
+
+        public BaseOutput WS_GetEvaluationResultByUserId(BaseInput baseinput, Int64 UserId, out List<tblEvaluationResult> item)
+        {
+            return businessLogic.GetEvaluationResultByUserId(baseinput, UserId, out item);
+        }
+        public BaseOutput WS_GetEvaluationResult_OP(BaseInput baseInput,EvaluationObjects ops, out List<tblEvaluationResult> contractOut)
+        {
+            return businessLogic.GetEvaluationResult_OP(baseInput,ops, out contractOut);
+        }
+        public BaseOutput WS_GetEvaluationResult_OPC(BaseInput baseInput, EvaluationObjects ops, out Int64 contractOut)
+        {
+            return businessLogic.GetEvaluationResult_OPC(baseInput,ops, out contractOut);
+        }
+        public BaseOutput WS_GetEvaluationResultByUserId_OP(BaseInput baseinput, Int64 UserId, int page, int pageSize, out List<tblEvaluationResult> item)
+        {
+            return businessLogic.GetEvaluationResultByUserId_OP(baseinput, UserId,page,pageSize, out item);
+        }
+        public BaseOutput WS_GetEvaluationResultByUserId_OPC(BaseInput baseinput, Int64 UserId, out Int64 item)
+        {
+            return businessLogic.GetEvaluationResultByUserId_OPC(baseinput, UserId, out item);
+        }
+        ///GetBudjeByYearIdandOrgId
+        #endregion 
+        #region tblEvaluationResultQuestions
+       
+        public BaseOutput WS_GetEvaluationResultQuestionByUserIDandGroupId(BaseInput baseinput, Int64 userID, string groupID, out List<tblEvaluationResultQuestion> item)
+        {
+            return businessLogic.GetEvaluationResultQuestionByUserIDandGroupId(baseinput, userID, groupID, out item);
+        }
+        public BaseOutput WS_AddEvaluationResultQuestion(BaseInput baseinput, tblEvaluationResultQuestion item, out tblEvaluationResultQuestion EvaluationOut)
+        {
+            return businessLogic.AddEvaluationResultQuestion(baseinput, item,out EvaluationOut);
+
+        }
+
+        public BaseOutput WS_DeleteEvaluationResultQuestion(BaseInput baseinput, tblEvaluationResultQuestion item)
+        {
+            return businessLogic.DeleteEvaluationResultQuestion(baseinput, item);
+        }
+
+
+        public BaseOutput WS_UpdateEvaluationResultQuestion(BaseInput baseinput, tblEvaluationResultQuestion item, out tblEvaluationResultQuestion itemOut)
+        {
+            return businessLogic.UpdateEvaluationResultQuestion(baseinput, item, out itemOut);
+        }
+        public BaseOutput WS_GetEvaluationResultQuestionById(BaseInput baseinput, Int64 Id, out tblEvaluationResultQuestion item)
+        {
+            return businessLogic.GetEvaluationResultQuestionById(baseinput, Id, out item);
+        }
+
+
+        public BaseOutput WS_GetEvaluationResultQuestionByUserId_OP(BaseInput baseinput, Int64 UserId, int page, int pageSize, out List<tblEvaluationResultQuestion> item)
+        {
+            return businessLogic.GetEvaluationResultQuestionByUserId_OP(baseinput, UserId,page,pageSize, out item);
+        }
+        ///GetBudjeByYearIdandOrgId
+        public BaseOutput WS_GetEvaluationResultQuestionByUserId_OPC(BaseInput baseinput, Int64 UserId, out Int64 item)
+        {
+            return businessLogic.GetEvaluationResultQuestionByUserId_OPC(baseinput, UserId, out item);
+        }
+
+        public BaseOutput WS_GetEvaluationResultQuestion_OP(BaseInput baseInput, EvaluationObjects ops, out List<tblEvaluationResultQuestion> contractOut)
+        {
+            return businessLogic.GetEvaluationResultQuestion_OP(baseInput,ops, out contractOut);
+        }
+        public BaseOutput WS_GetEvaluationResultQuestion_OPC(BaseInput baseInput, EvaluationObjects ops, out Int64 contractOut)
+        {
+            return businessLogic.GetEvaluationResultQuestion_OPC(baseInput,ops, out contractOut);
+        }
+        #endregion 
+        public BaseOutput WS_GetEnumValueListByProductID(BaseInput baseinput, string productIdList, out List<tblEnumValue> itemList)
+        {
+            return businessLogic.GetEnumValueListByProductID(baseinput, productIdList, out itemList);
+        }
     }
 }

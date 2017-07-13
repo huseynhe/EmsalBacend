@@ -18,5 +18,6 @@ namespace Emsal.Utility.CustomObjects
         {
             return  String.IsNullOrEmpty( data)? String.Empty : data;
         }
+
     }
 }

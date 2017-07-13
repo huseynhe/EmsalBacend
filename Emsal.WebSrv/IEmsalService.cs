@@ -46,7 +46,8 @@ namespace Emsal.WebSrv
 
         [OperationContract]
         BaseOutput WS_GetEnumCategorysForProduct(BaseInput baseinput, out List<tblEnumCategory> itemList);
-
+        [OperationContract]
+        BaseOutput WS_GetEnumCategorysForProductOnlyType(BaseInput baseinput, out List<tblEnumCategory> itemList);
         [OperationContract]
         BaseOutput WS_AddEnumValue(BaseInput baseinput, tblEnumValue enumValue, out tblEnumValue enumValueOut);
 
@@ -67,6 +68,8 @@ namespace Emsal.WebSrv
 
         [OperationContract]
         BaseOutput WS_GetEnumValuesForProduct(BaseInput baseinput, out List<tblEnumValue> itemList);
+        [OperationContract]
+        BaseOutput WS_GetEnumValuesForProductOnlyType(BaseInput baseinput, out List<tblEnumValue> itemList);
 
         [OperationContract]
         BaseOutput WS_GetEnumValueByName(BaseInput baseinput, string name, out tblEnumValue item);
@@ -212,6 +215,9 @@ namespace Emsal.WebSrv
         [OperationContract]
         BaseOutput WS_GetProductCatalogsByParentId(BaseInput baseinput, int parentID, out List<tblProductCatalog> pCatalogList);
         [OperationContract]
+        BaseOutput WS_GetProductCatalogsByParentIdOnlyActive(BaseInput baseinput, int parentID, out List<tblProductCatalog> pCatalogList);
+
+        [OperationContract]
         BaseOutput WS_GetProductCatalogDetailsByParentId(BaseInput baseinput, int parentID, out List<ProductCatalogDetail> pCatalogDetailList);
         [OperationContract]
         BaseOutput WS_GetProductCatalogDetailsById(BaseInput baseinput, int productID, out ProductCatalogDetail pCatalogDetail);
@@ -255,7 +261,7 @@ namespace Emsal.WebSrv
         #region WS_Offer_Production
         [OperationContract]
         BaseOutput WS_UpdateOffer_ProductionForUserID(BaseInput baseinput, tblOffer_Production item, out List<tblOffer_Production> itemList);
-       
+
         [OperationContract]
         BaseOutput WS_GetOrderProducts(BaseInput baseinput, out List<OfferProducts> itemList);
         [OperationContract]
@@ -271,9 +277,9 @@ namespace Emsal.WebSrv
         [OperationContract]
         BaseOutput WS_GetOffer_Productions(BaseInput baseinput, out List<tblOffer_Production> itemList);
         [OperationContract]
-        BaseOutput WS_GetOffer_ProductionsByUserID_OP(BaseInput baseinput, Int64 UserID,int page ,int page_size, out List<OfferDetails> itemList);
+        BaseOutput WS_GetOffer_ProductionsByUserID_OP(BaseInput baseinput, Int64 UserID, int page, int page_size, out List<OfferDetails> itemList);
         [OperationContract]
-        BaseOutput WS_GetOffer_ProductionsByUserID_OPC(BaseInput baseinput, Int64 UserID,  out Int64 count);
+        BaseOutput WS_GetOffer_ProductionsByUserID_OPC(BaseInput baseinput, Int64 UserID, out Int64 count);
         [OperationContract]
         BaseOutput WS_GetOffer_ProductionsByUserID1(BaseInput baseinput, Int64 UserID, out List<tblOffer_Production> itemList);
         [OperationContract]
@@ -365,7 +371,7 @@ namespace Emsal.WebSrv
         BaseOutput WS_GetDemand_ProductionsByStateAndUserID_OPC(BaseInput baseinput, DemandProductsForAccountingSearch ops, out Int64 count);
         [OperationContract]
         BaseOutput WS_GetOffer_ProductionsByStateAndUserID_OPC(BaseInput baseinput, DemandProductsForAccountingSearch ops, out Int64 count);
-       
+
         [OperationContract]
         BaseOutput WS_GetDemand_ProductionsByStateAndUserID(BaseInput baseinput, tblDemand_Production item, out List<tblDemand_Production> itemList);
         [OperationContract]
@@ -434,19 +440,19 @@ namespace Emsal.WebSrv
         [OperationContract]
         BaseOutput WS_GetOrganisationTypeUsers(BaseInput baseinput, long govRoleEnum, long userType, out List<tblUser> itemList);
         [OperationContract]
-        BaseOutput WS_GetOrganisationTypeUsers_OP(BaseInput baseinput,UserDetailSearch ops, out List<UserDetails> itemList);
+        BaseOutput WS_GetOrganisationTypeUsers_OP(BaseInput baseinput, UserDetailSearch ops, out List<UserDetails> itemList);
         [OperationContract]
         BaseOutput WS_GetOrganisationTypeUsers_OPC(BaseInput baseinput, UserDetailSearch ops, out Int64 count);
         [OperationContract]
         BaseOutput WS_GetGovernmentOrganizationTypeUsers_OP(BaseInput baseinput, UserDetailSearch ops, out List<UserDetails> itemList);
         [OperationContract]
         BaseOutput WS_GetGovernmentOrganizationTypeUsers_OPC(BaseInput baseinput, UserDetailSearch ops, out Int64 count);
-      
+
         [OperationContract]
-        BaseOutput WS_GetUsersByUserType_OP(BaseInput baseinput,UserDetailSearch ops, out List<UserDetails> itemList);
+        BaseOutput WS_GetUsersByUserType_OP(BaseInput baseinput, UserDetailSearch ops, out List<UserDetails> itemList);
         [OperationContract]
-        BaseOutput WS_GetUsersByUserType_OPC(BaseInput baseinput,UserDetailSearch ops, out Int64 count);
-       
+        BaseOutput WS_GetUsersByUserType_OPC(BaseInput baseinput, UserDetailSearch ops, out Int64 count);
+
         [OperationContract]
         BaseOutput WS_GetUsersByUserType(BaseInput baseinput, long userTypeID, out List<tblUser> itemList);
         #endregion
@@ -737,7 +743,7 @@ namespace Emsal.WebSrv
 
         #region Sql Operation
         [OperationContract]
-        BaseOutput WS_GetDemandProductionAmountOfEachProduct(BaseInput baseinput,PriceOfEachProductSearch ops, out List<DemandOfferDetail> itemList);
+        BaseOutput WS_GetDemandProductionAmountOfEachProduct(BaseInput baseinput, PriceOfEachProductSearch ops, out List<DemandOfferDetail> itemList);
 
 
         [OperationContract]
@@ -746,7 +752,7 @@ namespace Emsal.WebSrv
         BaseOutput WS_GetPersonalinformationByRoleId_OPC(BaseInput baseinput, PotensialUserForAdminUnitIdList ops, out Int64 count);
 
         [OperationContract]
-        BaseOutput WS_GetDemandOfferProductionTotal(BaseInput baseinput, Int64 addressID,Int64 startDate,Int64 endDate, out List<DemandOfferDetail> itemList);
+        BaseOutput WS_GetDemandOfferProductionTotal(BaseInput baseinput, Int64 addressID, Int64 startDate, Int64 endDate, Int64 yearEvId, out List<DemandOfferDetail> itemList);
         //[OperationContract]
         //BaseOutput WS_GetDemandOfferProductionTotal(BaseInput baseinput, Int64 addressID, out List<DemandOfferDetail> itemList);
 
@@ -852,7 +858,7 @@ namespace Emsal.WebSrv
         BaseOutput WS_GetProductPriceByYearId(BaseInput baseinput, Int64 yearId, out ProductPriceDetail item);
 
         [OperationContract]
-        BaseOutput WS_GetProductPriceByYearIdAndProductId(BaseInput baseinput, Int64 productID, Int64 year, out ProductPriceDetail item);
+        BaseOutput WS_GetProductPriceByYearIdAndProductId(BaseInput baseinput, Int64 productID, Int64 year, out List<ProductPriceDetail> item);
 
         [OperationContract]
         BaseOutput WS_GetProductPriceByYearAndProductIdAndPartOfYear(BaseInput baseinput, Int64 productID, Int64 year, Int64 partOfYear, out ProductPriceDetail item);
@@ -1026,7 +1032,7 @@ namespace Emsal.WebSrv
 
 
         [OperationContract]
-        BaseOutput WS_GetProducListByUserID(BaseInput baseinput, Int64 userID,Int64 productID, out List<ProductCatalogDetail> pCatalogDetailList);
+        BaseOutput WS_GetProducListByUserID(BaseInput baseinput, Int64 userID, Int64 productID, out List<ProductCatalogDetail> pCatalogDetailList);
 
 
 
@@ -1043,7 +1049,10 @@ namespace Emsal.WebSrv
         BaseOutput WS_GetComMessageAttachment(BaseInput baseInput, out List<tblComMessageAttachment> comMessageAttachment);
         [OperationContract]
         BaseOutput WS_GetComMessageAttachmentById(BaseInput baseinput, Int64 Id, out tblComMessageAttachment comMessageAttachment);
-
+        [OperationContract]
+        BaseOutput WS_GetEvaluationAttachment_OPC(BaseInput baseinput, EvaluationObjects ops, out Int64 count);
+        [OperationContract]
+        BaseOutput WS_GetEvaluationAttachment_OP(BaseInput baseinput, EvaluationObjects ops, out List<EvaluationAttachmentDetails> itemList);
 
 
 
@@ -1080,7 +1089,9 @@ namespace Emsal.WebSrv
         BaseOutput WS_GetPersonInformationByPinNumber(BaseInput baseinput, string PinNumber, out List<PersonInformation> itemList);
 
         [OperationContract]
-        BaseOutput GetProductCatalogsWithParent(BaseInput baseinput, out List<ProductCatalogDetail> pCatalogDetailList);
+        BaseOutput WS_GetProductCatalogsWithParent(BaseInput baseinput, out List<ProductCatalogDetail> pCatalogDetailList);
+        [OperationContract]
+        BaseOutput WS_GetProductCatalogsWithParentOnlyActive(BaseInput baseinput, out List<ProductCatalogDetail> pCatalogDetailList);
 
         [OperationContract]
         tblProductionCalendar[] WS_GetProductionCalendar1(BaseInput baseInput);
@@ -1094,7 +1105,7 @@ namespace Emsal.WebSrv
         BaseOutput WS_GetOfferProductionDetailistForMonitoringEVId(BaseInput baseinput, Int64 monintoring_eV_Id, long userID, out List<ProductionDetail> itemList);
 
 
-        #region Optimisation public 
+        #region Optimisation public
         [OperationContract]
         BaseOutput WS_GetOfferProductionDetailistForUser_OP(BaseInput baseinput, DemandProductionDetailistForUser ops, out List<ProductionDetail> itemList);
 
@@ -1146,7 +1157,7 @@ namespace Emsal.WebSrv
         BaseOutput WS_GetDemandProductionDetailistForUser_OPC(BaseInput baseinput, DemandProductionDetailistForUser ops, out Int64 count);
         [OperationContract]
         BaseOutput WS_GetOfferProductionDetailistForUser_OPC(BaseInput baseinput, DemandProductionDetailistForUser ops, out Int64 count);
-       
+
         [OperationContract]
         BaseOutput WS_GetAnnouncementDetailsByProductId_OPC(BaseInput baseinput, Int64 productID, out Int64 count);
         //[OperationContract]
@@ -1247,7 +1258,7 @@ namespace Emsal.WebSrv
         BaseOutput WS_DeletetblContractDetailTemp(BaseInput baseinput, tblContractDetailTemp item);
         [OperationContract]
         BaseOutput WS_GettblContractDetailTempById(BaseInput baseinput, Int64 ID, out List<tblContractDetailTemp> Detail);
-       
+
         #endregion
         #region YeniHesabatlar
         [OperationContract]
@@ -1257,19 +1268,19 @@ namespace Emsal.WebSrv
         [OperationContract]
         BaseOutput WS_GetOfferGroupedProductionDetailistForAccountingByProductId(BaseInput baseinput, Int64 productID, out  List<OfferProductionDetail> itemList);
         [OperationContract]
-        BaseOutput WS_GetOfferGroupedProductionDetailistForAccountingByRoleId(BaseInput baseinput,Int64 RoleId, out  List<OfferProductionDetail> itemList);
+        BaseOutput WS_GetOfferGroupedProductionDetailistForAccountingByRoleId(BaseInput baseinput, Int64 RoleId, Int64 yearEvId, out  List<OfferProductionDetail> itemList);
         [OperationContract]
         BaseOutput WS_GetOfferGroupedProductionDetailistForAccountingBySearch(BaseInput baseinput, OfferProductionDetailSearch ops, out  List<OfferProductionDetail> itemList);
-        
+
         [OperationContract]
-        
+
         BaseOutput WS_GetDemandByForganistion_OPC(BaseInput baseinput, DemandForegnOrganization1 ops, out Int64 count);
         [OperationContract]
         BaseOutput WS_GetDemandByForganistion_OP(BaseInput baseinput, DemandForegnOrganization1 ops, out  List<OrganizationDetail> itemList);
         [OperationContract]
-        BaseOutput WS_GetTotalDemandOffers(BaseInput baseinput,  DemandOfferProductsSearch ops, out List<DemanProductionGroup> itemList);
+        BaseOutput WS_GetTotalDemandOffers(BaseInput baseinput, DemandOfferProductsSearch ops, out List<DemanProductionGroup> itemList);
         [OperationContract]
-        BaseOutput WS_GetTotalDemandOffersPA(BaseInput baseinput,  DemandOfferProductsSearch ops, out List<DemanProductionGroup> itemList);
+        BaseOutput WS_GetTotalDemandOffersPA(BaseInput baseinput, DemandOfferProductsSearch ops, out List<DemanProductionGroup> itemList);
         [OperationContract]
         BaseOutput WS_GetTotalOffersbyProductID(BaseInput baseinput, Int64 productID, DemandOfferProductsSearch ops, out List<DemanOfferProduction> itemList);
         [OperationContract]
@@ -1280,8 +1291,11 @@ namespace Emsal.WebSrv
 
         #endregion
         [OperationContract]
+        BaseOutput WS_GetDemandGovermentOrganisatinByAdminID(BaseInput baseinput, string adminIdList, out List<ForeignOrganization> itemList);
+
+        [OperationContract]
         BaseOutput WS_GetAnnouncementDetails_Search(BaseInput baseinput, OfferProductionDetailSearch ops, out List<AnnouncementDetail> itemList);
-         [OperationContract]
+        [OperationContract]
         BaseOutput WS_GetAnnouncementDetails_Search_OPC(BaseInput baseinput, OfferProductionDetailSearch ops, out Int64 count);
         [OperationContract]
         BaseOutput WS_GetDemand_ProductionsByStateAndUserID1(BaseInput baseinput, Int64 userID, Int64 state_Ev_Id, out List<DemandDetail> itemList);
@@ -1299,7 +1313,10 @@ namespace Emsal.WebSrv
         [OperationContract]
         BaseOutput WS_GetTotalDemandOffersRegion_OPC(BaseInput baseinput, DemandOfferProductsSearch ops, out Int64 count);
         [OperationContract]
-        BaseOutput WS_GetProductCatalogsOfferWitoutTypeOfEV(BaseInput baseinput,Int64 userID,  out List<tblProductCatalog> itemList);
+        BaseOutput WS_GetProductCatalogsOfferWitoutTypeOfEV(BaseInput baseinput, Int64 userID, Int64 yearEvId, out List<tblProductCatalog> itemList);
+        [OperationContract]
+        BaseOutput WS_GetProductCatalogsDemandWitoutTypeOfEV(BaseInput baseinput, Int64 userID, Int64 yearEvId, out List<tblProductCatalog> itemList);
+
         [OperationContract]
         BaseOutput GetAnnouncementDetailsByProductIdOPC(BaseInput baseinput, int ops, out Int64 count);
         [OperationContract]
@@ -1310,9 +1327,146 @@ namespace Emsal.WebSrv
         BaseOutput WS_GetOfferGroupedProductionDetailistForAccountingByProductId_OP(BaseInput baseinput, OfferProductionDetailSearch1 ops, out  List<OfferProductionDetail> itemList);
         [OperationContract]
         BaseOutput WS_GetOfferGroupedProductionDetailistForAccountingByProductId_OPC(BaseInput baseinput, OfferProductionDetailSearch1 ops, out  Int64 count);
-        
-        
+        #region tblBudjet
+        [OperationContract]
+        BaseOutput WS_AddBudjet(BaseInput baseinput, tblBudjet item, out tblBudjet BudjetOut);
+        [OperationContract]
+
+        BaseOutput WS_DeleteBudjet(BaseInput baseinput, tblBudjet Budjet);
+
+        [OperationContract]
+        BaseOutput WS_GetBudjet(BaseInput baseInput, out List<tblBudjet> BudjetOut);
+        [OperationContract]
+        BaseOutput WS_UpdateBudjet(BaseInput baseInput, tblBudjet budjet, out tblBudjet budjetOut);
+        [OperationContract]
+        BaseOutput WS_GetBudjetById(BaseInput baseInput, Int64 Id, out tblBudjet budjetOut);
+        [OperationContract]
+        BaseOutput WS_GetBudjeByYearIdandOrgId(BaseInput baseinput, Int64 year_ev_id, Int64 organizationID, out List<tblBudjet> itemList);
+        [OperationContract]
+        BaseOutput WS_GetBudjeByOrgId(BaseInput baseInput, Int64 org_Id, out List<tblBudjet> itemList);
+
+        #endregion
+        [OperationContract]
+        BaseOutput WS_GetDemandTotalPriceByYearEvId(BaseInput baseinput, Int64 orgId, Int64 yearEvID, out decimal count);
+        [OperationContract]
+        BaseOutput WS_GetDemandTotalPriceByProductID(BaseInput baseinput, Int64 productId, Int64 partOfYear, out decimal count);
+        [OperationContract]
+        BaseOutput WS_GetDemandTotalPriceByYearEvId1(BaseInput baseinput, Int64 orgId, Int64 yearEvID, out List<Price> itemList);
+        [OperationContract]
+        BaseOutput WS_GetDemandCalPriceByYearEvId(BaseInput baseinput, Int64 orgId, Int64 yearEvID, out List<DemandPrice> itemList);
+        [OperationContract]
+        BaseOutput WS_GetOrganizationDetailist(BaseInput baseinput, DemandOfferProductsSearch ops, out List<OrganizationList> itemList);
+
+        [OperationContract]
+        BaseOutput WS_GetOrganizationDetailist_OPC(BaseInput baseinput, DemandOfferProductsSearch ops, out Int64 count);
+        #region tblEvaluations
+        [OperationContract]
+        BaseOutput WS_GetEvaluation_OPC(BaseInput baseinput, EvaluationObjects ops, out Int64 count);
+        [OperationContract]
+        BaseOutput WS_GetEvaluation_OP(BaseInput baseinput, EvaluationObjects ops, out List<EvaluationDetails> itemList);
+
+        [OperationContract]
+        BaseOutput WS_AddEvaluation(BaseInput baseinput, tblEvaluation item, out tblEvaluation EvaluationOut);
+
+        [OperationContract]
+        BaseOutput WS_DeleteEvaluation(BaseInput baseinput, tblEvaluation item);
+        [OperationContract]
+        BaseOutput WS_UpdateEvaluation(BaseInput baseinput, tblEvaluation item, out tblEvaluation itemOut);
+
+        [OperationContract]
+        BaseOutput WS_GetEvaluation(BaseInput baseInput, out List<tblEvaluation> itemOut);
+        [OperationContract]
+        BaseOutput WS_GetEvaluationById(BaseInput baseinput, Int64 Id, out tblEvaluation itemOut);
+        [OperationContract]
+
+        BaseOutput WS_GetEvaluationByParentId(BaseInput baseinput, Int64 parentID, out List<tblEvaluation> itemOut);
+
+        ///GetBudjeByYearIdandOrgId
+        #endregion
+
+
+        #region tblEvaluationAttachments
+        [OperationContract]
+        BaseOutput WS_GetEvaluationAttachmentByUserIDandGroupId(BaseInput baseinput, Int64 userID, string groupID, out List<tblEvaluationAttachment> item);
        
-      
+        [OperationContract]
+        BaseOutput WS_AddEvaluationAttachment(BaseInput baseinput, tblEvaluationAttachment item, out tblEvaluationAttachment EvaluationOut);
+
+        [OperationContract]
+        BaseOutput WS_DeleteEvaluationAttachment(BaseInput baseinput, tblEvaluationAttachment item);
+
+        [OperationContract]
+        BaseOutput WS_GetEvaluationAttachment(BaseInput baseInput, out List<tblEvaluationAttachment> itemOut);
+        [OperationContract]
+        BaseOutput WS_GetEvaluationAttachmentById(BaseInput baseinput, Int64 Id, out tblEvaluationAttachment itemOut);
+        [OperationContract]
+
+        BaseOutput WS_GetEvaluationAttachmentByEvaluationId(BaseInput baseinput, Int64 EvaluationId, out List<tblEvaluationAttachment> itemOut);
+        [OperationContract]
+        BaseOutput WS_UpdateEvaluationAttachment(BaseInput baseinput, tblEvaluationAttachment item, out tblEvaluationAttachment itemOut);
+
+        ///GetBudjeByYearIdandOrgId
+        #endregion
+        #region tblEvaluationResults
+        [OperationContract]
+        BaseOutput WS_GetEvaluationResultByUserIDandGroupId(BaseInput baseinput, Int64 userID, string groupID, out List<tblEvaluationResult> item);
+       
+        
+        [OperationContract]
+
+        BaseOutput WS_AddEvaluationResult(BaseInput baseinput, tblEvaluationResult item, out tblEvaluationResult EvaluationOut);
+        [OperationContract]
+
+
+        BaseOutput WS_DeleteEvaluationResult(BaseInput baseinput, tblEvaluationResult item);
+
+        [OperationContract]
+
+        BaseOutput WS_GetEvaluationResult(BaseInput baseInput, out List<tblEvaluationResult> contractOut);
+        [OperationContract]
+
+        BaseOutput WS_UpdateEvaluationResult(BaseInput baseinput, tblEvaluationResult contract, out tblEvaluationResult contractOut);
+        [OperationContract]
+
+        BaseOutput WS_GetEvaluationResultById(BaseInput baseinput, Int64 Id, out tblEvaluationResult contract);
+        [OperationContract]
+
+
+        BaseOutput WS_GetEvaluationResultByUserId(BaseInput baseinput, Int64 UserId, out List<tblEvaluationResult> item);
+        [OperationContract]
+        BaseOutput WS_GetEvaluationResult_OP(BaseInput baseInput, EvaluationObjects ops, out List<tblEvaluationResult> contractOut);
+        [OperationContract]
+        BaseOutput WS_GetEvaluationResult_OPC(BaseInput baseInput, EvaluationObjects ops, out Int64 contractOut);
+
+        ///GetBudjeByYearIdandOrgId
+        #endregion
+        #region tblEvaluationResultQuestions
+        [OperationContract]
+        BaseOutput WS_GetEvaluationResultQuestionByUserIDandGroupId(BaseInput baseinput, Int64 userID, string groupID, out List<tblEvaluationResultQuestion> item);
+        [OperationContract]
+        BaseOutput WS_AddEvaluationResultQuestion(BaseInput baseinput, tblEvaluationResultQuestion item, out tblEvaluationResultQuestion EvaluationOut);
+
+        [OperationContract]
+        BaseOutput WS_DeleteEvaluationResultQuestion(BaseInput baseinput, tblEvaluationResultQuestion item);
+
+
+        [OperationContract]
+        BaseOutput WS_UpdateEvaluationResultQuestion(BaseInput baseinput, tblEvaluationResultQuestion item, out tblEvaluationResultQuestion itemOut);
+        [OperationContract]
+        BaseOutput WS_GetEvaluationResultQuestionById(BaseInput baseinput, Int64 Id, out tblEvaluationResultQuestion item);
+
+        [OperationContract]
+        BaseOutput WS_GetEvaluationResultQuestionByUserId_OP(BaseInput baseinput, Int64 UserId, int page, int pageSize, out List<tblEvaluationResultQuestion> item);
+        [OperationContract]          ///GetBudjeByYearIdandOrgId
+        BaseOutput WS_GetEvaluationResultQuestionByUserId_OPC(BaseInput baseinput, Int64 UserId, out Int64 item);
+        [OperationContract]
+        BaseOutput WS_GetEvaluationResultQuestion_OP(BaseInput baseInput, EvaluationObjects ops, out List<tblEvaluationResultQuestion> contractOut);
+        [OperationContract]
+        BaseOutput WS_GetEvaluationResultQuestion_OPC(BaseInput baseInput, EvaluationObjects ops, out Int64 contractOut);
+
+        #endregion
+        [OperationContract]
+        BaseOutput WS_GetEnumValueListByProductID(BaseInput baseinput, string productIdList, out List<tblEnumValue> itemList);
+
     }
 }

@@ -43,5 +43,7 @@ namespace Emsal.DAL.CustomObjects
         public Nullable<long> contractId { get; set; }
         public Nullable<long> productAddress_Id { get; set; }
         public Nullable<long> production_type { get; set; }
+        public Int64 yearEvID { get; set; }
+        public string enumValueYear { get; set; }
     }
 }

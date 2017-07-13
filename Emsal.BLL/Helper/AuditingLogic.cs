@@ -1230,6 +1230,136 @@ namespace Emsal.BLL.Helper
                 }
                 genericObj = item;
             }
+            else if (typeof(T) == typeof(tblBudjet))
+            {
+
+                tblBudjet item = (tblBudjet)(object)t;
+
+
+
+
+
+                //insert Operation
+                if (crudOperation == 1)
+                {
+                    item.status = 1;
+                }
+                //update Operation
+                else if (crudOperation == 2)
+                {
+                    item.status = 1;
+                }
+                //delete Operation
+                else if (crudOperation == 3)
+                {
+                    item.status = 0;
+                }
+                genericObj = item;
+            }
+            else if (typeof(T) == typeof(tblEvaluation))
+            {
+
+                tblEvaluation item = (tblEvaluation)(object)t;
+
+
+
+
+
+                //insert Operation
+                if (crudOperation == 1)
+                {
+                    item.Status = 1;
+                }
+                //update Operation
+                else if (crudOperation == 2)
+                {
+                    item.Status = 1;
+                }
+                //delete Operation
+                else if (crudOperation == 3)
+                {
+                    item.Status = 0;
+                }
+                genericObj = item;
+            }
+            else if (typeof(T) == typeof(tblEvaluationAttachment))
+            {
+
+                tblEvaluationAttachment item = (tblEvaluationAttachment)(object)t;
+
+
+
+
+
+                //insert Operation
+                if (crudOperation == 1)
+                {
+                    item.Status = 1;
+                }
+                //update Operation
+                else if (crudOperation == 2)
+                {
+                    item.Status = 1;
+                }
+                //delete Operation
+                else if (crudOperation == 3)
+                {
+                    item.Status = 0;
+                }
+                genericObj = item;
+            }
+            else if (typeof(T) == typeof(tblEvaluationResult))
+            {
+
+                tblEvaluationResult item = (tblEvaluationResult)(object)t;
+
+
+
+
+
+                //insert Operation
+                if (crudOperation == 1)
+                {
+                    item.Status = 1;
+                }
+                //update Operation
+                else if (crudOperation == 2)
+                {
+                    item.Status = 1;
+                }
+                //delete Operation
+                else if (crudOperation == 3)
+                {
+                    item.Status = 0;
+                }
+                genericObj = item;
+            }
+            else if (typeof(T) == typeof(tblEvaluationResultQuestion))
+            {
+
+                tblEvaluationResultQuestion item = (tblEvaluationResultQuestion)(object)t;
+
+
+
+
+
+                //insert Operation
+                if (crudOperation == 1)
+                {
+                    item.Status = 1;
+                }
+                //update Operation
+                else if (crudOperation == 2)
+                {
+                    item.Status = 1;
+                }
+                //delete Operation
+                else if (crudOperation == 3)
+                {
+                    item.Status = 0;
+                }
+                genericObj = item;
+            }
             return (T)Convert.ChangeType(genericObj, typeof(T));
 
              

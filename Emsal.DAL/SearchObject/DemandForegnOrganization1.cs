@@ -16,6 +16,8 @@ namespace Emsal.DAL.SearchObject
         [DataMember(IsRequired = true)]
         public Int64 regionId { get; set; }
         [DataMember(IsRequired = true)]
+        public Int64 yearEvId { get; set; }
+        [DataMember(IsRequired = true)]
         public Int64 addressID { get; set; }
         [DataMember(IsRequired = true)]
         public Int64 productID { get; set; }

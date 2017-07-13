@@ -32,5 +32,6 @@ namespace Emsal.DAL
         public Nullable<long> KTN_ID { get; set; }
         public Nullable<short> TaxexType { get; set; }
         public string note { get; set; }
+        public Nullable<bool> isDemandOffer { get; set; }
     }
 }

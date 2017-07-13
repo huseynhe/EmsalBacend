@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="EmsalDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+<Schema Namespace="EmsalDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="__MigrationHistory">
     <Key>
       <PropertyRef Name="MigrationId" />
@@ -92,6 +92,20 @@
     <Property Name="createdDate" Type="bigint" Nullable="false" />
     <Property Name="updatedUser" Type="nvarchar(max)" />
     <Property Name="updatedDate" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblBudjet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="budget" Type="decimal" Precision="18" Scale="5" Nullable="false" />
+    <Property Name="year_ev_id" Type="int" Nullable="false" />
+    <Property Name="status" Type="smallint" Nullable="false" />
+    <Property Name="createdUser" Type="nvarchar(max)" />
+    <Property Name="createdDate" Type="bigint" />
+    <Property Name="updatedUser" Type="nvarchar(max)" />
+    <Property Name="updatedDate" Type="bigint" />
+    <Property Name="org_id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="tblComMessage">
     <Key>
@@ -228,6 +242,7 @@
     <Property Name="fullProductId" Type="nvarchar(max)" />
     <Property Name="monitoring_eV_Id" Type="bigint" />
     <Property Name="isNew" Type="bigint" />
+    <Property Name="yearEvId" Type="bigint" />
   </EntityType>
   <EntityType Name="tblExpertise">
     <Key>
@@ -276,6 +291,7 @@
     <Property Name="createdDate" Type="bigint" />
     <Property Name="updatedUser" Type="nvarchar(max)" />
     <Property Name="updatedDate" Type="bigint" />
+    <Property Name="isOnlyType" Type="bit" />
   </EntityType>
   <EntityType Name="tblEnumValue">
     <Key>
@@ -291,6 +307,92 @@
     <Property Name="createdDate" Type="bigint" />
     <Property Name="updatedUser" Type="nvarchar(max)" />
     <Property Name="updatedDate" Type="bigint" />
+    <Property Name="sort" Type="bigint" />
+  </EntityType>
+  <EntityType Name="tblEvaluation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentId" Type="bigint" />
+    <Property Name="Name" Type="nvarchar" MaxLength="2000" />
+    <Property Name="Description" Type="nvarchar" MaxLength="2000" />
+    <Property Name="EvumValId" Type="bigint" />
+    <Property Name="Point" Type="bigint" />
+    <Property Name="IsMultiselect" Type="bit" />
+    <Property Name="IsAttachment" Type="bit" />
+    <Property Name="IsNote" Type="bit" />
+    <Property Name="IsQuestion" Type="bit" />
+    <Property Name="IsAnswer" Type="bit" />
+    <Property Name="Sort" Type="bigint" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="isActive" Type="bit" />
+    <Property Name="Status" Type="bigint" />
+    <Property Name="LastUpdatedStatus" Type="bigint" />
+    <Property Name="createdUser" Type="nvarchar(max)" />
+    <Property Name="createdDate" Type="bigint" />
+    <Property Name="updatedUser" Type="nvarchar(max)" />
+    <Property Name="updatedDate" Type="bigint" />
+    <Property Name="Number" Type="nvarchar(max)" />
+    <Property Name="offerUserTypeEValId" Type="bigint" />
+    <Property Name="isRequired" Type="bit" />
+    <Property Name="evaluationQuestionLocationEValId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="tblEvaluationAttachment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="bigint" />
+    <Property Name="EvaluationId" Type="bigint" />
+    <Property Name="Status" Type="bigint" />
+    <Property Name="LastUpdatedStatus" Type="bigint" />
+    <Property Name="createdUser" Type="nvarchar(max)" />
+    <Property Name="createdDate" Type="bigint" />
+    <Property Name="updatedUser" Type="nvarchar(max)" />
+    <Property Name="updatedDate" Type="bigint" />
+    <Property Name="documentUrl" Type="nvarchar(max)" />
+    <Property Name="documentName" Type="nvarchar(max)" />
+    <Property Name="documentRealName" Type="nvarchar(max)" />
+    <Property Name="documentSize" Type="bigint" />
+    <Property Name="document_type_ev_Id" Type="nvarchar(max)" />
+    <Property Name="groupId" Type="nvarchar(max)" />
+    <Property Name="isApproved" Type="bit" />
+  </EntityType>
+  <EntityType Name="tblEvaluationResult">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="bigint" />
+    <Property Name="EvaluationId" Type="bigint" />
+    <Property Name="Point" Type="bigint" />
+    <Property Name="Note" Type="nvarchar(max)" />
+    <Property Name="Status" Type="bigint" />
+    <Property Name="LastUpdatedStatus" Type="bigint" />
+    <Property Name="createdUser" Type="nvarchar(max)" />
+    <Property Name="createdDate" Type="bigint" />
+    <Property Name="updatedUser" Type="nvarchar(max)" />
+    <Property Name="updatedDate" Type="bigint" />
+    <Property Name="groupId" Type="nvarchar(max)" />
+    <Property Name="isApproved" Type="bit" />
+  </EntityType>
+  <EntityType Name="tblEvaluationResultQuestion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="bigint" />
+    <Property Name="EvaluationId" Type="bigint" />
+    <Property Name="Note" Type="nvarchar(max)" />
+    <Property Name="Status" Type="bigint" />
+    <Property Name="LastUpdatedStatus" Type="bigint" />
+    <Property Name="createdUser" Type="nvarchar(max)" />
+    <Property Name="createdDate" Type="bigint" />
+    <Property Name="updatedUser" Type="nvarchar(max)" />
+    <Property Name="updatedDate" Type="bigint" />
+    <Property Name="groupId" Type="nvarchar(max)" />
+    <Property Name="isApproved" Type="bit" />
   </EntityType>
   <EntityType Name="tblForeign_Organization">
     <Key>
@@ -349,6 +451,7 @@
     <Property Name="contractId" Type="bigint" />
     <Property Name="isNew" Type="bigint" />
     <Property Name="production_type" Type="bigint" />
+    <Property Name="yearEvId" Type="bigint" />
   </EntityType>
   <EntityType Name="tblOrganization">
     <Key>
@@ -574,6 +677,7 @@
     <Property Name="updatedDate" Type="bigint" />
     <Property Name="productCode" Type="nvarchar(max)" />
     <Property Name="edvStatus" Type="bigint" />
+    <Property Name="activity" Type="bit" />
   </EntityType>
   <EntityType Name="tblProductCatalogControl">
     <Key>
@@ -791,6 +895,7 @@
     <Property Name="KTN_ID" Type="bigint" />
     <Property Name="TaxexType" Type="smallint" />
     <Property Name="note" Type="nvarchar(max)" />
+    <Property Name="isDemandOffer" Type="bit" />
   </EntityType>
   <EntityType Name="tblUserRole">
     <Key>
@@ -806,9 +911,6 @@
     <Property Name="updatedUser" Type="nvarchar(max)" />
     <Property Name="updatedDate" Type="bigint" Nullable="false" />
   </EntityType>
-  <Function Name="AdminUnitRelation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar(max)">
-    <Parameter Name="id" Type="nvarchar(max)" Mode="In" />
-  </Function>
   <Function Name="dateReturn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="bigint">
     <Parameter Name="ID" Type="int" Mode="In" />
     <Parameter Name="Y" Type="int" Mode="In" />
@@ -823,11 +925,6 @@
   </Function>
   <Function Name="f_getYear_by_BigIntDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
     <Parameter Name="DT" Type="bigint" Mode="In" />
-  </Function>
-  <Function Name="PA_GetAnnouncementDetails_Search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="page_number" Type="int" Mode="In" />
-    <Parameter Name="page_size" Type="int" Mode="In" />
-    <Parameter Name="Name" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="returnPartOfYear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
   <Function Name="returnUnitPrice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="decimal">
@@ -851,6 +948,7 @@
     <EntitySet Name="tblAnnouncement" EntityType="Self.tblAnnouncement" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblAuthenticatedPart" EntityType="Self.tblAuthenticatedPart" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblBranchResponsibility" EntityType="Self.tblBranchResponsibility" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblBudjet" EntityType="Self.tblBudjet" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblComMessage" EntityType="Self.tblComMessage" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblComMessageAttachment" EntityType="Self.tblComMessageAttachment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblCommunication" EntityType="Self.tblCommunication" Schema="dbo" store:Type="Tables" />
@@ -862,6 +960,10 @@
     <EntitySet Name="tblEmployee" EntityType="Self.tblEmployee" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblEnumCategory" EntityType="Self.tblEnumCategory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblEnumValue" EntityType="Self.tblEnumValue" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblEvaluation" EntityType="Self.tblEvaluation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblEvaluationAttachment" EntityType="Self.tblEvaluationAttachment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblEvaluationResult" EntityType="Self.tblEvaluationResult" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblEvaluationResultQuestion" EntityType="Self.tblEvaluationResultQuestion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblForeign_Organization" EntityType="Self.tblForeign_Organization" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblOffer_Production" EntityType="Self.tblOffer_Production" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblOrganization" EntityType="Self.tblOrganization" Schema="dbo" store:Type="Tables" />

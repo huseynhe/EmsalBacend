@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="EmsalDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-  <EntityContainer Name="EmsalDBEntities" annotation:LazyLoadingEnabled="true">
+<Schema Namespace="EmsalDBModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+  <EntityContainer Name="EmsalDBEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
     <EntitySet Name="C__MigrationHistory" EntityType="EmsalDBModel.C__MigrationHistory" />
     <EntitySet Name="EmsalLogs" EntityType="EmsalDBModel.EmsalLog" />
     <EntitySet Name="tblAddresses" EntityType="EmsalDBModel.tblAddress" />
@@ -12,10 +12,7 @@
     <EntitySet Name="tblCommunications" EntityType="EmsalDBModel.tblCommunication" />
     <EntitySet Name="tblConfirmationMessages" EntityType="EmsalDBModel.tblConfirmationMessage" />
     <EntitySet Name="tblContracts" EntityType="EmsalDBModel.tblContract" />
-    <EntitySet Name="tblDemand_Production" EntityType="EmsalDBModel.tblDemand_Production" />
     <EntitySet Name="tblEmployees" EntityType="EmsalDBModel.tblEmployee" />
-    <EntitySet Name="tblEnumCategories" EntityType="EmsalDBModel.tblEnumCategory" />
-    <EntitySet Name="tblEnumValues" EntityType="EmsalDBModel.tblEnumValue" />
     <EntitySet Name="tblExpertises" EntityType="EmsalDBModel.tblExpertise" />
     <EntitySet Name="tblForeign_Organization" EntityType="EmsalDBModel.tblForeign_Organization" />
     <EntitySet Name="tblOrganizations" EntityType="EmsalDBModel.tblOrganization" />
@@ -39,7 +36,6 @@
     <EntitySet Name="tblPropertyTypes" EntityType="EmsalDBModel.tblPropertyType" />
     <EntitySet Name="tblRoles" EntityType="EmsalDBModel.tblRole" />
     <EntitySet Name="tblTitles" EntityType="EmsalDBModel.tblTitle" />
-    <EntitySet Name="tblUsers" EntityType="EmsalDBModel.tblUser" />
     <EntitySet Name="tblUserRoles" EntityType="EmsalDBModel.tblUserRole" />
     <EntitySet Name="tblContractDetailTemps" EntityType="EmsalDBModel.tblContractDetailTemp" />
     <FunctionImport Name="PA_GetAnnouncementDetails_Search" ReturnType="Collection(EmsalDBModel.PA_GetAnnouncementDetails_Search_Result)">
@@ -48,8 +44,17 @@
       <Parameter Name="Name" Mode="In" Type="String" />
     </FunctionImport>
     <EntitySet Name="tblProductionCalendars" EntityType="EmsalDBModel.tblProductionCalendar" />
+    <EntitySet Name="tblDemand_Production" EntityType="EmsalDBModel.tblDemand_Production" />
     <EntitySet Name="tblOffer_Production" EntityType="EmsalDBModel.tblOffer_Production" />
     <EntitySet Name="tblProductCatalogs" EntityType="EmsalDBModel.tblProductCatalog" />
+    <EntitySet Name="tblUsers" EntityType="EmsalDBModel.tblUser" />
+    <EntitySet Name="tblBudjets" EntityType="EmsalDBModel.tblBudjet" />
+    <EntitySet Name="tblEnumValues" EntityType="EmsalDBModel.tblEnumValue" />
+    <EntitySet Name="tblEvaluationAttachments" EntityType="EmsalDBModel.tblEvaluationAttachment" />
+    <EntitySet Name="tblEvaluationResults" EntityType="EmsalDBModel.tblEvaluationResult" />
+    <EntitySet Name="tblEvaluationResultQuestions" EntityType="EmsalDBModel.tblEvaluationResultQuestion" />
+    <EntitySet Name="tblEnumCategories" EntityType="EmsalDBModel.tblEnumCategory" />
+    <EntitySet Name="tblEvaluations" EntityType="EmsalDBModel.tblEvaluation" />
   </EntityContainer>
   <EntityType Name="C__MigrationHistory">
     <Key>
@@ -65,7 +70,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="String" Name="LogType" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="ChannelId" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="RequestId" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -83,7 +88,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="Decimal" Name="Latitude" Nullable="false" Precision="18" Scale="2" />
     <Property Type="Decimal" Name="Longitude" Nullable="false" Precision="18" Scale="2" />
     <Property Type="Int64" Name="adminUnit_Id" />
@@ -103,7 +108,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="String" Name="title" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="description" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="Decimal" Name="quantity" Precision="18" Scale="2" />
@@ -125,7 +130,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="String" Name="Name" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="Int64" Name="Status" />
   </EntityType>
@@ -133,7 +138,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="Int64" Name="branchId" Nullable="false" />
     <Property Type="Int64" Name="adminUnitId" Nullable="false" />
     <Property Type="Int64" Name="branchType_eVId" Nullable="false" />
@@ -148,7 +153,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="Int64" Name="Status" />
     <Property Type="Int64" Name="Production_Id" />
     <Property Type="Int64" Name="Production_type_eV_Id" />
@@ -167,7 +172,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="Int64" Name="CMessageId" />
     <Property Type="Int64" Name="UserID" />
     <Property Type="Int64" Name="Status" />
@@ -187,7 +192,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="Int32" Name="comType" Nullable="false" />
     <Property Type="Int32" Name="priorty" Nullable="false" />
     <Property Type="String" Name="communication" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -204,14 +209,14 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="String" Name="Message" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="tblContract">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="String" Name="ContractNumber_" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="Int64" Name="AgentUserID" />
     <Property Type="Int64" Name="SupplierOrganisationID" />
@@ -231,41 +236,11 @@
     <Property Type="String" Name="updatedUser" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="Int64" Name="updatedDate" />
   </EntityType>
-  <EntityType Name="tblDemand_Production">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="grup_Id" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="title" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="description" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="Decimal" Name="unit_price" Precision="18" Scale="3" />
-    <Property Type="Decimal" Name="total_price" Precision="18" Scale="3" />
-    <Property Type="Decimal" Name="quantity" Precision="18" Scale="3" />
-    <Property Type="Int64" Name="quantity_type_eV_Id" />
-    <Property Type="Int64" Name="startDate" />
-    <Property Type="Int64" Name="endDate" />
-    <Property Type="Boolean" Name="isSelected" />
-    <Property Type="Boolean" Name="isAnnouncement" />
-    <Property Type="Int64" Name="Status" />
-    <Property Type="Int64" Name="LastUpdatedStatus" />
-    <Property Type="String" Name="createdUser" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="Int64" Name="createdDate" />
-    <Property Type="String" Name="updatedUser" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="Int64" Name="updatedDate" />
-    <Property Type="Int64" Name="address_Id" />
-    <Property Type="Int64" Name="product_Id" />
-    <Property Type="Int64" Name="user_Id" />
-    <Property Type="Int64" Name="state_eV_Id" />
-    <Property Type="String" Name="fullProductId" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="Int64" Name="monitoring_eV_Id" />
-    <Property Type="Int64" Name="isNew" />
-  </EntityType>
   <EntityType Name="tblEmployee">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="Int64" Name="Status" Nullable="false" />
     <Property Type="Int64" Name="LastUpdatedStatus" Nullable="false" />
     <Property Type="String" Name="createdUser" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -279,41 +254,11 @@
     <Property Type="Int64" Name="title_Id" />
     <Property Type="Int64" Name="user_Id" />
   </EntityType>
-  <EntityType Name="tblEnumCategory">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="name" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="description" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="Int32" Name="isProductDescibe" />
-    <Property Type="Int64" Name="Status" />
-    <Property Type="Int64" Name="LastUpdatedStatus" />
-    <Property Type="String" Name="createdUser" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="Int64" Name="createdDate" />
-    <Property Type="String" Name="updatedUser" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="Int64" Name="updatedDate" />
-  </EntityType>
-  <EntityType Name="tblEnumValue">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="Int64" Name="enumCategory_enumCategoryId" />
-    <Property Type="String" Name="name" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="description" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="Int64" Name="Status" />
-    <Property Type="Int64" Name="LastUpdatedStatus" />
-    <Property Type="String" Name="createdUser" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="Int64" Name="createdDate" />
-    <Property Type="String" Name="updatedUser" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="Int64" Name="updatedDate" />
-  </EntityType>
   <EntityType Name="tblExpertise">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="String" Name="name" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="Int64" Name="Status" Nullable="false" />
     <Property Type="Int64" Name="LastUpdatedStatus" Nullable="false" />
@@ -328,7 +273,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="String" Name="name" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="description" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="Int64" Name="Status" Nullable="false" />
@@ -354,7 +299,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="String" Name="name" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="Int64" Name="Status" Nullable="false" />
     <Property Type="Int64" Name="LastUpdatedStatus" Nullable="false" />
@@ -378,7 +323,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="Int64" Name="Status" Nullable="false" />
     <Property Type="Int64" Name="LastUpdatedStatus" Nullable="false" />
     <Property Type="String" Name="createdUser" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -390,7 +335,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="String" Name="Name" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="Surname" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="FatherName" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -413,7 +358,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="String" Name="grup_Id" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="title" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="description" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -441,7 +386,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="Int64" Name="AuthenticatedPartID" Nullable="false" />
     <Property Type="Int64" Name="RoleID" Nullable="false" />
     <Property Type="Int64" Name="Status" />
@@ -450,7 +395,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="String" Name="Name" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="Int64" Name="ParentID" />
@@ -469,7 +414,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="String" Name="Name" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="Int64" Name="Status" />
@@ -484,7 +429,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="String" Name="Name" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="Int64" Name="Status" />
@@ -499,7 +444,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="String" Name="Name" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="Int64" Name="AdminUnitID" />
@@ -514,7 +459,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="Int64" Name="Status" />
     <Property Type="Int64" Name="LastUpdatedStatus" />
     <Property Type="Int64" Name="Product_catalog_Id" />
@@ -534,7 +479,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="Int64" Name="adminUnit_Id" />
     <Property Type="Int64" Name="thoroughfare_Id" />
     <Property Type="String" Name="fullAddress" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -559,7 +504,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="Int64" Name="ProductId" Nullable="false" />
     <Property Type="Int64" Name="EnumCategoryId" />
     <Property Type="Int64" Name="EnumValueId" />
@@ -574,7 +519,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="Int64" Name="Production_Id" />
     <Property Type="Int64" Name="Production_type_eV_Id" />
     <Property Type="Int64" Name="Transportation_eV_Id" />
@@ -591,7 +536,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="String" Name="grup_Id" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="Int64" Name="Status" />
     <Property Type="Int64" Name="LastUpdatedStatus" />
@@ -615,7 +560,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="Int64" Name="Demand_Production_Id" />
     <Property Type="Int64" Name="Offer_Production_Id" />
     <Property Type="Int64" Name="Potential_Production_Id" />
@@ -633,7 +578,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="Int64" Name="productId" />
     <Property Type="Decimal" Name="unit_price" Precision="18" Scale="3" />
     <Property Type="Int64" Name="year" />
@@ -649,7 +594,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="Int64" Name="productId" />
     <Property Type="String" Name="imageUrl" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="Int64" Name="Status" />
@@ -663,7 +608,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="Int64" Name="property_type_ID" />
     <Property Type="Int64" Name="capacity_measuriment_evID" />
     <Property Type="Int64" Name="addressID" />
@@ -681,7 +626,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="String" Name="Name" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="Int64" Name="parent_Id" />
     <Property Type="String" Name="description" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -696,7 +641,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="String" Name="Name" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="Int64" Name="Status" Nullable="false" />
     <Property Type="Int64" Name="LastUpdatedStatus" Nullable="false" />
@@ -712,7 +657,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="String" Name="name" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="Int64" Name="Status" Nullable="false" />
     <Property Type="Int64" Name="LastUpdatedStatus" Nullable="false" />
@@ -723,34 +668,11 @@
     <Property Type="Int64" Name="role_Id" />
     <Property Type="Int32" Name="titleType_enumCategoryId" />
   </EntityType>
-  <EntityType Name="tblUser">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="Username" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="Email" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="Password" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="LastLoginIP" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="Int64" Name="LastLoginDate" />
-    <Property Type="String" Name="ProfileImageUrl" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="Int64" Name="Status" />
-    <Property Type="Int64" Name="LastUpdatedStatus" />
-    <Property Type="String" Name="createdUser" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="Int64" Name="createdDate" />
-    <Property Type="String" Name="updatedUser" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Type="Int64" Name="updatedDate" />
-    <Property Type="Int64" Name="userType_eV_ID" />
-    <Property Type="Int64" Name="ASC_ID" />
-    <Property Type="Int64" Name="KTN_ID" />
-    <Property Type="Int16" Name="TaxexType" />
-    <Property Type="String" Name="note" MaxLength="Max" FixedLength="false" Unicode="true" />
-  </EntityType>
   <EntityType Name="tblUserRole">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="Int64" Name="UserId" Nullable="false" />
     <Property Type="Int64" Name="RoleId" Nullable="false" />
     <Property Type="Int64" Name="Status" Nullable="false" />
@@ -764,7 +686,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="Int64" Name="offerID" />
     <Property Type="String" Name="ContractNumber_" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="Int64" Name="ContractDate" />
@@ -790,7 +712,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="Int64" Name="type_eV_Id" />
     <Property Type="Int64" Name="Production_type_eV_Id" />
     <Property Type="Int64" Name="Production_Id" />
@@ -812,11 +734,42 @@
     <Property Type="Int64" Name="partOfyear" />
     <Property Type="DateTime" Name="date_" Precision="0" />
   </EntityType>
+  <EntityType Name="tblDemand_Production">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Type="String" Name="grup_Id" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="title" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="description" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="unit_price" Precision="18" Scale="3" />
+    <Property Type="Decimal" Name="total_price" Precision="18" Scale="3" />
+    <Property Type="Decimal" Name="quantity" Precision="18" Scale="3" />
+    <Property Type="Int64" Name="quantity_type_eV_Id" />
+    <Property Type="Int64" Name="startDate" />
+    <Property Type="Int64" Name="endDate" />
+    <Property Type="Boolean" Name="isSelected" />
+    <Property Type="Boolean" Name="isAnnouncement" />
+    <Property Type="Int64" Name="Status" />
+    <Property Type="Int64" Name="LastUpdatedStatus" />
+    <Property Type="String" Name="createdUser" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="createdDate" />
+    <Property Type="String" Name="updatedUser" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="updatedDate" />
+    <Property Type="Int64" Name="address_Id" />
+    <Property Type="Int64" Name="product_Id" />
+    <Property Type="Int64" Name="user_Id" />
+    <Property Type="Int64" Name="state_eV_Id" />
+    <Property Type="String" Name="fullProductId" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="monitoring_eV_Id" />
+    <Property Type="Int64" Name="isNew" />
+    <Property Type="Int64" Name="yearEvId" />
+  </EntityType>
   <EntityType Name="tblOffer_Production">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="String" Name="grup_Id" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="title" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="description" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -843,12 +796,13 @@
     <Property Type="Int64" Name="contractId" />
     <Property Type="Int64" Name="isNew" />
     <Property Type="Int64" Name="production_type" />
+    <Property Type="Int64" Name="yearEvId" />
   </EntityType>
   <EntityType Name="tblProductCatalog">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="Int64" Name="ProductCatalogParentID" />
     <Property Type="String" Name="ProductName" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="ProductDescription" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -863,5 +817,161 @@
     <Property Type="Int64" Name="updatedDate" />
     <Property Type="String" Name="productCode" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Type="Int64" Name="edvStatus" />
+    <Property Type="Boolean" Name="activity" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Type="String" Name="Username" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Email" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Password" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="LastLoginIP" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="LastLoginDate" />
+    <Property Type="String" Name="ProfileImageUrl" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="Status" />
+    <Property Type="Int64" Name="LastUpdatedStatus" />
+    <Property Type="String" Name="createdUser" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="createdDate" />
+    <Property Type="String" Name="updatedUser" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="updatedDate" />
+    <Property Type="Int64" Name="userType_eV_ID" />
+    <Property Type="Int64" Name="ASC_ID" />
+    <Property Type="Int64" Name="KTN_ID" />
+    <Property Type="Int16" Name="TaxexType" />
+    <Property Type="String" Name="note" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="isDemandOffer" />
+  </EntityType>
+  <EntityType Name="tblBudjet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Type="Decimal" Name="budget" Nullable="false" Precision="18" Scale="5" />
+    <Property Type="Int32" Name="year_ev_id" Nullable="false" />
+    <Property Type="Int16" Name="status" Nullable="false" />
+    <Property Type="String" Name="createdUser" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="createdDate" />
+    <Property Type="String" Name="updatedUser" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="updatedDate" />
+    <Property Type="Int32" Name="org_id" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblEnumValue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Type="Int64" Name="enumCategory_enumCategoryId" />
+    <Property Type="String" Name="name" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="description" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="Status" />
+    <Property Type="Int64" Name="LastUpdatedStatus" />
+    <Property Type="String" Name="createdUser" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="createdDate" />
+    <Property Type="String" Name="updatedUser" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="updatedDate" />
+    <Property Type="Int64" Name="sort" />
+  </EntityType>
+  <EntityType Name="tblEvaluationAttachment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int64" />
+    <Property Name="EvaluationId" Type="Int64" />
+    <Property Name="Status" Type="Int64" />
+    <Property Name="LastUpdatedStatus" Type="Int64" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" />
+    <Property Name="documentUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="documentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="documentRealName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="documentSize" Type="Int64" />
+    <Property Name="document_type_ev_Id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="groupId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="isApproved" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tblEvaluationResult">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int64" />
+    <Property Name="EvaluationId" Type="Int64" />
+    <Property Name="Point" Type="Int64" />
+    <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int64" />
+    <Property Name="LastUpdatedStatus" Type="Int64" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" />
+    <Property Name="groupId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="isApproved" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tblEvaluationResultQuestion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int64" />
+    <Property Name="EvaluationId" Type="Int64" />
+    <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int64" />
+    <Property Name="LastUpdatedStatus" Type="Int64" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" />
+    <Property Name="groupId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="isApproved" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tblEnumCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="isProductDescibe" Type="Int32" />
+    <Property Name="Status" Type="Int64" />
+    <Property Name="LastUpdatedStatus" Type="Int64" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" />
+    <Property Name="isOnlyType" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tblEvaluation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentId" Type="Int64" />
+    <Property Name="Name" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="EvumValId" Type="Int64" />
+    <Property Name="Point" Type="Int64" />
+    <Property Name="IsMultiselect" Type="Boolean" />
+    <Property Name="IsAttachment" Type="Boolean" />
+    <Property Name="IsNote" Type="Boolean" />
+    <Property Name="IsQuestion" Type="Boolean" />
+    <Property Name="IsAnswer" Type="Boolean" />
+    <Property Name="Sort" Type="Int64" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="isActive" Type="Boolean" />
+    <Property Name="Status" Type="Int64" />
+    <Property Name="LastUpdatedStatus" Type="Int64" />
+    <Property Name="createdUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createdDate" Type="Int64" />
+    <Property Name="updatedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="updatedDate" Type="Int64" />
+    <Property Name="Number" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="offerUserTypeEValId" Type="Int64" />
+    <Property Name="isRequired" Type="Boolean" />
+    <Property Name="evaluationQuestionLocationEValId" Type="Int64" />
   </EntityType>
 </Schema>

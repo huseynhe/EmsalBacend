@@ -28,5 +28,7 @@ namespace Emsal.DAL.SearchObject
         [DataMember(IsRequired = true)]
         public Int64 userID { get; set; }
        
+        [DataMember(IsRequired = true)]
+        public Int64 yearEvId { get; set; }
     }
 }

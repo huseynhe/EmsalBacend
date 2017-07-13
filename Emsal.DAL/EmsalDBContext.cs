@@ -58,6 +58,11 @@ namespace Emsal.DAL
         public virtual DbSet<tblContract> tblContracts { get; set; }
         public virtual DbSet<tblPropertyDetail> tblPropertyDetails { get; set; }
         public virtual DbSet<tblPropertyType> tblPropertyTypes { get; set; }
+        public virtual DbSet<tblBudjet> tblBudjets { get; set; }
+        public virtual DbSet<tblEvaluation> tblEvaluations { get; set; }
+        public virtual DbSet<tblEvaluationAttachment> tblEvaluationAttachments { get; set; }
+        public virtual DbSet<tblEvaluationResult> tblEvaluationResults { get; set; }
+        public virtual DbSet<tblEvaluationResultQuestion> tblEvaluationResultQuestions { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<tblProductCatalog>().ToTable("tblProductCatalog");

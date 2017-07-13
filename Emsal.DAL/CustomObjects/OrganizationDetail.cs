@@ -28,5 +28,6 @@ namespace Emsal.DAL.CustomObjects
         public Int64 parentRegionID { get; set; }
         public Int64 prodcutID { get; set; }
         public Int64 organizationID { get; set; }
+        public string enumValueYear { get; set; }
     }
 }

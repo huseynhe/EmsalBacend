@@ -10,10 +10,15 @@ namespace Emsal.DAL.SearchObject
     [DataContract]
     public class DemandOfferProductsSearch
     {
+        
         [DataMember(IsRequired = true)]
         public Int64 productId { get; set; }
         [DataMember(IsRequired = true)]
+        public Int64 yearEvId { get; set; }
+        [DataMember(IsRequired = true)]
         public Int64 adminID { get; set; }
+        [DataMember(IsRequired = true)]
+        public Int64 regionID { get; set; }
         [DataMember(IsRequired = true)]
         public string voen { get; set; }
         [DataMember(IsRequired = true)]
@@ -26,5 +31,11 @@ namespace Emsal.DAL.SearchObject
         public int page_size { get; set; }
         [DataMember(IsRequired = true)]
         public Int64 monthID { get; set; }
+        [DataMember(IsRequired = true)]
+        public string organizationName { get; set; }
+        [DataMember(IsRequired = true)]
+        public Int64 orgID { get; set; }
+        [DataMember(IsRequired=true)]
+        public Int64 stateEvId { get; set; }
     }
 }

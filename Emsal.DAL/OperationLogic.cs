@@ -421,7 +421,29 @@ namespace Emsal.DAL
             }
 
         }
+        public List<tblEnumCategory> GetEnumCategorysForProductOnlyType()
+        {
 
+            try
+            {
+                using (var context = new EmsalDBEntities())
+                {
+
+
+                    var pcatalogs = (from p in context.tblEnumCategories
+                                     where p.isProductDescibe == 1 && p.Status == 1 && p.isOnlyType==false
+                                     select p);
+
+                    return pcatalogs.ToList();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
         public tblEnumValue AddEnumValue(tblEnumValue enumValue)
         {
 
@@ -556,6 +578,7 @@ namespace Emsal.DAL
 
                     var pcatalogs = (from p in context.tblEnumValues
                                      where p.Status == 1
+                                   
                                      select p);
 
                     return pcatalogs.ToList();
@@ -580,6 +603,7 @@ namespace Emsal.DAL
 
                     var ecatalogs = (from p in context.tblEnumValues
                                      where p.Id == ID && p.Status == 1
+                                   
                                      select p).First();
 
                     return ecatalogs;
@@ -605,6 +629,7 @@ namespace Emsal.DAL
 
                     var ecatalogs = (from p in context.tblEnumValues
                                      where p.enumCategory_enumCategoryId == enumCategoryId && p.Status == 1
+                                    
                                      select p);
 
                     return ecatalogs.ToList();
@@ -632,6 +657,7 @@ namespace Emsal.DAL
                     var enumValues = (from eC in context.tblEnumCategories
                                       join eV in context.tblEnumValues on eC.Id equals eV.enumCategory_enumCategoryId
                                       where eV.Status==1
+                                      
                                       select eV);
 
                     return enumValues.ToList();
@@ -645,7 +671,31 @@ namespace Emsal.DAL
             }
 
         }
+        public List<tblEnumValue> GetEnumValuesForProductOnlyType()
+        {
 
+            try
+            {
+                using (var context = new EmsalDBEntities())
+                {
+
+                    var enumValues = (from eC in context.tblEnumCategories
+                                      join eV in context.tblEnumValues on eC.Id equals eV.enumCategory_enumCategoryId
+                                      where eV.Status == 1 && eC.isOnlyType == false
+
+                                      select eV);
+
+                    return enumValues.ToList();
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
         public tblEnumValue GetEnumValueByName(string name)
         {
             try
@@ -654,6 +704,7 @@ namespace Emsal.DAL
                 {
                     var enumValue = (from p in context.tblEnumValues
                                      where p.name == name && p.Status == 1
+                                  
                                      select p).First();
 
                     return enumValue;
@@ -1477,6 +1528,30 @@ namespace Emsal.DAL
             }
 
         }
+        public List<tblProductCatalog> GetProductCatalogsOnlyTrue()
+        {
+
+            try
+            {
+                using (var context = new EmsalDBEntities())
+                {
+
+
+                    var pcatalogs = (from p in context.tblProductCatalogs
+
+                                     where p.Status == 1 && p.activity==true
+                                     select p).Distinct();
+
+                    return pcatalogs.ToList();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
         public List<tblProductCatalog> GetProductCatalogsOffer()
         {
 
@@ -1501,7 +1576,7 @@ namespace Emsal.DAL
             }
 
         }
-        public List<tblProductCatalog> GetProductCatalogsOfferWitoutTypeOfEV(Int64 userID)
+        public List<tblProductCatalog> GetProductCatalogsOfferWitoutTypeOfEV(Int64 userID, Int64 yearEvId)
         {
 
             try
@@ -1516,7 +1591,63 @@ namespace Emsal.DAL
                                     
                                      join prc in context.tblProductCatalogControls on p.Id equals prc.ProductId
                                      where p.Status == 1 && prc.Status == 1 && prc.EnumCategoryId != 27 
-                                     && ev.user_Id == userID && ev.Status==1
+                                     && ev.user_Id == userID && ev.Status==1 && ev.yearEvId==yearEvId
+                                     select p).Distinct();
+
+                    return pcatalogs.ToList();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+        public List<tblProductCatalog> GetProductCatalogsDemandWitoutTypeOfEV(Int64 userID,Int64 yearEvId)
+        {
+
+            try
+            {
+                using (var context = new EmsalDBEntities())
+                {
+
+                    
+                    var pcatalogs =
+                                    (from p in context.tblProductCatalogs
+                                     join ev in context.tblDemand_Production on p.Id equals ev.product_Id
+
+                                     join prc in context.tblProductCatalogControls on p.Id equals prc.ProductId
+                                     where p.Status == 1 && prc.Status == 1 && prc.EnumCategoryId != 27
+                                     && ev.user_Id == userID && ev.Status == 1 && ev.yearEvId==yearEvId
+                                     select p).Distinct();
+
+                    return pcatalogs.ToList();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        public List<tblProductCatalog> GetProductCatalogsDemandWitoutTypeOfEV1(Int64 productID, Int64 userID)
+        {
+
+            try
+            {
+                using (var context = new EmsalDBEntities())
+                {
+
+
+                    var pcatalogs =
+                                    (from p in context.tblProductCatalogs
+                                     join ev in context.tblDemand_Production on p.Id equals ev.product_Id
+
+                                     join prc in context.tblProductCatalogControls on p.Id equals prc.ProductId
+                                     where p.Status == 1 && prc.Status == 1 && prc.EnumCategoryId == 27 && p.Id == productID && ev.Status == 1 && ev.user_Id == userID
                                      select p).Distinct();
 
                     return pcatalogs.ToList();
@@ -1544,6 +1675,34 @@ namespace Emsal.DAL
 
                                      join prc in context.tblProductCatalogControls on p.Id equals prc.ProductId
                                      where p.Status == 1 && prc.Status == 1 && prc.EnumCategoryId == 27 && p.Id == productID && ev.Status == 1 && ev.user_Id==userID
+                                     select p).Distinct();
+
+                    return pcatalogs.ToList();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+        public List<tblProductCatalog> GetProductCatalogsDemandWitoutTypeOfEV2(Int64 productID, Int64 userid)
+        {
+
+            try
+            {
+                using (var context = new EmsalDBEntities())
+                {
+
+
+                    var pcatalogs =
+                                    (from p in context.tblProductCatalogs
+                                     join ev in context.tblDemand_Production on p.Id equals ev.product_Id
+
+                                     join prc in context.tblProductCatalogControls on p.Id equals prc.ProductId
+                                     where p.Status == 1 && prc.Status == 1 && prc.EnumCategoryId != 27 && p.Id == productID && ev.Status == 1
+                                     && ev.user_Id == userid
                                      select p).Distinct();
 
                     return pcatalogs.ToList();
@@ -1657,7 +1816,30 @@ namespace Emsal.DAL
             }
 
         }
+        public List<tblProductCatalog> GetProductCatalogsByParentIdOnlyActive(int parentID)
+        {
 
+            try
+            {
+                using (var context = new EmsalDBEntities())
+                {
+
+
+                    var pcatalogs = (from p in context.tblProductCatalogs
+                                     where p.ProductCatalogParentID == parentID && p.Status == 1 && p.activity==true
+                                     select p);
+
+                    return pcatalogs.ToList();
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
         public tblProductCatalog GetProductCatalogsById(int productID)
         {
 
@@ -1685,7 +1867,33 @@ namespace Emsal.DAL
             }
 
         }
+        public List<tblProductCatalog> GetProductCatalogsById1(int productID)
+        {
 
+            try
+            {
+                using (var context = new EmsalDBEntities())
+                {
+
+
+                    var pcatalog = (from p in context.tblProductCatalogs
+
+                                    where p.Id == productID && p.Status == 1
+                                    select
+
+                                    p).ToList();
+
+                    return pcatalog;
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
         public tblProductCatalog UpdateProductCatalog(tblProductCatalog product)
         {
 
@@ -3941,6 +4149,9 @@ namespace Emsal.DAL
             {
                 using (var context = new EmsalDBEntities())
                 {
+                   
+                   
+                   user.isDemandOffer = true;
                     context.tblUsers.Add(user);
                     context.SaveChanges();
                     return user;
@@ -5332,6 +5543,29 @@ namespace Emsal.DAL
             }
 
         }
+        public List<tblForeign_Organization> GetForeign_OrganizationByUserIdList(Int64 userId)
+        {
+
+            try
+            {
+                using (var context = new EmsalDBEntities())
+                {
+
+                    var ecatalogs = (from p in context.tblForeign_Organization
+                                     where p.userId == userId && p.Status == 1
+                                     select p).ToList();
+
+                    return ecatalogs;
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
 
         public List<tblForeign_Organization> GetForeign_OrganisationsByParentId(Int64 ID)
         {
@@ -5559,6 +5793,7 @@ namespace Emsal.DAL
 
                     var pcatalogs = (from p in context.tblProductCatalogControls
                                      where p.EnumCategoryId == enumCategoryID && p.Status == 1
+                                     
                                      select p);
 
                     return pcatalogs.ToList();
@@ -10236,7 +10471,1306 @@ namespace Emsal.DAL
 
         }
         #endregion
+        #region tblBudjet
+        public tblBudjet AddBudjet(tblBudjet item)
+        {
+
+            try
+            {
+                using (var context = new EmsalDBEntities())
+                {
+                    context.tblBudjets.Add(item);
+                    context.SaveChanges();
+                    return item;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+        public bool DeleteBudjet(tblBudjet item)
+        {
+
+            try
+            {
+                tblBudjet oldItem;
+                using (var context = new EmsalDBEntities())
+                {
+
+
+
+
+
+                    oldItem = (from p in context.tblBudjets
+                               where p.id == item.id && p.status == 1
+                               select p).FirstOrDefault();
+
+                }
+
+                if (oldItem != null)
+                {
+                    using (var context = new EmsalDBEntities())
+                    {
+                        oldItem.status = 0;
+
+                        oldItem.updatedDate = item.updatedDate;
+                        oldItem.updatedUser = item.updatedUser;
+                        context.tblBudjets.Attach(oldItem);
+                        context.Entry(oldItem).State = System.Data.Entity.EntityState.Modified;
+                        context.SaveChanges();
+                        return true;
+                    }
+                }
+                else
+                {
+                    Exception ex = new Exception("Bu nomrede setir recor yoxdur");
+                    throw ex;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+        public tblBudjet UpdateBudjet(tblBudjet item)
+        {
+
+            try
+            {
+                tblBudjet oldProduct;
+                using (var context = new EmsalDBEntities())
+                {
+                    oldProduct = (from p in context.tblBudjets
+                                  where p.id == item.id && p.status == 1
+                                  select p).FirstOrDefault();
+
+                }
+
+                if (oldProduct != null)
+                {
+                    using (var context = new EmsalDBEntities())
+                    {
+                        item.createdDate = oldProduct.createdDate;
+                        item.createdUser = oldProduct.createdUser;
+                        item.status = oldProduct.status;
+
+                        oldProduct = item;
+
+                        context.tblBudjets.Attach(oldProduct);
+                        context.Entry(oldProduct).State = System.Data.Entity.EntityState.Modified;
+                        context.SaveChanges();
+                        return oldProduct;
+                    }
+                }
+                else
+                {
+                    Exception ex = new Exception("Bu nomrede setir recor yoxdur");
+                    throw ex;
+                }
+
+
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+        public tblBudjet GetBudjetById(Int64 Id)
+        {
+
+            try
+            {
+                using (var context = new EmsalDBEntities())
+                {
+
+
+                    var contract = (from p in context.tblBudjets
+                                    where p.id == Id && p.status == 1
+                                    select p).FirstOrDefault();
+
+                    return contract;
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+        public List<tblBudjet> GetBudjet()
+        {
+
+            try
+            {
+                using (var context = new EmsalDBEntities())
+                {
+
+
+                    var comMessageAttachment = (from p in context.tblBudjets
+                                                where p.status == 1
+                                                select p);
+
+                    return comMessageAttachment.ToList();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+        public List<tblBudjet> GetBudjeByYearIdandOrgId(Int64 year_ev_id, Int64 organizationID)
+        {
+
+            try
+            {
+                using (var context = new EmsalDBEntities())
+                {
+
+
+                    var comMessageAttachment = (from p in context.tblBudjets
+                                                where p.status == 1 && p.year_ev_id==year_ev_id && p.org_id==organizationID
+                                                select p);
+
+                    return comMessageAttachment.ToList();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+         public List<tblBudjet> GetBudjeByOrgId( Int64 organizationID)
+        {
+
+            try
+            {
+                using (var context = new EmsalDBEntities())
+                {
+
+
+                    var comMessageAttachment = (from p in context.tblBudjets
+                                                where p.status == 1  && p.org_id==organizationID
+                                                select p);
+
+                    return comMessageAttachment.ToList();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+        
+        #endregion
+        #region tblEvaluations
+        public tblEvaluation AddEvaluation(tblEvaluation item)
+        {
+
+            try
+            {
+                tblEvaluation oldProduct;
+                using (var context = new EmsalDBEntities())
+                {
+                    context.tblEvaluations.Add(item);
+                  
+                    if (item.IsMultiselect==null)
+                    {
+                        item.IsMultiselect = false;
+                    }
+                    if (item.IsQuestion==null)
+                    {
+                        item.IsQuestion = false;
+                    }
+                    if (item.IsDeleted==null)
+                    {
+                        item.IsDeleted = false;
+                    } 
+                    if (item.IsNote==null)
+                    {
+                        item.IsNote = false;
+                    }
+                    if (item.isActive==null)
+                    {
+                        item.isActive = true;
+                    }
+                    if (item.IsAnswer == null)
+                    {
+                        item.IsAnswer = false;
+                    }
+                    if (item.IsAttachment == null)
+                    {
+                        item.IsAttachment = false;
+                    }
+                    context.SaveChanges();
+                    return item;
+                }
+               
+               
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+        public bool DeleteEvaluation(tblEvaluation item)
+        {
+
+            try
+            {
+                tblEvaluation oldItem;
+                using (var context = new EmsalDBEntities())
+                {
+
+
+
+
+
+                    oldItem = (from p in context.tblEvaluations
+                               where p.Id == item.Id && p.Status == 1
+                               select p).FirstOrDefault();
+
+                }
+
+                if (oldItem != null)
+                {
+                    using (var context = new EmsalDBEntities())
+                    {
+                        oldItem.Status = 0;
+
+                        oldItem.updatedDate = item.updatedDate;
+                        oldItem.updatedUser = item.updatedUser;
+                        context.tblEvaluations.Attach(oldItem);
+                        context.Entry(oldItem).State = System.Data.Entity.EntityState.Modified;
+                        context.SaveChanges();
+                        return true;
+                    }
+                }
+                else
+                {
+                    Exception ex = new Exception("Bu nomrede setir recor yoxdur");
+                    throw ex;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+        public tblEvaluation UpdateEvaluation(tblEvaluation item)
+        {
+
+            try
+            {
+                tblEvaluation oldProduct;
+                using (var context = new EmsalDBEntities())
+                {
+                    oldProduct = (from p in context.tblEvaluations
+                                  where p.Id == item.Id && p.Status == 1
+                                  select p).FirstOrDefault();
+
+                }
+
+                if (oldProduct != null)
+                {
+                    using (var context = new EmsalDBEntities())
+                    {
+                        item.createdDate = oldProduct.createdDate;
+                        item.createdUser = oldProduct.createdUser;
+                        item.Status = oldProduct.Status;
+                        //item.isActive = true;
+                        //item.IsAnswer = false;
+                        //item.IsAttachment = false;
+                        //item.IsDeleted = false;
+                        //item.IsQuestion = false;
+                        //item.IsNote = false;
+                        //item.IsMultiselect = false;
+                        
+                        oldProduct = item;
+
+                        context.tblEvaluations.Attach(oldProduct);
+                        context.Entry(oldProduct).State = System.Data.Entity.EntityState.Modified;
+                        context.SaveChanges();
+                        return oldProduct;
+                    }
+                }
+                else
+                {
+                    Exception ex = new Exception("Bu nomrede setir recor yoxdur");
+                    throw ex;
+                }
+
+
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+        public tblEvaluation GetEvaluationById(Int64 Id)
+        {
+
+            try
+            {
+                using (var context = new EmsalDBEntities())
+                {
+
+
+                    var contract = (from p in context.tblEvaluations
+                                    where p.Id == Id && p.Status == 1
+                                    select p).FirstOrDefault();
+
+                    return contract;
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+        public List<tblEvaluation> GetEvaluation()
+        {
+
+            try
+            {
+                using (var context = new EmsalDBEntities())
+                {
+
+
+                    var comMessageAttachment = (from p in context.tblEvaluations
+                                                where p.Status == 1
+                                                select p);
+
+                    return comMessageAttachment.ToList();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+        
+         public List<tblEvaluation> GetEvaluationByParentId( Int64 parent_id)
+        {
+
+            try
+            {
+                using (var context = new EmsalDBEntities())
+                {
+
+
+                    var comMessageAttachment = (from p in context.tblEvaluations
+                                                where p.Status == 1  && p.ParentId==parent_id
+                                                select p);
+
+                    return comMessageAttachment.ToList();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+         public List<tblEvaluation> GetEvaluationByParentId_OP(Int64 parent_id, int page, int pageSize)
+         {
+
+             try
+             {
+                 using (var context = new EmsalDBEntities())
+                 {
+
+
+                     var comMessageAttachment = (from p in context.tblEvaluations
+                                                 where p.Status == 1 && p.ParentId == parent_id
+                                                 select p).Skip((page - 1) * pageSize).Take(pageSize);
+
+                     return comMessageAttachment.ToList();
+
+                 }
+             }
+             catch (Exception ex)
+             {
+                 throw ex;
+             }
+
+         }
+         public Int64 GetEvaluationByParentId_OPC(Int64 parent_id)
+         {
+
+             try
+             {
+                 using (var context = new EmsalDBEntities())
+                 {
+
+
+                     var comMessageAttachment = (from p in context.tblEvaluations
+                                                 where p.Status == 1 && p.ParentId == parent_id
+                                                 select p);
+
+                     return comMessageAttachment.Count();
+
+                 }
+             }
+             catch (Exception ex)
+             {
+                 throw ex;
+             }
+
+         }
+         //public Int64 GetEvaluationByParentId_OPC(Int64 parent_id)
+         //{
+
+         //    try
+         //    {
+         //        using (var context = new EmsalDBEntities())
+         //        {
+
+
+         //            var comMessageAttachment = (from p in context.tblEvaluations
+         //                                        where p.Status == 1 && p.ParentId == parent_id
+         //                                        select p);
+
+         //            return comMessageAttachment.Count();
+
+         //        }
+         //    }
+         //    catch (Exception ex)
+         //    {
+         //        throw ex;
+         //    }
+
+         //}
+        #endregion
+         #region tblEvaluationAttachments
+         public tblEvaluationAttachment AddEvaluationAttachment(tblEvaluationAttachment item)
+         {
+
+             try
+             {
+                 using (var context = new EmsalDBEntities())
+                 {
+                     context.tblEvaluationAttachments.Add(item);
+                     if (item.isApproved == null)
+                     {
+                         item.isApproved = false;
+                     }
+                     context.SaveChanges();
+                     return item;
+                 }
+             }
+
+             catch (Exception ex)
+             {
+
+                 throw ex;
+             }
+
+         }
+         public bool DeleteEvaluationAttachment(tblEvaluationAttachment item)
+         {
+
+             try
+             {
+                 tblEvaluationAttachment oldItem;
+                 using (var context = new EmsalDBEntities())
+                 {
+
+
+
+
+
+                     oldItem = (from p in context.tblEvaluationAttachments
+                                where p.Id == item.Id && p.Status == 1
+                                select p).FirstOrDefault();
+
+                 }
+
+                 if (oldItem != null)
+                 {
+                     using (var context = new EmsalDBEntities())
+                     {
+                         oldItem.Status = 0;
+
+                         oldItem.updatedDate = item.updatedDate;
+                         oldItem.updatedUser = item.updatedUser;
+                         context.tblEvaluationAttachments.Attach(oldItem);
+                         context.Entry(oldItem).State = System.Data.Entity.EntityState.Modified;
+                         context.SaveChanges();
+                         return true;
+                     }
+                 }
+                 else
+                 {
+                     Exception ex = new Exception("Bu nomrede setir recor yoxdur");
+                     throw ex;
+                 }
+             }
+             catch (Exception ex)
+             {
+
+                 throw ex;
+             }
+
+         }
+         public tblEvaluationAttachment UpdateEvaluationAttachment(tblEvaluationAttachment item)
+         {
+
+             try
+             {
+                 tblEvaluationAttachment oldProduct;
+                 using (var context = new EmsalDBEntities())
+                 {
+                     oldProduct = (from p in context.tblEvaluationAttachments
+                                   where p.Id == item.Id && p.Status == 1
+                                   select p).FirstOrDefault();
+
+                 }
+
+                 if (oldProduct != null)
+                 {
+                     using (var context = new EmsalDBEntities())
+                     {
+                         item.createdDate = oldProduct.createdDate;
+                         item.createdUser = oldProduct.createdUser;
+                         item.Status = oldProduct.Status;
+
+                         oldProduct = item;
+                         context.tblEvaluationAttachments.Attach(oldProduct);
+                       
+                         context.Entry(oldProduct).State = System.Data.Entity.EntityState.Modified;
+                         context.SaveChanges();
+                         return oldProduct;
+                     }
+                 }
+                 else
+                 {
+                     Exception ex = new Exception("Bu nomrede setir recor yoxdur");
+                     throw ex;
+                 }
+
+
+             }
+
+             catch (Exception ex)
+             {
+
+                 throw ex;
+             }
+
+         }
+         public tblEvaluationAttachment GetEvaluationAttachmentById(Int64 Id)
+         {
+
+             try
+             {
+                 using (var context = new EmsalDBEntities())
+                 {
+
+
+                     var contract = (from p in context.tblEvaluationAttachments
+                                     where p.Id == Id && p.Status == 1
+                                     select p).FirstOrDefault();
+
+                     return contract;
+
+                 }
+             }
+             catch (Exception ex)
+             {
+
+                 throw ex;
+             }
+
+         }
+         public List<tblEvaluationAttachment> GetEvaluationAttachment()
+         {
+
+             try
+             {
+                 using (var context = new EmsalDBEntities())
+                 {
+
+
+                     var comMessageAttachment = (from p in context.tblEvaluationAttachments
+                                                 where p.Status == 1
+                                                 select p);
+
+                     return comMessageAttachment.ToList();
+
+                 }
+             }
+             catch (Exception ex)
+             {
+                 throw ex;
+             }
+
+         }
+       
+         public List<tblEvaluationAttachment> GetEvaluationAttachmentByEvaluationId(Int64 EvaluationId)
+         {
+
+             try
+             {
+                 using (var context = new EmsalDBEntities())
+                 {
+
+
+                     var comMessageAttachment = (from p in context.tblEvaluationAttachments
+                                                 where p.Status == 1 && p.EvaluationId == EvaluationId
+                                                 select p);
+
+                     return comMessageAttachment.ToList();
+
+                 }
+             }
+             catch (Exception ex)
+             {
+                 throw ex;
+             }
+
+         }
+         public Int64 GetEvaluationAttachmentByEvaluationId_OPC(Int64 EvaluationId)
+         {
+
+             try
+             {
+                 using (var context = new EmsalDBEntities())
+                 {
+
+
+                     var comMessageAttachment = (from p in context.tblEvaluationAttachments
+                                                 where p.Status == 1 && p.EvaluationId == EvaluationId
+                                                 select p);
+
+                     return comMessageAttachment.Count();
+
+                 }
+             }
+             catch (Exception ex)
+             {
+                 throw ex;
+             }
+
+         }
+         public List<tblEvaluationAttachment> GetEvaluationAttachmentByEvaluationId_OP(Int64 EvaluationId, int page, int pageSize)
+         {
+
+             try
+             {
+                 using (var context = new EmsalDBEntities())
+                 {
+
+
+                     var comMessageAttachment = (from p in context.tblEvaluationAttachments
+                                                 where p.Status == 1 && p.EvaluationId == EvaluationId
+                                                 select p).Skip((page - 1) * pageSize).Take(pageSize);
+
+                     return comMessageAttachment.ToList();
+
+                 }
+             }
+             catch (Exception ex)
+             {
+                 throw ex;
+             }
+
+         }
+         public List<tblEvaluationAttachment> GetEvaluationAttachmentByUserIDandGroupId(Int64 userID, string groupId)
+         {
+
+             try
+             {
+                 List<tblEvaluationAttachment> oldProduct;
+                 using (var context = new EmsalDBEntities())
+                 {
+                     oldProduct = (from p in context.tblEvaluationAttachments
+                                   where p.UserId == userID && p.Status == 1 && p.isApproved == false
+                                   select p).ToList();
+
+                 }
+
+                 if (oldProduct.Count()>0)
+                 {
+                     using (var context = new EmsalDBEntities())
+                     {
+                         foreach (var item in oldProduct)
+                         {
+                             item.isApproved = true;
+                             item.groupId = groupId;
+                             context.tblEvaluationAttachments.Attach(item);
+                             context.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                             // db.Entry(item).State = EntityState.Modified;
+                         }
+                       
+                         context.SaveChanges();
+                         return oldProduct;
+                     }
+                 }
+                 else
+                 {
+                     Exception ex = new Exception("Bu nomrede setir recor yoxdur");
+                     throw ex;
+                 }
+
+
+             }
+
+             catch (Exception ex)
+             {
+
+                 throw ex;
+             }
+
+         }
+         #endregion
+         #region tblEvaluationResults
+         //Skip((page - 1) * pageSize).Take(pageSize)
+         public tblEvaluationResult AddEvaluationResult(tblEvaluationResult item)
+         {
+
+             try
+             {
+                 using (var context = new EmsalDBEntities())
+                 {
+                     context.tblEvaluationResults.Add(item);
+                     if (item.isApproved == null)
+                     {
+                         item.isApproved = false;
+                     }
+                     context.SaveChanges();
+                     return item;
+                 }
+             }
+             catch (Exception ex)
+             {
+
+                 throw ex;
+             }
+
+         }
+         public bool DeleteEvaluationResult(tblEvaluationResult item)
+         {
+
+             try
+             {
+                 tblEvaluationResult oldItem;
+                 using (var context = new EmsalDBEntities())
+                 {
+
+
+
+
+
+                     oldItem = (from p in context.tblEvaluationResults
+                                where p.Id == item.Id && p.Status == 1
+                                select p).FirstOrDefault();
+
+                 }
+
+                 if (oldItem != null)
+                 {
+                     using (var context = new EmsalDBEntities())
+                     {
+                         oldItem.Status = 0;
+
+                         oldItem.updatedDate = item.updatedDate;
+                         oldItem.updatedUser = item.updatedUser;
+                         context.tblEvaluationResults.Attach(oldItem);
+                         context.Entry(oldItem).State = System.Data.Entity.EntityState.Modified;
+                         context.SaveChanges();
+                         return true;
+                     }
+                 }
+                 else
+                 {
+                     Exception ex = new Exception("Bu nomrede setir recor yoxdur");
+                     throw ex;
+                 }
+             }
+             catch (Exception ex)
+             {
+
+                 throw ex;
+             }
+
+         }
+         public tblEvaluationResult UpdateEvaluationResult(tblEvaluationResult item)
+         {
+
+             try
+             {
+                 tblEvaluationResult oldProduct;
+                 using (var context = new EmsalDBEntities())
+                 {
+                     oldProduct = (from p in context.tblEvaluationResults
+                                   where p.Id == item.Id && p.Status == 1
+                                   select p).FirstOrDefault();
+
+                 }
+
+                 if (oldProduct != null)
+                 {
+                     using (var context = new EmsalDBEntities())
+                     {
+                         item.createdDate = oldProduct.createdDate;
+                         item.createdUser = oldProduct.createdUser;
+                         item.Status = oldProduct.Status;
+
+                         oldProduct = item;
+
+                         context.tblEvaluationResults.Attach(oldProduct);
+                         context.Entry(oldProduct).State = System.Data.Entity.EntityState.Modified;
+                         context.SaveChanges();
+                         return oldProduct;
+                     }
+                 }
+                 else
+                 {
+                     Exception ex = new Exception("Bu nomrede setir recor yoxdur");
+                     throw ex;
+                 }
+
+
+             }
+
+             catch (Exception ex)
+             {
+
+                 throw ex;
+             }
+
+         }
+         public tblEvaluationResult GetEvaluationResultById(Int64 Id)
+         {
+
+             try
+             {
+                 using (var context = new EmsalDBEntities())
+                 {
+
+
+                     var contract = (from p in context.tblEvaluationResults
+                                     where p.Id == Id && p.Status == 1
+                                     select p).FirstOrDefault();
+
+                     return contract;
+
+                 }
+             }
+             catch (Exception ex)
+             {
+
+                 throw ex;
+             }
+
+         }
+         public List<tblEvaluationResult> GetEvaluationResult()
+         {
+
+             try
+             {
+                 using (var context = new EmsalDBEntities())
+                 {
+
+
+                     var comMessageAttachment = (from p in context.tblEvaluationResults
+                                                 where p.Status == 1
+                                                 select p);
+
+                     return comMessageAttachment.ToList();
+
+                 }
+             }
+             catch (Exception ex)
+             {
+                 throw ex;
+             }
+
+         }
+        
+         public List<tblEvaluationResult> GetEvaluationResultByUserId(Int64 user_id)
+         {
+
+             try
+             {
+                 using (var context = new EmsalDBEntities())
+                 {
+
+
+                     var comMessageAttachment = (from p in context.tblEvaluationResults
+                                                 where p.Status == 1 && p.UserId == user_id
+                                                 select p);
+
+                     return comMessageAttachment.ToList();
+
+                 }
+             }
+             catch (Exception ex)
+             {
+                 throw ex;
+             }
+
+         }
+         public List<tblEvaluationResult> GetEvaluationResultByUserId_OP(Int64 user_id, int page, int pageSize)
+         {
+
+             try
+             {
+                 using (var context = new EmsalDBEntities())
+                 {
+
+
+                     var comMessageAttachment = (from p in context.tblEvaluationResults
+                                                 where p.Status == 1 && p.UserId == user_id
+                                                 select p).Skip((page - 1) * pageSize).Take(pageSize);
+
+                     return comMessageAttachment.ToList();
+
+                 }
+             }
+             catch (Exception ex)
+             {
+                 throw ex;
+             }
+
+         }
+         public Int64 GetEvaluationResultByUserId_OPC(Int64 user_id)
+         {
+
+             try
+             {
+                 using (var context = new EmsalDBEntities())
+                 {
+
+
+                     var comMessageAttachment = (from p in context.tblEvaluationResults
+                                                 where p.Status == 1 && p.UserId == user_id
+                                                 select p);
+
+                     return comMessageAttachment.Count();
+
+                 }
+             }
+             catch (Exception ex)
+             {
+                 throw ex;
+             }
+
+         }
+         public List<tblEvaluationResult> GetEvaluationResultByUserIDandGroupId(Int64 userID, string groupId)
+         {
+
+             try
+             {
+                 List<tblEvaluationResult> oldProduct;
+                 using (var context = new EmsalDBEntities())
+                 {
+                     oldProduct = (from p in context.tblEvaluationResults
+                                   where p.UserId == userID && p.Status == 1 && p.isApproved == false
+                                   select p).ToList();
+
+                 }
+
+                 if (oldProduct.Count() > 0)
+                 {
+                     using (var context = new EmsalDBEntities())
+                     {
+                         foreach (var item in oldProduct)
+                         {
+                             item.isApproved = true;
+                             item.groupId = groupId;
+                             context.tblEvaluationResults.Attach(item);
+                             context.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                             // db.Entry(item).State = EntityState.Modified;
+                         }
+
+                         context.SaveChanges();
+                         return oldProduct;
+                     }
+                 }
+                 else
+                 {
+                     Exception ex = new Exception("Bu nomrede setir recor yoxdur");
+                     throw ex;
+                 }
+
+
+             }
+
+             catch (Exception ex)
+             {
+
+                 throw ex;
+             }
+
+         }
+         #endregion
+         #region tblEvaluationResultQuestion
+         //Skip((page - 1) * pageSize).Take(pageSize)
+         public tblEvaluationResultQuestion AddEvaluationResultQuestion(tblEvaluationResultQuestion item)
+         {
+
+             try
+             {
+                 using (var context = new EmsalDBEntities())
+                 {
+                     context.tblEvaluationResultQuestions.Add(item);
+                     if (item.isApproved == null)
+                     {
+                         item.isApproved = false;
+                     }
+                     context.SaveChanges();
+                     return item;
+                 }
+             }
+             catch (Exception ex)
+             {
+
+                 throw ex;
+             }
+
+         }
+         public bool DeleteEvaluationResultQuestion(tblEvaluationResultQuestion item)
+         {
+
+             try
+             {
+                 tblEvaluationResultQuestion oldItem;
+                 using (var context = new EmsalDBEntities())
+                 {
+
+
+
+
+
+                     oldItem = (from p in context.tblEvaluationResultQuestions
+                                where p.Id == item.Id && p.Status == 1
+                                select p).FirstOrDefault();
+
+                 }
+
+                 if (oldItem != null)
+                 {
+                     using (var context = new EmsalDBEntities())
+                     {
+                         oldItem.Status = 0;
+
+                         oldItem.updatedDate = item.updatedDate;
+                         oldItem.updatedUser = item.updatedUser;
+                         context.tblEvaluationResultQuestions.Attach(oldItem);
+                         context.Entry(oldItem).State = System.Data.Entity.EntityState.Modified;
+                         context.SaveChanges();
+                         return true;
+                     }
+                 }
+                 else
+                 {
+                     Exception ex = new Exception("Bu nomrede setir recor yoxdur");
+                     throw ex;
+                 }
+             }
+             catch (Exception ex)
+             {
+
+                 throw ex;
+             }
+
+         }
+         public tblEvaluationResultQuestion UpdateEvaluationResultQuestion(tblEvaluationResultQuestion item)
+         {
+
+             try
+             {
+                 tblEvaluationResultQuestion oldProduct;
+                 using (var context = new EmsalDBEntities())
+                 {
+                     oldProduct = (from p in context.tblEvaluationResultQuestions
+                                   where p.Id == item.Id && p.Status == 1
+                                   select p).FirstOrDefault();
+
+                 }
+
+                 if (oldProduct != null)
+                 {
+                     using (var context = new EmsalDBEntities())
+                     {
+                         item.createdDate = oldProduct.createdDate;
+                         item.createdUser = oldProduct.createdUser;
+                         item.Status = oldProduct.Status;
+
+                         oldProduct = item;
+
+                         context.tblEvaluationResultQuestions.Attach(oldProduct);
+                         context.Entry(oldProduct).State = System.Data.Entity.EntityState.Modified;
+                         context.SaveChanges();
+                         return oldProduct;
+                     }
+                 }
+                 else
+                 {
+                     Exception ex = new Exception("Bu nomrede setir recor yoxdur");
+                     throw ex;
+                 }
+
+
+             }
+
+             catch (Exception ex)
+             {
+
+                 throw ex;
+             }
+
+         }
+         public tblEvaluationResultQuestion GetEvaluationResultQuestionById(Int64 Id)
+         {
+
+             try
+             {
+                 using (var context = new EmsalDBEntities())
+                 {
+
+
+                     var contract = (from p in context.tblEvaluationResultQuestions
+                                     where p.Id == Id && p.Status == 1
+                                     select p).FirstOrDefault();
+
+                     return contract;
+
+                 }
+             }
+             catch (Exception ex)
+             {
+
+                 throw ex;
+             }
+
+         }
+         public List<tblEvaluationResultQuestion> GetEvaluationResultQuestionByUserIDandGroupId(Int64 userID, string groupId)
+         {
+
+             try
+             {
+                 List<tblEvaluationResultQuestion> oldProduct;
+                 using (var context = new EmsalDBEntities())
+                 {
+                     oldProduct = (from p in context.tblEvaluationResultQuestions
+                                   where p.UserId == userID && p.Status == 1 && p.isApproved == false
+                                   select p).ToList();
+
+                 }
+
+                 if (oldProduct.Count() > 0)
+                 {
+                     using (var context = new EmsalDBEntities())
+                     {
+                         foreach (var item in oldProduct)
+                         {
+                             item.isApproved = true;
+                             item.groupId = groupId;
+                             context.tblEvaluationResultQuestions.Attach(item);
+                             context.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                             // db.Entry(item).State = EntityState.Modified;
+                         }
+
+                         context.SaveChanges();
+                         return oldProduct;
+                     }
+                 }
+                 else
+                 {
+                     Exception ex = new Exception("Bu nomrede setir recor yoxdur");
+                     throw ex;
+                 }
+
+
+             }
+
+             catch (Exception ex)
+             {
+
+                 throw ex;
+             }
+
+         }
+        
+       
+         public List<tblEvaluationResultQuestion> GetEvaluationResultQuestionByUserId_OP(Int64 user_id, int page, int pageSize)
+         {
+
+             try
+             {
+                 using (var context = new EmsalDBEntities())
+                 {
+
+
+                     var comMessageAttachment = (from p in context.tblEvaluationResultQuestions
+                                                 where p.Status == 1 && p.UserId == user_id
+                                                 select p).Skip((page - 1) * pageSize).Take(pageSize);
+
+                     return comMessageAttachment.ToList();
+
+                 }
+             }
+             catch (Exception ex)
+             {
+                 throw ex;
+             }
+
+         }
+         public Int64 GetEvaluationResultQuestionByUserId_OPC(Int64 user_id)
+         {
+
+             try
+             {
+                 using (var context = new EmsalDBEntities())
+                 {
+
+
+                     var comMessageAttachment = (from p in context.tblEvaluationResultQuestions
+                                                 where p.Status == 1 && p.UserId == user_id
+                                                 select p);
+
+                     return comMessageAttachment.Count();
+
+                 }
+             }
+             catch (Exception ex)
+             {
+                 throw ex;
+             }
+
+         } 
+         #endregion
 
     }
 }
-

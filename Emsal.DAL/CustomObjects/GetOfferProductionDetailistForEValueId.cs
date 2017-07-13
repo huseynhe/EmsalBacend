@@ -37,6 +37,9 @@ namespace Emsal.DAL.CustomObjects
         public string voen { get; set; }
         public List<tblCommunication> personcomList { get; set; }
         public Int64 personID { get; set; }
+        public Int64 yearEvId { get; set; }
+      
+        public string enumvaule_year { get; set; }
 
     }
 }

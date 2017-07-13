@@ -366,6 +366,24 @@ namespace Emsal.BLL
 
             }
         }
+        public BaseOutput GetEnumCategorysForProductOnlyType(BaseInput baseinput, out List<tblEnumCategory> itemList)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                itemList = operationLogic.GetEnumCategorysForProductOnlyType();
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
         public BaseOutput AddEnumValue(BaseInput baseinput, tblEnumValue enumValue, out tblEnumValue enumValueOut)
         {
 
@@ -510,6 +528,24 @@ namespace Emsal.BLL
             try
             {
                 itemList = operationLogic.GetEnumValuesForProduct();
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput GetEnumValuesForProductOnlyType(BaseInput baseinput, out List<tblEnumValue> itemList)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                itemList = operationLogic.GetEnumValuesForProductOnlyType();
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
 
 
@@ -1103,7 +1139,24 @@ namespace Emsal.BLL
 
             }
         }
+        public BaseOutput GetProductCatalogsByParentIdOnlyActive(BaseInput baseinput, int parentID, out List<tblProductCatalog> pCatalogList)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                pCatalogList = operationLogic.GetProductCatalogsByParentIdOnlyActive(parentID);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
 
+
+            }
+            catch (Exception ex)
+            {
+
+                pCatalogList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
         public BaseOutput GetProductCatalogDetailsByParentId(BaseInput baseinput, int parentID, out List<ProductCatalogDetail> pCatalogDetailList)
         {
             BaseOutput baseOutput;
@@ -3499,35 +3552,35 @@ namespace Emsal.BLL
             tblForeign_Organization item;
             try
             {
-                item = operationLogic.GetForeign_OrganizationByUserId(userId);
+                itemList = operationLogic.GetForeign_OrganizationByUserIdList(userId);
 
 
-                list = operationLogic.GetForeign_OrganisationsByParentId(item.Id);
+                //list = operationLogic.GetForeign_OrganisationsByParentId(item.Id);
 
-                itemList = list;
+                //itemList = list;
 
-                foreach (tblForeign_Organization fo in itemList)
-                {
-                    List<tblForeign_Organization> list1 = operationLogic.GetForeign_OrganisationsByParentId(item.Id);
-                    itemList.Concat(list1);
-                    foreach (var i1 in list1)
-                    {
-                        List<tblForeign_Organization> list2 = operationLogic.GetForeign_OrganisationsByParentId(i1.Id);
-                        itemList.Concat(list2);
-                        foreach (var i2 in list2)
-                        {
-                            List<tblForeign_Organization> list3 = operationLogic.GetForeign_OrganisationsByParentId(i2.Id);
-                            itemList.Concat(list3);
-                            foreach (var i3 in list3)
-                            {
-                                List<tblForeign_Organization> list4 = operationLogic.GetForeign_OrganisationsByParentId(i3.Id);
-                                itemList.Concat(list4);
-                            }
-                        }
+                //foreach (tblForeign_Organization fo in itemList)
+                //{
+                //    List<tblForeign_Organization> list1 = operationLogic.GetForeign_OrganisationsByParentId(item.Id);
+                //    itemList.Concat(list1);
+                //    foreach (var i1 in list1)
+                //    {
+                //        List<tblForeign_Organization> list2 = operationLogic.GetForeign_OrganisationsByParentId(i1.Id);
+                //        itemList.Concat(list2);
+                //        foreach (var i2 in list2)
+                //        {
+                //            List<tblForeign_Organization> list3 = operationLogic.GetForeign_OrganisationsByParentId(i2.Id);
+                //            itemList.Concat(list3);
+                //            foreach (var i3 in list3)
+                //            {
+                //                List<tblForeign_Organization> list4 = operationLogic.GetForeign_OrganisationsByParentId(i3.Id);
+                //                itemList.Concat(list4);
+                //            }
+                //        }
 
-                    }
-                }
-                itemList.Add(item);
+                //    }
+                //}
+                //itemList.Add(item);
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
             }
             catch (Exception ex)
@@ -4988,24 +5041,26 @@ namespace Emsal.BLL
             }
         }
 
-        public BaseOutput GetProductPriceByYearIdAndProductId(BaseInput baseinput, Int64 productID, Int64 year, out ProductPriceDetail item)
+        public BaseOutput GetProductPriceByYearIdAndProductId(BaseInput baseinput, Int64 productID, Int64 year, out List<ProductPriceDetail> item)
         {
             BaseOutput baseOutput;
-            item = new ProductPriceDetail();
-            item.productPriceList = new List<tblProductPrice>();
-            try
+            item = new List<ProductPriceDetail>();
+            List<tblProductPrice> productPriceList = new List<tblProductPrice>();
+            ProductPriceDetail priceItem = new ProductPriceDetail();
+         
+          try
             {
-                item.productPriceList = operationLogic.GetProductPriceByYearIdAndProductId(productID, year);
-                try
+                List<tblProductPrice> pCatalogList = operationLogic.GetProductPriceByYearIdAndProductId(productID, year);
+                foreach (var item1 in pCatalogList)
                 {
-                    item.productName = operationLogic.GetProductCatalogsById((int)productID).ProductName;
+                    productPriceList = operationLogic.GetProductPriceByYearIdAndProductId(productID, year);
+                    priceItem.productPriceList = productPriceList;
+                    priceItem.productName = operationLogic.GetProductCatalogsById((int)productID).ProductName;
+                    item.Add(priceItem);
                 }
-                catch (Exception ex)
-                {
-
-
-                }
-
+               
+               
+              
                 return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
 
 
@@ -6658,7 +6713,7 @@ namespace Emsal.BLL
         }
         #endregion
 
-        public BaseOutput GetProductCatalogsOfferWitoutTypeOfEV(BaseInput baseinput, Int64 userID, out List<tblProductCatalog> itemList)
+        public BaseOutput GetProductCatalogsOfferWitoutTypeOfEV(BaseInput baseinput, Int64 userID,Int64 yearEvId, out List<tblProductCatalog> itemList)
         {
             List<tblProductCatalog> itemL = new List<tblProductCatalog>();
             List<tblProductCatalog> item1 = new List<tblProductCatalog>();
@@ -6670,7 +6725,7 @@ namespace Emsal.BLL
             BaseOutput baseOutput;
             try
             {
-                itemL = operationLogic.GetProductCatalogsOfferWitoutTypeOfEV(userID);
+                itemL = operationLogic.GetProductCatalogsOfferWitoutTypeOfEV(userID,yearEvId);
                 foreach (var item in itemL)
                 {
                     item1 = operationLogic.GetProductCatalogsOfferWitoutTypeOfEV1(item.Id, userID);
@@ -6697,7 +6752,702 @@ namespace Emsal.BLL
             }
         }
 
+        public BaseOutput GetProductCatalogsDemandWitoutTypeOfEV(BaseInput baseinput, Int64 userID, Int64 yearEvId, out List<tblProductCatalog> itemList)
+        {
+            List<tblProductCatalog> itemL = new List<tblProductCatalog>();
+            List<tblProductCatalog> item1 = new List<tblProductCatalog>();
+            List<tblProductCatalog> itemL1 = new List<tblProductCatalog>();
+            List<tblProductCatalog> itemL2 = new List<tblProductCatalog>();
+            List<tblProductCatalog> list = new List<tblProductCatalog>();
 
+            //   List<tblProductCatalog> item2 = new List<tblProductCatalog>();
+            BaseOutput baseOutput;
+            try
+            {
+                itemL = operationLogic.GetProductCatalogsDemandWitoutTypeOfEV(userID, yearEvId);
+                foreach (var item in itemL)
+                {
+                    item1 = operationLogic.GetProductCatalogsDemandWitoutTypeOfEV1(item.Id, userID);
+                    if (item1.Count() == 0)
+                    {
+                        itemL = operationLogic.GetProductCatalogsDemandWitoutTypeOfEV2(item.Id, userID);
+                        foreach (var item2 in itemL)
+                        {
+                            list.Add(item2);
+                        }
+                    }
+                }
+                itemList = list;
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        #region tblBudjet
+        public BaseOutput AddBudjet(BaseInput baseinput, tblBudjet item, out tblBudjet BudjetOut)
+        {
+            BaseOutput baseOutput;
+
+            try
+            {
+                item = AuditingLogic.SetAuditingInfo(baseinput, (int)CRUD.Insert, item);
+                BudjetOut = operationLogic.AddBudjet(item);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+            }
+            catch (Exception ex)
+            {
+                BudjetOut = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+
+        }
+
+        public BaseOutput DeleteBudjet(BaseInput baseinput, tblBudjet Budjet)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                Budjet = AuditingLogic.SetAuditingInfo(baseinput, (int)CRUD.Delete, Budjet);
+                operationLogic.DeleteBudjet(Budjet);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+            }
+            catch (Exception ex)
+            {
+
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+            }
+        }
+
+        public BaseOutput GetBudjet(BaseInput baseInput, out List<tblBudjet> contractOut)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                contractOut = operationLogic.GetBudjet();
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+            }
+            catch (Exception ex)
+            {
+                contractOut = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+            }
+        }
+        public BaseOutput UpdateBudjet(BaseInput baseinput, tblBudjet contract, out tblBudjet contractOut)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                contract = AuditingLogic.SetAuditingInfo(baseinput, (int)CRUD.Update, contract);
+                contractOut = operationLogic.UpdateBudjet(contract);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+            }
+            catch (Exception ex)
+            {
+                contractOut = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+            }
+        }
+        public BaseOutput GetBudjetById(BaseInput baseinput, Int64 Id, out tblBudjet contract)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                contract = operationLogic.GetBudjetById(Id);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+            }
+            catch (Exception ex)
+            {
+                contract = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput GetBudjeByYearIdandOrgId(BaseInput baseinput, Int64 year_ev_id, Int64 organizationID, out List<tblBudjet> contract)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                contract = operationLogic.GetBudjeByYearIdandOrgId( year_ev_id, organizationID);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+            }
+            catch (Exception ex)
+            {
+                contract = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput GetBudjeByOrgId(BaseInput baseinput,  Int64 organizationID, out List<tblBudjet> contract)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                contract = operationLogic.GetBudjeByOrgId( organizationID);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+            }
+            catch (Exception ex)
+            {
+                contract = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        ///GetBudjeByYearIdandOrgId
+        #endregion
+        #region tblEvaluations
+       
+        public BaseOutput AddEvaluation(BaseInput baseinput, tblEvaluation item, out tblEvaluation EvaluationOut)
+        {
+            BaseOutput baseOutput;
+
+            try
+            {
+                item = AuditingLogic.SetAuditingInfo(baseinput, (int)CRUD.Insert, item);
+                EvaluationOut = operationLogic.AddEvaluation(item);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+            }
+            catch (Exception ex)
+            {
+                EvaluationOut = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+
+        }
+
+        public BaseOutput DeleteEvaluation(BaseInput baseinput, tblEvaluation item)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                item = AuditingLogic.SetAuditingInfo(baseinput, (int)CRUD.Delete, item);
+                operationLogic.DeleteEvaluation(item);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+            }
+            catch (Exception ex)
+            {
+
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+            }
+        }
+
+        public BaseOutput GetEvaluation(BaseInput baseInput, out List<tblEvaluation> contractOut)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                contractOut = operationLogic.GetEvaluation();
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+            }
+            catch (Exception ex)
+            {
+                contractOut = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+            }
+        }
+        public BaseOutput UpdateEvaluation(BaseInput baseinput, tblEvaluation contract, out tblEvaluation contractOut)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                contract = AuditingLogic.SetAuditingInfo(baseinput, (int)CRUD.Update, contract);
+                contractOut = operationLogic.UpdateEvaluation(contract);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+            }
+            catch (Exception ex)
+            {
+                contractOut = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+            }
+        }
+        public BaseOutput GetEvaluationById(BaseInput baseinput, Int64 Id, out tblEvaluation contract)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                contract = operationLogic.GetEvaluationById(Id);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+            }
+            catch (Exception ex)
+            {
+                contract = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+
+        public BaseOutput GetEvaluationByParentId(BaseInput baseinput, Int64 parentID, out List<tblEvaluation> item)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                item = operationLogic.GetEvaluationByParentId(parentID);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+            }
+            catch (Exception ex)
+            {
+                item = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput GetEvaluationByParentId_OPC(BaseInput baseinput, Int64 parentID, out Int64 item)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                item = operationLogic.GetEvaluationByParentId_OPC(parentID);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+            }
+            catch (Exception ex)
+            {
+                item = 0;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput GetEvaluationByParentId_OP(BaseInput baseinput, Int64 parentID,int page,int pageSize, out List<tblEvaluation> item)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                item = operationLogic.GetEvaluationByParentId_OP(parentID,page,pageSize);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+            }
+            catch (Exception ex)
+            {
+                item = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        ///GetBudjeByYearIdandOrgId
+        #endregion
+        #region tblEvaluationAttachments
+
+        public BaseOutput AddEvaluationAttachment(BaseInput baseinput, tblEvaluationAttachment item, out tblEvaluationAttachment EvaluationOut)
+        {
+            BaseOutput baseOutput;
+
+            try
+            {
+                item = AuditingLogic.SetAuditingInfo(baseinput, (int)CRUD.Insert, item);
+                EvaluationOut = operationLogic.AddEvaluationAttachment(item);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+            }
+            catch (Exception ex)
+            {
+                EvaluationOut = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+
+        }
+
+        public BaseOutput DeleteEvaluationAttachment(BaseInput baseinput, tblEvaluationAttachment item)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                item = AuditingLogic.SetAuditingInfo(baseinput, (int)CRUD.Delete, item);
+                operationLogic.DeleteEvaluationAttachment(item);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+            }
+            catch (Exception ex)
+            {
+
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+            }
+        }
+
+        public BaseOutput GetEvaluationAttachment(BaseInput baseInput, out List<tblEvaluationAttachment> contractOut)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                contractOut = operationLogic.GetEvaluationAttachment();
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+            }
+            catch (Exception ex)
+            {
+                contractOut = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+            }
+        }
+        public BaseOutput UpdateEvaluationAttachment(BaseInput baseinput, tblEvaluationAttachment contract, out tblEvaluationAttachment contractOut)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                contract = AuditingLogic.SetAuditingInfo(baseinput, (int)CRUD.Update, contract);
+                contractOut = operationLogic.UpdateEvaluationAttachment(contract);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+            }
+            catch (Exception ex)
+            {
+                contractOut = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+            }
+        }
+        public BaseOutput GetEvaluationAttachmentById(BaseInput baseinput, Int64 Id, out tblEvaluationAttachment contract)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                contract = operationLogic.GetEvaluationAttachmentById(Id);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+            }
+            catch (Exception ex)
+            {
+                contract = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+
+        public BaseOutput GetEvaluationAttachmentByEvaluationId(BaseInput baseinput, Int64 EvaluationId, out List<tblEvaluationAttachment> item)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                item = operationLogic.GetEvaluationAttachmentByEvaluationId(EvaluationId);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+            }
+            catch (Exception ex)
+            {
+                item = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+       
+        public BaseOutput GetEvaluationAttachmentByEvaluationId_OPC(BaseInput baseinput, Int64 EvaluationId, out Int64 item)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                item = operationLogic.GetEvaluationAttachmentByEvaluationId_OPC(EvaluationId);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+            }
+            catch (Exception ex)
+            {
+                item = 0;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput GetEvaluationAttachmentByEvaluationId_OP(BaseInput baseinput, Int64 EvaluationId,int page,int pageSize, out List<tblEvaluationAttachment> item)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                item = operationLogic.GetEvaluationAttachmentByEvaluationId_OP(EvaluationId,page,pageSize);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+            }
+            catch (Exception ex)
+            {
+                item = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput GetEvaluationAttachmentByUserIDandGroupId(BaseInput baseinput, Int64 userID, string groupID, out List<tblEvaluationAttachment> item)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                item = operationLogic.GetEvaluationAttachmentByUserIDandGroupId(userID, groupID);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+            }
+            catch (Exception ex)
+            {
+                item = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        #endregion 
+        #region tblEvaluationResults
+        public BaseOutput GetEvaluationResultByUserIDandGroupId(BaseInput baseinput, Int64 userID, string groupID, out List<tblEvaluationResult> item)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                item = operationLogic.GetEvaluationResultByUserIDandGroupId(userID, groupID);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+            }
+            catch (Exception ex)
+            {
+                item = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput AddEvaluationResult(BaseInput baseinput, tblEvaluationResult item, out tblEvaluationResult EvaluationOut)
+        {
+            BaseOutput baseOutput;
+
+            try
+            {
+                item = AuditingLogic.SetAuditingInfo(baseinput, (int)CRUD.Insert, item);
+                EvaluationOut = operationLogic.AddEvaluationResult(item);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+            }
+            catch (Exception ex)
+            {
+                EvaluationOut = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+
+        }
+
+        public BaseOutput DeleteEvaluationResult(BaseInput baseinput, tblEvaluationResult item)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                item = AuditingLogic.SetAuditingInfo(baseinput, (int)CRUD.Delete, item);
+                operationLogic.DeleteEvaluationResult(item);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+            }
+            catch (Exception ex)
+            {
+
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+            }
+        }
+
+        public BaseOutput GetEvaluationResult(BaseInput baseInput, out List<tblEvaluationResult> contractOut)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                contractOut = operationLogic.GetEvaluationResult();
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+            }
+            catch (Exception ex)
+            {
+                contractOut = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+            }
+        }
+        public BaseOutput UpdateEvaluationResult(BaseInput baseinput, tblEvaluationResult contract, out tblEvaluationResult contractOut)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                contract = AuditingLogic.SetAuditingInfo(baseinput, (int)CRUD.Update, contract);
+                contractOut = operationLogic.UpdateEvaluationResult(contract);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+            }
+            catch (Exception ex)
+            {
+                contractOut = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+            }
+        }
+        public BaseOutput GetEvaluationResultById(BaseInput baseinput, Int64 Id, out tblEvaluationResult contract)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                contract = operationLogic.GetEvaluationResultById(Id);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+            }
+            catch (Exception ex)
+            {
+                contract = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        
+        public BaseOutput GetEvaluationResultByUserId(BaseInput baseinput, Int64 UserId, out List<tblEvaluationResult> item)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                item = operationLogic.GetEvaluationResultByUserId(UserId);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+            }
+            catch (Exception ex)
+            {
+                item = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput GetEvaluationResultByUserId_OP(BaseInput baseinput, Int64 UserId,int page,int pageSize, out List<tblEvaluationResult> item)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                item = operationLogic.GetEvaluationResultByUserId_OP(UserId,page,pageSize);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+            }
+            catch (Exception ex)
+            {
+                item = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        ///GetBudjeByYearIdandOrgId
+        public BaseOutput GetEvaluationResultByUserId_OPC(BaseInput baseinput, Int64 UserId, out Int64 item)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                item = operationLogic.GetEvaluationResultByUserId_OPC(UserId);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+            }
+            catch (Exception ex)
+            {
+                item = 0;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+       
+      
+        #endregion  
+        #region tblEvaluationResultQuestions
+        public BaseOutput GetEvaluationResultQuestionByUserIDandGroupId(BaseInput baseinput, Int64 userID, string groupID, out List<tblEvaluationResultQuestion> item)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                item = operationLogic.GetEvaluationResultQuestionByUserIDandGroupId(userID, groupID);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+            }
+            catch (Exception ex)
+            {
+                item = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput AddEvaluationResultQuestion(BaseInput baseinput, tblEvaluationResultQuestion item, out tblEvaluationResultQuestion EvaluationOut)
+        {
+            BaseOutput baseOutput;
+
+            try
+            {
+                item = AuditingLogic.SetAuditingInfo(baseinput, (int)CRUD.Insert, item);
+                EvaluationOut = operationLogic.AddEvaluationResultQuestion(item);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+            }
+            catch (Exception ex)
+            {
+                EvaluationOut = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+
+        }
+
+        public BaseOutput DeleteEvaluationResultQuestion(BaseInput baseinput, tblEvaluationResultQuestion item)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                item = AuditingLogic.SetAuditingInfo(baseinput, (int)CRUD.Delete, item);
+                operationLogic.DeleteEvaluationResultQuestion(item);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+            }
+            catch (Exception ex)
+            {
+
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+            }
+        }
+
+
+        public BaseOutput UpdateEvaluationResultQuestion(BaseInput baseinput, tblEvaluationResultQuestion contract, out tblEvaluationResultQuestion contractOut)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                contract = AuditingLogic.SetAuditingInfo(baseinput, (int)CRUD.Update, contract);
+                contractOut = operationLogic.UpdateEvaluationResultQuestion(contract);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+            }
+            catch (Exception ex)
+            {
+                contractOut = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+            }
+        }
+        public BaseOutput GetEvaluationResultQuestionById(BaseInput baseinput, Int64 Id, out tblEvaluationResultQuestion contract)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                contract = operationLogic.GetEvaluationResultQuestionById(Id);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+            }
+            catch (Exception ex)
+            {
+                contract = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+
+
+        public BaseOutput GetEvaluationResultQuestionByUserId_OP(BaseInput baseinput, Int64 UserId, int page, int pageSize, out List<tblEvaluationResultQuestion> item)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                item = operationLogic.GetEvaluationResultQuestionByUserId_OP(UserId, page, pageSize);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+            }
+            catch (Exception ex)
+            {
+                item = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        ///GetBudjeByYearIdandOrgId
+        public BaseOutput GetEvaluationResultQuestionByUserId_OPC(BaseInput baseinput, Int64 UserId, out Int64 item)
+        {
+            BaseOutput baseOutput;
+            try
+            {
+                item = operationLogic.GetEvaluationResultQuestionByUserId_OPC(UserId);
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+            }
+            catch (Exception ex)
+            {
+                item = 0;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+
+      
+        #endregion
     }
 }
 

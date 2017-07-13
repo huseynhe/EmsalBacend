@@ -29,8 +29,10 @@ namespace Emsal.DAL.CustomObjects
         public string enumValueDescription { get; set; }
         public Int64 enumCategoryId { get; set; }
         public Int64 enumValueId { get; set; }
-        public Int64 userId { get; set; } 
+        public Int64 userId { get; set; }
+        public Int64 yearEvId { get; set; }
         public string organizationName { get; set; }
+        public string enumvaule_year { get; set; }
         public string groupId { get; set; }
         public List<string> months { get; set; }
         public tblPerson person { get; set; }
@@ -45,7 +47,7 @@ namespace Emsal.DAL.CustomObjects
         public string fullForeignOrganization { get; set; }
         public Nullable<long> forgId { get; set; }
         public string name { get; set; }
-         
+        public bool activity { get; set; }
           
         public string surname { get; set; }
         public Int64 birtday { get; set; }

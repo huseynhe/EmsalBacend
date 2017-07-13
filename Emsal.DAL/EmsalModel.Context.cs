@@ -39,10 +39,7 @@ namespace Emsal.DAL
         public DbSet<tblCommunication> tblCommunications { get; set; }
         public DbSet<tblConfirmationMessage> tblConfirmationMessages { get; set; }
         public DbSet<tblContract> tblContracts { get; set; }
-        public DbSet<tblDemand_Production> tblDemand_Production { get; set; }
         public DbSet<tblEmployee> tblEmployees { get; set; }
-        public DbSet<tblEnumCategory> tblEnumCategories { get; set; }
-        public DbSet<tblEnumValue> tblEnumValues { get; set; }
         public DbSet<tblExpertise> tblExpertises { get; set; }
         public DbSet<tblForeign_Organization> tblForeign_Organization { get; set; }
         public DbSet<tblOrganization> tblOrganizations { get; set; }
@@ -66,13 +63,21 @@ namespace Emsal.DAL
         public DbSet<tblPropertyType> tblPropertyTypes { get; set; }
         public DbSet<tblRole> tblRoles { get; set; }
         public DbSet<tblTitle> tblTitles { get; set; }
-        public DbSet<tblUser> tblUsers { get; set; }
         public DbSet<tblUserRole> tblUserRoles { get; set; }
         public DbSet<tblContractDetailTemp> tblContractDetailTemps { get; set; }
         public DbSet<tblProductionCalendar> tblProductionCalendars { get; set; }
+        public DbSet<tblDemand_Production> tblDemand_Production { get; set; }
         public DbSet<tblOffer_Production> tblOffer_Production { get; set; }
         public DbSet<tblProductCatalog> tblProductCatalogs { get; set; }
+        public DbSet<tblUser> tblUsers { get; set; }
+        public DbSet<tblBudjet> tblBudjets { get; set; }
+        public DbSet<tblEnumValue> tblEnumValues { get; set; }
+        public DbSet<tblEvaluationAttachment> tblEvaluationAttachments { get; set; }
+        public DbSet<tblEvaluationResult> tblEvaluationResults { get; set; }
+        public DbSet<tblEvaluationResultQuestion> tblEvaluationResultQuestions { get; set; }
+        public DbSet<tblEnumCategory> tblEnumCategories { get; set; }
+        public DbSet<tblEvaluation> tblEvaluations { get; set; }
     
-      
+    
     }
 }

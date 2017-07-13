@@ -63,8 +63,12 @@
     <Compile Include="CustomObjects\DemandDetails.cs" />
     <Compile Include="CustomObjects\DemandDetialOPA.cs" />
     <Compile Include="CustomObjects\DemandOfferDetail.cs" />
+    <Compile Include="CustomObjects\DemandPrice.cs" />
     <Compile Include="CustomObjects\DemanOfferProduction.cs" />
     <Compile Include="CustomObjects\DemanProductionGroup.cs" />
+    <Compile Include="CustomObjects\EnumValueList.cs" />
+    <Compile Include="CustomObjects\EvaluationAttachmentDetails.cs" />
+    <Compile Include="CustomObjects\EvaluationDetails.cs" />
     <Compile Include="CustomObjects\ForeignOrganization.cs" />
     <Compile Include="CustomObjects\GetOfferProductionDetailistForEValueId.cs" />
     <Compile Include="CustomObjects\OfferDetails.cs" />
@@ -72,6 +76,8 @@
     <Compile Include="CustomObjects\OfferProductionDetail.cs" />
     <Compile Include="CustomObjects\OfferProducts.cs" />
     <Compile Include="CustomObjects\OrganizationDetail.cs" />
+    <Compile Include="CustomObjects\OrganizationList.cs" />
+    <Compile Include="CustomObjects\Organizations.cs" />
     <Compile Include="CustomObjects\PersonDetail.cs" />
     <Compile Include="CustomObjects\PersonInformation.cs" />
     <Compile Include="CustomObjects\PotentialClientDetail.cs" />
@@ -121,6 +127,7 @@
     <Compile Include="SearchObject\DemandOfferProductsSearch.cs" />
     <Compile Include="SearchObject\DemandProductionDetailistForUser.cs" />
     <Compile Include="SearchObject\DemandProductsForAccountingSearch.cs" />
+    <Compile Include="SearchObject\EvaluationObjects.cs" />
     <Compile Include="SearchObject\GetDemandProductionDetailistForEValueIdSearch.cs" />
     <Compile Include="SearchObject\GetDemandProductionDetailistForEValueIdSearch1.cs" />
     <Compile Include="SearchObject\OfferProductionDetailSearch.cs" />
@@ -141,6 +148,9 @@
       <DependentUpon>EmsalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tblBranchResponsibility.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblBudjet.cs">
       <DependentUpon>EmsalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tblComMessage.cs">
@@ -171,6 +181,18 @@
       <DependentUpon>EmsalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tblEnumValue.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblEvaluation.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblEvaluationAttachment.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblEvaluationResult.cs">
+      <DependentUpon>EmsalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblEvaluationResultQuestion.cs">
       <DependentUpon>EmsalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tblExpertise.cs">

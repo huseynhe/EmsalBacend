@@ -14,6 +14,7 @@ namespace Emsal.DAL.CustomObjects
         public Int64 userId { get; set; }
         public Int64 state_Ev_Id { get; set; }
         public string parentName { get; set; }
+        public string enumValueYear { get; set; }
         public string fullAddress { get; set; }
         public string addressDesc { get; set; }
         public string kategoryName { get; set; }

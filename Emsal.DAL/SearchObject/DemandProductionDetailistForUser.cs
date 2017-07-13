@@ -27,5 +27,8 @@ namespace Emsal.DAL.SearchObject
         public Int64 userType_eV_ID { get; set; }
         [DataMember(IsRequired = true)]
         public bool isSelected { get; set; }
+        
+        [DataMember(IsRequired = true)]
+        public Int64 yearEvId { get; set; }
     }
 }

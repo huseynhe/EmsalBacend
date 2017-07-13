@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="EmsalDBModelStoreContainer" CdmEntityContainer="EmsalDBEntities">
     <EntitySetMapping Name="C__MigrationHistory">
       <EntityTypeMapping TypeName="EmsalDBModel.C__MigrationHistory">
@@ -191,37 +191,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tblDemand_Production">
-      <EntityTypeMapping TypeName="EmsalDBModel.tblDemand_Production">
-        <MappingFragment StoreEntitySet="tblDemand_Production">
-          <ScalarProperty Name="isNew" ColumnName="isNew" />
-          <ScalarProperty Name="monitoring_eV_Id" ColumnName="monitoring_eV_Id" />
-          <ScalarProperty Name="fullProductId" ColumnName="fullProductId" />
-          <ScalarProperty Name="state_eV_Id" ColumnName="state_eV_Id" />
-          <ScalarProperty Name="user_Id" ColumnName="user_Id" />
-          <ScalarProperty Name="product_Id" ColumnName="product_Id" />
-          <ScalarProperty Name="address_Id" ColumnName="address_Id" />
-          <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
-          <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
-          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
-          <ScalarProperty Name="createdUser" ColumnName="createdUser" />
-          <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="isAnnouncement" ColumnName="isAnnouncement" />
-          <ScalarProperty Name="isSelected" ColumnName="isSelected" />
-          <ScalarProperty Name="endDate" ColumnName="endDate" />
-          <ScalarProperty Name="startDate" ColumnName="startDate" />
-          <ScalarProperty Name="quantity_type_eV_Id" ColumnName="quantity_type_eV_Id" />
-          <ScalarProperty Name="quantity" ColumnName="quantity" />
-          <ScalarProperty Name="total_price" ColumnName="total_price" />
-          <ScalarProperty Name="unit_price" ColumnName="unit_price" />
-          <ScalarProperty Name="description" ColumnName="description" />
-          <ScalarProperty Name="title" ColumnName="title" />
-          <ScalarProperty Name="grup_Id" ColumnName="grup_Id" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tblEmployees">
       <EntityTypeMapping TypeName="EmsalDBModel.tblEmployee">
         <MappingFragment StoreEntitySet="tblEmployee">
@@ -237,38 +206,6 @@
           <ScalarProperty Name="createdUser" ColumnName="createdUser" />
           <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
           <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tblEnumCategories">
-      <EntityTypeMapping TypeName="EmsalDBModel.tblEnumCategory">
-        <MappingFragment StoreEntitySet="tblEnumCategory">
-          <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
-          <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
-          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
-          <ScalarProperty Name="createdUser" ColumnName="createdUser" />
-          <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="isProductDescibe" ColumnName="isProductDescibe" />
-          <ScalarProperty Name="description" ColumnName="description" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tblEnumValues">
-      <EntityTypeMapping TypeName="EmsalDBModel.tblEnumValue">
-        <MappingFragment StoreEntitySet="tblEnumValue">
-          <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
-          <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
-          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
-          <ScalarProperty Name="createdUser" ColumnName="createdUser" />
-          <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="description" ColumnName="description" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="enumCategory_enumCategoryId" ColumnName="enumCategory_enumCategoryId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -710,30 +647,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tblUsers">
-      <EntityTypeMapping TypeName="EmsalDBModel.tblUser">
-        <MappingFragment StoreEntitySet="tblUser">
-          <ScalarProperty Name="note" ColumnName="note" />
-          <ScalarProperty Name="TaxexType" ColumnName="TaxexType" />
-          <ScalarProperty Name="KTN_ID" ColumnName="KTN_ID" />
-          <ScalarProperty Name="ASC_ID" ColumnName="ASC_ID" />
-          <ScalarProperty Name="userType_eV_ID" ColumnName="userType_eV_ID" />
-          <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
-          <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
-          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
-          <ScalarProperty Name="createdUser" ColumnName="createdUser" />
-          <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="ProfileImageUrl" ColumnName="ProfileImageUrl" />
-          <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
-          <ScalarProperty Name="LastLoginIP" ColumnName="LastLoginIP" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Username" ColumnName="Username" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tblUserRoles">
       <EntityTypeMapping TypeName="EmsalDBModel.tblUserRole">
         <MappingFragment StoreEntitySet="tblUserRole">
@@ -769,17 +682,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="PA_GetAnnouncementDetails_Search" FunctionName="EmsalDBModel.Store.PA_GetAnnouncementDetails_Search">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="EmsalDBModel.PA_GetAnnouncementDetails_Search_Result">
-          <ScalarProperty Name="announcementId" ColumnName="announcementId" />
-          <ScalarProperty Name="productID" ColumnName="productID" />
-          <ScalarProperty Name="productParentName" ColumnName="productParentName" />
-          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-          <ScalarProperty Name="description" ColumnName="description" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <EntitySetMapping Name="tblProductionCalendars">
       <EntityTypeMapping TypeName="EmsalDBModel.tblProductionCalendar">
         <MappingFragment StoreEntitySet="tblProductionCalendar">
@@ -807,9 +709,42 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tblDemand_Production">
+      <EntityTypeMapping TypeName="EmsalDBModel.tblDemand_Production">
+        <MappingFragment StoreEntitySet="tblDemand_Production">
+          <ScalarProperty Name="yearEvId" ColumnName="yearEvId" />
+          <ScalarProperty Name="isNew" ColumnName="isNew" />
+          <ScalarProperty Name="monitoring_eV_Id" ColumnName="monitoring_eV_Id" />
+          <ScalarProperty Name="fullProductId" ColumnName="fullProductId" />
+          <ScalarProperty Name="state_eV_Id" ColumnName="state_eV_Id" />
+          <ScalarProperty Name="user_Id" ColumnName="user_Id" />
+          <ScalarProperty Name="product_Id" ColumnName="product_Id" />
+          <ScalarProperty Name="address_Id" ColumnName="address_Id" />
+          <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+          <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+          <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+          <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="isAnnouncement" ColumnName="isAnnouncement" />
+          <ScalarProperty Name="isSelected" ColumnName="isSelected" />
+          <ScalarProperty Name="endDate" ColumnName="endDate" />
+          <ScalarProperty Name="startDate" ColumnName="startDate" />
+          <ScalarProperty Name="quantity_type_eV_Id" ColumnName="quantity_type_eV_Id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="total_price" ColumnName="total_price" />
+          <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="grup_Id" ColumnName="grup_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="tblOffer_Production">
       <EntityTypeMapping TypeName="EmsalDBModel.tblOffer_Production">
         <MappingFragment StoreEntitySet="tblOffer_Production">
+          <ScalarProperty Name="yearEvId" ColumnName="yearEvId" />
           <ScalarProperty Name="production_type" ColumnName="production_type" />
           <ScalarProperty Name="isNew" ColumnName="isNew" />
           <ScalarProperty Name="contractId" ColumnName="contractId" />
@@ -843,6 +778,7 @@
     <EntitySetMapping Name="tblProductCatalogs">
       <EntityTypeMapping TypeName="EmsalDBModel.tblProductCatalog">
         <MappingFragment StoreEntitySet="tblProductCatalog">
+          <ScalarProperty Name="activity" ColumnName="activity" />
           <ScalarProperty Name="edvStatus" ColumnName="edvStatus" />
           <ScalarProperty Name="productCode" ColumnName="productCode" />
           <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
@@ -857,6 +793,169 @@
           <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
           <ScalarProperty Name="ProductName" ColumnName="ProductName" />
           <ScalarProperty Name="ProductCatalogParentID" ColumnName="ProductCatalogParentID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUsers">
+      <EntityTypeMapping TypeName="EmsalDBModel.tblUser">
+        <MappingFragment StoreEntitySet="tblUser">
+          <ScalarProperty Name="isDemandOffer" ColumnName="isDemandOffer" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="TaxexType" ColumnName="TaxexType" />
+          <ScalarProperty Name="KTN_ID" ColumnName="KTN_ID" />
+          <ScalarProperty Name="ASC_ID" ColumnName="ASC_ID" />
+          <ScalarProperty Name="userType_eV_ID" ColumnName="userType_eV_ID" />
+          <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+          <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+          <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+          <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ProfileImageUrl" ColumnName="ProfileImageUrl" />
+          <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+          <ScalarProperty Name="LastLoginIP" ColumnName="LastLoginIP" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblBudjets">
+      <EntityTypeMapping TypeName="EmsalDBModel.tblBudjet">
+        <MappingFragment StoreEntitySet="tblBudjet">
+          <ScalarProperty Name="org_id" ColumnName="org_id" />
+          <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+          <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+          <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="year_ev_id" ColumnName="year_ev_id" />
+          <ScalarProperty Name="budget" ColumnName="budget" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEnumValues">
+      <EntityTypeMapping TypeName="EmsalDBModel.tblEnumValue">
+        <MappingFragment StoreEntitySet="tblEnumValue">
+          <ScalarProperty Name="sort" ColumnName="sort" />
+          <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+          <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+          <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+          <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="enumCategory_enumCategoryId" ColumnName="enumCategory_enumCategoryId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEvaluationAttachments">
+      <EntityTypeMapping TypeName="EmsalDBModel.tblEvaluationAttachment">
+        <MappingFragment StoreEntitySet="tblEvaluationAttachment">
+          <ScalarProperty Name="isApproved" ColumnName="isApproved" />
+          <ScalarProperty Name="groupId" ColumnName="groupId" />
+          <ScalarProperty Name="document_type_ev_Id" ColumnName="document_type_ev_Id" />
+          <ScalarProperty Name="documentSize" ColumnName="documentSize" />
+          <ScalarProperty Name="documentRealName" ColumnName="documentRealName" />
+          <ScalarProperty Name="documentName" ColumnName="documentName" />
+          <ScalarProperty Name="documentUrl" ColumnName="documentUrl" />
+          <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+          <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+          <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+          <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="EvaluationId" ColumnName="EvaluationId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEvaluationResults">
+      <EntityTypeMapping TypeName="EmsalDBModel.tblEvaluationResult">
+        <MappingFragment StoreEntitySet="tblEvaluationResult">
+          <ScalarProperty Name="isApproved" ColumnName="isApproved" />
+          <ScalarProperty Name="groupId" ColumnName="groupId" />
+          <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+          <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+          <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+          <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Point" ColumnName="Point" />
+          <ScalarProperty Name="EvaluationId" ColumnName="EvaluationId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEvaluationResultQuestions">
+      <EntityTypeMapping TypeName="EmsalDBModel.tblEvaluationResultQuestion">
+        <MappingFragment StoreEntitySet="tblEvaluationResultQuestion">
+          <ScalarProperty Name="isApproved" ColumnName="isApproved" />
+          <ScalarProperty Name="groupId" ColumnName="groupId" />
+          <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+          <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+          <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+          <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="EvaluationId" ColumnName="EvaluationId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEnumCategories">
+      <EntityTypeMapping TypeName="EmsalDBModel.tblEnumCategory">
+        <MappingFragment StoreEntitySet="tblEnumCategory">
+          <ScalarProperty Name="isOnlyType" ColumnName="isOnlyType" />
+          <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+          <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+          <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+          <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="isProductDescibe" ColumnName="isProductDescibe" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEvaluations">
+      <EntityTypeMapping TypeName="EmsalDBModel.tblEvaluation">
+        <MappingFragment StoreEntitySet="tblEvaluation">
+          <ScalarProperty Name="evaluationQuestionLocationEValId" ColumnName="evaluationQuestionLocationEValId" />
+          <ScalarProperty Name="isRequired" ColumnName="isRequired" />
+          <ScalarProperty Name="offerUserTypeEValId" ColumnName="offerUserTypeEValId" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+          <ScalarProperty Name="updatedUser" ColumnName="updatedUser" />
+          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+          <ScalarProperty Name="createdUser" ColumnName="createdUser" />
+          <ScalarProperty Name="LastUpdatedStatus" ColumnName="LastUpdatedStatus" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="IsAnswer" ColumnName="IsAnswer" />
+          <ScalarProperty Name="IsQuestion" ColumnName="IsQuestion" />
+          <ScalarProperty Name="IsNote" ColumnName="IsNote" />
+          <ScalarProperty Name="IsAttachment" ColumnName="IsAttachment" />
+          <ScalarProperty Name="IsMultiselect" ColumnName="IsMultiselect" />
+          <ScalarProperty Name="Point" ColumnName="Point" />
+          <ScalarProperty Name="EvumValId" ColumnName="EvumValId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

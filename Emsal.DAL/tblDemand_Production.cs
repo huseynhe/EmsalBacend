@@ -39,5 +39,6 @@ namespace Emsal.DAL
         public string fullProductId { get; set; }
         public Nullable<long> monitoring_eV_Id { get; set; }
         public Nullable<long> isNew { get; set; }
+        public Nullable<long> yearEvId { get; set; }
     }
 }

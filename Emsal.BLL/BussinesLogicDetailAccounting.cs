@@ -350,6 +350,33 @@ namespace Emsal.BLL
 
             }
         }
+        public BaseOutput GetDemandGovermentOrganisatinByAdminID(BaseInput baseinput, string adminIdList, out List<ForeignOrganization> itemList)
+        {
+            BaseOutput baseOutput;
+            itemList = new List<ForeignOrganization>();
+
+
+            try
+            {
+                itemList = sqloperationLogicAccounting.GetDemandGovermentOrganisatinByAdminID(adminIdList);
+                //foreach (var item in itemList)
+                //{
+                //    item.adminUnitIdList = sqloperationLogicAccounting.GetPRM_AdminUnitByAdminID(adminId);
+                //}
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
         public BaseOutput GetPRM_AdminUnitByAdminID(BaseInput baseinput, Int64 adminId, out List<AdminUnitRegion> itemList)
         {
             BaseOutput baseOutput;
@@ -699,6 +726,509 @@ namespace Emsal.BLL
             {
 
                 count = 0;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+
+        public BaseOutput GetDemandTotalPriceByYearEvId(BaseInput baseinput, Int64 productId, Int64 partOfYear, out decimal count)
+        {
+            BaseOutput baseOutput;
+            count = 0;
+            decimal count1 = 0;
+            Int64 count33 = 0;
+            try
+            {
+                count = sqloperationLogicAccounting.GetDemandTotalPriceByYearEvId(productId, partOfYear);
+               
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                count = 0;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+      
+        public BaseOutput GetDemandTotalPriceByProductID(BaseInput baseinput, Int64 productId, Int64 partOfYear, out decimal count)
+        {
+            BaseOutput baseOutput;
+            count = 0;
+            decimal count1 = 0;
+            Int64 count33 = 0;
+            try
+            {
+                count1 = sqloperationLogicAccounting.GetDemandTotalPriceByProductID(productId, partOfYear);
+                count33 = sqloperationLogicAccounting.GetProductControl33_OPC(productId);
+                if (count33 == 0)
+                {
+                   
+                        count = sqloperationLogicAccounting.GetTotalPriceMarka(productId);
+                    
+                }
+                else
+                {
+                    if (count1==0)
+                    {
+                        count = sqloperationLogicAccounting.GetTotalPriceMarkaNot(productId, partOfYear);
+                    }
+                    else
+                    {
+                        count = sqloperationLogicAccounting.GetDemandTotalPriceByProductID(productId, partOfYear);
+                    }
+                   
+                }
+                //if (count1 == 0)
+                //{
+                //    if (count33 == 0)
+                //    {
+                //        count = sqloperationLogicAccounting.GetTotalPriceMarka(productId);
+                //    }
+                //    else
+                //    {
+                //        count = sqloperationLogicAccounting.GetTotalPriceMarkaNot(productId, partOfYear);
+                //    }
+
+                //}
+                //else
+                //{
+                //    count = count1;
+                //}
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                count = 0;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput GetDemandTotalPriceByProductIDList(BaseInput baseinput, Int64 productId, Int64 partOfYear, out Price count)
+        {
+            BaseOutput baseOutput;
+            count = new Price();
+            decimal count1 = 0;
+            Int64 count33 = 0;
+            try
+            {
+                count1 = sqloperationLogicAccounting.GetDemandTotalPriceByProductID(productId, partOfYear);
+                count33 = sqloperationLogicAccounting.GetProductControl33_OPC(productId);
+                if (count33 == 0)
+                {
+
+                    count.unit_price = sqloperationLogicAccounting.GetTotalPriceMarka(productId);
+
+                }
+                else
+                {
+                    if (count1 == 0)
+                    {
+                        count.unit_price = sqloperationLogicAccounting.GetTotalPriceMarkaNot(productId, partOfYear);
+                    }
+                    else
+                    {
+                        count.unit_price = sqloperationLogicAccounting.GetDemandTotalPriceByProductID(productId, partOfYear);
+                    }
+
+                }
+                //if (count1 == 0)
+                //{
+                //    if (count33 == 0)
+                //    {
+                //        count = sqloperationLogicAccounting.GetTotalPriceMarka(productId);
+                //    }
+                //    else
+                //    {
+                //        count = sqloperationLogicAccounting.GetTotalPriceMarkaNot(productId, partOfYear);
+                //    }
+
+                //}
+                //else
+                //{
+                //    count = count1;
+                //}
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                count = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput GetDemandTotalPriceByYearEvId1(BaseInput baseinput, Int64 orgId, Int64 yearEvID, out List<Price> itemList)
+        {
+            BaseOutput baseOutput;
+            itemList = new List<Price>();
+            //Price item = new Price();
+            Int64 countMovs = 0;
+            List<Price> objList = new List<Price>();
+            decimal count = 0;
+            decimal count1 = 0;
+            decimal sum = 0;
+            decimal powr = 0;
+            Int64 count33 = 0;
+            decimal unitPrice = 0;
+            try
+            {
+                
+            
+
+                objList = sqloperationLogicAccounting.GetDemandTotalPriceByYearEvId1(orgId, yearEvID);
+                foreach (var item in objList)
+                {
+                    count1 = sqloperationLogicAccounting.GetDemandTotalPriceByProductID(item.productId, item.partOfYear);
+                    count33 = sqloperationLogicAccounting.GetProductControl33_OPC(item.productId);
+                    if (count33 == 0)
+                    {
+
+                        count = sqloperationLogicAccounting.GetTotalPriceMarka(item.productId);
+
+                    }
+                    else
+                    {
+                        if (count1 == 0)
+                        {
+                            count = sqloperationLogicAccounting.GetTotalPriceMarkaNot(item.productId, item.partOfYear);
+                        }
+                        else
+                        {
+                            count = sqloperationLogicAccounting.GetDemandTotalPriceByProductID(item.productId, item.partOfYear);
+                        }
+
+                    }
+                    unitPrice = sqloperationLogicAccounting.GetDemandTotalPriceByProductID(item.productId, item.partOfYear);
+                    item.unit_price = count;
+                    powr=item.price * count;
+                    sum = sum + powr;
+                    item.totalPrice = item.price * count; 
+                }
+                itemList = objList;
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput GetDemandCalPriceByYearEvId(BaseInput baseinput, Int64 orgId, Int64 yearEvID, out List<DemandPrice> itemList)
+        {
+            BaseOutput baseOutput;
+            itemList = new List<DemandPrice>();
+
+
+            try
+            {
+
+
+                itemList = sqloperationLogicAccounting.GetDemandCalPriceByYearEvId(orgId,yearEvID);
+               
+
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput GetOrganizationDetailist(BaseInput baseinput, DemandOfferProductsSearch ops, out List<OrganizationList> itemList)
+        {
+            BaseOutput baseOutput;
+            itemList = new List<OrganizationList>();
+            List<Organizations> org = new List<Organizations>();
+
+            try
+            {
+
+
+                itemList = sqloperationLogicAccounting.GetOrganizationDetailist(ops);
+               
+                foreach (var item in itemList)
+                {
+                    item.productCount = sqloperationLogicAccounting.GetOrganizationCount(item.orgID);
+               
+                    item.orgList = sqloperationLogicAccounting.GetOrganizations(item.orgID);
+                }
+
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+       
+        public BaseOutput GetOrganizationDetailist_OPC(BaseInput baseinput, DemandOfferProductsSearch ops, out Int64 count)
+        {
+            BaseOutput baseOutput;
+            count = 0;
+            try
+            {
+                count = sqloperationLogicAccounting.GetOrganizationDetailist_OPC(ops);
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                count = 0;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput GetEvaluation_OPC(BaseInput baseinput, EvaluationObjects ops, out Int64 count)
+        {
+            BaseOutput baseOutput;
+            count = 0;
+            try
+            {
+                count = sqloperationLogicAccounting.GetEvaluation_OPC(ops);
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                count = 0;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput GetEvaluation_OP(BaseInput baseinput, EvaluationObjects ops, out List<EvaluationDetails> itemList)
+        {
+            BaseOutput baseOutput;
+            itemList = new List<EvaluationDetails>();
+          
+
+            try
+            {
+
+
+                itemList = sqloperationLogicAccounting.GetEvaluation_OP(ops);
+
+              
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput GetEvaluationAttachment_OPC(BaseInput baseinput, EvaluationObjects ops, out Int64 count)
+        {
+            BaseOutput baseOutput;
+            count = 0;
+            try
+            {
+                count = sqloperationLogicAccounting.GetEvaluationAttachment_OPC(ops);
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                count = 0;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput GetEvaluationAttachment_OP(BaseInput baseinput, EvaluationObjects ops, out List<EvaluationAttachmentDetails> itemList)
+        {
+            BaseOutput baseOutput;
+            itemList = new List<EvaluationAttachmentDetails>();
+
+
+            try
+            {
+
+
+                itemList = sqloperationLogicAccounting.GetEvaluationAttachment_OP(ops);
+
+
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput GetEvaluationResult_OPC(BaseInput baseinput, EvaluationObjects ops, out Int64 count)
+        {
+            BaseOutput baseOutput;
+            count = 0;
+            try
+            {
+                count = sqloperationLogicAccounting.GetEvaluationResult_OPC(ops);
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                count = 0;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput GetEvaluationResult_OP(BaseInput baseinput, EvaluationObjects ops, out List<tblEvaluationResult> itemList)
+        {
+            BaseOutput baseOutput;
+            itemList = new List<tblEvaluationResult>();
+
+
+            try
+            {
+
+
+                itemList = sqloperationLogicAccounting.GetEvaluationResult_OP(ops);
+
+
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput GetEvaluationResultQuestion_OPC(BaseInput baseinput, EvaluationObjects ops, out Int64 count)
+        {
+            BaseOutput baseOutput;
+            count = 0;
+            try
+            {
+                count = sqloperationLogicAccounting.GetEvaluationResultQuestion_OPC(ops);
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                count = 0;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput GetEvaluationResultQuestion_OP(BaseInput baseinput, EvaluationObjects ops, out List<tblEvaluationResultQuestion> itemList)
+        {
+            BaseOutput baseOutput;
+            itemList = new List<tblEvaluationResultQuestion>();
+
+
+            try
+            {
+
+
+                itemList = sqloperationLogicAccounting.GetEvaluationResultQuestion_OP(ops);
+
+
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
+                return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
+
+            }
+        }
+        public BaseOutput GetEnumValueListByProductID(BaseInput baseinput, string productIdList, out List<tblEnumValue> itemList)
+        {
+            BaseOutput baseOutput;
+            itemList = new List<tblEnumValue>();
+
+
+            try
+            {
+
+
+                itemList = sqloperationLogicAccounting.GetEnumValueListByProductID(productIdList);
+
+
+
+
+                return baseOutput = new BaseOutput(true, BOResultTypes.Success.GetHashCode(), BOBaseOutputResponse.SuccessResponse, "");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                itemList = null;
                 return baseOutput = new BaseOutput(false, BOResultTypes.Danger.GetHashCode(), BOBaseOutputResponse.DangerResponse, ex.Message);
 
             }

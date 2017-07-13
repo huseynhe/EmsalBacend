@@ -12,6 +12,8 @@ namespace Emsal.DAL.SearchObject
         [DataMember(IsRequired = true)]
         public Int64 startDate { get; set; }
         [DataMember(IsRequired = true)]
+        public Int64 yearEvId { get; set; }
+        [DataMember(IsRequired = true)]
         public Int64 endDate { get; set; }
         [DataMember(IsRequired = true)]
         public Int64 year { get; set; }
